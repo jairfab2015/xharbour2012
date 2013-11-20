@@ -1913,22 +1913,22 @@ METHOD S2100() CLASS eSocial
 
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"trabalhador")
-* 16 cpfTrab trabalhador E N 1-1 011 - Preencher com o número do CPF do trabalhador
-* 17 nisTrab trabalhador E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
-* 18 nomeTrab trabalhador E C 1-1 080 - Nome do Trabalhador
-* 19 sexo trabalhador E C 1-1 001 - Sexo do Trabalhador:
-* 20 racaCor trabalhador E N 1-1 001 - Raça e cor do trabalhador, conforme tabela abaixo:
-* 21 estadoCivil trabalhador E N 1-1 001 - Estado civil do trabalhador, conforme tabela abaixo:
-* 22 grauInstrucao trabalhador E N 1-1 002 - Grau de instrução do trabalhador, conforme tabela:
+::incluiTag(3,"cpfTrab"," trabalhador")       // E N 1-1 011 - Preencher com o número do CPF do trabalhador
+::incluiTag(3,"nisTrab"," trabalhador")       //E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
+::incluiTag(3,"nomeTrab"," trabalhador")      //E C 1-1 080 - Nome do Trabalhador
+::incluiTag(3,"sexo"," trabalhador")          //E C 1-1 001 - Sexo do Trabalhador:
+::incluiTag(3,"racaCor"," trabalhador")       //E N 1-1 001 - Raça e cor do trabalhador, conforme tabela abaixo:
+::incluiTag(3,"estadoCivil"," trabalhador"    //E N 1-1 001 - Estado civil do trabalhador, conforme tabela abaixo:
+::incluiTag(3,"grauInstrucao"," trabalhador") // E N 1-1 002 - Grau de instrução do trabalhador, conforme tabela:
 
 ::incluiTag(4,"nascimento")
-* 24 dtNascto nascimento E D 1-1 010 - Preencher com a data de nascimento
-* 25 codMunicipio nascimento E N 0-1 007 - Preencher com o código do município, conforme tabela do
-* 26 uf nascimento E C 0-1 002 - Preencher com a sigla da Unidade da Federação
-* 27 paisNascto nascimento E N 1-1 005 - Preencher com o código do país de nascimento do trabalhador,
-* 28 paisNacionalidade nascimento E N 1-1 005 - Preencher com o código do país de nacionalidade do
-* 29 nomeMae nascimento E C 0-1 080 - Nome da mãe do trabalhador
-* 30 nomePai nascimento E C 0-1 080 - Nome do Pai do Trabalhador
+::incluiTag(3,"dtNascto","nascimento")       // E D 1-1 010 - Preencher com a data de nascimento
+::incluiTag(3,"codMunicipio"," nascimento")  // E N 0-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(3,"uf"," nascimento")            // E C 0-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(3,"paisNascto"," nascimento")    // E N 1-1 005 - Preencher com o código do país de nascimento do trabalhador,
+::incluiTag(3,"paisNacionalidade"," nascimento") // E N 1-1 005 - Preencher com o código do país de nacionalidade do
+::incluiTag(3,"nomeMae"," nascimento")       // E C 0-1 080 - Nome da mãe do trabalhador
+::incluiTag(3,"nomePai"," nascimento")       // E C 0-1 080 - Nome do Pai do Trabalhador
 
 ::incluiTag(4,"/nascimento")
 ::incluiTag(4,"documentos")
