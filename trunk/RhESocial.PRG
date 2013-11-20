@@ -9,7 +9,6 @@
          <param> := IIF(<param> = NIL, <val>, <param> ) ;
          [; <paramn> := IIF(<paramn> = NIL, <valn>, <paramn> ) ]
 
-#include "harbourboleto.ch"
 #include "hbclass.ch"
 #include "fileio.ch"
 #include "common.ch"
@@ -31,6 +30,8 @@ ENDIF
 oSocial:= eSocial()
 oSocial:Empresa := " "
 oSocial:DtVenc  := DATE()
+oSocial:tpInscricao :="1"
+oSocial:cNpjEmp :="99999999999999"
 oSocial:Open()
 oSocial:Execute( )   //:add()
 
@@ -61,6 +62,7 @@ CLASS eSocial
    DATA nHandle            INIT ""
    
    DATA versao             INIT "123"
+   DATA tpInscricao        INIT "1"
    DATA cNpjEmp            INIT "99999999999999"
    
 
@@ -212,7 +214,7 @@ LOCAL cCNPJ, cTIPOCNPJ,cNomeEmpresa
 ::incluiTag(3,"indSegmento","x ")         //E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
 ::incluiTag(3,"verProc","001")           //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(4,"ideEmpregador")           //G - 1-1 - - Informações de identificação do empregador
-::incluiTag(5,"tpInscricao","x ")         //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(5,"tpInscricao",::tpInscricao )         //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(5,"nrInscricao",::cNpjEmp )         //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(4,"/ideEmpregador")
 ::incluiTag(3,"infoEmpregador")          //CG - 1-1 - - Identificação da operação (inclusão, alteração ou exclusão) e
@@ -382,7 +384,7 @@ METHOD S1010() CLASS eSocial
 ::incluiTag(4,"indSegmento","x ")  // 08 E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
 ::incluiTag(4,"verProc","x ")      // 09 E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(4,"ideEmpregador")    // 10 G - 1-1 - - Informações de identificação do empregador
-::incluiTag(5,"tpInscricao","x ")  // 11 E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(5,"tpInscricao",::tpInscricao)  // 11 E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(5,"nrInscricao",::cNpjEmp)  // 12 E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(4,"/ideEmpregador")
 ::incluiTag(3,"infoRubrica")      // 13 CG - 1-1 - - Identificação da operação (inclusão, alteração ou exclusão) e
@@ -497,7 +499,7 @@ METHOD S1020() CLASS eSocial
 ::incluiTag(4,"verProc","x ")         //9  E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")       //10 G - 1-1 - - Informações de identificação do empregador
-::incluiTag(4,"tpInscricao","x ")     //11 E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(4,"tpInscricao",::tpInscricao)     //11 E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(4,"nrInscricao",::cNpjEmp)     //12 E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoLotacao")                  //13 CG - 1-1 - - Identificação da operação (inclusão, alteração ou exclusão) e
@@ -603,7 +605,7 @@ METHOD S1030() CLASS eSocial
 ::incluiTag(4,"verProc","ideEvento")                  //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")                        //G - 1-1 - - Informações de identificação do empregador
-::incluiTag(4,"tpInscricao","ideEmpregador")          //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(4,"tpInscricao",::tpInscricao)          //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(4,"nrInscricao",::cNpjEmp  )              //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoCargo")                            //CG - 1-1 - - Identificação da operação (inclusão, alteração ou exclusão) e
@@ -667,7 +669,7 @@ METHOD S1040() CLASS eSocial
 ::incluiTag(3,"verProc","ideEvento")     //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao)//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )     //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoFuncao")
@@ -733,7 +735,7 @@ METHOD S1050() CLASS eSocial
 ::incluiTag(3,"verProc","ideEvento")    //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao)//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )     //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoJornada")
@@ -813,7 +815,7 @@ METHOD S1060() CLASS eSocial
 ::incluiTag(3,"verProc","ideEvento")    //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao)//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )     //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoEstab")
@@ -836,7 +838,7 @@ METHOD S1060() CLASS eSocial
 ::incluiTag(4,"/inclusao")
 ::incluiTag(4,"alteracao")
 ::incluiTag(5,"ideEstab")
-::incluiTag(5,"tpInscricao","ideEstab")     //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(5,"tpInscricao",::tpInscricao)     //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(5,"nrInscricao",::cNpjEmp )     //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(5,"dtIniValidade","ideEstab")   //E D 1-1 010 - Preencher com a data de início da validade das informações
 ::incluiTag(5,"dtFimValidade","ideEstab")   //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
@@ -857,7 +859,7 @@ METHOD S1060() CLASS eSocial
 ::incluiTag(4,"/alteracao")
 ::incluiTag(4,"exclusao")
 ::incluiTag(5,"ideEstab")
-::incluiTag(5,"tpInscricao","ideEstab")    //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(5,"tpInscricao",::tpInscricao)    //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(5,"nrInscricao",::cNpjEmp )    //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(5,"dtIniValidade","ideEstab")  //E D 1-1 010 - Preencher com a data de início da validade das informações
 ::incluiTag(5,"dtFimValidade","ideEstab")  //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
@@ -888,7 +890,7 @@ METHOD S1070() CLASS eSocial
 ::incluiTag(3,"verProc","ideEvento")     //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao)//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )//E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoProcesso")
@@ -970,7 +972,7 @@ METHOD S1080() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//            E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )//            E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )//            E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -1049,7 +1051,7 @@ METHOD S1100() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )//E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -1114,7 +1116,7 @@ METHOD S1200() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )//E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideTrabalhador")
@@ -1284,7 +1286,7 @@ METHOD S1310() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )//E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -1364,7 +1366,7 @@ METHOD S1320() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//            E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )//            E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )//            E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -1455,7 +1457,7 @@ METHOD S1330() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//        E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )//        E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )//        E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -1537,7 +1539,7 @@ METHOD S1340() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )//E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoServPrestados")
@@ -1605,7 +1607,7 @@ METHOD S1350() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )//E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )//E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoAquisProducao")
@@ -1669,7 +1671,7 @@ METHOD S1360() CLASS eSocial
 ::incluiTag(3,"verProc","ideEvento")       // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")// E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )// E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )// E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoComercProducao")
@@ -1721,7 +1723,7 @@ METHOD S1370() CLASS eSocial
 ::incluiTag(3,"verProc"," ideEvento")      // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao"," ideEmpregador")// E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )// E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )// E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoRecursoRecebido")
@@ -1778,7 +1780,7 @@ METHOD S1400() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador") // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao ) // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp ) // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -1914,7 +1916,7 @@ METHOD S2100() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-::incluiTag(3,"tpInscricao","ideEmpregador")  // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )  // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp ) // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -1924,7 +1926,7 @@ METHOD S2100() CLASS eSocial
 ::incluiTag(3,"nomeTrab"," trabalhador")      //E C 1-1 080 - Nome do Trabalhador
 ::incluiTag(3,"sexo"," trabalhador")          //E C 1-1 001 - Sexo do Trabalhador:
 ::incluiTag(3,"racaCor"," trabalhador")       //E N 1-1 001 - Raça e cor do trabalhador, conforme tabela abaixo:
-::incluiTag(3,"estadoCivil"," trabalhador"    //E N 1-1 001 - Estado civil do trabalhador, conforme tabela abaixo:
+::incluiTag(3,"estadoCivil"," trabalhador")    //E N 1-1 001 - Estado civil do trabalhador, conforme tabela abaixo:
 ::incluiTag(3,"grauInstrucao"," trabalhador") // E N 1-1 002 - Grau de instrução do trabalhador, conforme tabela:
 
 ::incluiTag(4,"nascimento")
@@ -2185,7 +2187,7 @@ METHOD S2200() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -2455,7 +2457,7 @@ METHOD S2220() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -2620,7 +2622,7 @@ METHOD S2240() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -2730,7 +2732,7 @@ METHOD S2260() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -2843,7 +2845,7 @@ METHOD S2280() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -2952,7 +2954,7 @@ METHOD S2320() CLASS eSocial
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -3022,7 +3024,7 @@ METHOD S2325() CLASS eSocial
 * 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")
@@ -3064,7 +3066,7 @@ METHOD S2330() CLASS eSocial
 * 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")
@@ -3104,7 +3106,7 @@ METHOD S2340() CLASS eSocial
 * 10 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 12 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 12 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 13 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")
@@ -3141,7 +3143,7 @@ METHOD S2345() CLASS eSocial
 * 10 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 12 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 12 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 13 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")
@@ -3182,7 +3184,7 @@ METHOD S2360() CLASS eSocial
 * 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador") // infEvento 3 Informações de identificação do
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")    // infEvento 3 Informações de Identificação do
@@ -3247,7 +3249,7 @@ METHOD S2365() CLASS eSocial
 * 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador") //infEvento     3 Informações de identificação do
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")    //infEvento     3 Informações de Identificação do
@@ -3292,7 +3294,7 @@ METHOD S2400() CLASS eSocial
 * 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")   //infEvento 3 Informações de identificação do
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")      //infEvento 3 Informações de Identificação do
@@ -3333,7 +3335,7 @@ METHOD S2405() CLASS eSocial
 * 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")      // infEvento 3 Informações de identificação do
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")         // infEvento 3 Informações de Identificação do
@@ -3371,7 +3373,7 @@ METHOD S2420() CLASS eSocial
 * 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")           // infEvento 3 Informações de identificação do empregador 1-1 tpInscricao, nrInscricao O
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")              // infEvento 3 Informações de Identificação do Trabalhador e do Vínculo 1-1 cpfTrab, nisTrab,matricula
@@ -3412,7 +3414,7 @@ METHOD S2440() CLASS eSocial
 ::incluiTag(3,"/ideEvento")
 
 ::incluiTag(3,"ideEmpregador") // infEvento 3 Informações de identificação do
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 
@@ -3457,7 +3459,7 @@ METHOD S2600() CLASS eSocial
 * 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")     // infEvento 3 Informações de identificação do empregador 1-1 tpInscricao, nrInscricao O
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
@@ -3676,7 +3678,7 @@ METHOD S2620() CLASS eSocial
 * 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")       // infEvento 3 Informações de identificação do empregador 1-1 tpInscricao, nrInscricao O
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 * 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoTSVAlteracao")    // infEvento 3 Trabalhador Sem Vínculo - Alteração Contratual 1-1 - O
@@ -3751,7 +3753,7 @@ METHOD S2680() CLASS eSocial
 ::incluiTag(3,"verProc","ideEvento") // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")      // infEvento 3 Informações de identificação do empregador 1-1 tpInscricao, nrInscricao O
-::incluiTag(3,"tpInscricao","ideEmpregador") // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao ) // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp ) // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoTSVTermino")     // infEvento 3 Trabalhador Sem Vínculo de Emprego - Término 1-1 cpfTrab, nisTrab O
@@ -3822,7 +3824,7 @@ METHOD S2800() CLASS eSocial
 ::incluiTag(3,"verProc","ideEvento")        // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")              // infEvento 3 Informações de identificação do empregador 1-1 tpInscricao, nrInscricao O
-::incluiTag(3,"tpInscricao","ideEmpregador")// E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )// E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )// E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")                 // infEvento 3 Informações de Identificação do  Trabalhador e do Vínculo 1-1 cpfTrab, nisTrab,
@@ -3888,7 +3890,7 @@ METHOD S2820() CLASS eSocial
 ::incluiTag(3,"verProc","ideEvento")     // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")    // infEvento 3 Informações de identificação do empregador 1-1 tpInscricao, nrInscricao O
-::incluiTag(3,"tpInscricao","ideEmpregador") // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao ) // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp ) // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")           // infEvento 3 Informações de Identificação do Trabalhador e do Vínculo 1-1 cpfTrab, nisTrab,
@@ -3928,7 +3930,7 @@ METHOD S2900() CLASS eSocial
 ::incluiTag(3,"verProc","ideEvento")           // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")                 // infEvento 3 Informações de identificação do empregador  1-1 tpInscricao, nrInscricao O
-::incluiTag(3,"tpInscricao","ideEmpregador")   // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"tpInscricao",::tpInscricao )   // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(3,"nrInscricao",::cNpjEmp )   // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoExclusao")                  // infEvento 3 Informação do evento que será excluído 1-1
