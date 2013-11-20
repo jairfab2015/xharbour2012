@@ -266,13 +266,13 @@ LOCAL cCNPJ, cTIPOCNPJ,cNomeEmpresa
 ::incluiTag(7,"agendaRecolhimento","x ")  //E C 1-1 001 - Agendamento de recolhimento do FGTS:
 ::incluiTag(6,"/infoFGTS")
 ::incluiTag(6,"softwareHouse")                 //G - 0-1 - - Informações da empresa de Software
-::incluiTag(7,"cnpjSoftwareHouse","SOFTLOGIC INFORMATICA LTDA")   //E N 1-1 014 - CNPJ da Software House
-::incluiTag(7,"nomeRazao","JOSE PAULO CESARIO")//E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
-::incluiTag(7,"nomeContato","CESARIO")         //E C 1-1 080 - Nome do contato na empresa
-::incluiTag(7,"telefone","55741100")           //E C 0-1 012 - Informar o número do telefone, com DDD.
-::incluiTag(7,"codMunicipio","3100000")        //E N 0-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(7,"cnpjSoftwareHouse"," ")   //E N 1-1 014 - CNPJ da Software House
+::incluiTag(7,"nomeRazao"," ")//E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+::incluiTag(7,"nomeContato"," ")         //E C 1-1 080 - Nome do contato na empresa
+::incluiTag(7,"telefone"," ")           //E C 0-1 012 - Informar o número do telefone, com DDD.
+::incluiTag(7,"codMunicipio"," ")        //E N 0-1 007 - Preencher com o código do município, conforme tabela do
 ::incluiTag(7,"uf","SP")                       //E C 0-1 002 - Preencher com a sigla da Unidade da Federação
-::incluiTag(7,"email","jair@softlogic.com.br") //E C 0-1 060 - Endereço eletrônico
+::incluiTag(7,"email"," ") //E C 0-1 060 - Endereço eletrônico
 ::incluiTag(6,"/softwareHouse")
 ::incluiTag(5,"/infoCadastro")
 ::incluiTag(4,"/inclusao")
@@ -1893,23 +1893,23 @@ RETURN Self
 METHOD S2100() CLASS eSocial
 
 ::incluiTag(1,"evtCadInicial")
-* 2 versao evtCadInicial A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
+::incluiTag(1,"versao","evtCadInicial")      // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-* 4 idEvento infEvento A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","infEvento")       // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
-* 6 indRetificacao ideEvento E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
-* 7 nrRecibo ideEvento E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
-* 8 tpAmb ideEvento E N 1-1 001 - Identificação do ambiente:
-* 9 procEmi ideEvento E N 1-1 001 - Processo de emissão do evento:
-* 10 indSegmento ideEvento E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
-* 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
+::incluiTag(3,"indRetificacao","ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
+::incluiTag(3,"nrRecibo"," ideEvento")      // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
+::incluiTag(3,"tpAmb"," ideEvento")         // E N 1-1 001 - Identificação do ambiente:
+::incluiTag(3,"procEmi"," ideEvento")       // E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(3,"indSegmento"," ideEvento ")  //E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(3,"verProc"," ideEvento")       // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-* 14 nrInscricao ideEmpregador E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(3,"tpInscricao","ideEmpregador")  // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"nrInscricao"," ideEmpregador") // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"trabalhador")
