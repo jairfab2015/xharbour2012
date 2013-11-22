@@ -2894,7 +2894,7 @@ RETURN Self
 *S2300() Aviso de Férias
 * -----------------------------------------------------------------------------*
 METHOD S2300() CLASS eSocial
-
+  
 ::incluiTag(1,"evtAvisoFerias")
 ::incluiTag(1,"versao", ::versao ) //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
