@@ -44,6 +44,9 @@ oSocial:Close()   // Finaliza
 msgstop(cPasta,"Aviso")
 
 return nil 
+*------------------------------------------------------------------------------*
+
+
 
 *------------------------------------------------------------------------------*
 *  Geracao de arquivo E-SOCIAL                                                 *
@@ -61,6 +64,7 @@ CLASS eSocial
    DATA Destino            INIT ""
    DATA nHandle            INIT ""
    
+   DATA idEvento           INIT "004"
    DATA versao             INIT "123"
    DATA tpInscricao        INIT "1"
    DATA cNpjEmp            INIT "99999999999999"
@@ -207,11 +211,11 @@ LOCAL cCNPJ, cTIPOCNPJ,cNomeEmpresa
 ::incluiTag(1,"evtInfoEmpregador")       //G - 1-1 - - Evento de informações do empregador
 ::incluiTag(2,"versao",::versao)              //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")               //G - 1-1 - - Informações do evento
-::incluiTag(3,"idEvento","x ")            //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
-::incluiTag(3,"ideEvento","x ")           //G - 1-1 - - Informações de Identificação do Evento
+::incluiTag(3,"idEvento","S1000" )       //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(3,"ideEvento","x ")          //G - 1-1 - - Informações de Identificação do Evento
 ::incluiTag(3,"tpAmb","1")               //E N 1-1 001 - Identificação do ambiente:
-::incluiTag(3,"procEmi","x ")             //E N 1-1 001 - Processo de emissão do evento:
-::incluiTag(3,"indSegmento","x ")         //E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(3,"procEmi","x ")            //E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(3,"indSegmento","x ")        //E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
 ::incluiTag(3,"verProc","001")           //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(4,"ideEmpregador")           //G - 1-1 - - Informações de identificação do empregador
 ::incluiTag(5,"tpInscricao",::tpInscricao )         //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
@@ -375,9 +379,9 @@ RETURN Self
 METHOD S1010() CLASS eSocial
 
 ::incluiTag(0,"evtTabRubrica ")   // 01 G - 1-1 - - Evento destinada a incluir, alterar ou excluir informações da
-::incluiTag(1,"versao",::versao)       // 02 A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
+::incluiTag(1,"versao",::versao)  // 02 A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")        // 03 G - 1-1 - - Informações do evento
-::incluiTag(3,"idEvento","x ")     // 04 A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(3,"idEvento","S1010") // 04 A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")        // 05 G - 1-1 - - Informações de Identificação do Evento
 ::incluiTag(4,"tpAmb","x ")        // 06 E N 1-1 001 - Identificação do ambiente:
 ::incluiTag(4,"procEmi","x ")      // 07 E N 1-1 001 - Processo de emissão do evento:
@@ -491,7 +495,7 @@ METHOD S1020() CLASS eSocial
 
 ::incluiTag(1,"evtTabLotacao")       //1  G - 1-1 - - Definição do Evento de tabela de lotações.
 ::incluiTag(2,"infEvento")           //3  G - 1-1 - - Informações do evento
-::incluiTag(4,"idEvento","x ")        //4  A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(4,"idEvento","S1020")    //4  A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")           //5  G - 1-1 - - Informações de Identificação do Evento
 ::incluiTag(4,"tpAmb","x ")           //6  E N 1-1 001 - Identificação do ambiente:
 ::incluiTag(4,"procEmi","x ")         //7  E N 1-1 001 - Processo de emissão do evento:
@@ -597,7 +601,7 @@ METHOD S1030() CLASS eSocial
 ::incluiTag(1,"evtTabCargo")                          //G - 1-1 - - Evento utilizado para inclusão, alteração e exclusão de registros
 ::incluiTag(2,"versao",::versao)                      //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")                            //G - 1-1 - - Informações do evento
-::incluiTag(2,"idEvento","infEvento")                 //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1030")                 //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(4,"ideEvento")                            //G - 1-1 - - Informações de Identificação do Evento
 ::incluiTag(4,"tpAmb","ideEvento")                    //E N 1-1 001 - Identificação do ambiente:
 ::incluiTag(4,"procEmi","ideEvento")                  //E N 1-1 001 - Processo de emissão do evento:
@@ -661,7 +665,7 @@ METHOD S1040() CLASS eSocial
 ::incluiTag(1,"evtTabFuncao")
 ::incluiTag(1,"versao",::versao)         //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")   //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1040")   //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"tpAmb","ideEvento")       //E N 1-1 001 - Identificação do ambiente:
 ::incluiTag(3,"procEmi","ideEvento")     //E N 1-1 001 - Processo de emissão do evento:
@@ -727,7 +731,7 @@ METHOD S1050() CLASS eSocial
 ::incluiTag(1,"evtTabJornada")
 ::incluiTag(1,"versao",::versao)       // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")  //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1050")  //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"tpAmb","ideEvento")      //E N 1-1 001 - Identificação do ambiente:
 ::incluiTag(3,"procEmi","ideEvento")    //E N 1-1 001 - Processo de emissão do evento:
@@ -807,7 +811,7 @@ METHOD S1060() CLASS eSocial
 ::incluiTag(1,"evtTabEstab")
 ::incluiTag(1,"versao",::versao)        //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")    //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1060")       //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"tpAmb","ideEvento")      //E N 1-1 001 - Identificação do ambiente:
 ::incluiTag(3,"procEmi","ideEvento")    //E N 1-1 001 - Processo de emissão do evento:
@@ -882,7 +886,7 @@ METHOD S1070() CLASS eSocial
 ::incluiTag(1,"evtTabProcesso")
 ::incluiTag(1,"versao",::versao)         //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")    //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1070")        //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"tpAmb","ideEvento")       //E N 1-1 001 - Identificação do ambiente:
 ::incluiTag(3,"procEmi","ideEvento")     //E N 1-1 001 - Processo de emissão do evento:
@@ -963,7 +967,7 @@ METHOD S1080() CLASS eSocial
 ::incluiTag(1,"evtTabOperPortuario")
 ::incluiTag(1,"versao",::versao)             // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")        //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1080")            //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"tpAmb","ideEvento")           //E N 1-1 001 - Identificação do ambiente:
 ::incluiTag(3,"procEmi","ideEvento")         //E N 1-1 001 - Processo de emissão do evento:
@@ -1037,7 +1041,7 @@ METHOD S1100() CLASS eSocial
 ::incluiTag(1,"evtFpAbertura")
 ::incluiTag(1,"versao",::versao)           //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento  ")    //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1100")          //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(2,"ideEvento","infEvento ")    //G - 1-1 - - Informações de identificação do evento
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento")//E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
@@ -1102,7 +1106,7 @@ METHOD S1200() CLASS eSocial
 ::incluiTag(1,"versao",::versao)          //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")     //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1200")          //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento")//E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
@@ -1270,9 +1274,9 @@ RETURN Self
 METHOD S1310() CLASS eSocial
 
 ::incluiTag(1,"evtFpServTomados")
-::incluiTag(1,"versao",::versao)          //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
+::incluiTag(1,"versao",::versao)           //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")     //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1310")          //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento")//E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
@@ -1353,7 +1357,7 @@ METHOD S1320() CLASS eSocial
 ::incluiTag(1,"versao",::versao)            //             A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")//                    A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1320")//                        A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento")//              E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
 ::incluiTag(3,"nrRecibo","ideEvento      ")//              E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
@@ -1444,7 +1448,7 @@ METHOD S1330() CLASS eSocial
 ::incluiTag(1,"evtFpServTomadosCoop")
 ::incluiTag(1,"versao",::versao)              //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")//                A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1330")//                A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao"," ideEvento")//        E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
 ::incluiTag(3,"nrRecibo","ideEvento")//              E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
@@ -1526,7 +1530,7 @@ METHOD S1340() CLASS eSocial
 ::incluiTag(1,"evtFpServPrestadosCoop")
 ::incluiTag(1,"versao",::versao)                   //  A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")//             A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1330")//             A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento")//              E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
 ::incluiTag(3,"nrRecibo","ideEvento      ")//              E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
@@ -1594,7 +1598,7 @@ METHOD S1350() CLASS eSocial
 ::incluiTag(1,"evtFpAquisProducao")
 ::incluiTag(1,"versao",::versao)            //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")       //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1350")           //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento") //E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
 ::incluiTag(3,"nrRecibo","ideEvento")       //E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
@@ -1659,7 +1663,7 @@ METHOD S1360() CLASS eSocial
 ::incluiTag(1,"evtFpComercProducao")
 ::incluiTag(1,"versao",::versao)      // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento"," infEvento")// A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1360")// A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento")// E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
 ::incluiTag(3,"nrRecibo","ideEvento")      // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
@@ -1711,7 +1715,7 @@ METHOD S1370() CLASS eSocial
 ::incluiTag(1,"evtFpAssocDesportiva")
 ::incluiTag(1,"versao",::versao)       // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento"," infEvento") //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1370")          //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento")// E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
 ::incluiTag(3,"nrRecibo","ideEvento")      // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
@@ -1766,7 +1770,7 @@ METHOD S1400() CLASS eSocial
 ::incluiTag(1,"versao",::versao) // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento") // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S1400")           // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
@@ -1904,7 +1908,7 @@ METHOD S2100() CLASS eSocial
 ::incluiTag(1,"versao",::versao)      // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-::incluiTag(2,"idEvento","infEvento")       // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S2100")       // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
 ::incluiTag(3,"indRetificacao","ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
@@ -2172,259 +2176,259 @@ RETURN Self
 METHOD S2200() CLASS eSocial
 
 ::incluiTag(1,"evtAdmissao")
-* 2 versao ",::versao) // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
+::incluiTag(1,"versao ",::versao) // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-* 4 idEvento infEvento A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S2200") //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
-* 6 indRetificacao ideEvento E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
-* 7 nrRecibo ideEvento E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
-* 8 tpAmb ideEvento E N 1-1 001 - Identificação do ambiente:
-* 9 procEmi ideEvento E N 1-1 001 - Processo de emissão do evento:
-* 10 indSegmento ideEvento E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
-* 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
+::incluiTag(3,"indRetificacao"," ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
+::incluiTag(3,"nrRecibo"," ideEvento")// E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
+::incluiTag(3,"tpAmb","ideEvento")// E N 1-1 001 - Identificação do ambiente:
+::incluiTag(3,"procEmi","ideEvento")// E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(3,"indSegmento"," ideEvento")// E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(3,"verProc"," ideEvento")// E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-* 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(3,"tpInscricao", ::tpInscricao) //  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"nrInscricao", ::cNpjEmp ) // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"trabalhador")
-* 16 cpfTrab trabalhador E N 1-1 011 - Preencher com o número do CPF do trabalhador
-* 17 nisTrab trabalhador E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
-* 18 nomeTrab trabalhador E C 1-1 080 - Nome do Trabalhador
-* 19 sexo trabalhador E C 1-1 001 - Sexo do Trabalhador:
-* 20 racaCor trabalhador E N 1-1 001 - Raça e cor do trabalhador, conforme tabela abaixo:
-* 21 estadoCivil trabalhador E N 1-1 001 - Estado civil do trabalhador, conforme tabela abaixo:
-* 22 grauInstrucao trabalhador E N 1-1 002 - Grau de instrução do trabalhador, conforme tabela:
+::incluiTag(3,"cpfTrab"," trabalhador")// E N 1-1 011 - Preencher com o número do CPF do trabalhador
+::incluiTag(3,"nisTrab"," trabalhador")// E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
+::incluiTag(3,"nomeTrab"," trabalhador")// E C 1-1 080 - Nome do Trabalhador
+::incluiTag(3,"sexo"," trabalhador")// E C 1-1 001 - Sexo do Trabalhador:
+::incluiTag(3,"racaCor"," trabalhador")// E N 1-1 001 - Raça e cor do trabalhador, conforme tabela abaixo:
+::incluiTag(3,"estadoCivil"," trabalhador")// E N 1-1 001 - Estado civil do trabalhador, conforme tabela abaixo:
+::incluiTag(3,"grauInstrucao"," trabalhador")// E N 1-1 002 - Grau de instrução do trabalhador, conforme tabela:
 
 ::incluiTag(4,"nascimento")
-* 24 dtNascto nascimento E D 1-1 010 - Preencher com a data de nascimento
-* 25 codMunicipio nascimento E N 0-1 007 - Preencher com o código do município, conforme tabela do
-* 26 uf nascimento E C 0-1 002 - Preencher com a sigla da Unidade da Federação
-* 27 paisNascto nascimento E N 1-1 005 - Preencher com o código do país de nascimento do trabalhador,
-* 28 paisNacionalidade nascimento E N 1-1 005 - Preencher com o código do país de nacionalidade do
-* 29 nomeMae nascimento E C 0-1 080 - Nome da mãe do trabalhador
-* 30 nomePai nascimento E C 0-1 080 - Nome do Pai do Trabalhador
+::incluiTag(4,"dtNascto"," nascimento")// E D 1-1 010 - Preencher com a data de nascimento
+::incluiTag(4,"codMunicipio"," nascimento")// E N 0-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(4,"uf"," nascimento")// E C 0-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(4,"paisNascto"," nascimento")// E N 1-1 005 - Preencher com o código do país de nascimento do trabalhador,
+::incluiTag(4,"paisNacionalidade"," nascimento")// E N 1-1 005 - Preencher com o código do país de nacionalidade do
+::incluiTag(4,"nomeMae"," nascimento")// E C 0-1 080 - Nome da mãe do trabalhador
+::incluiTag(4,"nomePai"," nascimento")// E C 0-1 080 - Nome do Pai do Trabalhador
 
 ::incluiTag(4,"/nascimento")
 ::incluiTag(4,"documentos")
 ::incluiTag(5,"CTPS")
-* 33 nrCtps CTPS E C 1-1 011 - Número da carteira de trabalho e Previdência Social do
-* 34 serieCtps CTPS E C 1-1 004 - Número de série da CTPS.
-* 35 ufCtps CTPS E C 1-1 002 - UF da expedição da CTPS.
+::incluiTag(5,"nrCtps"," CTPS")// E C 1-1 011 - Número da carteira de trabalho e Previdência Social do
+::incluiTag(5,"serieCtps"," CTPS")// E C 1-1 004 - Número de série da CTPS.
+::incluiTag(5,"ufCtps"," CTPS")// E C 1-1 002 - UF da expedição da CTPS.
 
 ::incluiTag(5,"/CTPS")
 ::incluiTag(5,"RIC")
-* 37 nrRic RIC E N 1-1 014 - Número do RIC
-* 38 orgaoEmissor RIC E C 1-1 020 - Órgão emissor do documento
-* 39 dtExpedicao RIC E D 1-1 010 - Data da expedição do documento
+::incluiTag(5,"nrRic"," RIC")// E N 1-1 014 - Número do RIC
+::incluiTag(5,"orgaoEmissor"," RIC")// E C 1-1 020 - Órgão emissor do documento
+::incluiTag(5,"dtExpedicao"," RIC")// E D 1-1 010 - Data da expedição do documento
 
 ::incluiTag(5,"/RIC")
 ::incluiTag(5,"RG")
-* 41 nrRg RG E C 1-1 014 - Número do RG
-* 42 orgaoEmissor RG E C 1-1 020 - Órgão emissor do documento
-* 43 dtExpedicao RG E D 1-1 010 - Data da expedição do documento
+::incluiTag(5,"nrRg"," RG")// E C 1-1 014 - Número do RG
+::incluiTag(5,"orgaoEmissor"," RG")// E C 1-1 020 - Órgão emissor do documento
+::incluiTag(5,"dtExpedicao"," RG")// E D 1-1 010 - Data da expedição do documento
 
 ::incluiTag(5,"/RG")
 ::incluiTag(5,"RNE")
-* 45 nrRne RNE E C 1-1 014 - Número de inscrição no Registro Nacional de Estrangeiros
-* 46 orgaoEmissor RNE E C 1-1 020 - Órgão emissor do documento
-* 47 dtExpedicao RNE E D 1-1 010 - Data da expedição do documento
+::incluiTag(5,"nrRne","RNE")       // E C 1-1 014 - Número de inscrição no Registro Nacional de Estrangeiros
+::incluiTag(5,"orgaoEmissor","RNE")// E C 1-1 020 - Órgão emissor do documento
+::incluiTag(5,"dtExpedicao","RNE") // E D 1-1 010 - Data da expedição do documento
 
 ::incluiTag(5,"/RNE")
 ::incluiTag(5,"OC")
-* 49 nrOc OC E C 1-1 014 - Número de Inscrição no Órgão de Classe
-* 50 orgaoEmissor OC E C 1-1 020 - Órgão emissor do documento
-* 51 dtExpedicao OC E D 1-1 010 - Data da expedição do documento
-* 52 dtValidade OC E D 0-1 010 - Preencher com a data de validade, se houver.
+::incluiTag(5,"nrOc"," OC")        // E C 1-1 014 - Número de Inscrição no Órgão de Classe
+::incluiTag(5,"orgaoEmissor"," OC")// E C 1-1 020 - Órgão emissor do documento
+::incluiTag(5,"dtExpedicao"," OC") // E D 1-1 010 - Data da expedição do documento
+::incluiTag(5,"dtValidade"," OC")  // E D 0-1 010 - Preencher com a data de validade, se houver.
 
 ::incluiTag(5,"/OC")
 ::incluiTag(5,"CNH")
-* 54 nrCnh CNH E N 1-1 014 - Número da CNH
-* 55 orgaoEmissor CNH E C 1-1 020 - Órgão emissor do documento
-* 56 dtExpedicao CNH E D 1-1 010 - Data da expedição do documento
-* 57 dtValidade CNH E D 0-1 010 - Preencher com a data de validade, se houver.
+::incluiTag(5,"nrCnh","CNH")// E N 1-1 014 - Número da CNH
+::incluiTag(5,"orgaoEmissor","CNH")// E C 1-1 020 - Órgão emissor do documento
+::incluiTag(5,"dtExpedicao","CNH")// E D 1-1 010 - Data da expedição do documento
+::incluiTag(5,"dtValidade","CNH")// E D 0-1 010 - Preencher com a data de validade, se houver.
 
 ::incluiTag(5,"/CNH")
 ::incluiTag(4,"/documentos")
 ::incluiTag(4,"endereco")
 ::incluiTag(5,"brasil")
-* 60 tpLogradouro brasil E C 1-1 010 - Tipo de Logradouro
-* 61 descLogradouro brasil E C 1-1 080 - Descrição do logradouro
-* 62 nrLogradouro brasil E C 0-1 010 - Número do logradouro.
-* 63 complemento brasil E C 0-1 030 - Complemento do logradouro.
-* 64 bairro brasil E C 0-1 030 - Nome do bairro/distrito
-* 65 cep brasil E N 1-1 008 - Código de Endereçamento Postal
-* 66 codMunicipio brasil E N 1-1 007 - Preencher com o código do município, conforme tabela do
-* 67 uf brasil E C 1-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(5,"tpLogradouro","brasil") // E C 1-1 010 - Tipo de Logradouro
+::incluiTag(5,"descLogradouro","brasil")// E C 1-1 080 - Descrição do logradouro
+::incluiTag(5,"nrLogradouro"," brasil")// E C 0-1 010 - Número do logradouro.
+::incluiTag(5,"complemento"," brasil") // E C 0-1 030 - Complemento do logradouro.
+::incluiTag(5,"bairro"," brasil")      // E C 0-1 030 - Nome do bairro/distrito
+::incluiTag(5,"cep"," brasil")         // E N 1-1 008 - Código de Endereçamento Postal
+::incluiTag(5,"codMunicipio"," brasil")// E N 1-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(5,"uf"," brasil")          // E C 1-1 002 - Preencher com a sigla da Unidade da Federação
 
 ::incluiTag(5,"/brasil")
 ::incluiTag(5,"exterior")
-* 69 paisResidencia exterior E N 1-1 005 - Preencher com o código do país, conforme tabela de países da
-* 70 descLogradouro exterior E C 1-1 080 - Descrição do logradouro
-* 71 nrLogradouro exterior E C 0-1 010 - Número do logradouro.
-* 72 complemento exterior E C 0-1 030 - Complemento do logradouro.
-* 73 bairro exterior E C 0-1 030 - Nome do bairro/distrito
-* 74 nomeCidade exterior E C 1-1 030 - Nome da Cidade
-* 75 codPostal exterior E C 0-1 010 - Código de Endereçamento Postal
+::incluiTag(5,"paisResidencia"," exterior")// E N 1-1 005 - Preencher com o código do país, conforme tabela de países da
+::incluiTag(5,"descLogradouro"," exterior")// E C 1-1 080 - Descrição do logradouro
+::incluiTag(5,"nrLogradouro"," exterior")// E C 0-1 010 - Número do logradouro.
+::incluiTag(5,"complemento"," exterior")// E C 0-1 030 - Complemento do logradouro.
+::incluiTag(5,"bairro"," exterior")     // E C 0-1 030 - Nome do bairro/distrito
+::incluiTag(5,"nomeCidade"," exterior") // E C 1-1 030 - Nome da Cidade
+::incluiTag(5,"codPostal"," exterior")  // E C 0-1 010 - Código de Endereçamento Postal
 
 ::incluiTag(5,"/exterior")
 ::incluiTag(4,"/endereco")
 ::incluiTag(4,"infoCasaPropria")
-* 77 residenciaPropria infoCasaPropria E C 1-1 001 - indicar se a residência pertence ao trabalhador
-* 78 recursoFGTS infoCasaPropria E C 0-1 001 - Indicar se foi adquirido o imóvel próprio foi adquirido com
+::incluiTag(4,"residenciaPropria","infoCasaPropria")// E C 1-1 001 - indicar se a residência pertence ao trabalhador
+::incluiTag(4,"recursoFGTS","infoCasaPropria")// E C 0-1 001 - Indicar se foi adquirido o imóvel próprio foi adquirido com
 
 ::incluiTag(4,"/infoCasaPropria")
 ::incluiTag(4,"trabEstrangeiro")
-* 80 dtChegada trabEstrangeiro E D 1-1 010 - Data de chegada do trabalhador ao Brasil, em caso de
-* 81 dtNaturalizacao trabEstrangeiro E D 0-1 010 - Data de naturalização brasileira em caso de estrangeiro
-* 82 casadoBr trabEstrangeiro E C 1-1 001 - Condição de casado com brasileiro(s) em caso de trabalhador
-* 83 filhosBr trabEstrangeiro E C 1-1 001 - Se o trabalhador estrangeiro tem filhos com brasileiro,
+::incluiTag(4,"dtChegada","trabEstrangeiro")// E D 1-1 010 - Data de chegada do trabalhador ao Brasil, em caso de
+::incluiTag(4,"dtNaturalizacao","trabEstrangeiro")// E D 0-1 010 - Data de naturalização brasileira em caso de estrangeiro
+::incluiTag(4,"casadoBr","trabEstrangeiro")// E C 1-1 001 - Condição de casado com brasileiro(s) em caso de trabalhador
+::incluiTag(4,"filhosBr","trabEstrangeiro")// E C 1-1 001 - Se o trabalhador estrangeiro tem filhos com brasileiro,
 
 ::incluiTag(4,"/trabEstrangeiro")
 ::incluiTag(4,"infBancarias")
-* 85 banco infBancarias E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
-* 86 agencia infBancarias E C 0-1 015 - Preencher com o código da agência, no caso de depósito
-* 87 tpContaBancaria infBancarias E N 1-1 001 - Tipo de Conta:
-* 88 nrContaBancaria infBancarias E C 1-1 020 - Número da Conta Bancária
+::incluiTag(4,"banco"," infBancarias")// E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+::incluiTag(4,"agencia"," infBancarias")// E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+::incluiTag(4,"tpContaBancaria"," infBancarias")// E N 1-1 001 - Tipo de Conta:
+::incluiTag(4,"nrContaBancaria"," infBancarias")// E C 1-1 020 - Número da Conta Bancária
 
 ::incluiTag(4,"/infBancarias")
 ::incluiTag(4,"infoDeficiencia")
-* 90 defMotora infoDeficiencia E C 1-1 001 - Indicar se o trabalhador possui deficiência motora.
-* 91 defVisual infoDeficiencia E C 1-1 001 - Indicar se o trabalhador possui deficiência visual
-* 92 defAuditiva infoDeficiencia E C 1-1 001 - Indicar se o trabalhador possui deficiência auditiva.
-* 93 reabilitado infoDeficiencia E C 1-1 001 - Informar se o trabalhador é reabilitado.
-* 94 observacao infoDeficiencia E C 0-1 255 - Observação
+::incluiTag(4,"defMotora","infoDeficiencia")// E C 1-1 001 - Indicar se o trabalhador possui deficiência motora.
+::incluiTag(4,"defVisual","infoDeficiencia")// E C 1-1 001 - Indicar se o trabalhador possui deficiência visual
+::incluiTag(4,"defAuditiva","infoDeficiencia")// E C 1-1 001 - Indicar se o trabalhador possui deficiência auditiva.
+::incluiTag(4,"reabilitado","infoDeficiencia")// E C 1-1 001 - Informar se o trabalhador é reabilitado.
+::incluiTag(4,"observacao","infoDeficiencia")// E C 0-1 255 - Observação
 
 ::incluiTag(4,"/infoDeficiencia")
 ::incluiTag(4,"dependente")
-* 96 tpDep dependente E N 1-1 002 - Tipo de dependente conforme tabela abaixo:
-* 97 nomeDep dependente E C 1-1 080 - Nome do Dependente
-* 98 dtNascto dependente E D 1-1 010 - Preencher com a data de nascimento
-* 99 cpfDep dependente E N 0-1 011 - Número de Inscrição no CPF
-* 100 depIRRF dependente E C 1-1 001 - Informar se é dependente para fins de dedução do IRRF.
-* 101 depSF dependente E C 1-1 001 - Informar se é dependente para fins de recebimento do benefício
+::incluiTag(4,"tpDep","dependente")// E N 1-1 002 - Tipo de dependente conforme tabela abaixo:
+::incluiTag(4,"nomeDep","dependente")// E C 1-1 080 - Nome do Dependente
+::incluiTag(4,"dtNascto","dependente")// E D 1-1 010 - Preencher com a data de nascimento
+::incluiTag(4,"cpfDep","dependente")// E N 0-1 011 - Número de Inscrição no CPF
+::incluiTag(4,"depIRRF","dependente")// E C 1-1 001 - Informar se é dependente para fins de dedução do IRRF.
+::incluiTag(4,"depSF","dependente")// E C 1-1 001 - Informar se é dependente para fins de recebimento do benefício
 
 ::incluiTag(4,"/dependente")
 ::incluiTag(4,"contato")
-* 103 fonePrincipal contato E N 0-1 012 - Número de telefone do trabalhador
-* 104 foneAlternativo contato E N 0-1 012 - Número de telefone do trabalhador
-* 105 emailPrincipal contato E C 0-1 060 - Endereço eletrônico
-* 106 emailAlternativo contato E C 0-1 060 - Endereço eletrônico
+::incluiTag(4,"fonePrincipal","contato") // E N 0-1 012 - Número de telefone do trabalhador
+::incluiTag(4,"foneAlternativo","contato") // E N 0-1 012 - Número de telefone do trabalhador
+::incluiTag(4,"emailPrincipal","contato") // E C 0-1 060 - Endereço eletrônico
+::incluiTag(4,"emailAlternativo","contato") // E C 0-1 060 - Endereço eletrônico
 
 ::incluiTag(4,"/contato")
 ::incluiTag(3,"/trabalhador")
 ::incluiTag(3,"vinculo")
-* 108 matricula vinculo E C 1-1 030 - Matrícula atribuída ao trabalhador pela empresa
-* 109 dtAdmissao vinculo E D 1-1 010 - Preencher com a data de admissão do trabalhador no respectivo
-* 110 tpAdmissao vinculo E N 1-1 001 - Tipo de admissão do trabalhador, conforme tabela abaixo:
-* 111 indAdmissao vinculo E N 1-1 001 - Indicativo de Admissão:
-* 112 indPrimeiroEmprego vinculo E C 1-1 001 - Indicar se trata-se do primeiro emprego do trabalhador.
+::incluiTag(4,"matricula"," vinculo")  //E C 1-1 030 - Matrícula atribuída ao trabalhador pela empresa
+::incluiTag(4,"dtAdmissao"," vinculo") // E D 1-1 010 - Preencher com a data de admissão do trabalhador no respectivo
+::incluiTag(4,"tpAdmissao"," vinculo") // E N 1-1 001 - Tipo de admissão do trabalhador, conforme tabela abaixo:
+::incluiTag(4,"indAdmissao"," vinculo") // E N 1-1 001 - Indicativo de Admissão:
+::incluiTag(4,"indPrimeiroEmprego"," vinculo") // E C 1-1 001 - Indicar se trata-se do primeiro emprego do trabalhador.
 
 ::incluiTag(4,"infoContrato")
-* 114 tpRegimeTrab infoContrato E N 1-1 001 - Tipo de regime trabalhista
-* 115 tpRegimePrev infoContrato E N 1-1 001 - Tipo de regime previdenciário conforme tabela abaixo:
-* 116 natAtividade infoContrato E N 1-1 001 - Tipo de vínculo trabalhista, conforme tabela abaixo:
-* 117 codCateg infoContrato E N 1-1 003 - Preencher com o código da categoria do trabalhador, conforme
-* 118 codCargo infoContrato E C 1-1 030 - Preencher com o código do cargo
-* 119 codFuncao infoContrato E C 0-1 030 - Preencher com o código da função, se utilizado pela empresa
+::incluiTag(4,"tpRegimeTrab"," infoContrato") // E N 1-1 001 - Tipo de regime trabalhista
+::incluiTag(4,"tpRegimePrev"," infoContrato") // E N 1-1 001 - Tipo de regime previdenciário conforme tabela abaixo:
+::incluiTag(4,"natAtividade"," infoContrato") // E N 1-1 001 - Tipo de vínculo trabalhista, conforme tabela abaixo:
+::incluiTag(4,"codCateg"," infoContrato")     // E N 1-1 003 - Preencher com o código da categoria do trabalhador, conforme
+::incluiTag(4,"codCargo"," infoContrato")     // E C 1-1 030 - Preencher com o código do cargo
+::incluiTag(4,"codFuncao"," infoContrato")    // E C 0-1 030 - Preencher com o código da função, se utilizado pela empresa
 
 ::incluiTag(5,"remuneracao")
-* 121 vlrSalFixo remuneracao E N 1-1 14 2 Salário fixo do trabalhador, correspondente à parte fixa da
-* 122 unidSalFixo remuneracao E N 1-1 001 - Unidade de pagamento da parte fixa da remuneração, conforme
-* 123 vlrSalVariavel remuneracao E N 0-1 14 2 Salário variável do trabalhador. Corresponde à parte variável da
-* 124 unidSalVariavel remuneracao E N 0-1 001 - Unidade de pagamento da parte variável da remuneração,
+::incluiTag(4,"vlrSalFixo"," remuneracao")    // E N 1-1 14 2 Salário fixo do trabalhador, correspondente à parte fixa da
+::incluiTag(4,"unidSalFixo"," remuneracao")    // E N 1-1 001 - Unidade de pagamento da parte fixa da remuneração, conforme
+::incluiTag(4,"vlrSalVariavel"," remuneracao")    // E N 0-1 14 2 Salário variável do trabalhador. Corresponde à parte variável da
+::incluiTag(4,"unidSalVariavel"," remuneracao")    // E N 0-1 001 - Unidade de pagamento da parte variável da remuneração,
 
 ::incluiTag(5,"/remuneracao")
 ::incluiTag(5,"duracao")
-* 126 tpContrato duracao E N 1-1 001 - Tipo de contrato de trabalho conforme tabela abaixo:
-* 127 dtTermino duracao E D 0-1 010 - Data do Término
+::incluiTag(4,"tpContrato"," duracao")    // E N 1-1 001 - Tipo de contrato de trabalho conforme tabela abaixo:
+::incluiTag(4,"dtTermino"," duracao")    // E D 0-1 010 - Data do Término
 
 ::incluiTag(5,"/duracao")
 ::incluiTag(5,"localTrabalho")
-* 129 tpInscricao localTrabalho E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-* 130 nrInscricao localTrabalho E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
-* 131 codLotacao localTrabalho E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
-* 132 descComplementar localTrabalho E C 0-1 080 - Descrição complementar do local de trabalho.
+::incluiTag(4,"tpInscricao"," localTrabalho")    // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(4,"nrInscricao"," localTrabalho")    // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(4,"codLotacao","localTrabalho")    // E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
+::incluiTag(4,"descComplementar","localTrabalho")    // E C 0-1 080 - Descrição complementar do local de trabalho.
 
 ::incluiTag(5,"/localTrabalho")
 ::incluiTag(5,"jornada")
 ::incluiTag(6,"jornadaPadrao")
-* 135 qtdHoras jornadaPadrao E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
-* 136 codJornadaSegSexta jornadaPadrao E C 1-1 030 - Código do horário de segunda a sexta
-* 137 codJornadaSab jornadaPadrao E C 0-1 030 - Código do horário relativo ao sábado
+::incluiTag(4,"qtdHoras","jornadaPadrao")    // E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
+::incluiTag(4,"codJornadaSegSexta","jornadaPadrao")    // E C 1-1 030 - Código do horário de segunda a sexta
+::incluiTag(4,"codJornadaSab","jornadaPadrao")    // E C 0-1 030 - Código do horário relativo ao sábado
 
 ::incluiTag(6,"/jornadaPadrao")
 ::incluiTag(6,"jornadaTurnoFixo")
-* 139 qtdHoras jornadaTurnoFixo E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
-* 140 codJornadaSeg jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à segunda-feira
-* 141 codJornadaTer jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à terça-feira
-* 142 codJornadaQua jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à quarta-feira
-* 143 codJornadaQui jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à quinta-feira
-* 144 codJornadaSex jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à sexta-feira
-* 145 codJornadaSab jornadaTurnoFixo E C 0-1 030 - Código do horário relativo ao sábado
-* 146 codJornadaDom jornadaTurnoFixo E C 0-1 030 - Código do horário relativo ao domingo
+::incluiTag(4,"qtdHoras","jornadaTurnoFixo")    // E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
+::incluiTag(4,"codJornadaSeg","jornadaTurnoFixo")    // E C 0-1 030 - Código do horário relativo à segunda-feira
+::incluiTag(4,"codJornadaTer","jornadaTurnoFixo")    // E C 0-1 030 - Código do horário relativo à terça-feira
+::incluiTag(4,"codJornadaQua","jornadaTurnoFixo")    // E C 0-1 030 - Código do horário relativo à quarta-feira
+::incluiTag(4,"codJornadaQui","jornadaTurnoFixo")    // E C 0-1 030 - Código do horário relativo à quinta-feira
+::incluiTag(4,"codJornadaSex","jornadaTurnoFixo")    // E C 0-1 030 - Código do horário relativo à sexta-feira
+::incluiTag(4,"codJornadaSab","jornadaTurnoFixo")    // E C 0-1 030 - Código do horário relativo ao sábado
+::incluiTag(4,"codJornadaDom","jornadaTurnoFixo")    // E C 0-1 030 - Código do horário relativo ao domingo
 
 ::incluiTag(6,"/jornadaTurnoFixo")
 ::incluiTag(6,"jornadaTurnoFlexivel")
-* 148 turno jornadaTurnoFlexivel E N 1-1 001 - Sequencial de identificação do turno
-* 149 codJornada jornadaTurnoFlexivel E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
+::incluiTag(4,"turno","jornadaTurnoFlexivel")    // E N 1-1 001 - Sequencial de identificação do turno
+::incluiTag(4,"codJornada","jornadaTurnoFlexivel")    // E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
 
 ::incluiTag(6,"/jornadaTurnoFlexivel")
 ::incluiTag(6,"jornadaEspecial")
-* 151 tpEscala jornadaEspecial E N 1-1 002 - Tipo de Escala:
-* 152 qtdHoras jornadaEspecial E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
-* 153 codJornada jornadaEspecial E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
+::incluiTag(4,"tpEscala","jornadaEspecial")    // E N 1-1 002 - Tipo de Escala:
+::incluiTag(4,"qtdHoras","jornadaEspecial")    // E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
+::incluiTag(4,"codJornada","jornadaEspecial")    // E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
 
 ::incluiTag(6,"/jornadaEspecial")
 ::incluiTag(5,"/jornada")
 ::incluiTag(5,"filiacaoSindical")
-* 155 cnpjSindTrabalhador filiacaoSindical E N 1-1 014 - preencher com o CNPJ do sindicado ao qual o trabalhador
+::incluiTag(4,"cnpjSindTrabalhador","filiacaoSindical")    // E N 1-1 014 - preencher com o CNPJ do sindicado ao qual o trabalhador
 
 ::incluiTag(5,"/filiacaoSindical")
 ::incluiTag(5,"alvaraJudicial")
-* 157 nrProcJud alvaraJudicial E C 1-1 020 - Preencher com o número do processo judicial.
+::incluiTag(4,"nrProcJud","alvaraJudicial")    // E C 1-1 020 - Preencher com o número do processo judicial.
 
 ::incluiTag(5,"/alvaraJudicial")
 ::incluiTag(4,"/infoContrato")
 ::incluiTag(4,"FGTS")
-* 159 optanteFGTS FGTS E N 1-1 001 - Informar a opção pelo FGTS
-* 160 dtOpcaoFGTS FGTS E D 0-1 010 - Informar a data de opção pelo FGTS do trabalhador
+::incluiTag(4,"optanteFGTS","FGTS")    // E N 1-1 001 - Informar a opção pelo FGTS
+::incluiTag(4,"dtOpcaoFGTS","FGTS")    // E D 0-1 010 - Informar a data de opção pelo FGTS do trabalhador
 
 ::incluiTag(4,"/FGTS")
 ::incluiTag(4,"sucessaoVinc")
-* 162 cnpjEmpregadorAnterior sucessaoVinc E N 1-1 014 - Preencher com o número do CNPJ do empregador anterior
-* 163 matriculaAnterior sucessaoVinc E C 1-1 030 - Matrícula do trabalhador na empresa que deu origem ao vínculo
-* 164 dtInicioVinculo sucessaoVinc E D 1-1 010 - Data de início do vínculo trabalhista.
-* 165 observacao sucessaoVinc E C 0-1 255 - Observação
+::incluiTag(4,"cnpjEmpregadorAnterior","sucessaoVinc")    // E N 1-1 014 - Preencher com o número do CNPJ do empregador anterior
+::incluiTag(4,"matriculaAnterior","sucessaoVinc")    // E C 1-1 030 - Matrícula do trabalhador na empresa que deu origem ao vínculo
+::incluiTag(4,"dtInicioVinculo","sucessaoVinc")    // E D 1-1 010 - Data de início do vínculo trabalhista.
+::incluiTag(4,"observacao","sucessaoVinc")    // E C 0-1 255 - Observação
 
 ::incluiTag(4,"/sucessaoVinc")
 ::incluiTag(4,"cessaoTrab")
-* 167 cnpjCedente cessaoTrab E N 1-1 014 - Informar o CNPJ da empresa cedente
-* 168 matriculaCedente cessaoTrab E C 1-1 030 - Preencher com a matrícula do trabalhador na empresa de
-* 169 dtAdmissaoCedente cessaoTrab E D 1-1 010 - Preencher com a data de admissão do trabalhador na
-* 170 infoOnus cessaoTrab E N 1-1 001 - Informar se o trabalhador foi cedido com ônus ou sem ônus
+::incluiTag(4,"cnpjCedente","cessaoTrab")    // E N 1-1 014 - Informar o CNPJ da empresa cedente
+::incluiTag(4,"matriculaCedente","cessaoTrab")    // E C 1-1 030 - Preencher com a matrícula do trabalhador na empresa de
+::incluiTag(4,"dtAdmissaoCedente","cessaoTrab")    // E D 1-1 010 - Preencher com a data de admissão do trabalhador na
+::incluiTag(4,"infoOnus","cessaoTrab")    // E N 1-1 001 - Informar se o trabalhador foi cedido com ônus ou sem ônus
 
 ::incluiTag(4,"/cessaoTrab")
 ::incluiTag(4,"ASO")
-* 172 dtAso ASO E D 1-1 010 - Data do Atestado de Saúde Ocupacional.
-* 173 medico ASO G - 1-1 - - Médico responsável
+::incluiTag(4,"dtAso","ASO")    // E D 1-1 010 - Data do Atestado de Saúde Ocupacional.
+::incluiTag(4,"medico","ASO")    // G - 1-1 - - Médico responsável
 
 ::incluiTag(5,"medico")
-* 174 nomeMedico medico E C 1-1 080 - Preencher com o nome do médico encarregado do exame
+::incluiTag(4,"nomeMedico","medico")    // E C 1-1 080 - Preencher com o nome do médico encarregado do exame
 
 ::incluiTag(6,"crm")
-* 176 nrCRM crm E C 1-1 008 - Número de inscrição do médico encarregado do exame no
-* 177 ufCRM crm E C 1-1 002 - Preencher com a sigla da UF de expedição do CRM.
+::incluiTag(4,"nrCRM","crm")    // E C 1-1 008 - Número de inscrição do médico encarregado do exame no
+::incluiTag(4,"ufCRM","crm")    // E C 1-1 002 - Preencher com a sigla da UF de expedição do CRM.
 
 ::incluiTag(6,"/crm")
 ::incluiTag(5,"/medico")
 ::incluiTag(5,"exame")
-* 179 dtExame exame E D 1-1 010 - Data do exame realizado
-* 180 descExame exame E C 1-1 080 - Informar a descrição do exame realizado (ex: RX Tórax,
+::incluiTag(4,"dtExame","exame")// E D 1-1 010 - Data do exame realizado
+::incluiTag(4,"descExame"," exame") // E C 1-1 080 - Informar a descrição do exame realizado (ex: RX Tórax,
 ::incluiTag(5,"/exame")
 ::incluiTag(4,"/ASO")
 ::incluiTag(3,"/vinculo")
@@ -2442,154 +2446,154 @@ RETURN Self
 METHOD S2220() CLASS eSocial
 
 ::incluiTag(1,"evtAltCadastral")
-* 2 versao ::versao A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
+::incluiTag(1,"versao", ::versao ) // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-* 4 idEvento infEvento A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S2220") // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
-* 6 indRetificacao ideEvento E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
-* 7 nrRecibo ideEvento E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
-* 8 tpAmb ideEvento E N 1-1 001 - Identificação do ambiente:
-* 9 procEmi ideEvento E N 1-1 001 - Processo de emissão do evento:
-* 10 indSegmento ideEvento E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
-* 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
-
+::incluiTag(3,"indRetificacao"," ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
+::incluiTag(3,"nrRecibo"," ideEvento") // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
+::incluiTag(3,"tpAmb"," ideEvento") // E N 1-1 001 - Identificação do ambiente:
+::incluiTag(3,"procEmi"," ideEvento") // E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(3,"indSegmento"," ideEvento") // E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(3,"verProc"," ideEvento") // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
+       
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-* 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(3,"tpInscricao", ::tpInscricao) //  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"nrInscricao", ::cNpjEmp) //  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"alteracao")
-* 16 dtAlteracao alteracao E D 1-1 010 - Preencher com a data da alteração das informações
-* 17 dadosTrabalhador alteracao G - 1-1 - - Dados Cadastrais
+::incluiTag(3,"dtAlteracao"," alteracao") // E D 1-1 010 - Preencher com a data da alteração das informações
+::incluiTag(3,"dadosTrabalhador"," alteracao") // G - 1-1 - - Dados Cadastrais
 
 ::incluiTag(4,"dadosTrabalhador")
-* 18 cpfTrab dadosTrabalhador E N 1-1 011 - Preencher com o número do CPF do trabalhador
-* 19 nisTrab dadosTrabalhador E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
-* 20 nomeTrab dadosTrabalhador E C 1-1 080 - Nome do Trabalhador
-* 21 sexo dadosTrabalhador E C 1-1 001 - Sexo do Trabalhador:
-* 22 racaCor dadosTrabalhador E N 1-1 001 - Raça e cor do trabalhador, conforme tabela abaixo:
-* 23 estadoCivil dadosTrabalhador E N 1-1 001 - Estado civil do trabalhador, conforme tabela abaixo:
-* 24 grauInstrucao dadosTrabalhador E N 1-1 002 - Grau de instrução do trabalhador, conforme tabela:
-* 25 nascimento dadosTrabalhador G - 1-1 - - Grupo de informações do nascimento do trabalhador
+::incluiTag(4,"cpfTrab"," dadosTrabalhador") // E N 1-1 011 - Preencher com o número do CPF do trabalhador
+::incluiTag(4,"nisTrab"," dadosTrabalhador") // E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
+::incluiTag(4,"nomeTrab"," dadosTrabalhador") // E C 1-1 080 - Nome do Trabalhador
+::incluiTag(4,"sexo"," dadosTrabalhador") // E C 1-1 001 - Sexo do Trabalhador:
+::incluiTag(4,"racaCor"," dadosTrabalhador") // E N 1-1 001 - Raça e cor do trabalhador, conforme tabela abaixo:
+::incluiTag(4,"estadoCivil"," dadosTrabalhador") // E N 1-1 001 - Estado civil do trabalhador, conforme tabela abaixo:
+::incluiTag(4,"grauInstrucao"," dadosTrabalhador") // E N 1-1 002 - Grau de instrução do trabalhador, conforme tabela:
+::incluiTag(4,"nascimento"," dadosTrabalhador") // G - 1-1 - - Grupo de informações do nascimento do trabalhador
 
 ::incluiTag(5,"nascimento")
-* 26 dtNascto nascimento E D 1-1 010 - Preencher com a data de nascimento
-* 27 codMunicipio nascimento E N 0-1 007 - Preencher com o código do município, conforme tabela do
-* 28 uf nascimento E C 0-1 002 - Preencher com a sigla da Unidade da Federação
-* 29 paisNascto nascimento E N 1-1 005 - Preencher com o código do país de nascimento do trabalhador,
-* 30 paisNacionalidade nascimento E N 1-1 005 - Preencher com o código do país de nacionalidade do
-* 31 nomeMae nascimento E C 0-1 080 - Nome da mãe do trabalhador
-* 32 nomePai nascimento E C 0-1 080 - Nome do Pai do Trabalhador
+::incluiTag(5,"dtNascto"," nascimento") // E D 1-1 010 - Preencher com a data de nascimento
+::incluiTag(5,"codMunicipio"," nascimento") // E N 0-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(5,"uf"," nascimento") // E C 0-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(5,"paisNascto"," nascimento") // E N 1-1 005 - Preencher com o código do país de nascimento do trabalhador,
+::incluiTag(5,"paisNacionalidade"," nascimento") // E N 1-1 005 - Preencher com o código do país de nacionalidade do
+::incluiTag(5,"nomeMae"," nascimento") // E C 0-1 080 - Nome da mãe do trabalhador
+::incluiTag(5,"nomePai"," nascimento") // E C 0-1 080 - Nome do Pai do Trabalhador
 
 ::incluiTag(5,"/nascimento")
 ::incluiTag(4,"/dadosTrabalhador")
 ::incluiTag(5,"documentos")
 ::incluiTag(6,"CTPS")
-* 35 nrCtps CTPS E C 1-1 011 - Número da carteira de trabalho e Previdência Social do
-* 36 serieCtps CTPS E C 1-1 004 - Número de série da CTPS.
-* 37 ufCtps CTPS E C 1-1 002 - UF da expedição da CTPS.
+::incluiTag(6,"nrCtps"," CTPS") // E C 1-1 011 - Número da carteira de trabalho e Previdência Social do
+::incluiTag(6,"serieCtps"," CTPS") // E C 1-1 004 - Número de série da CTPS.
+::incluiTag(6,"ufCtps"," CTPS") // E C 1-1 002 - UF da expedição da CTPS.
 
 ::incluiTag(6,"/CTPS")
 ::incluiTag(6,"RIC")
-* 39 nrRic RIC E N 1-1 014 - Número do RIC
-* 40 orgaoEmissor RIC E C 1-1 020 - Órgão emissor do documento
-* 41 dtExpedicao RIC E D 1-1 010 - Data da expedição do documento
+::incluiTag(6,"nrRic"," RIC") // E N 1-1 014 - Número do RIC
+::incluiTag(6,"orgaoEmissor"," RIC") // E C 1-1 020 - Órgão emissor do documento
+::incluiTag(6,"dtExpedicao"," RIC") // E D 1-1 010 - Data da expedição do documento
 
 ::incluiTag(6,"/RIC")
 ::incluiTag(6,"RG")
-* 43 nrRg RG E C 1-1 014 - Número do RG
-* 44 orgaoEmissor RG E C 1-1 020 - Órgão emissor do documento
-* 45 dtExpedicao RG E D 1-1 010 - Data da expedição do documento
+::incluiTag(6,"nrRg"," RG") // E C 1-1 014 - Número do RG
+::incluiTag(6,"orgaoEmissor"," RG") // E C 1-1 020 - Órgão emissor do documento
+::incluiTag(6,"dtExpedicao"," RG") // E D 1-1 010 - Data da expedição do documento
 
 ::incluiTag(6,"/RG")
 ::incluiTag(6,"RNE")
-* 47 nrRne RNE E C 1-1 014 - Número de inscrição no Registro Nacional de Estrangeiros
-* 48 orgaoEmissor RNE E C 1-1 020 - Órgão emissor do documento
-* 49 dtExpedicao RNE E D 1-1 010 - Data da expedição do documento
+::incluiTag(6,"nrRne"," RNE") // E C 1-1 014 - Número de inscrição no Registro Nacional de Estrangeiros
+::incluiTag(6,"orgaoEmissor"," RNE") // E C 1-1 020 - Órgão emissor do documento
+::incluiTag(6,"dtExpedicao"," RNE") // E D 1-1 010 - Data da expedição do documento
 
 ::incluiTag(6,"/RNE")
 ::incluiTag(6,"OC")
-* 51 nrOc OC E C 1-1 014 - Número de Inscrição no Órgão de Classe
-* 52 orgaoEmissor OC E C 1-1 020 - Órgão emissor do documento
-* 53 dtExpedicao OC E D 1-1 010 - Data da expedição do documento
-* 54 dtValidade OC E D 0-1 010 - Preencher com a data de validade, se houver.
+::incluiTag(6,"nrOc"," OC ") //E C 1-1 014 - Número de Inscrição no Órgão de Classe
+::incluiTag(6,"orgaoEmissor"," OC") // E C 1-1 020 - Órgão emissor do documento
+::incluiTag(6,"dtExpedicao"," OC") // E D 1-1 010 - Data da expedição do documento
+::incluiTag(6,"dtValidade"," OC ") //E D 0-1 010 - Preencher com a data de validade, se houver.
 
 ::incluiTag(6,"/OC")
 ::incluiTag(6,"CNH")
-* 56 nrCnh CNH E N 1-1 014 - Número da CNH
-* 57 orgaoEmissor CNH E C 1-1 020 - Órgão emissor do documento
-* 58 dtExpedicao CNH E D 1-1 010 - Data da expedição do documento
-* 59 dtValidade CNH E D 0-1 010 - Preencher com a data de validade, se houver.
+::incluiTag(6,"nrCnh"," CNH") // E N 1-1 014 - Número da CNH
+::incluiTag(6,"orgaoEmissor"," CNH") // E C 1-1 020 - Órgão emissor do documento
+::incluiTag(6,"dtExpedicao"," CNH") // E D 1-1 010 - Data da expedição do documento
+::incluiTag(6,"dtValidade"," CNH") // E D 0-1 010 - Preencher com a data de validade, se houver.
 
 ::incluiTag(6,"/CNH")
 ::incluiTag(5,"/documentos")
 ::incluiTag(5,"endereco")
 ::incluiTag(6,"brasil")
-* 62 tpLogradouro brasil E C 1-1 010 - Tipo de Logradouro
-* 63 descLogradouro brasil E C 1-1 080 - Descrição do logradouro
-* 64 nrLogradouro brasil E C 0-1 010 - Número do logradouro.
-* 65 complemento brasil E C 0-1 030 - Complemento do logradouro.
-* 66 bairro brasil E C 0-1 030 - Nome do bairro/distrito
-* 67 cep brasil E N 1-1 008 - Código de Endereçamento Postal
-* 68 codMunicipio brasil E N 1-1 007 - Preencher com o código do município, conforme tabela do
-* 69 uf brasil E C 1-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(6,"tpLogradouro"," brasil") // E C 1-1 010 - Tipo de Logradouro
+::incluiTag(6,"descLogradouro"," brasil") // E C 1-1 080 - Descrição do logradouro
+::incluiTag(6,"nrLogradouro"," brasil") // E C 0-1 010 - Número do logradouro.
+::incluiTag(6,"complemento"," brasil") // E C 0-1 030 - Complemento do logradouro.
+::incluiTag(6,"bairro"," brasil") // E C 0-1 030 - Nome do bairro/distrito
+::incluiTag(6,"cep"," brasil") // E N 1-1 008 - Código de Endereçamento Postal
+::incluiTag(6,"codMunicipio"," brasil") // E N 1-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(6,"uf"," brasil") // E C 1-1 002 - Preencher com a sigla da Unidade da Federação
 
 ::incluiTag(6,"/brasil")
 ::incluiTag(6,"exterior")
-* 71 paisResidencia exterior E N 1-1 005 - Preencher com o código do país, conforme tabela de países da
-* 72 descLogradouro exterior E C 1-1 080 - Descrição do logradouro
-* 73 nrLogradouro exterior E C 0-1 010 - Número do logradouro.
-* 74 complemento exterior E C 0-1 030 - Complemento do logradouro.
-* 75 bairro exterior E C 0-1 030 - Nome do bairro/distrito
-* 76 nomeCidade exterior E C 1-1 030 - Nome da Cidade
-* 77 codPostal exterior E C 0-1 010 - Código de Endereçamento Postal
+::incluiTag(6,"paisResidencia"," exterior") // E N 1-1 005 - Preencher com o código do país, conforme tabela de países da
+::incluiTag(6,"descLogradouro"," exterior") // E C 1-1 080 - Descrição do logradouro
+::incluiTag(6,"nrLogradouro"," exterior") // E C 0-1 010 - Número do logradouro.
+::incluiTag(6,"complemento"," exterior") // E C 0-1 030 - Complemento do logradouro.
+::incluiTag(6,"bairro"," exterior") // E C 0-1 030 - Nome do bairro/distrito
+::incluiTag(6,"nomeCidade"," exterior") // E C 1-1 030 - Nome da Cidade
+::incluiTag(6,"codPostal"," exterior") // E C 0-1 010 - Código de Endereçamento Postal
 
 ::incluiTag(6,"/exterior")
 ::incluiTag(5,"/endereco")
 ::incluiTag(5,"infoCasaPropria")
-* 79 residenciaPropria infoCasaPropria E C 1-1 001 - indicar se a residência pertence ao trabalhador
-* 80 recursoFGTS infoCasaPropria E C 0-1 001 - Indicar se foi adquirido o imóvel próprio foi adquirido com
+::incluiTag(5,"residenciaPropria"," infoCasaPropria") // E C 1-1 001 - indicar se a residência pertence ao trabalhador
+::incluiTag(5,"recursoFGTS"," infoCasaPropria") // E C 0-1 001 - Indicar se foi adquirido o imóvel próprio foi adquirido com
 
 ::incluiTag(5,"/infoCasaPropria")
 ::incluiTag(5,"trabEstrangeiro")
-* 82 dtChegada trabEstrangeiro E D 1-1 010 - Data de chegada do trabalhador ao Brasil, em caso de
-* 83 dtNaturalizacao trabEstrangeiro E D 0-1 010 - Data de naturalização brasileira em caso de estrangeiro
-* 84 casadoBr trabEstrangeiro E C 1-1 001 - Condição de casado com brasileiro(s) em caso de trabalhador
-* 85 filhosBr trabEstrangeiro E C 1-1 001 - Se o trabalhador estrangeiro tem filhos com brasileiro,
+::incluiTag(5,"dtChegada"," trabEstrangeiro") // E D 1-1 010 - Data de chegada do trabalhador ao Brasil, em caso de
+::incluiTag(5,"dtNaturalizacao"," trabEstrangeiro") // E D 0-1 010 - Data de naturalização brasileira em caso de estrangeiro
+::incluiTag(5,"casadoBr"," trabEstrangeiro") // E C 1-1 001 - Condição de casado com brasileiro(s) em caso de trabalhador
+::incluiTag(5,"filhosBr"," trabEstrangeiro") // E C 1-1 001 - Se o trabalhador estrangeiro tem filhos com brasileiro,
 
 ::incluiTag(5,"/trabEstrangeiro")
 ::incluiTag(5,"infBancarias")
-* 87 banco infBancarias E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
-* 88 agencia infBancarias E C 0-1 015 - Preencher com o código da agência, no caso de depósito
-* 89 tpContaBancaria infBancarias E N 1-1 001 - Tipo de Conta:
-* 90 nrContaBancaria infBancarias E C 1-1 020 - Número da Conta Bancária
+::incluiTag(5,"banco"," infBancarias") // E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+::incluiTag(5,"agencia"," infBancarias") // E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+::incluiTag(5,"tpContaBancaria"," infBancarias") // E N 1-1 001 - Tipo de Conta:
+::incluiTag(5,"nrContaBancaria"," infBancarias") // E C 1-1 020 - Número da Conta Bancária
 
 ::incluiTag(5,"/infBancarias")
 ::incluiTag(5,"infoDeficiencia")
-* 92 defMotora infoDeficiencia E C 1-1 001 - Indicar se o trabalhador possui deficiência motora.
-* 93 defVisual infoDeficiencia E C 1-1 001 - Indicar se o trabalhador possui deficiência visual
-* 94 defAuditiva infoDeficiencia E C 1-1 001 - Indicar se o trabalhador possui deficiência auditiva.
-* 95 reabilitado infoDeficiencia E C 1-1 001 - Informar se o trabalhador é reabilitado.
-* 96 observacao infoDeficiencia E C 0-1 255 - Observação
+::incluiTag(5,"defMotora"," infoDeficiencia") // E C 1-1 001 - Indicar se o trabalhador possui deficiência motora.
+::incluiTag(5,"defVisual"," infoDeficiencia") // E C 1-1 001 - Indicar se o trabalhador possui deficiência visual
+::incluiTag(5,"defAuditiva"," infoDeficiencia") // E C 1-1 001 - Indicar se o trabalhador possui deficiência auditiva.
+::incluiTag(5,"reabilitado"," infoDeficiencia") // E C 1-1 001 - Informar se o trabalhador é reabilitado.
+::incluiTag(5,"observacao"," infoDeficiencia") // E C 0-1 255 - Observação
 
 ::incluiTag(5,"/infoDeficiencia")
 ::incluiTag(5,"dependente")
-* 98 tpDep dependente E N 1-1 002 - Tipo de dependente conforme tabela abaixo:
-* 99 nomeDep dependente E C 1-1 080 - Nome do Dependente
-* 100 dtNascto dependente E D 1-1 010 - Preencher com a data de nascimento
-* 101 cpfDep dependente E N 0-1 011 - Número de Inscrição no CPF
-* 102 depIRRF dependente E C 1-1 001 - Informar se é dependente para fins de dedução do IRRF.
-* 103 depSF dependente E C 1-1 001 - Informar se é dependente para fins de recebimento do benefício
+::incluiTag(5,"tpDep"," dependente") // E N 1-1 002 - Tipo de dependente conforme tabela abaixo:
+::incluiTag(5,"nomeDep"," dependente") // E C 1-1 080 - Nome do Dependente
+::incluiTag(5,"dtNascto"," dependente") // E D 1-1 010 - Preencher com a data de nascimento
+::incluiTag(5,"cpfDep"," dependente") // E N 0-1 011 - Número de Inscrição no CPF
+::incluiTag(5,"depIRRF"," dependente") // E C 1-1 001 - Informar se é dependente para fins de dedução do IRRF.
+::incluiTag(5,"depSF"," dependente") // E C 1-1 001 - Informar se é dependente para fins de recebimento do benefício
 
 ::incluiTag(5,"/dependente")
 ::incluiTag(5,"contato")
-* 105 fonePrincipal contato E N 0-1 012 - Número de telefone do trabalhador
-* 106 foneAlternativo contato E N 0-1 012 - Número de telefone do trabalhador
-* 107 emailPrincipal contato E C 0-1 060 - Endereço eletrônico
-* 108 emailAlternativo contato E C 0-1 060 - Endereço eletrônico
+::incluiTag(5,"fonePrincipal"," contato") // E N 0-1 012 - Número de telefone do trabalhador
+::incluiTag(5,"foneAlternativo"," contato") // E N 0-1 012 - Número de telefone do trabalhador
+::incluiTag(5,"emailPrincipal"," contato") // E C 0-1 060 - Endereço eletrônico
+::incluiTag(5,"emailAlternativo"," contato") // E C 0-1 060 - Endereço eletrônico
 
 ::incluiTag(5,"/contato")
 ::incluiTag(3,"/alteracao")
@@ -2607,98 +2611,98 @@ RETURN Self
 METHOD S2240() CLASS eSocial
 
 ::incluiTag(1,"evtAltContratual")
-* 2 versao ::versao A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
+::incluiTag(1,"versao", ::versao ) // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-* 4 idEvento infEvento A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S2240" ) // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
-* 6 indRetificacao ideEvento E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
-* 7 nrRecibo ideEvento E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
-* 8 tpAmb ideEvento E N 1-1 001 - Identificação do ambiente:
-* 9 procEmi ideEvento E N 1-1 001 - Processo de emissão do evento:
-* 10 indSegmento ideEvento E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
-* 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
+::incluiTag(3,"indRetificacao"," ideEvento") //E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
+::incluiTag(3,"nrRecibo"," ideEvento")       //E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
+::incluiTag(3,"tpAmb"," ideEvento")          //E N 1-1 001 - Identificação do ambiente:
+::incluiTag(3,"procEmi"," ideEvento")        //E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(3,"indSegmento"," ideEvento")    //E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(3,"verProc"," ideEvento")        //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-* 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(3,"tpInscricao", ::tpInscricao ) //  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"nrInscricao", ::cNpjEmp ) // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")
-* 16 cpfTrab ideVinculo E N 1-1 011 - Preencher com o número do CPF do trabalhador
-* 17 nisTrab ideVinculo E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
-* 18 matricula ideVinculo E C 1-1 030 - Matrícula atribuída ao trabalhador pela empresa
+::incluiTag(3,"cpfTrab"," ideVinculo ")  //E N 1-1 011 - Preencher com o número do CPF do trabalhador
+::incluiTag(3,"nisTrab"," ideVinculo ")  //E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
+::incluiTag(3,"matricula"," ideVinculo") // E C 1-1 030 - Matrícula atribuída ao trabalhador pela empresa
 
 ::incluiTag(3,"/ideVinculo")
 ::incluiTag(3,"altContratual")
-* 20 dtAlteracao altContratual E D 1-1 010 - Preencher com a data da alteração das informações
-* 21 infoContrato altContratual G - 1-1 - - Informações do Contrato de Trabalho
+::incluiTag(3,"dtAlteracao"," altContratual")  // E D 1-1 010 - Preencher com a data da alteração das informações
+::incluiTag(3,"infoContrato"," altContratual") // G - 1-1 - - Informações do Contrato de Trabalho
 
 ::incluiTag(4,"infoContrato")
-* 22 tpRegimeTrab infoContrato E N 1-1 001 - Tipo de regime trabalhista
-* 23 tpRegimePrev infoContrato E N 1-1 001 - Tipo de regime previdenciário conforme tabela abaixo:
-* 24 natAtividade infoContrato E N 1-1 001 - Tipo de vínculo trabalhista, conforme tabela abaixo:
-* 25 codCateg infoContrato E N 1-1 003 - Preencher com o código da categoria do trabalhador, conforme
-* 26 codCargo infoContrato E C 1-1 030 - Preencher com o código do cargo
-* 27 codFuncao infoContrato E C 0-1 030 - Preencher com o código da função, se utilizado pela empresa
+::incluiTag(4,"tpRegimeTrab","infoContrato") // E N 1-1 001 - Tipo de regime trabalhista
+::incluiTag(4,"tpRegimePrev","infoContrato") // E N 1-1 001 - Tipo de regime previdenciário conforme tabela abaixo:
+::incluiTag(4,"natAtividade","infoContrato") // E N 1-1 001 - Tipo de vínculo trabalhista, conforme tabela abaixo:
+::incluiTag(4,"codCateg"," infoContrato")    // E N 1-1 003 - Preencher com o código da categoria do trabalhador, conforme
+::incluiTag(4,"codCargo"," infoContrato")    // E C 1-1 030 - Preencher com o código do cargo
+::incluiTag(4,"codFuncao"," infoContrato")   // E C 0-1 030 - Preencher com o código da função, se utilizado pela empresa
 
 ::incluiTag(5,"remuneracao")
-* 29 vlrSalFixo remuneracao E N 1-1 14 2 Salário fixo do trabalhador, correspondente à parte fixa da
-* 30 unidSalFixo remuneracao E N 1-1 001 - Unidade de pagamento da parte fixa da remuneração, conforme
-* 31 vlrSalVariavel remuneracao E N 0-1 14 2 Salário variável do trabalhador. Corresponde à parte variável da
-* 32 unidSalVariavel remuneracao E N 0-1 001 - Unidade de pagamento da parte variável da remuneração,
+::incluiTag(5,"vlrSalFixo"," remuneracao")     // E N 1-1 14 2 Salário fixo do trabalhador, correspondente à parte fixa da
+::incluiTag(5,"unidSalFixo"," remuneracao")    // E N 1-1 001 - Unidade de pagamento da parte fixa da remuneração, conforme
+::incluiTag(5,"vlrSalVariavel"," remuneracao") // E N 0-1 14 2 Salário variável do trabalhador. Corresponde à parte variável da
+::incluiTag(5,"unidSalVariavel"," remuneracao")// E N 0-1 001 - Unidade de pagamento da parte variável da remuneração,
 
 ::incluiTag(5,"/remuneracao")
 ::incluiTag(5,"duracao")
-* 34 tpContrato duracao E N 1-1 001 - Tipo de contrato de trabalho conforme tabela abaixo:
-* 35 dtTermino duracao E D 0-1 010 - Data do Término
+::incluiTag(5,"tpContrato"," duracao ") //E N 1-1 001 - Tipo de contrato de trabalho conforme tabela abaixo:
+::incluiTag(5,"dtTermino"," duracao  ") //E D 0-1 010 - Data do Término
 
 ::incluiTag(5,"/duracao")
 ::incluiTag(5,"localTrabalho")
-* 37 tpInscricao localTrabalho E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-* 38 nrInscricao localTrabalho E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
-* 39 codLotacao localTrabalho E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
-* 40 descComplementar localTrabalho E C 0-1 080 - Descrição complementar do local de trabalho.
+::incluiTag(5,"tpInscricao"," localTrabalho")      // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(5,"nrInscricao"," localTrabalho")      // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(5,"codLotacao"," localTrabalho")       // E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
+::incluiTag(5,"descComplementar"," localTrabalho") // E C 0-1 080 - Descrição complementar do local de trabalho.
 
 ::incluiTag(5,"/localTrabalho")
 ::incluiTag(5,"jornada")
 ::incluiTag(6,"jornadaPadrao")
-* 43 qtdHoras jornadaPadrao E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
-* 44 codJornadaSegSexta jornadaPadrao E C 1-1 030 - Código do horário de segunda a sexta
-* 45 codJornadaSab jornadaPadrao E C 0-1 030 - Código do horário relativo ao sábado
+::incluiTag(6,"qtdHoras"," jornadaPadrao")           // E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
+::incluiTag(6,"codJornadaSegSexta"," jornadaPadrao") // E C 1-1 030 - Código do horário de segunda a sexta
+::incluiTag(6,"codJornadaSab"," jornadaPadrao")      // E C 0-1 030 - Código do horário relativo ao sábado
 
 ::incluiTag(6,"/jornadaPadrao")
 ::incluiTag(6,"jornadaTurnoFixo")
-* 47 qtdHoras jornadaTurnoFixo E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
-* 48 codJornadaSeg jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à segunda-feira
-* 49 codJornadaTer jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à terça-feira
-* 50 codJornadaQua jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à quarta-feira
-* 51 codJornadaQui jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à quinta-feira
-* 52 codJornadaSex jornadaTurnoFixo E C 0-1 030 - Código do horário relativo à sexta-feira
-* 53 codJornadaSab jornadaTurnoFixo E C 0-1 030 - Código do horário relativo ao sábado
-* 54 codJornadaDom jornadaTurnoFixo E C 0-1 030 - Código do horário relativo ao domingo
+::incluiTag(6,"qtdHoras"," jornadaTurnoFixo") // E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
+::incluiTag(6,"codJornadaSeg"," jornadaTurnoFixo") // E C 0-1 030 - Código do horário relativo à segunda-feira
+::incluiTag(6,"codJornadaTer"," jornadaTurnoFixo") // E C 0-1 030 - Código do horário relativo à terça-feira
+::incluiTag(6,"codJornadaQua"," jornadaTurnoFixo") // E C 0-1 030 - Código do horário relativo à quarta-feira
+::incluiTag(6,"codJornadaQui"," jornadaTurnoFixo") // E C 0-1 030 - Código do horário relativo à quinta-feira
+::incluiTag(6,"codJornadaSex"," jornadaTurnoFixo") // E C 0-1 030 - Código do horário relativo à sexta-feira
+::incluiTag(6,"codJornadaSab"," jornadaTurnoFixo") // E C 0-1 030 - Código do horário relativo ao sábado
+::incluiTag(6,"codJornadaDom"," jornadaTurnoFixo") // E C 0-1 030 - Código do horário relativo ao domingo
 
 ::incluiTag(6,"/jornadaTurnoFixo")
 ::incluiTag(6,"jornadaTurnoFlexivel")
-* 56 turno jornadaTurnoFlexivel E N 1-1 001 - Sequencial de identificação do turno
-* 57 codJornada jornadaTurnoFlexivel E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
+::incluiTag(6,"turno"," jornadaTurnoFlexivel")      //E N 1-1 001 - Sequencial de identificação do turno
+::incluiTag(6,"codJornada"," jornadaTurnoFlexivel") //E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
 
 ::incluiTag(6,"/jornadaTurnoFlexivel")
 ::incluiTag(6,"jornadaEspecial")
-* 59 tpEscala jornadaEspecial E N 1-1 002 - Tipo de Escala:
-* 60 qtdHoras jornadaEspecial E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
-* 61 codJornada jornadaEspecial E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
+::incluiTag(6,"tpEscala"," jornadaEspecial")   // E N 1-1 002 - Tipo de Escala:
+::incluiTag(6,"qtdHoras"," jornadaEspecial")   // E N 0-1 002 - Quantidade/Média de horas relativas a jornada semanal do
+::incluiTag(6,"codJornada"," jornadaEspecial") // E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
 
 ::incluiTag(6,"/jornadaEspecial")
 ::incluiTag(5,"/jornada")
 ::incluiTag(5,"filiacaoSindical")
-* 63 cnpjSindTrabalhador filiacaoSindical E N 1-1 014 - preencher com o CNPJ do sindicado ao qual o trabalhador
+::incluiTag(5,"cnpjSindTrabalhador"," filiacaoSindical") // E N 1-1 014 - preencher com o CNPJ do sindicado ao qual o trabalhador
 
 ::incluiTag(5,"/filiacaoSindical")
 ::incluiTag(5,"alvaraJudicial")
-* 65 nrProcJud alvaraJudicial E C 1-1 020 - Preencher com o número do processo judicial.
+::incluiTag(5,"nrProcJud"," alvaraJudicial") // E C 1-1 020 - Preencher com o número do processo judicial.
 
 ::incluiTag(5,"/alvaraJudicial")
 ::incluiTag(4,"/infoContrato")
@@ -2717,103 +2721,103 @@ RETURN Self
 METHOD S2260() CLASS eSocial
 
 ::incluiTag(1,"evtCAT")
-* 2 versao ::versao A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
+::incluiTag(1,"versao", ::versao ) // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-* 4 idEvento infEvento A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S2260") // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
-* 6 indRetificacao ideEvento E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
-* 7 nrRecibo ideEvento E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
-* 8 tpAmb ideEvento E N 1-1 001 - Identificação do ambiente:
-* 9 procEmi ideEvento E N 1-1 001 - Processo de emissão do evento:
-* 10 indSegmento ideEvento E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
-* 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
+::incluiTag(3,"indRetificacao","ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
+::incluiTag(3,"nrRecibo"," ideEvento" )     // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
+::incluiTag(3,"tpAmb"," ideEvento")         // E N 1-1 001 - Identificação do ambiente:
+::incluiTag(3,"procEmi"," ideEvento")       // E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(3,"indSegmento"," ideEvento")   // E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(3,"verProc"," ideEvento")       // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-* 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(3,"tpInscricao", ::tpInscricao ) // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"nrInscricao", ::cNpjEmp )     // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideTrabalhador")
-* 16 cpfTrab ideTrabalhador E N 1-1 011 - Preencher com o número do CPF do trabalhador
-* 17 infoAdicionais ideTrabalhador G - 0-1 - - Registro preenchido exclusivamente em caso de acidente
+::incluiTag(3,"cpfTrab","ideTrabalhador")         // E N 1-1 011 - Preencher com o número do CPF do trabalhador
+::incluiTag(3,"infoAdicionais"," ideTrabalhador") // G - 0-1 - - Registro preenchido exclusivamente em caso de acidente
 
 ::incluiTag(4,"infoAdicionais")
-* 18 codCateg infoAdicionais E N 1-1 003 - Preencher com o código da categoria do trabalhador, conforme
-* 19 nomeTrab infoAdicionais E C 1-1 080 - Nome do Trabalhador
-* 20 nisTrab infoAdicionais E N 0-1 011 - Preencher com o número de inscrição do segurado, o qual pode
-* 21 dtNascto infoAdicionais E D 1-1 010 - Preencher com a data de nascimento
-* 22 codCargo infoAdicionais E C 1-1 030 - Preencher com o código do cargo
+::incluiTag(4,"codCateg"," infoAdicionais") // E N 1-1 003 - Preencher com o código da categoria do trabalhador, conforme
+::incluiTag(4,"nomeTrab"," infoAdicionais") // E C 1-1 080 - Nome do Trabalhador
+::incluiTag(4,"nisTrab","infoAdicionais")   // E N 0-1 011 - Preencher com o número de inscrição do segurado, o qual pode
+::incluiTag(4,"dtNascto","infoAdicionais")  // E D 1-1 010 - Preencher com a data de nascimento
+::incluiTag(4,"codCargo"," infoAdicionais") // E C 1-1 030 - Preencher com o código do cargo
 
 ::incluiTag(4,"/infoAdicionais")
 ::incluiTag(3,"/ideTrabalhador")
 ::incluiTag(3,"cat")
-* 24 dtAcidente cat E D 1-1 010 - Data do Acidente
-* 25 horaAcidente cat E N 1-1 004 - Hora do Acidente
-* 26 horasTrabAntesAcidente cat E N 1-1 004 - Horas trabalhadas antes do acidente
-* 27 tpAcidente cat E N 1-1 001 - Tipo de Acidente de Trabalho, conforme tabela abaixo:
-* 28 tpCat cat E N 1-1 001 - Tipo de CAT, conforme tabela abaixo:
-* 29 indCatParcial cat E C 1-1 001 - Indicar se trata-se de CAT parcial ou não.
-* 30 indCatObito cat E C 1-1 001 - Indicar se houve óbito do trabalhador
-* 31 indComunicPolicia cat E C 1-1 001 - Houve comunicação à autoridade policial:
-* 32 codSitGeradora cat E N 0-1 009 - preencher com o código da situação geradora do acidente,
+::incluiTag(3,"dtAcidente"," cat")        // E D 1-1 010 - Data do Acidente
+::incluiTag(3,"horaAcidente"," cat")      // E N 1-1 004 - Hora do Acidente
+::incluiTag(3,"horasTrabAntesAcidente","cat") // E N 1-1 004 - Horas trabalhadas antes do acidente
+::incluiTag(3,"tpAcidente"," cat")        // E N 1-1 001 - Tipo de Acidente de Trabalho, conforme tabela abaixo:
+::incluiTag(3,"tpCat"," cat")             // E N 1-1 001 - Tipo de CAT, conforme tabela abaixo:
+::incluiTag(3,"indCatParcial"," cat")     // E C 1-1 001 - Indicar se trata-se de CAT parcial ou não.
+::incluiTag(3,"indCatObito"," cat")       // E C 1-1 001 - Indicar se houve óbito do trabalhador
+::incluiTag(3,"indComunicPolicia"," cat") // E C 1-1 001 - Houve comunicação à autoridade policial:
+::incluiTag(3,"codSitGeradora"," cat")    // E N 0-1 009 - preencher com o código da situação geradora do acidente,
 
 ::incluiTag(4,"localAcidente")
-* 34 tpLocal localAcidente E N 1-1 001 - Tipo do Local do acidente:
-* 35 descLocal localAcidente E C 0-1 080 - Especificação do local do acidente (pátio, rampa de acesso,
-* 36 descLogradouro localAcidente E C 0-1 080 - Descrição do logradouro
-* 37 nrLogradouro localAcidente E C 0-1 010 - Número do logradouro.
-* 38 codMunicipio localAcidente E N 0-1 007 - Preencher com o código do município, conforme tabela do
-* 39 uf localAcidente E C 0-1 002 - Preencher com a sigla da Unidade da Federação
-* 40 cnpjLocalAcidente localAcidente E N 0-1 014 - Deve ser preenchido quando o acidente ou doença ocupacional
+::incluiTag(4,"tpLocal"," localAcidente")   // E N 1-1 001 - Tipo do Local do acidente:
+::incluiTag(4,"descLocal"," localAcidente") // E C 0-1 080 - Especificação do local do acidente (pátio, rampa de acesso,
+::incluiTag(4,"descLogradouro"," localAcidente") // E C 0-1 080 - Descrição do logradouro
+::incluiTag(4,"nrLogradouro"," localAcidente")   // E C 0-1 010 - Número do logradouro.
+::incluiTag(4,"codMunicipio"," localAcidente")   // E N 0-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(4,"uf"," localAcidente")             // E C 0-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(4,"cnpjLocalAcidente"," localAcidente")// E N 0-1 014 - Deve ser preenchido quando o acidente ou doença ocupacional
 
 ::incluiTag(4,"/localAcidente")
 ::incluiTag(4,"parteAtingida")
-* 42 codParteAtingida parteAtingida E N 1-1 009 - Preencher com o código correspondente a parte atingida,
+::incluiTag(4,"codParteAtingida"," parteAtingida") // E N 1-1 009 - Preencher com o código correspondente a parte atingida,
 
 ::incluiTag(4,"/parteAtingida")
 ::incluiTag(4,"agenteCausador")
-* 44 codAgenteCausador agenteCausador E N 1-1 009 - Preencher com o código correspondente ao agente causador do
+::incluiTag(4,"codAgenteCausador"," agenteCausador") // E N 1-1 009 - Preencher com o código correspondente ao agente causador do
 
 ::incluiTag(4,"/agenteCausador")
 ::incluiTag(4,"testemunhas")
-* 46 nomeTestemunha testemunhas E C 1-1 080 - Nome da testemunha
-* 47 descLogradouro testemunhas E C 1-1 080 - Descrição do logradouro
-* 48 nrLogradouro testemunhas E C 0-1 010 - Número do logradouro.
-* 49 bairro testemunhas E C 0-1 030 - Nome do bairro/distrito
-* 50 codMunicipio testemunhas E N 0-1 007 - Preencher com o código do município, conforme tabela do
-* 51 uf testemunhas E C 0-1 002 - Preencher com a sigla da Unidade da Federação
-* 52 cep testemunhas E N 0-1 008 - Código de Endereçamento Postal
-* 53 telefone testemunhas E C 0-1 012 - Informar o número do telefone, com DDD.
+::incluiTag(4,"nomeTestemunha"," testemunhas") // E C 1-1 080 - Nome da testemunha
+::incluiTag(4,"descLogradouro"," testemunhas") // E C 1-1 080 - Descrição do logradouro
+::incluiTag(4,"nrLogradouro"," testemunhas") // E C 0-1 010 - Número do logradouro.
+::incluiTag(4,"bairro"," testemunhas") // E C 0-1 030 - Nome do bairro/distrito
+::incluiTag(4,"codMunicipio"," testemunhas") // E N 0-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(4,"uf"," testemunhas") // E C 0-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(4,"cep"," testemunhas") // E N 0-1 008 - Código de Endereçamento Postal
+::incluiTag(4,"telefone"," testemunhas") // E C 0-1 012 - Informar o número do telefone, com DDD.
 
 ::incluiTag(4,"/testemunhas")
 ::incluiTag(4,"atestado")
-* 55 codCNES atestado E N 1-1 007 - Código da unidade de atendimento médico no Cadastro
-* 56 dtAtendimento atestado E D 1-1 010 - Data do atendimento
-* 57 hrAtendimento atestado E N 1-1 004 - Hora do atendimento
-* 58 indInternacao atestado E C 1-1 001 - Indicativo de Internação:
-* 59 durTratamento atestado E N 1-1 004 - Duração estimada do tratamento, em dias
-* 60 indAfastamento atestado E C 1-1 001 - Indicativo do afastamento:
-* 61 descLesao atestado E C 0-1 400 - Descrição e natureza da lesão
-* 62 diagProvavel atestado E C 0-1 100 - Diagnóstico Provável
-* 63 codCID atestado E C 1-1 005 - Informar o código na tabela de classificação internacional de
-* 64 observacao atestado E C 0-1 255 - Observação
+::incluiTag(4,"codCNES"," atestado") // E N 1-1 007 - Código da unidade de atendimento médico no Cadastro
+::incluiTag(4,"dtAtendimento"," atestado") // E D 1-1 010 - Data do atendimento
+::incluiTag(4,"hrAtendimento"," atestado") // E N 1-1 004 - Hora do atendimento
+::incluiTag(4,"indInternacao"," atestado") // E C 1-1 001 - Indicativo de Internação:
+::incluiTag(4,"durTratamento"," atestado") // E N 1-1 004 - Duração estimada do tratamento, em dias
+::incluiTag(4,"indAfastamento"," atestado") // E C 1-1 001 - Indicativo do afastamento:
+::incluiTag(4,"descLesao"," atestado") // E C 0-1 400 - Descrição e natureza da lesão
+::incluiTag(4,"diagProvavel"," atestado") // E C 0-1 100 - Diagnóstico Provável
+::incluiTag(4,"codCID"," atestado") // E C 1-1 005 - Informar o código na tabela de classificação internacional de
+::incluiTag(4,"observacao"," atestado") // E C 0-1 255 - Observação
 
 ::incluiTag(5,"medico")
+::incluiTag(5,"nomeMedico"," medico") // E C 1-1 080 - Preencher com o nome do médico encarregado do exame
 ::incluiTag(6,"crm")
-* 68 nrCRM crm E C 1-1 008 - Número de inscrição do médico encarregado do exame no
-* 69 ufCRM crm E C 1-1 002 - Preencher com a sigla da UF de expedição do CRM.
+::incluiTag(6,"nrCRM","crm") // E C 1-1 008 - Número de inscrição do médico encarregado do exame no
+::incluiTag(6,"ufCRM","crm") // E C 1-1 002 - Preencher com a sigla da UF de expedição do CRM.
 
 ::incluiTag(6,"/crm")
 ::incluiTag(5,"/medico")
-* 66 nomeMedico medico E C 1-1 080 - Preencher com o nome do médico encarregado do exame
 
 ::incluiTag(4,"/atestado")
 ::incluiTag(4,"catOrigem")
-* 71 dtCatOrigem catOrigem E D 1-1 010 - Informar a data da CAT de origem
-* 72 nrCatOrigem catOrigem E C 1-1 015 - Informar o número da CAT de origem, quando tratar-se de CAT
+::incluiTag(4,"dtCatOrigem"," catOrigem") // E D 1-1 010 - Informar a data da CAT de origem
+::incluiTag(4,"nrCatOrigem"," catOrigem") // E C 1-1 015 - Informar o número da CAT de origem, quando tratar-se de CAT
 ::incluiTag(4,"/catOrigem")
 ::incluiTag(3,"/cat")
 ::incluiTag(2,"/infEvento")
@@ -2830,51 +2834,51 @@ RETURN Self
 METHOD S2280() CLASS eSocial
 
 ::incluiTag(1,"evtASO")
-* 2 versao ::versao A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
+::incluiTag(1,"versao", ::versao) // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 
 ::incluiTag(2,"infEvento")
-* 4 idEvento infEvento A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento ","S2280") //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 
 ::incluiTag(3,"ideEvento")
-* 6 indRetificacao ideEvento E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
-* 7 nrRecibo ideEvento E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
-* 8 tpAmb ideEvento E N 1-1 001 - Identificação do ambiente:
-* 9 procEmi ideEvento E N 1-1 001 - Processo de emissão do evento:
-* 10 indSegmento ideEvento E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
-* 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
+::incluiTag(3,"indRetificacao"," ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
+::incluiTag(3,"nrRecibo"," ideEvento")       // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
+::incluiTag(3,"tpAmb"," ideEvento")          // E N 1-1 001 - Identificação do ambiente:
+::incluiTag(3,"procEmi"," ideEvento")        // E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(3,"indSegmento"," ideEvento")    // E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(3,"verProc"," ideEvento")        // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ::tpInscricao  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-* 14 nrInscricao ::cNpjEmp  E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(3,"tpInscricao", ::tpInscricao ) //  E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"nrInscricao", ::cNpjEmp )     // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")
-* 16 cpfTrab ideVinculo E N 1-1 011 - Preencher com o número do CPF do trabalhador
-* 17 nisTrab ideVinculo E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
-* 18 matricula ideVinculo E C 1-1 030 - Matrícula atribuída ao trabalhador pela empresa
+::incluiTag(3,"cpfTrab"," ideVinculo")       // E N 1-1 011 - Preencher com o número do CPF do trabalhador
+::incluiTag(3,"nisTrab"," ideVinculo")       // E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
+::incluiTag(3,"matricula"," ideVinculo")     // E C 1-1 030 - Matrícula atribuída ao trabalhador pela empresa
 
 ::incluiTag(3,"/ideVinculo")
 ::incluiTag(3,"aso")
-* 20 dtAso aso E D 1-1 010 - Data do Atestado de Saúde Ocupacional.
-* 21 tpAso aso E N 1-1 001 - Tipo de Atestado de Saúde Ocupacional emitido, conforme
-* 22 resultadoAso aso E N 1-1 001 - Resultado do ASO, conforme tabela abaixo:
+::incluiTag(3,"dtAso"," aso")        // E D 1-1 010 - Data do Atestado de Saúde Ocupacional.
+::incluiTag(3,"tpAso"," aso")        // E N 1-1 001 - Tipo de Atestado de Saúde Ocupacional emitido, conforme
+::incluiTag(3,"resultadoAso"," aso") // E N 1-1 001 - Resultado do ASO, conforme tabela abaixo:
 
 ::incluiTag(4,"exames")
-* 24 dtExame exames E D 1-1 010 - Data do exame realizado
-* 25 descExame exames E C 1-1 080 - Informar a descrição do exame realizado (ex: RX Tórax,
+::incluiTag(4,"dtExame"," exames")   // E D 1-1 010 - Data do exame realizado
+::incluiTag(4,"descExame"," exames") // E C 1-1 080 - Informar a descrição do exame realizado (ex: RX Tórax,
 
 ::incluiTag(4,"/exames")
 ::incluiTag(4,"riscos")
-* 27 codAgente riscos E C 1-1 005 - Informar o código do agente, conforme tabela 7.
+::incluiTag(4,"codAgente"," riscos") // E C 1-1 005 - Informar o código do agente, conforme tabela 7.
 
 ::incluiTag(4,"/riscos")
 ::incluiTag(4,"medico")
-* 29 nomeMedico medico E C 1-1 080 - Preencher com o nome do médico encarregado do exame
+::incluiTag(4,"nomeMedico"," medico") // E C 1-1 080 - Preencher com o nome do médico encarregado do exame
 
 ::incluiTag(5,"crm")
-* 31 nrCRM crm E C 1-1 008 - Número de inscrição do médico encarregado do exame no
-* 32 ufCRM crm E C 1-1 002 - Preencher com a sigla da UF de expedição do CRM.
+::incluiTag(5,"nrCRM"," crm") // E C 1-1 008 - Número de inscrição do médico encarregado do exame no
+::incluiTag(5,"ufCRM"," crm") // E C 1-1 002 - Preencher com a sigla da UF de expedição do CRM.
 ::incluiTag(5,"/crm")
 ::incluiTag(4,"/medico")
 ::incluiTag(3,"/aso")
@@ -2892,25 +2896,25 @@ RETURN Self
 METHOD S2300() CLASS eSocial
 
 ::incluiTag(1,"evtAvisoFerias")
-* 2 versao ::versao A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
+::incluiTag(1,"versao", ::versao ) //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")
-* 4 idEvento infEvento A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento", "S2300" ) // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")
-* 6 indRetificacao ideEvento E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
-* 7 nrRecibo ideEvento E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
-* 8 tpAmb ideEvento E N 1-1 001 - Identificação do ambiente:
-* 9 procEmi ideEvento E N 1-1 001 - Processo de emissão do evento:
-* 10 indSegmento ideEvento E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
-* 11 verProc ideEvento E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
+::incluiTag(3,"indRetificacao"," ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
+::incluiTag(3,"nrRecibo"," ideEvento") // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
+::incluiTag(3,"tpAmb"," ideEvento") // E N 1-1 001 - Identificação do ambiente:
+::incluiTag(3,"procEmi"," ideEvento") // E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(3,"indSegmento"," ideEvento") // E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(3,"verProc"," ideEvento") // E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
 ::incluiTag(3,"ideEmpregador")
-* 13 tpInscricao ideEmpregador E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-* 14 nrInscricao ideEmpregador E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(3,"tpInscricao"," ideEmpregador") // E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(3,"nrInscricao"," ideEmpregador") // E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"ideVinculo")
-* 16 cpfTrab ideVinculo E N 1-1 011 - Preencher com o número do CPF do trabalhador
-* 17 nisTrab ideVinculo E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
-* 18 matricula ideVinculo E C 1-1 030 - Matrícula atribuída ao trabalhador pela empresa
+::incluiTag(3,"cpfTrab"," ideVinculo")   // E N 1-1 011 - Preencher com o número do CPF do trabalhador
+::incluiTag(3,"nisTrab"," ideVinculo")   // E N 1-1 011 - Preencher com o número de inscrição do segurado, o qual pode
+::incluiTag(3,"matricula"," ideVinculo") // E C 1-1 030 - Matrícula atribuída ao trabalhador pela empresa
 ::incluiTag(3,"/ideVinculo")
 ::incluiTag(3,"infoAviso")
 * 20 dtAvisoFerias infoAviso E D 1-1 010 - Data do Aviso de Férias
@@ -3743,7 +3747,7 @@ METHOD S2680() CLASS eSocial
 ::incluiTag(1,"evtTSVTermino")      // 1 Evento Trabalhador Sem Vínculo de Emprego - Término 1-1 - O
 ::incluiTag(2,"versao",::versao) // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")          // evtTSVTermino 2 Informações do evento 1-1 idEvento O
-::incluiTag(2,"idEvento","infEvento") // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S2680") // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")          // infEvento 3 Informações de Identificação do Evento 1-1 - O
 ::incluiTag(3,"indRetificacao","ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
 ::incluiTag(3,"nrRecibo","ideEvento") // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
@@ -3814,7 +3818,7 @@ METHOD S2800() CLASS eSocial
 ::incluiTag(1,"evtDesligamento")            // 1 Evento Desligamento 1-1 - O
 ::incluiTag(1,"versao",::versao)   // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")                  // evtDesligamento 2 Informações do evento 1-1 idEvento O
-::incluiTag(2,"idEvento","infEvento")       // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S2800")       // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")                  // infEvento 3 Informações de Identificação do Evento 1-1 - O
 ::incluiTag(3,"indRetificacao","ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
 ::incluiTag(3,"nrRecibo","ideEvento")       // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
@@ -3880,7 +3884,7 @@ METHOD S2820() CLASS eSocial
 ::incluiTag(1,"evtReintegracao")         // 1 Evento Reintegração 1-1 - O
 ::incluiTag(1,"versao",::versao)// A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")               // evtReintegracao 2 Informações do evento 1-1 idEvento O
-::incluiTag(2,"idEvento","infEvento")    // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S2820")    // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")               // infEvento 3 Informações de Identificação do Evento 1-1 - O
 ::incluiTag(3,"indRetificacao","ideEvento") // E N 1-1 001 - Informe [1] para arquivo original ou [2] para arquivo de
 ::incluiTag(3,"nrRecibo","ideEvento")    // E N 0-1 015 - Preencher com o número do recibo do arquivo a ser retificado.
@@ -3922,7 +3926,7 @@ METHOD S2900() CLASS eSocial
 ::incluiTag(1,"evtExclusao")                   // 1 Exclusão de Evento Enviado Indevidamente 1-1 - O
 ::incluiTag(1,"versao",::versao)          // A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
 ::incluiTag(2,"infEvento")                     // evtExclusao 2 Informações do evento 1-1 idEvento O
-::incluiTag(2,"idEvento","infEvento")          // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(2,"idEvento","S2900")          // A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
 ::incluiTag(3,"ideEvento")                     // infEvento 3 Informações de identificação do evento 1-1 - O
 ::incluiTag(3,"tpAmb","ideEvento")             // E N 1-1 001 - Identificação do ambiente:
 ::incluiTag(3,"procEmi","ideEvento")           // E N 1-1 001 - Processo de emissão do evento:
