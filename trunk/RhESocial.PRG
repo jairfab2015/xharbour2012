@@ -28,20 +28,63 @@ ENDIF
 
 *--- Geracao do arquivo ---*
 oSocial:= eSocial()
-oSocial:Empresa := " "
-oSocial:DtVenc  := DATE()
-oSocial:tpInscricao :="1"
-oSocial:cNpjEmp :="99999999999999"
+*--- Cadastro da empresa ---* 
+oSocial:nomeRazao           := "Empresa Teste Ltda "
+oSocial:tpInscricao         := "1"
+oSocial:cNpjEmp             := "99.999999/9999-99"
+oSocial:classTrib           := "21"
+oSocial:natJuridica         := "1234"
+oSocial:cnaePreponderante   := "1234567"
+oSocial:indCooperativa      := "0"
+oSocial:indConstrutora      := "0"
+oSocial:aliqRat             := "0"
+oSocial:fap                 := "123456"
+oSocial:aliqRatAjustada     := "123456"
+oSocial:tpProcesso          := "0"
+oSocial:nrProcesso          := "00000000000000"
+oSocial:siglaMin            := "12345678"
+oSocial:nrCertificado       := "1234566688788888"
+oSocial:dtEmissaoCertificado:= FormatData(date())
+oSocial:dtVenctoCertificado := FormatData(date())
+oSocial:nrProtRenovacao     := "124558888NRO PROC"
+oSocial:dtProtRenovacao     := FormatData(date()) 
+oSocial:dtDou               := FormatData(date()) 
+oSocial:pagDou              := "12345"
+oSocial:nomeContato         := "Jair teste"
+oSocial:cpfContato          := "12345678901"
+oSocial:foneFixo            := "11222445554"
+oSocial:foneCelular         := "99999999999"
+oSocial:fax                 := " "
+oSocial:email               := "semai@soft.com.br "
+
+*--- Informaçoes bancaria ---*
+oSocial:banco               :="237"
+oSocial:agencia             :="6420-4"
+oSocial:tpContaBancaria     :="1"
+oSocial:nrContaBancaria     :="088337-1"
+*--- Informacoes da softhowse ---*
+oSocial:cnpjSoftwareHouse   := "05.672.999/000100"
+oSocial:nomeSoftRazao       := "COMPUSOFT INFORMATICA"
+oSocial:nomeSoftContato     := "JAIR"
+oSocial:telefoneSoft        := "11224455115"
+oSocial:codMunicipioSoft    := "1234567"
+oSocial:ufSoft              := "SP"
+oSocial:emailSoft           := "COMPUSOFT@SOMPUSOFT.COM.BR"
+
+
+oSocial:DtVenc              := DATE()
+
+
 oSocial:Open()
 oSocial:Execute( )   //:add()
 
 
 
-cPasta+=oSocial:NomeArq   // temporario para conferir se gerou o arquivo 
+cPasta+=oSocial:NomeArq
 *--- Finaliza a geracao do arquivo ---*
 oSocial:Close()   // Finaliza 
 
-*msgstop(cPasta,"Aviso")
+msgstop(cPasta,"Aviso Nome do arquivo para efeito de teste..")
 
 return nil 
 *------------------------------------------------------------------------------*
@@ -54,27 +97,74 @@ return nil
 * -----------------------------------------------------------------------------*
 CLASS eSocial
 
-   DATA cLine              INIT "" PROTECTED
-   DATA nSeqReg            INIT 2  PROTECTED 
-   DATA cFillTrailer       INIT "" PROTECTED
-   DATA DtEmis             INIT DATE()
-   DATA DtVenc             INIT DATE()
-   DATA cData
-   DATA NomeArq            INIT ""
-   DATA Destino            INIT ""
-   DATA nHandle            INIT ""
+   DATA cLine                INIT "" PROTECTED
+   DATA nSeqReg              INIT 2  PROTECTED 
+   DATA cFillTrailer         INIT "" PROTECTED
+   DATA DtEmis               INIT DATE()
+   DATA DtVenc               INIT DATE()
+   DATA cData                
+   DATA NomeArq              INIT ""
+   DATA Destino              INIT ""
+   DATA nHandle              INIT ""
    
-   DATA idEvento           INIT "004"
-   DATA tpAmb              INIT "1"   // 1-Producao 
-   DATA procEmi            INIT "1"   // 1-emissão com aplicativo do empregador 
-   DATA indSegmento        INIT "1"   // 1-Normal 
-   DATA verProc            INIT "Versao 001"
-   DATA versao             INIT "123"
-   DATA tpInscricao        INIT "1"
-   DATA cNpjEmp            INIT "99999999999999"
+   DATA idEvento             INIT "004"
+   DATA tpAmb                INIT "1"   // 1-Producao 
+   DATA procEmi              INIT "1"   // 1-emissão com aplicativo do empregador 
+   DATA indSegmento          INIT "1"   // 1-Normal 
+   DATA verProc              INIT "Versao 001"
+   DATA versao               INIT "123"
+   DATA tpInscricao          INIT "1"
+   DATA cNpjEmp              INIT "99999999999999"
+                             
+   DATA dtIniValidade        INIT DATE() 
+   DATA dtFimValidade        INIT DATE() 
    
+   
+   
+   DATA nomeRazao            INIT  ""  //E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+   DATA classTrib            INIT  ""  //E N 1-1 002 - Preencher com o código correspondente à classificação
+   DATA natJuridica          INIT  ""  //E N 1-1 004 - Preencher com o código da Natureza Jurídica do Contribuinte,
+   DATA cnaePreponderante    INIT  ""  //E N 1-1 007 - Preencher com o código do CNAE 2.0 conforme tabela
+   DATA indCooperativa       INIT  "0" //E N 1-1 001 - Indicativo de Cooperativa:
+   DATA indConstrutora       INIT  "0" //E N 1-1 001 - Indicativo de Construtora:
+   DATA aliqRat              INIT  "0" //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
+   DATA fap                  INIT  ""  //E N 1-1 006 4 Fator Acidentário de Prevenção
+   DATA aliqRatAjustada      INIT  ""  //E N 1-1 006 4 Alíquota após ajuste pelo FAP
+   DATA tpProcesso           INIT  "0" //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+   DATA nrProcesso           INIT  ""  //E C 1-1 020 - Informar o número do processo administrativo/judicial.
 
-   DATA Empresa            INIT ""
+   DATA siglaMin             INIT ""   //E C 1-1 008 - Identificação do Ministério/Lei que concedeu o Certificado:
+   DATA nrCertificado        INIT ""   //E C 1-1 040 - Número do Certificado de Entidade Beneficente de Assistência
+   DATA dtEmissaoCertificado INIT ""   //E D 1-1 010 - Data de Emissão do Certificado/publicação da Lei
+   DATA dtVenctoCertificado  INIT ""   //E D 1-1 010 - Data de Vencimento do Certificado
+   DATA nrProtRenovacao      INIT ""   //E C 0-1 040 - Número do protocolo de pedido de renovação
+   DATA dtProtRenovacao      INIT ""   //E D 0-1 010 - Data do protocolo de renovação
+   DATA dtDou                INIT ""   //E D 0-1 010 - Preencher com a data de publicação no Diário Oficial da União
+   DATA pagDou               INIT ""   //E N 0-1 005 - Preencher com o número da página no DOU referente à
+   DATA nomeContato          INIT ""   //E C 1-1 080 - Nome do contato na empresa
+   DATA cpfContato           INIT ""   //E N 1-1 011 - Preencher com o CPF do contato
+   DATA foneFixo             INIT ""   //E C 0-1 012 - Informar o número do telefone, com DDD.
+   DATA foneCelular          INIT ""   //E C 0-1 012 - Telefone celular
+   DATA fax                  INIT ""   //E C 0-1 011 - Número do Fax, com DDD
+   DATA email                INIT ""   //E C 0-1 060 - Endereço eletrônico
+
+   DATA banco               INIT ""    //E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+   DATA agencia             INIT ""    //E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+   DATA tpContaBancaria     INIT "1"   //E N 1-1 001 - Tipo de Conta:
+   DATA nrContaBancaria     INIT ""    //E C 1-1 020 - Número da Conta Bancária
+
+   DATA utilizaFinanciamento INIT "N"  //E C 1-1 001 - Utilização de recursos do FGTS em financiamentos:
+   DATA debitoAutomatico     INIT "N"  //E C 1-1 001 - Débito automático do FGTS:
+   DATA avisosSMS            INIT "N"  //E C 1-1 001 - Adesão aos serviços de SMS:
+   DATA agendaRecolhimento   INIT "N"  //E C 1-1 001 - Agendamento de recolhimento do FGTS:
+   *--- Identificacao da softhowse ----*
+   DATA cnpjSoftwareHouse    INIT ""   //E N 1-1 014 - CNPJ da Software House
+   DATA nomeSoftRazao        INIT ""   //E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+   DATA nomeSoftContato      INIT ""   //E C 1-1 080 - Nome do contato na empresa
+   DATA telefoneSoft         INIT ""   //E C 0-1 012 - Informar o número do telefone, com DDD.
+   DATA codMunicipioSoft     INIT ""   //E N 0-1 007 - Preencher com o código do município, conforme tabela do
+   DATA ufSoft               INIT "SP" //E C 0-1 002 - Preencher com a sigla da Unidade da Federação
+   DATA emailSoft            INIT ""   //E C 0-1 060 - Endereço eletrônico
 
    METHOD New() CONSTRUCTOR
    METHOD Execute( )
@@ -199,173 +289,168 @@ RETURN Self
 * -----------------------------------------------------------------------------*
 METHOD S1000() CLASS eSocial
 
-LOCAL cCNPJ, cTIPOCNPJ,cNomeEmpresa
- **      SELECT EMPRESA
- **      IF !EMPTY(EMPRESA->CGC)
- **        cTIPOCNPJ:='1'
- **        cCNPJ    := EMPRESA->CGC
- **      ELSE
- **         cTIPOCNPJ:='2'
- **         cCNPJ    := EMPRESA->RECEI
- **      ENDIF
- **      cNomeEmpresa := ALLTRIM(EMPRESA->NOME)
-
-
-
-::incluiTag(1,"evtInfoEmpregador")       //G - 1-1 - - Evento de informações do empregador
+::incluiTag(1,"evtInfoEmpregador")            //G - 1-1 - - Evento de informações do empregador
 ::incluiTag(2,"versao",::versao)              //A C 1-1 005 - Deve ser informado o código do leiaute utilizado para geração
-::incluiTag(2,"infEvento")               //G - 1-1 - - Informações do evento
-::incluiTag(3,"idEvento","S1000" )       //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
-::incluiTag(3,"ideEvento","x ")          //G - 1-1 - - Informações de Identificação do Evento
-::incluiTag(3,"tpAmb",::tpAmb)               //E N 1-1 001 - Identificação do ambiente:
-::incluiTag(3,"procEmi",::procEmi )            //E N 1-1 001 - Processo de emissão do evento:
-::incluiTag(3,"indSegmento",::indSegmento )        //E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
-::incluiTag(3,"verProc",::verProc)           //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
-::incluiTag(4,"ideEmpregador")           //G - 1-1 - - Informações de identificação do empregador
-::incluiTag(5,"tpInscricao",::tpInscricao )         //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-::incluiTag(5,"nrInscricao",::cNpjEmp )         //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(2,"infEvento")                    //G - 1-1 - - Informações do evento
+::incluiTag(3,"idEvento","S1000" )            //A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(3,"ideEvento")                    //G - 1-1 - - Informações de Identificação do Evento
+::incluiTag(3,"tpAmb",::tpAmb)                //E N 1-1 001 - Identificação do ambiente:
+::incluiTag(3,"procEmi",::procEmi )           //E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(3,"indSegmento",::indSegmento )   //E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(3,"verProc",::verProc)            //E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
+::incluiTag(3,"/ideEvento")
+
+::incluiTag(4,"ideEmpregador")                //G - 1-1 - - Informações de identificação do empregador
+::incluiTag(5,"tpInscricao",::tpInscricao )   //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(5,"nrInscricao",::cNpjEmp )       //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(4,"/ideEmpregador")
-::incluiTag(3,"infoEmpregador")          //CG - 1-1 - - Identificação da operação (inclusão, alteração ou exclusão) e
-::incluiTag(4,"inclusao")                //G - 0-1 - - Inclusão de novas informações
-::incluiTag(5,"idePeriodo")              //G - 1-1 - - Período de validade das informações incluídas
-::incluiTag(6,"dtIniValidade","x ")       //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","x ")       //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+
+::incluiTag(3,"infoEmpregador")               //CG - 1-1 - - Identificação da operação (inclusão, alteração ou exclusão) e
+::incluiTag(4,"inclusao")                     //G - 0-1 - - Inclusão de novas informações
+::incluiTag(5,"idePeriodo")                   //G - 1-1 - - Período de validade das informações incluídas
+::incluiTag(6,"dtIniValidade",FormatData( ::dtIniValidade ) )    //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade ))       //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/idePeriodo")
-::incluiTag(5,"infoCadastro")            //G - 1-1 - - Informações do empregador
-::incluiTag(6,"nomeRazao","x ")           //E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
-::incluiTag(6,"classTrib","x ")           //E N 1-1 002 - Preencher com o código correspondente à classificação
-::incluiTag(6,"natJuridica","x ")         //E N 1-1 004 - Preencher com o código da Natureza Jurídica do Contribuinte,
-::incluiTag(6,"cnaePreponderante","x ")   //E N 1-1 007 - Preencher com o código do CNAE 2.0 conforme tabela
-::incluiTag(6,"indCooperativa","x ")      //E N 1-1 001 - Indicativo de Cooperativa:
-::incluiTag(6,"indConstrutora","x ")      //E N 1-1 001 - Indicativo de Construtora:
-::incluiTag(6,"aliqGilrat")              //G - 0-1 - - Informações de apuração da alíquota GILRAT
-::incluiTag(7,"aliqRat","x ")             //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
-::incluiTag(7,"fap","x ")                 //E N 1-1 006 4 Fator Acidentário de Prevenção
-::incluiTag(7,"aliqRatAjustada","x ")     //E N 1-1 006 4 Alíquota após ajuste pelo FAP
-::incluiTag(7,"procAdmJudRat")           //G - 0-1 - - Registro que identifica, em caso de existência, o processo
-::incluiTag(8,"tpProcesso","x ")          // E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(8,"nrProcesso","x ")          // E C 1-1 020 - Informar o número do processo administrativo/judicial.
+
+::incluiTag(5,"infoCadastro")                 //G - 1-1 - - Informações do empregador
+::incluiTag(6,"nomeRazao",::nomeRazao )       //E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+::incluiTag(6,"classTrib",::classTrib )       //E N 1-1 002 - Preencher com o código correspondente à classificação
+::incluiTag(6,"natJuridica",::natJuridica )    //E N 1-1 004 - Preencher com o código da Natureza Jurídica do Contribuinte,
+::incluiTag(6,"cnaePreponderante",::cnaePreponderante ) //E N 1-1 007 - Preencher com o código do CNAE 2.0 conforme tabela
+::incluiTag(6,"indCooperativa",::indCooperativa )       //E N 1-1 001 - Indicativo de Cooperativa:
+::incluiTag(6,"indConstrutora",::indConstrutora )       //E N 1-1 001 - Indicativo de Construtora:
+::incluiTag(6,"aliqGilrat")                   //G - 0-1 - - Informações de apuração da alíquota GILRAT
+::incluiTag(7,"aliqRat",::aliqRat )           //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
+::incluiTag(7,"fap",::fap )                   //E N 1-1 006 4 Fator Acidentário de Prevenção
+::incluiTag(7,"aliqRatAjustada",::aliqRatAjustada )     //E N 1-1 006 4 Alíquota após ajuste pelo FAP
+::incluiTag(7,"procAdmJudRat")                //G - 0-1 - - Registro que identifica, em caso de existência, o processo
+::incluiTag(8,"tpProcesso",::tpProcesso )     // E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(8,"nrProcesso",::nrProcesso )     // E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(7,"/procAdmJudRat")
-::incluiTag(7,"procAdmJudFap")           //G - 0-1 - - Registro que identifica, em caso de existência, o processo
-::incluiTag(8,"tpProcesso","x ")          //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(8,"nrProcesso","x ")          //E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"procAdmJudFap")                //G - 0-1 - - Registro que identifica, em caso de existência, o processo
+::incluiTag(8,"tpProcesso",::tpProcesso )     //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(8,"nrProcesso",::nrProcesso )     //E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(7,"/procAdmJudFap")
 ::incluiTag(6,"/aliqGilrat")
-::incluiTag(6,"dadosIsencao")            //G - 0-1 - - Informações Complementares - Empresas Isentas - Dados da
-::incluiTag(7,"siglaMin","x ")            //E C 1-1 008 - Identificação do Ministério/Lei que concedeu o Certificado:
-::incluiTag(7,"nrCertificado","x ")       //E C 1-1 040 - Número do Certificado de Entidade Beneficente de Assistência
-::incluiTag(7,"dtEmissaoCertificado","x ")//E D 1-1 010 - Data de Emissão do Certificado/publicação da Lei
-::incluiTag(7,"dtVenctoCertificado","x ") //E D 1-1 010 - Data de Vencimento do Certificado
-::incluiTag(7,"nrProtRenovacao","x ")     //E C 0-1 040 - Número do protocolo de pedido de renovação
-::incluiTag(7,"dtProtRenovacao","x ")     //E D 0-1 010 - Data do protocolo de renovação
-::incluiTag(7,"dtDou","x ")               //E D 0-1 010 - Preencher com a data de publicação no Diário Oficial da União
-::incluiTag(7,"pagDou","x ")              //E N 0-1 005 - Preencher com o número da página no DOU referente à
+::incluiTag(6,"dadosIsencao")                 //G - 0-1 - - Informações Complementares - Empresas Isentas - Dados da
+::incluiTag(7,"siglaMin",::siglaMin )         //E C 1-1 008 - Identificação do Ministério/Lei que concedeu o Certificado:
+::incluiTag(7,"nrCertificado",::nrCertificado )       //E C 1-1 040 - Número do Certificado de Entidade Beneficente de Assistência
+::incluiTag(7,"dtEmissaoCertificado",::dtEmissaoCertificado )//E D 1-1 010 - Data de Emissão do Certificado/publicação da Lei
+::incluiTag(7,"dtVenctoCertificado",::dtVenctoCertificado   ) //E D 1-1 010 - Data de Vencimento do Certificado
+::incluiTag(7,"nrProtRenovacao",::nrProtRenovacao )     //E C 0-1 040 - Número do protocolo de pedido de renovação
+::incluiTag(7,"dtProtRenovacao",::dtProtRenovacao )     //E D 0-1 010 - Data do protocolo de renovação
+::incluiTag(7,"dtDou",::dtDou )               //E D 0-1 010 - Preencher com a data de publicação no Diário Oficial da União
+::incluiTag(7,"pagDou",::pagDou )             //E N 0-1 005 - Preencher com o número da página no DOU referente à
 ::incluiTag(6,"/dadosIsencao")
-::incluiTag(6,"contato")                 //G - 1-1 - - Informações de contato
-::incluiTag(7,"nomeContato","x ")         //E C 1-1 080 - Nome do contato na empresa
-::incluiTag(7,"cpfContato","x ")          //E N 1-1 011 - Preencher com o CPF do contato
-::incluiTag(7,"foneFixo","x ")            //E C 0-1 012 - Informar o número do telefone, com DDD.
-::incluiTag(7,"foneCelular","x ")         //E C 0-1 012 - Telefone celular
-::incluiTag(7,"fax","x ")                 //E C 0-1 011 - Número do Fax, com DDD
-::incluiTag(7,"email","x ")               //E C 0-1 060 - Endereço eletrônico
+::incluiTag(6,"contato")                      //G - 1-1 - - Informações de contato
+::incluiTag(7,"nomeContato",::nomeContato )   //E C 1-1 080 - Nome do contato na empresa
+::incluiTag(7,"cpfContato",::cpfContato )     //E N 1-1 011 - Preencher com o CPF do contato
+::incluiTag(7,"foneFixo",::foneFixo )         //E C 0-1 012 - Informar o número do telefone, com DDD.
+::incluiTag(7,"foneCelular",::foneCelular )   //E C 0-1 012 - Telefone celular
+::incluiTag(7,"fax",::fax )                   //E C 0-1 011 - Número do Fax, com DDD
+::incluiTag(7,"email",::email )               //E C 0-1 060 - Endereço eletrônico
 ::incluiTag(6,"/contato")
-::incluiTag(6,"infBancarias")            //G - 0-1 - - Informações Bancárias
-::incluiTag(7,"banco","237")               //E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
-::incluiTag(7,"agencia","0420")             //E C 0-1 015 - Preencher com o código da agência, no caso de depósito
-::incluiTag(7,"tpContaBancaria","1")     //E N 1-1 001 - Tipo de Conta:
-::incluiTag(7,"nrContaBancaria","145237")     //E C 1-1 020 - Número da Conta Bancária
+::incluiTag(6,"infBancarias")                 //G - 0-1 - - Informações Bancárias
+::incluiTag(7,"banco",::banco )               //E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+::incluiTag(7,"agencia",::agencia )           //E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+::incluiTag(7,"tpContaBancaria",::tpContaBancaria )     //E N 1-1 001 - Tipo de Conta:
+::incluiTag(7,"nrContaBancaria",::nrContaBancaria )     //E C 1-1 020 - Número da Conta Bancária
 ::incluiTag(6,"/infBancarias")
-::incluiTag(6,"infoFGTS")                //G - 1-1 - - Informações exclusivas para o FGTS
-::incluiTag(7,"utilizaFinanciamento","x ")//E C 1-1 001 - Utilização de recursos do FGTS em financiamentos:
-::incluiTag(7,"debitoAutomatico","x ")    //E C 1-1 001 - Débito automático do FGTS:
-::incluiTag(7,"avisosSMS","x ")           //E C 1-1 001 - Adesão aos serviços de SMS:
-::incluiTag(7,"agendaRecolhimento","x ")  //E C 1-1 001 - Agendamento de recolhimento do FGTS:
+::incluiTag(6,"infoFGTS")                     //G - 1-1 - - Informações exclusivas para o FGTS
+::incluiTag(7,"utilizaFinanciamento",::utilizaFinanciamento )//E C 1-1 001 - Utilização de recursos do FGTS em financiamentos:
+::incluiTag(7,"debitoAutomatico",::debitoAutomatico )    //E C 1-1 001 - Débito automático do FGTS:
+::incluiTag(7,"avisosSMS",::avisosSMS )       //E C 1-1 001 - Adesão aos serviços de SMS:
+::incluiTag(7,"agendaRecolhimento",::agendaRecolhimento )  //E C 1-1 001 - Agendamento de recolhimento do FGTS:
 ::incluiTag(6,"/infoFGTS")
-::incluiTag(6,"softwareHouse")                 //G - 0-1 - - Informações da empresa de Software
-::incluiTag(7,"cnpjSoftwareHouse"," ")   //E N 1-1 014 - CNPJ da Software House
-::incluiTag(7,"nomeRazao"," ")//E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
-::incluiTag(7,"nomeContato"," ")         //E C 1-1 080 - Nome do contato na empresa
-::incluiTag(7,"telefone"," ")           //E C 0-1 012 - Informar o número do telefone, com DDD.
-::incluiTag(7,"codMunicipio"," ")        //E N 0-1 007 - Preencher com o código do município, conforme tabela do
-::incluiTag(7,"uf","SP")                       //E C 0-1 002 - Preencher com a sigla da Unidade da Federação
-::incluiTag(7,"email"," ") //E C 0-1 060 - Endereço eletrônico
+
+::incluiTag(6,"softwareHouse")                   //G - 0-1 - - Informações da empresa de Software
+::incluiTag(7,"cnpjSoftwareHouse",::cnpjSoftwareHouse )  //E N 1-1 014 - CNPJ da Software House
+::incluiTag(7,"nomeRazao",::nomeSoftRazao )      //E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+::incluiTag(7,"nomeContato",::nomeSoftContato )  //E C 1-1 080 - Nome do contato na empresa
+::incluiTag(7,"telefone",::telefoneSoft )        //E C 0-1 012 - Informar o número do telefone, com DDD.
+::incluiTag(7,"codMunicipio",::codMunicipioSoft )//E N 0-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(7,"uf",::ufSoft )                    //E C 0-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(7,"email",::emailSoft )              //E C 0-1 060 - Endereço eletrônico
 ::incluiTag(6,"/softwareHouse")
 ::incluiTag(5,"/infoCadastro")
 ::incluiTag(4,"/inclusao")
-::incluiTag(4,"alteracao")               //G - 0-1 - - Alteração das informações
-::incluiTag(5,"idePeriodo")              //G - 1-1 - - Período de validade das informações alteradas
-::incluiTag(6,"dtIniValidade","x ")       //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","x ")       //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+
+::incluiTag(4,"alteracao")                     //G - 0-1 - - Alteração das informações
+::incluiTag(5,"idePeriodo")                    //G - 1-1 - - Período de validade das informações alteradas
+::incluiTag(6,"dtIniValidade",FormatData( ::dtIniValidade ) )  //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade ) )   //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/idePeriodo")
-::incluiTag(5,"infoCadastro")            //G - 1-1 - - Informações do empregador
-::incluiTag(6,"nomeRazao","x ")           //E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
-::incluiTag(6,"classTrib","x ")           //E N 1-1 002 - Preencher com o código correspondente à classificação
-::incluiTag(6,"natJuridica","x ")         //E N 1-1 004 - Preencher com o código da Natureza Jurídica do Contribuinte,
-::incluiTag(6,"cnaePreponderante","x ")   //E N 1-1 007 - Preencher com o código do CNAE 2.0 conforme tabela
-::incluiTag(6,"indCooperativa","x ")      //E N 1-1 001 - Indicativo de Cooperativa:
-::incluiTag(6,"indConstrutora","x ")      //E N 1-1 001 - Indicativo de Construtora:
-::incluiTag(6,"aliqGilrat")              //G - 0-1 - - Informações de apuração da alíquota GILRAT
-::incluiTag(7,"aliqRat","x ")             //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
-::incluiTag(7,"fap","x ")                 //E N 1-1 006 4 Fator Acidentário de Prevenção
-::incluiTag(7,"aliqRatAjustada","x ")     //E N 1-1 006 4 Alíquota após ajuste pelo FAP
-::incluiTag(7,"procAdmJudRat")           //G - 0-1 - - Registro que identifica, em caso de existência, o processo
-::incluiTag(8,"tpProcesso","x ")          //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(8,"nrProcesso","x ")          //E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(5,"infoCadastro")                 //G - 1-1 - - Informações do empregador
+::incluiTag(6,"nomeRazao",::nomeRazao )       //E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+::incluiTag(6,"classTrib",::classTrib )       //E N 1-1 002 - Preencher com o código correspondente à classificação
+::incluiTag(6,"natJuridica",::natJuridica )   //E N 1-1 004 - Preencher com o código da Natureza Jurídica do Contribuinte,
+::incluiTag(6,"cnaePreponderante",::cnaePreponderante )//E N 1-1 007 - Preencher com o código do CNAE 2.0 conforme tabela
+::incluiTag(6,"indCooperativa",::indCooperativa )      //E N 1-1 001 - Indicativo de Cooperativa:
+::incluiTag(6,"indConstrutora",::indConstrutora )      //E N 1-1 001 - Indicativo de Construtora:
+::incluiTag(6,"aliqGilrat")                   //G - 0-1 - - Informações de apuração da alíquota GILRAT
+::incluiTag(7,"aliqRat",::aliqRat )           //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
+::incluiTag(7,"fap",::fap )                   //E N 1-1 006 4 Fator Acidentário de Prevenção
+::incluiTag(7,"aliqRatAjustada",::aliqRatAjustada )     //E N 1-1 006 4 Alíquota após ajuste pelo FAP
+::incluiTag(7,"procAdmJudRat")                //G - 0-1 - - Registro que identifica, em caso de existência, o processo
+::incluiTag(8,"tpProcesso",::tpProcesso )     //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(8,"nrProcesso",::nrProcesso )     //E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(7,"/procAdmJudRat")
-::incluiTag(7,"procAdmJudFap")           //G - 0-1 - - Registro que identifica, em caso de existência, o processo
-::incluiTag(8,"tpProcesso","x ")          //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(8,"nrProcesso","x ")          //E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"procAdmJudFap")                //G - 0-1 - - Registro que identifica, em caso de existência, o processo
+::incluiTag(8,"tpProcesso",::tpProcesso )     //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(8,"nrProcesso",::nrProcesso )     //E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(7,"/procAdmJudFap")
 ::incluiTag(6,"/aliqGilrat")
-::incluiTag(6,"dadosIsencao")            //G - 0-1 - - Informações Complementares - Empresas Isentas - Dados da
-::incluiTag(7,"siglaMin","x ")            //E C 1-1 008 - Identificação do Ministério/Lei que concedeu o Certificado:
-::incluiTag(7,"nrCertificado","x ")       //E C 1-1 040 - Número do Certificado de Entidade Beneficente de Assistência
-::incluiTag(7,"dtEmissaoCertificado","x ")//E D 1-1 010 - Data de Emissão do Certificado/publicação da Lei
-::incluiTag(7,"dtVenctoCertificado","x ") //E D 1-1 010 - Data de Vencimento do Certificado
-::incluiTag(7,"nrProtRenovacao","x ")     //E C 0-1 040 - Número do protocolo de pedido de renovação
-::incluiTag(7,"dtProtRenovacao","x ")     //E D 0-1 010 - Data do protocolo de renovação
-::incluiTag(7,"dtDou","x ")               //E D 0-1 010 - Preencher com a data de publicação no Diário Oficial da União
-::incluiTag(7,"pagDou","x ")              //E N 0-1 005 - Preencher com o número da página no DOU referente à
+::incluiTag(6,"dadosIsencao")                 //G - 0-1 - - Informações Complementares - Empresas Isentas - Dados da
+::incluiTag(7,"siglaMin",::siglaMin )         //E C 1-1 008 - Identificação do Ministério/Lei que concedeu o Certificado:
+::incluiTag(7,"nrCertificado",::nrCertificado )       //E C 1-1 040 - Número do Certificado de Entidade Beneficente de Assistência
+::incluiTag(7,"dtEmissaoCertificado",::dtEmissaoCertificado )//E D 1-1 010 - Data de Emissão do Certificado/publicação da Lei
+::incluiTag(7,"dtVenctoCertificado",::dtVenctoCertificado   ) //E D 1-1 010 - Data de Vencimento do Certificado
+::incluiTag(7,"nrProtRenovacao",::nrProtRenovacao )     //E C 0-1 040 - Número do protocolo de pedido de renovação
+::incluiTag(7,"dtProtRenovacao",::dtProtRenovacao )     //E D 0-1 010 - Data do protocolo de renovação
+::incluiTag(7,"dtDou",::dtDou )               //E D 0-1 010 - Preencher com a data de publicação no Diário Oficial da União
+::incluiTag(7,"pagDou",::pagDou )             //E N 0-1 005 - Preencher com o número da página no DOU referente à
 ::incluiTag(6,"/dadosIsencao")
-::incluiTag(6,"contato")                 //G - 1-1 - - Informações de contato
-::incluiTag(7,"nomeContato","x ")         //E C 1-1 080 - Nome do contato na empresa
-::incluiTag(7,"cpfContato","x ")          //E N 1-1 011 - Preencher com o CPF do contato
-::incluiTag(7,"foneFixo","x ")            //E C 0-1 012 - Informar o número do telefone, com DDD.
-::incluiTag(7,"foneCelular","x ")         //E C 0-1 012 - Telefone celular
-::incluiTag(7,"fax","x ")                 //E C 0-1 011 - Número do Fax, com DDD
-::incluiTag(7,"email","x ")               //E C 0-1 060 - Endereço eletrônico
+::incluiTag(6,"contato")                      //G - 1-1 - - Informações de contato
+::incluiTag(7,"nomeContato","x ")             //E C 1-1 080 - Nome do contato na empresa
+::incluiTag(7,"cpfContato",::cpfContato )     //E N 1-1 011 - Preencher com o CPF do contato
+::incluiTag(7,"foneFixo",::foneFixo )         //E C 0-1 012 - Informar o número do telefone, com DDD.
+::incluiTag(7,"foneCelular",::foneCelular )   //E C 0-1 012 - Telefone celular
+::incluiTag(7,"fax",::fax )                   //E C 0-1 011 - Número do Fax, com DDD
+::incluiTag(7,"email",::email )               //E C 0-1 060 - Endereço eletrônico
 ::incluiTag(6,"/contato")
-::incluiTag(6,"infBancarias")            //G - 0-1 - - Informações Bancárias
-::incluiTag(7,"banco","x ")               //E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
-::incluiTag(7,"agencia","x ")             //E C 0-1 015 - Preencher com o código da agência, no caso de depósito
-::incluiTag(7,"tpContaBancaria","x ")     //E N 1-1 001 - Tipo de Conta:
-::incluiTag(7,"nrContaBancaria","x ")     //E C 1-1 020 - Número da Conta Bancária
+::incluiTag(6,"infBancarias")                 //G - 0-1 - - Informações Bancárias
+::incluiTag(7,"banco",::banco )               //E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+::incluiTag(7,"agencia",::agencia )           //E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+::incluiTag(7,"tpContaBancaria",::tpContaBancaria )     //E N 1-1 001 - Tipo de Conta:
+::incluiTag(7,"nrContaBancaria",::nrContaBancaria )     //E C 1-1 020 - Número da Conta Bancária
 ::incluiTag(6,"/infBancarias")
-::incluiTag(6,"infoFGTS")                //G - 1-1 - - Informações exclusivas para o FGTS
-::incluiTag(7,"utilizaFinanciamento","x ")//E C 1-1 001 - Utilização de recursos do FGTS em financiamentos:
-::incluiTag(7,"debitoAutomatico","x ")    //E C 1-1 001 - Débito automático do FGTS:
-::incluiTag(7,"avisosSMS","x ")           //E C 1-1 001 - Adesão aos serviços de SMS:
-::incluiTag(7,"agendaRecolhimento","x ")  //E C 1-1 001 - Agendamento de recolhimento do FGTS:
+::incluiTag(6,"infoFGTS")                     //G - 1-1 - - Informações exclusivas para o FGTS
+::incluiTag(7,"utilizaFinanciamento",::utilizaFinanciamento )//E C 1-1 001 - Utilização de recursos do FGTS em financiamentos:
+::incluiTag(7,"debitoAutomatico",::debitoAutomatico )    //E C 1-1 001 - Débito automático do FGTS:
+::incluiTag(7,"avisosSMS",::avisosSMS )       //E C 1-1 001 - Adesão aos serviços de SMS:
+::incluiTag(7,"agendaRecolhimento",::agendaRecolhimento )  //E C 1-1 001 - Agendamento de recolhimento do FGTS:
 ::incluiTag(6,"/infoFGTS")
-::incluiTag(6,"softwareHouse")          //G - 0-1 - - Informações da empresa de Software
-::incluiTag(7,"cnpjSoftwareHouse","x ")  //E N 1-1 014 - CNPJ da Software House
-::incluiTag(7,"nomeRazao","x ")          //E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
-::incluiTag(7,"nomeContato","x ")        //E C 1-1 080 - Nome do contato na empresa
-::incluiTag(7,"telefone","x ")           //E C 0-1 012 - Informar o número do telefone, com DDD.
-::incluiTag(7,"codMunicipio","x ")       //E N 0-1 007 - Preencher com o código do município, conforme tabela do
-::incluiTag(7,"uf","x ")                 //E C 0-1 002 - Preencher com a sigla da Unidade da Federação
-::incluiTag(7,"email","x ")              //E C 0-1 060 - Endereço eletrônico
+
+::incluiTag(6,"softwareHouse")                //G - 0-1 - - Informações da empresa de Software
+::incluiTag(7,"cnpjSoftwareHouse",::cnpjSoftwareHouse)  //E N 1-1 014 - CNPJ da Software House
+::incluiTag(7,"nomeRazao",::nomeSoftRazao )        //E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+::incluiTag(7,"nomeContato",::nomeSoftContato )    //E C 1-1 080 - Nome do contato na empresa
+::incluiTag(7,"telefone",::telefoneSoft )          //E C 0-1 012 - Informar o número do telefone, com DDD.
+::incluiTag(7,"codMunicipio",::codMunicipioSoft )  //E N 0-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(7,"uf",::ufSoft )                      //E C 0-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(7,"email",::emailSoft )                //E C 0-1 060 - Endereço eletrônico
 ::incluiTag(6,"/softwareHouse")
+
 ::incluiTag(5,"/infoCadastro")
 ::incluiTag(5,"novaValidade>")          //G - 1-1 - - Informação preenchida exclusivamente em caso de alteração do
-::incluiTag(5,"dtIniValidade","x ")      //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","x ")      //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade) )      //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade) )      //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/novaValidade")
 ::incluiTag(4,"/alteracao")
 ::incluiTag(4,"exclusao")               // G - 0-1 - - Exclusão das informações
 ::incluiTag(5,"idePeriodo")             // G - 1-1 - - Informação destinada a localizar corretamente as informações já
-::incluiTag(6,"dtIniValidade","x ")      // E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","x ")      // E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(6,"dtIniValidade",FormatData(::dtIniValidade ))      // E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade ))      // E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/idePeriodo")
 ::incluiTag(4,"/exclusao")
 ::incluiTag(3,"/infoEmpregador")
@@ -399,8 +484,8 @@ METHOD S1010() CLASS eSocial
 ::incluiTag(4,"inclusao")         // 14 G - 0-1 - - Inclusão de novas informações
 ::incluiTag(5,"ideRubrica")       // 15 G - 1-1 - - Informações de identificação da rubrica e validade das
 ::incluiTag(6,"codRubrica","x ")   // 16 E C 1-1 030 - Informar o código atribuído pela empresa e que identifica a
-::incluiTag(6,"dtIniValidade","x ")// 17 E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","x ")// 18 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(6,"dtIniValidade",FormatData(::dtIniValidade ))// 17 E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade ))// 18 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideRubrica")
 ::incluiTag(5,"dadosRubrica")     // 19 G - 1-1 - - Detalhamento das informações da rubrica que está sendo
 ::incluiTag(6,"descRubrica","x ")  // 20 E C 1-1 100 - informar a descrição (nome) da rubrica no sistema de folha de
@@ -416,29 +501,29 @@ METHOD S1010() CLASS eSocial
 ::incluiTag(6,"repRescisao","x ")   // 30 E C 1-1 001 - Indicar se a rubrica repercute no cálculo da Rescisão.
 ::incluiTag(6,"fatorRubrica","x ")  // 31 E N 0-1 005 2 Informar o fator, percentual, etc, da rubrica, quando necessário.
 ::incluiTag(6,"ideProcessoCP")     // 32 G - 0-1 - - Caso a empresa possua processo judicial com decisão/sentença
-::incluiTag(7,"tpProcesso","x ")    // 33 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(7,"nrProcesso","x ")    // 34 E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"tpProcesso",::tpProcesso )    // 33 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(7,"nrProcesso",::nrProcesso )    // 34 E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(7,"extDecisao","x ")    // 35 E N 1-1 001 - Extensão da Decisão/Sentença:
 ::incluiTag(6,"/ideProcessoCP")
 ::incluiTag(6,"ideProcessoIRRF")   // 36 G - 0-1 - - Caso a empresa possua processo judicial com decisão/sentença
-::incluiTag(7,"tpProcesso","x ")    // 37 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(7,"nrProcesso","x ")    // 38 E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"tpProcesso",::tpProcesso )    // 37 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(7,"nrProcesso",::nrProcesso )    // 38 E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(6,"/ideProcessoIRRF")
 ::incluiTag(6,"ideProcessoFGTS")   // 39 G - 0-1 - - Caso a empresa possua processo judicial com decisão/sentença
-::incluiTag(7,"tpProcesso","x ")    // 40 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(7,"nrProcesso","x ")    // 41 E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"tpProcesso",::tpProcesso )    // 40 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(7,"nrProcesso",::nrProcesso )    // 41 E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(6,"/ideProcessoFGTS")
 ::incluiTag(6,"ideProcessoSIND")   // 42 G - 0-1 - - Caso a empresa possua processo judicial com decisão/sentença
-::incluiTag(7,"tpProcesso","x ")    // 43 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(7,"nrProcesso","x ")    // 44 E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"tpProcesso",::tpProcesso )    // 43 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(7,"nrProcesso",::nrProcesso )    // 44 E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(6,"/ideProcessoSIND")
 ::incluiTag(5,"/dadosRubrica")
 ::incluiTag(4,"/inclusao")
 ::incluiTag(4,"alteracao")         // 45 G - 0-1 - - Alteração de informações já existentes
 ::incluiTag(5,"ideRubrica")        // 46 G - 1-1 - - Grupo de informações de identificação da rubrica, apresentando
 ::incluiTag(6,"codRubrica","x ")    // 47 E C 1-1 030 - Informar o código atribuído pela empresa e que identifica a
-::incluiTag(6,"dtIniValidade","x ") // 48 E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","x ") // 49 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(6,"dtIniValidade",FormatData(::dtIniValidade )) // 48 E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade )) // 49 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(6,"dadosRubrica")      // 50 G - 1-1 - - Informações da rubrica
 ::incluiTag(7,"descRubrica","x ")   // 51 E C 1-1 100 - informar a descrição (nome) da rubrica no sistema de folha de
 ::incluiTag(7,"natRubrica","x ")    // 52 E N 1-1 004 - Informar o código de classificação da rubrica de acordo com a
@@ -454,33 +539,33 @@ METHOD S1010() CLASS eSocial
 ::incluiTag(7,"fatorRubrica","x ")  // 62 E N 0-1 005 2 Informar o fator, percentual, etc, da rubrica, quando necessário.
 ::incluiTag(6,"/dadosRubrica")
 ::incluiTag(6,"ideProcessoCP")     // 63 G - 0-1 - - Caso a empresa possua processo judicial com decisão/sentença
-::incluiTag(7,"tpProcesso","x ")    // 64 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(7,"nrProcesso","x ")    // 65 E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"tpProcesso",::tpProcesso )    // 64 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(7,"nrProcesso",::nrProcesso )    // 65 E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(7,"extDecisao","x ")    // 66 E N 1-1 001 - Extensão da Decisão/Sentença:
 ::incluiTag(6,"/ideProcessoCP")
 ::incluiTag(6,"ideProcessoIRRF")   // 67 G - 0-1 - - Caso a empresa possua processo judicial com decisão/sentença
-::incluiTag(7,"tpProcesso","x ")    // 68 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(7,"nrProcesso","x ")    // 69 E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"tpProcesso",::tpProcesso )    // 68 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(7,"nrProcesso",::nrProcesso )    // 69 E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(6,"/ideProcessoIRRF")
 ::incluiTag(6,"ideProcessoFGTS")   // 70 0-1 - - Caso a empresa possua processo judicial com decisão/sentença
-::incluiTag(7,"tpProcesso","x ")    // 71 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(7,"nrProcesso","x ")    // 72 E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"tpProcesso",::tpProcesso )    // 71 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(7,"nrProcesso",::nrProcesso )    // 72 E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(6,"/ideProcessoFGTS")
 ::incluiTag(6,"ideProcessoSIND")   // 73 G - 0-1 - - Caso a empresa possua processo judicial com decisão/sentença
-::incluiTag(7,"tpProcesso","x ")    // 74 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(7,"nrProcesso","x ")    // 75 E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(7,"tpProcesso",::tpProcesso )    // 74 E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(7,"nrProcesso",::nrProcesso )    // 75 E C 1-1 020 - Informar o número do processo administrativo/judicial.
 ::incluiTag(6,"/ideProcessoSIND")
 ::incluiTag(6,"novaValidade")      // 76 G - 0-1 - - Informação preenchida exclusivamente em caso de alteração do
-::incluiTag(7,"dtIniValidade","x ") // 77 E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(7,"dtFimValidade","x ") // 78 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(7,"dtIniValidade",FormatData(::dtIniValidade )) // 77 E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(7,"dtFimValidade",FormatData(::dtFimValidade )) // 78 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(6,"/novaValidade")
 ::incluiTag(5,"/ideRubrica")
 ::incluiTag(4,"/alteracao")
 ::incluiTag(4,"exclusao")          // 79 G - 0-1 - - Exclusão de informações
 ::incluiTag(5,"ideRubrica")        // 80 G - 1-1 - - Grupo de informações que identifica a rubrica que será
 ::incluiTag(6,"codRubrica","x ")    // 81 E C 1-1 030 - Informar o código atribuído pela empresa e que identifica a
-::incluiTag(6,"dtIniValidade","x ") // 82 E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","x ") // 83 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(6,"dtIniValidade",FormatData(::dtIniValidade )) // 82 E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade )) // 83 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideRubrica")
 ::incluiTag(4,"/exclusao")
 ::incluiTag(3,"/infoRubrica")
@@ -497,95 +582,95 @@ RETURN Self
 * -----------------------------------------------------------------------------*
 METHOD S1020() CLASS eSocial
 
-::incluiTag(1,"evtTabLotacao")       //1  G - 1-1 - - Definição do Evento de tabela de lotações.
-::incluiTag(2,"infEvento")           //3  G - 1-1 - - Informações do evento
-::incluiTag(4,"idEvento","S1020")    //4  A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
-::incluiTag(3,"ideEvento")           //5  G - 1-1 - - Informações de Identificação do Evento
-::incluiTag(4,"tpAmb",::tpAmb)           //6  E N 1-1 001 - Identificação do ambiente:
-::incluiTag(4,"procEmi",::procEmi)         //7  E N 1-1 001 - Processo de emissão do evento:
-::incluiTag(4,"indSegmento",::indSegmento )     //8  E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
-::incluiTag(4,"verProc",::verProc )         //9  E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
+::incluiTag(1,"evtTabLotacao")                            //1  G - 1-1 - - Definição do Evento de tabela de lotações.
+::incluiTag(2,"infEvento")                                //3  G - 1-1 - - Informações do evento
+::incluiTag(4,"idEvento","S1020")                         //4  A C 1-1 020 - Identificador que representa unicamente o evento dentro do lote
+::incluiTag(3,"ideEvento")                                //5  G - 1-1 - - Informações de Identificação do Evento
+::incluiTag(4,"tpAmb",::tpAmb)                            //6  E N 1-1 001 - Identificação do ambiente:
+::incluiTag(4,"procEmi",::procEmi)                        //7  E N 1-1 001 - Processo de emissão do evento:
+::incluiTag(4,"indSegmento",::indSegmento )               //8  E N 1-1 001 - Indicador do segmento da e-Social ao qual se refere o arquivo,
+::incluiTag(4,"verProc",::verProc )                       //9  E C 1-1 020 - Versão do processo de emissão do evento. Informar a versão do
 ::incluiTag(3,"/ideEvento")
-::incluiTag(3,"ideEmpregador")       //10 G - 1-1 - - Informações de identificação do empregador
-::incluiTag(4,"tpInscricao",::tpInscricao)     //11 E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
-::incluiTag(4,"nrInscricao",::cNpjEmp)     //12 E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
+::incluiTag(3,"ideEmpregador")                            //10 G - 1-1 - - Informações de identificação do empregador
+::incluiTag(4,"tpInscricao",::tpInscricao)                //11 E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
+::incluiTag(4,"nrInscricao",::cNpjEmp)                    //12 E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
-::incluiTag(3,"infoLotacao")                  //13 CG - 1-1 - - Identificação da operação (inclusão, alteração ou exclusão) e
-::incluiTag(4,"inclusao")                  //14 G - 0-1 - - Inclusão de novas informações
-::incluiTag(5,"ideLotacao")                   //15 G - 1-1 - - Informações de identificação da lotação e validade das
-::incluiTag(6,"dadosLotacao","x ")         //16 E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
-::incluiTag(6,"dadosLotacao","x ")         //17 E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dadosLotacao","x ")         //18 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(3,"infoLotacao")                              //13 CG - 1-1 - - Identificação da operação (inclusão, alteração ou exclusão) e
+::incluiTag(4,"inclusao")                                 //14 G - 0-1 - - Inclusão de novas informações
+::incluiTag(5,"ideLotacao")                               //15 G - 1-1 - - Informações de identificação da lotação e validade das
+::incluiTag(6,"dadosLotacao","x ")                        //16 E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
+::incluiTag(6,"dadosLotacao","x ")                        //17 E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dadosLotacao","x ")                        //18 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideLotacao")
-::incluiTag(5,"dadosLotacao")             //19 G - 1-1 - - Detalhamento das informações da lotação que está sendo
-::incluiTag(6,"enderecodescLotacao","x ")              //20 E C 1-1 100 - Para {tpLotacao} igual a [01], informar o nome do
-::incluiTag(6,"enderecotpLotacao","x ")                //21 E N 1-1 002 - Preencher com o código correspondente ao tipo de lotação,
-::incluiTag(6,"enderecotpInscEstab","x ")             //22 E N 0-1 001 - Tipo de inscrição do estabelecimento ao qual está vinculada a
-::incluiTag(6,"endereconrInscEstab","x ")              //23 E N 0-1 014 - Preencher com o número de Inscrição do Estabelecimento
-::incluiTag(6,"endereco")              //24 G - 0-1 - - Informação complementar contendo os dados do endereço da
-::incluiTag(7,"enderecotpLogradouro","x ")                 //25 E C 1-1 010 - Tipo de Logradouro
-::incluiTag(7,"enderecodescLogradouro","x ")               //26 E C 1-1 080 - Descrição do logradouro
-::incluiTag(7,"endereconrLogradouro","x ")                 //27 E C 0-1 010 - Número do logradouro.
-::incluiTag(7,"enderecocomplemento","x ")                  //28 E C 0-1 030 - Complemento do logradouro.
-::incluiTag(7,"enderecobairro","x ")                       //29 E C 0-1 030 - Nome do bairro/distrito
+::incluiTag(5,"dadosLotacao")                             //19 G - 1-1 - - Detalhamento das informações da lotação que está sendo
+::incluiTag(6,"enderecodescLotacao","x ")                 //20 E C 1-1 100 - Para {tpLotacao} igual a [01], informar o nome do
+::incluiTag(6,"enderecotpLotacao","x ")                   //21 E N 1-1 002 - Preencher com o código correspondente ao tipo de lotação,
+::incluiTag(6,"enderecotpInscEstab","x ")                 //22 E N 0-1 001 - Tipo de inscrição do estabelecimento ao qual está vinculada a
+::incluiTag(6,"endereconrInscEstab","x ")                 //23 E N 0-1 014 - Preencher com o número de Inscrição do Estabelecimento
+::incluiTag(6,"endereco")                                 //24 G - 0-1 - - Informação complementar contendo os dados do endereço da
+::incluiTag(7,"enderecotpLogradouro","x ")                //25 E C 1-1 010 - Tipo de Logradouro
+::incluiTag(7,"enderecodescLogradouro","x ")              //26 E C 1-1 080 - Descrição do logradouro
+::incluiTag(7,"endereconrLogradouro","x ")                //27 E C 0-1 010 - Número do logradouro.
+::incluiTag(7,"enderecocomplemento","x ")                 //28 E C 0-1 030 - Complemento do logradouro.
+::incluiTag(7,"enderecobairro","x ")                      //29 E C 0-1 030 - Nome do bairro/distrito
 ::incluiTag(7,"enderecocep","x ")                         //30 E N 1-1 008 - Código de Endereçamento Postal
 ::incluiTag(7,"enderecocodMunicipio","x ")                //31 E N 1-1 007 - Preencher com o código do município, conforme tabela do
 ::incluiTag(7,"enderecouf","x ")                          //32 E C 1-1 002 - Preencher com a sigla da Unidade da Federação
 ::incluiTag(6,"/endereco")
-::incluiTag(6,"fpasLotacao")               //33 G - 0-1 - - Registro preenchido exclusivamente para lotação com tipo de
-::incluiTag(7,"infoEmprParcialfpas","x")                      //34 E N 1-1 003 - Preencher com o código relativo ao FPAS.
-::incluiTag(7,"infoEmprParcialcodTerceiros","x")             //35 E N 1-1 004 - Preencher com o código de terceiros, conforme tabela 4.
+::incluiTag(6,"fpasLotacao")                              //33 G - 0-1 - - Registro preenchido exclusivamente para lotação com tipo de
+::incluiTag(7,"infoEmprParcialfpas","x")                  //34 E N 1-1 003 - Preencher com o código relativo ao FPAS.
+::incluiTag(7,"infoEmprParcialcodTerceiros","x")          //35 E N 1-1 004 - Preencher com o código de terceiros, conforme tabela 4.
 ::incluiTag(6,"/fpasLotacao")
-::incluiTag(6,"infoEmprParcial")          //36 G - 0-1 - - Informação complementar que apresenta identificação do
+::incluiTag(6,"infoEmprParcial")                          //36 G - 0-1 - - Informação complementar que apresenta identificação do
 ::incluiTag(7,"infoEmprParcialtpInscContratante","x ")    //37 E N 1-1 001 - Tipo de Inscrição do contratante
 ::incluiTag(7,"infoEmprParcialnrInscContratante"," x")    //38 E C 1-1 014 - Número de Inscrição (CNPJ/CPF) do Contrante
-::incluiTag(7,"infoEmprParcialtpInscProprietario","x ")    //39 E N 1-1 001 - Tipo de Inscrição do proprietário do CNO
-::incluiTag(7,"infoEmprParcialnrInscProprietario","x ")    //40 E C 1-1 014 - Preencher com o número de inscrição (CNPJ/CPF) do
+::incluiTag(7,"infoEmprParcialtpInscProprietario","x ")   //39 E N 1-1 001 - Tipo de Inscrição do proprietário do CNO
+::incluiTag(7,"infoEmprParcialnrInscProprietario","x ")   //40 E C 1-1 014 - Preencher com o número de inscrição (CNPJ/CPF) do
 ::incluiTag(6,"/infoEmprParcial")
 ::incluiTag(5,"/dadosLotacao")
 ::incluiTag(4,"/inclusao")
-::incluiTag(4,"alteracao")              //41 G - 0-1 - - Alteração de informações já existentes
-::incluiTag(5,"ideLotacao")                  //42 G - 1-1 - - Grupo de informações de identificação da lotação, apresentando
-::incluiTag(6,"ideLotacaocodLotacao","x")               //43 E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
-::incluiTag(6,"ideLotacaodtIniValidade","x ")              //44 E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"ideLotacaodtFimValidade","x ")              //45 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(4,"alteracao")                                //41 G - 0-1 - - Alteração de informações já existentes
+::incluiTag(5,"ideLotacao")                               //42 G - 1-1 - - Grupo de informações de identificação da lotação, apresentando
+::incluiTag(6,"ideLotacaocodLotacao","x")                 //43 E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
+::incluiTag(6,"ideLotacaodtIniValidade","x ")             //44 E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"ideLotacaodtFimValidade","x ")             //45 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideLotacao")
-::incluiTag(5,"dadosLotacao")               //46 G - 1-1 - - Informações da lotação
-::incluiTag(6,"descLotacao","x ")              //47 E C 1-1 100 - Para {tpLotacao} igual a [01], informar o nome do
-::incluiTag(6,"tpLotacao","x ")                //48 E N 1-1 002 - Preencher com o código correspondente ao tipo de lotação,
-::incluiTag(6,"tpInscEstab","x ")             //49 E N 0-1 001 - Tipo de inscrição do estabelecimento ao qual está vinculada a
-::incluiTag(6,"nrInscEstab","x ")             //50 E N 0-1 014 - Preencher com o número de Inscrição do Estabelecimento
+::incluiTag(5,"dadosLotacao")                             //46 G - 1-1 - - Informações da lotação
+::incluiTag(6,"descLotacao","x ")                         //47 E C 1-1 100 - Para {tpLotacao} igual a [01], informar o nome do
+::incluiTag(6,"tpLotacao","x ")                           //48 E N 1-1 002 - Preencher com o código correspondente ao tipo de lotação,
+::incluiTag(6,"tpInscEstab","x ")                         //49 E N 0-1 001 - Tipo de inscrição do estabelecimento ao qual está vinculada a
+::incluiTag(6,"nrInscEstab","x ")                         //50 E N 0-1 014 - Preencher com o número de Inscrição do Estabelecimento
 ::incluiTag(5,"/dadosLotacao")
-::incluiTag(6,"endereco")               //51 G - 0-1 - - Informação complementar contendo os dados do endereço da
+::incluiTag(6,"endereco")                                 //51 G - 0-1 - - Informação complementar contendo os dados do endereço da
 ::incluiTag(7,"enderecotpLogradouro","x ")                //52 E C 1-1 010 - Tipo de Logradouro
-::incluiTag(7,"enderecodescLogradouro","x ")               //53 E C 1-1 080 - Descrição do logradouro
-::incluiTag(7,"endereconrLogradouro","x ")                 //54 E C 0-1 010 - Número do logradouro.
+::incluiTag(7,"enderecodescLogradouro","x ")              //53 E C 1-1 080 - Descrição do logradouro
+::incluiTag(7,"endereconrLogradouro","x ")                //54 E C 0-1 010 - Número do logradouro.
 ::incluiTag(7,"enderecocomplemento","x ")                 //55 E C 0-1 030 - Complemento do logradouro.
-::incluiTag(7,"enderecobairro","x ")                       //56 E C 0-1 030 - Nome do bairro/distrito
-::incluiTag(7,"enderecocep","x ")                          //57 E N 1-1 008 - Código de Endereçamento Postal
-::incluiTag(7,"enderecocodMunicipio","x ")                 //58 E N 1-1 007 - Preencher com o código do município, conforme tabela do
-::incluiTag(7,"enderecouf","x ")                           //59 E C 1-1 002 - Preencher com a sigla da Unidade da Federação
+::incluiTag(7,"enderecobairro","x ")                      //56 E C 0-1 030 - Nome do bairro/distrito
+::incluiTag(7,"enderecocep","x ")                         //57 E N 1-1 008 - Código de Endereçamento Postal
+::incluiTag(7,"enderecocodMunicipio","x ")                //58 E N 1-1 007 - Preencher com o código do município, conforme tabela do
+::incluiTag(7,"enderecouf","x ")                          //59 E C 1-1 002 - Preencher com a sigla da Unidade da Federação
 ::incluiTag(6,"/endereco")
-::incluiTag(6,"fpasLotacao")          //60 G - 0-1 - - Registro preenchido exclusivamente para lotação com tipo de
+::incluiTag(6,"fpasLotacao")                              //60 G - 0-1 - - Registro preenchido exclusivamente para lotação com tipo de
 ::incluiTag(7,"fpasLotacaofpas","x ")                     //61 E N 1-1 003 - Preencher com o código relativo ao FPAS.
-::incluiTag(7,"fpasLotacaocodTerceiros","x ")              //62 E N 1-1 004 - Preencher com o código de terceiros, conforme tabela 4.
+::incluiTag(7,"fpasLotacaocodTerceiros","x ")             //62 E N 1-1 004 - Preencher com o código de terceiros, conforme tabela 4.
 ::incluiTag(6,"/fpasLotacao")
-::incluiTag(6,"infoEmprParcial")         //63 G - 0-1 - - Informação complementar que apresenta identificação do
+::incluiTag(6,"infoEmprParcial")                          //63 G - 0-1 - - Informação complementar que apresenta identificação do
 ::incluiTag(7,"infoEmprParcialtpInscContratante","x ")    //64 E N 1-1 001 - Tipo de Inscrição do contratante
 ::incluiTag(7,"infoEmprParcialnrInscContratante","x ")    //65 E C 1-1 014 - Número de Inscrição (CNPJ/CPF) do Contrante
 ::incluiTag(7,"infoEmprParcialtpInscProprietario","x ")   //66 E N 1-1 001 - Tipo de Inscrição do proprietário do CNO
 ::incluiTag(7,"infoEmprParcialnrInscProprietario","x ")   //67 E C 1-1 014 - Preencher com o número de inscrição (CNPJ/CPF) do
 ::incluiTag(6,"/infoEmprParcial")
-::incluiTag(5,"novaValidade")                    //68 G - 0-1 - - Informação preenchida exclusivamente em caso de alteração do
+::incluiTag(5,"novaValidade")                  //68 G - 0-1 - - Informação preenchida exclusivamente em caso de alteração do
 ::incluiTag(6,"novaValidadedtIniValidade","x") //69 E D 1-1 010 - Preencher com a data de início da validade das informações
 ::incluiTag(6,"novaValidadedtFimValidade","x") //70 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/novaValidade")
 ::incluiTag(4,"/alteracao")
-::incluiTag(4,"exclusao")                  //71 G - 0-1 - - Exclusão de informações
-::incluiTag(5,"ideLotacao")                //72 G - 1-1 - - Grupo de informações que identifica a lotação que será
-::incluiTag(6,"ideLotacao","ideLotacao ")  //73 E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
-::incluiTag(6,"ideLotacao","ideLotacao ")  //74 E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"ideLotacao","ideLotacao ")  //75 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(4,"exclusao")                      //71 G - 0-1 - - Exclusão de informações
+::incluiTag(5,"ideLotacao")                    //72 G - 1-1 - - Grupo de informações que identifica a lotação que será
+::incluiTag(6,"ideLotacao","ideLotacao ")      //73 E C 1-1 030 - Informar o código atribuído pela empresa para a lotação
+::incluiTag(6,"ideLotacao","ideLotacao ")      //74 E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"ideLotacao","ideLotacao ")      //75 E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideLotacao")
 ::incluiTag(4,"/exclusao") 
 ::incluiTag(3,"/infoLotacao")
@@ -617,37 +702,40 @@ METHOD S1030() CLASS eSocial
 ::incluiTag(4,"nrInscricao",::cNpjEmp  )              //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
 ::incluiTag(3,"/ideEmpregador")
 ::incluiTag(3,"infoCargo")                            //CG - 1-1 - - Identificação da operação (inclusão, alteração ou exclusão) e
+
 ::incluiTag(4,"inclusao")                             //G - 0-1 - - Inclusão de novas informações
 ::incluiTag(5,"ideCargo")                             //G - 1-1 - - Informações de identificação do cargo e validade das
 ::incluiTag(6,"codCargo","ideCargo")                  //E C 1-1 030 - Preencher com o código do cargo
-::incluiTag(6,"dtIniValidade","ideCargo")             //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","ideCargo")             //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(6,"dtIniValidade",FormatData(::dtIniValidade ))             //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade ))             //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideCargo") 
 ::incluiTag(5,"dadosCargo")                           //G - 1-1 - - Detalhamento das informações do cargo que está sendo incluído
 ::incluiTag(6,"descCargo","dadosCargo")               //E C 1-1 100 - Preencher com descrição do cargo
 ::incluiTag(6,"codCBO","dadosCargo")                  //E N 1-1 006 - Código Brasileiro de Ocupação
 ::incluiTag(5,"/dadosCargo")
 ::incluiTag(4,"/inclusao")
+
 ::incluiTag(4,"alteracao")                           //G - 0-1 - - Alteração de informações já existentes
 ::incluiTag(5,"ideCargo")                            //G - 1-1 - - Grupo de informações de identificação do cargo, apresentando
 ::incluiTag(6,"codCargo"," ")                        //E C 1-1 030 - Preencher com o código do cargo
-::incluiTag(6,"dtIniValidade","ideCargo")            //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","ideCargo")            //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(6,"dtIniValidade",FormatData(::dtIniValidade ))            //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade ))            //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"dadosCargo")                          //G - 1-1 - - Informações do cargo
 ::incluiTag(6,"descCargo","dadosCargo")              //E C 1-1 100 - Preencher com descrição do cargo
 ::incluiTag(6,"codCBO","dadosCargo")                 //E N 1-1 006 - Código Brasileiro de Ocupação
 ::incluiTag(5,"/dadosCargo")
 ::incluiTag(5,"/ideCargo")
 ::incluiTag(5,"novaValidade")                      //G - 0-1 - - Informação preenchida exclusivamente em caso de alteração do
-::incluiTag(6,"dtIniValidade","novaValidade")      //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","novaValidade")      //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(6,"dtIniValidade",FormatData(::dtIniValidade ))      //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade ))      //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/novaValidade")
 ::incluiTag(4,"/alteracao")
+
 ::incluiTag(4,"exclusao")                            //G - 0-1 - - Exclusão de informações
 ::incluiTag(5,"ideCargo")                            //G - 1-1 - - Identificação do registro que será excluído
 ::incluiTag(6,"codCargo","ideCargo")               //E C 1-1 030 - Preencher com o código do cargo
-::incluiTag(6,"dtIniValidade","ideCargo")          //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(6,"dtFimValidade","ideCargo")          //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(6,"dtIniValidade",FormatData(::dtIniValidade ))          //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(6,"dtFimValidade",FormatData(::dtFimValidade ))          //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideCargo")
 ::incluiTag(4,"/exclusao")
 ::incluiTag(3,"/infoCargo")
@@ -684,8 +772,8 @@ METHOD S1040() CLASS eSocial
 ::incluiTag(4,"inclusao")
 ::incluiTag(5,"ideFuncao")
 ::incluiTag(5,"codFuncao","ideFuncao")    //E C 0-1 030 - Preencher com o código da função, se utilizado pela empresa
-::incluiTag(5,"dtIniValidade","ideFuncao")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideFuncao")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 
 ::incluiTag(5,"/ideFuncao")
 ::incluiTag(5,"dadosFuncao")
@@ -695,8 +783,8 @@ METHOD S1040() CLASS eSocial
 ::incluiTag(4,"alteracao")
 ::incluiTag(5,"ideFuncao")
 ::incluiTag(5,"codFuncao","ideFuncao")    //E C 0-1 030 - Preencher com o código da função, se utilizado pela empresa
-::incluiTag(5,"dtIniValidade","ideFuncao")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideFuncao")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 
 
 ::incluiTag(5,"/ideFuncao")
@@ -705,15 +793,15 @@ METHOD S1040() CLASS eSocial
 
 ::incluiTag(5,"/dadosFuncao")
 ::incluiTag(5,"novaValidade")
-::incluiTag(5,"dtIniValidade","novaValidade")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","novaValidade")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/novaValidade")
 ::incluiTag(4,"/alteracao")
 ::incluiTag(4,"exclusao")
 ::incluiTag(5,"ideFuncao")
 ::incluiTag(5,"codFuncao","ideFuncao")    //E C 0-1 030 - Preencher com o código da função, se utilizado pela empresa
-::incluiTag(5,"dtIniValidade","ideFuncao")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideFuncao")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 
 ::incluiTag(5,"/ideFuncao")
 ::incluiTag(4,"/exclusao")
@@ -750,8 +838,8 @@ METHOD S1050() CLASS eSocial
 ::incluiTag(4,"inclusao")
 ::incluiTag(5,"ideJornada")
 ::incluiTag(5,"codJornada","ideJornada")   //E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
-::incluiTag(5,"dtIniValidade","ideJornada")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideJornada")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideJornada")
 ::incluiTag(5,"dadosJornada")
 ::incluiTag(5,"horaEntrada","dadosJornada") //E N 1-1 004 - informar hora da entrada, no formato HHMM
@@ -769,8 +857,8 @@ METHOD S1050() CLASS eSocial
 ::incluiTag(4,"alteracao")
 ::incluiTag(5,"ideJornada")
 ::incluiTag(5,"codJornada","ideJornada")   //E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
-::incluiTag(5,"dtIniValidade","ideJornada")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideJornada")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 
 ::incluiTag(5,"/ideJornada")
 ::incluiTag(5,"dadosJornada")
@@ -786,16 +874,16 @@ METHOD S1050() CLASS eSocial
 ::incluiTag(6,"/horarioIntervalo")
 ::incluiTag(5,"/dadosJornada")   
 ::incluiTag(5,"novaValidade")
-::incluiTag(5,"dtIniValidade","novaValidade")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","novaValidade")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 
 ::incluiTag(5,"/novaValidade")
 ::incluiTag(4,"/alteracao")
 ::incluiTag(4,"exclusao")
 ::incluiTag(5,"ideJornada")
 ::incluiTag(5,"codJornada","ideJornada")   //E C 1-1 030 - Preencher com o código atribuído pelo empresa para a jornada
-::incluiTag(5,"dtIniValidade","ideJornada")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideJornada")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideJornada")
 ::incluiTag(4,"/exclusao")
 ::incluiTag(3,"/infoJornada")
@@ -831,16 +919,16 @@ METHOD S1060() CLASS eSocial
 ::incluiTag(5,"ideEstab")
 ::incluiTag(5,"tpInscricao","ideEstab")     //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(5,"nrInscricao","ideEstab")     //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
-::incluiTag(5,"dtIniValidade","ideEstab")   //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideEstab")   //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ) )   //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ) )   //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideEstab")
 ::incluiTag(5,"dadosEstab")
 ::incluiTag(5,"fpas","dadosEstab")            //E N 1-1 003 - Preencher com o código relativo ao FPAS.
 ::incluiTag(5,"codTerceiros","dadosEstab")    //E N 1-1 004 - Preencher com o código de terceiros, conforme tabela 4.
 ::incluiTag(6,"cnaeEstab")
-::incluiTag(6,"cnaePreponderante","cnaeEstab")//E N 1-1 007 - Preencher com o código do CNAE 2.0 conforme tabela
-::incluiTag(6,"aliqRat","cnaeEstab")          //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
-::incluiTag(6,"aliqRatAjustada","cnaeEstab")  //E N 1-1 006 4 Alíquota após ajuste pelo FAP
+::incluiTag(6,"cnaePreponderante",::cnaePreponderante )//E N 1-1 007 - Preencher com o código do CNAE 2.0 conforme tabela
+::incluiTag(6,"aliqRat",::aliqRat )          //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
+::incluiTag(6,"aliqRatAjustada",::aliqRatAjustada )  //E N 1-1 006 4 Alíquota após ajuste pelo FAP
 ::incluiTag(6,"/cnaeEstab")
 ::incluiTag(5,"/dadosEstab")
 ::incluiTag(4,"/inclusao")
@@ -848,29 +936,29 @@ METHOD S1060() CLASS eSocial
 ::incluiTag(5,"ideEstab")
 ::incluiTag(5,"tpInscricao",::tpInscricao)     //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(5,"nrInscricao",::cNpjEmp )     //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
-::incluiTag(5,"dtIniValidade","ideEstab")   //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideEstab")   //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))   //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))   //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideEstab")
 ::incluiTag(5,"dadosEstab")
 ::incluiTag(5,"fpas","dadosEstab")            //E N 1-1 003 - Preencher com o código relativo ao FPAS.
 ::incluiTag(5,"codTerceiros","dadosEstab")    //E N 1-1 004 - Preencher com o código de terceiros, conforme tabela 4.
 ::incluiTag(6,"cnaeEstab")
-::incluiTag(6,"cnaePreponderante","cnaeEstab")//E N 1-1 007 - Preencher com o código do CNAE 2.0 conforme tabela
-::incluiTag(6,"aliqRat","cnaeEstab")          //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
-::incluiTag(6,"aliqRatAjustada","cnaeEstab")  //E N 1-1 006 4 Alíquota após ajuste pelo FAP
+::incluiTag(6,"cnaePreponderante",::cnaePreponderante )//E N 1-1 007 - Preencher com o código do CNAE 2.0 conforme tabela
+::incluiTag(6,"aliqRat",::aliqRat )          //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
+::incluiTag(6,"aliqRatAjustada",::aliqRatAjustada )  //E N 1-1 006 4 Alíquota após ajuste pelo FAP
 ::incluiTag(6,"/cnaeEstab")
 ::incluiTag(5,"/dadosEstab")
 ::incluiTag(5,"novaValidade")
-::incluiTag(5,"dtIniValidade","novaValidade") //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","novaValidade") //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade )) //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade )) //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/novaValidade")
 ::incluiTag(4,"/alteracao")
 ::incluiTag(4,"exclusao")
 ::incluiTag(5,"ideEstab")
 ::incluiTag(5,"tpInscricao",::tpInscricao)    //E N 1-1 001 - Preencher com o código correspondente ao tipo de inscrição,
 ::incluiTag(5,"nrInscricao",::cNpjEmp )    //E C 1-1 014 - Indicar o número de inscrição do contribuinte, conforme
-::incluiTag(5,"dtIniValidade","ideEstab")  //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideEstab")  //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))  //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))  //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideEstab")
 ::incluiTag(4,"/exclusao")
 ::incluiTag(3,"/infoEstab")
@@ -904,10 +992,10 @@ METHOD S1070() CLASS eSocial
 ::incluiTag(3,"infoProcesso")
 ::incluiTag(4,"inclusao")
 ::incluiTag(5,"ideProcesso")
-::incluiTag(5,"tpProcesso","ideProcesso")   //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(5,"nrProcesso","ideProcesso")   //E C 1-1 020 - Informar o número do processo administrativo/judicial.
-::incluiTag(5,"dtIniValidade","ideProcesso")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideProcesso")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"tpProcesso",::tpProcesso )   //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(5,"nrProcesso",::nrProcesso )   //E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideProcesso")
 ::incluiTag(5,"dadosProcesso")
 ::incluiTag(5,"indDecisao","dadosProcesso")  //E N 1-1 001 - Indicativo de Decisão:
@@ -923,10 +1011,10 @@ METHOD S1070() CLASS eSocial
 ::incluiTag(4,"/inclusao")
 ::incluiTag(4,"alteracao")
 ::incluiTag(5,"ideProcesso")
-::incluiTag(5,"tpProcesso","ideProcesso")   //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(5,"nrProcesso","ideProcesso")   //E C 1-1 020 - Informar o número do processo administrativo/judicial.
-::incluiTag(5,"dtIniValidade","ideProcesso")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideProcesso")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"tpProcesso",::tpProcesso )   //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(5,"nrProcesso",::nrProcesso )   //E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideProcesso")
 ::incluiTag(5,"dadosProcesso")
 ::incluiTag(5,"indDecisao","dadosProcesso") //E N 1-1 001 - Indicativo de Decisão:
@@ -945,10 +1033,10 @@ METHOD S1070() CLASS eSocial
 ::incluiTag(4,"/alteracao")
 ::incluiTag(4,"exclusao")
 ::incluiTag(5,"ideProcesso")
-::incluiTag(5,"tpProcesso","ideProcesso")    //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
-::incluiTag(5,"nrProcesso","ideProcesso")    //E C 1-1 020 - Informar o número do processo administrativo/judicial.
-::incluiTag(5,"dtIniValidade","ideProcesso") //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideProcesso") //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"tpProcesso",::tpProcesso )    //E C 1-1 001 - Preencher com o código correspondente ao tipo de processo:
+::incluiTag(5,"nrProcesso",::nrProcesso )    //E C 1-1 020 - Informar o número do processo administrativo/judicial.
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade) ) //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade) ) //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 ::incluiTag(5,"/ideProcesso")
 ::incluiTag(4,"/exclusao")
 ::incluiTag(3,"/infoProcesso")
@@ -988,41 +1076,41 @@ METHOD S1080() CLASS eSocial
 ::incluiTag(4,"inclusao")
 ::incluiTag(5,"ideOperPortuario")
 ::incluiTag(5,"cnpjOpPortuario","ideOperPortuario")//E N 1-1 014 - Preencher com o CNPJ do operador portuário
-::incluiTag(5,"dtIniValidade","ideOperPortuario")  //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideOperPortuario")  //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))  //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))  //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 
 ::incluiTag(5,"/ideOperPortuario")
 ::incluiTag(5,"dadosOperPortuario")
-::incluiTag(5,"aliqRat","dadosOperPortuario")        //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
-::incluiTag(5,"fap","dadosOperPortuario")            //E N 1-1 006 4 Fator Acidentário de Prevenção
-::incluiTag(5,"aliqRatAjustada","dadosOperPortuario")//E N 1-1 006 4 Alíquota após ajuste pelo FAP
+::incluiTag(5,"aliqRat",::aliqRat )        //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
+::incluiTag(5,"fap",::fap )            //E N 1-1 006 4 Fator Acidentário de Prevenção
+::incluiTag(5,"aliqRatAjustada",::aliqRatAjustada )//E N 1-1 006 4 Alíquota após ajuste pelo FAP
 
 ::incluiTag(5,"/dadosOperPortuario")
 ::incluiTag(4,"/inclusao")
 ::incluiTag(4,"alteracao")
 ::incluiTag(5,"ideOperPortuario")
 ::incluiTag(5,"cnpjOpPortuario","ideOperPortuario")//E N 1-1 014 - Preencher com o CNPJ do operador portuário
-::incluiTag(5,"dtIniValidade","ideOperPortuario")  //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideOperPortuario")  //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))  //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))  //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 
 ::incluiTag(5,"/ideOperPortuario")
 ::incluiTag(5,"dadosOperPortuario")
-::incluiTag(5,"aliqRat","dadosOperPortuario")        //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
-::incluiTag(5,"fap","dadosOperPortuario")            //E N 1-1 006 4 Fator Acidentário de Prevenção
-::incluiTag(5,"aliqRatAjustada","dadosOperPortuario")//E N 1-1 006 4 Alíquota após ajuste pelo FAP
+::incluiTag(5,"aliqRat",::aliqRat )        //E N 1-1 001 - Preencher com a alíquota definida no Decreto 3.048/99 para a
+::incluiTag(5,"fap",::fap )            //E N 1-1 006 4 Fator Acidentário de Prevenção
+::incluiTag(5,"aliqRatAjustada",::aliqRatAjustada )//E N 1-1 006 4 Alíquota após ajuste pelo FAP
 
 ::incluiTag(5,"/dadosOperPortuario")
 ::incluiTag(5,"novaValidade")
-::incluiTag(5,"dtIniValidade","novaValidade")//E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","novaValidade")//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))//E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))//E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 
 ::incluiTag(5,"/novaValidade")
 ::incluiTag(4,"/alteracao")
 ::incluiTag(4,"exclusao")
 ::incluiTag(5,"ideOperPortuario")
 ::incluiTag(5,"cnpjOpPortuario","ideOperPortuario")//E N 1-1 014 - Preencher com o CNPJ do operador portuário
-::incluiTag(5,"dtIniValidade","ideOperPortuario")  //E D 1-1 010 - Preencher com a data de início da validade das informações
-::incluiTag(5,"dtFimValidade","ideOperPortuario")  //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
+::incluiTag(5,"dtIniValidade",FormatData(::dtIniValidade ))  //E D 1-1 010 - Preencher com a data de início da validade das informações
+::incluiTag(5,"dtFimValidade",FormatData(::dtFimValidade ))  //E D 0-1 010 - Preencher com a data de fim da validade das informações, se
 
 ::incluiTag(5,"/ideOperPortuario")
 ::incluiTag(4,"/exclusao")
@@ -1067,8 +1155,8 @@ METHOD S1100() CLASS eSocial
 ::incluiTag(3,"nomeResponsavel","ideRespInformacao")//E C 1-1 080 - Nome do responsável pelas informações
 ::incluiTag(3,"cpfResponsavel","ideRespInformacao") //E N 1-1 011 - Preencher com o CPF do responsável
 ::incluiTag(3,"telefone","ideRespInformacao")      //E C 1-1 012 - Informar o número do telefone, com DDD.
-::incluiTag(3,"fax","ideRespInformacao")           //E C 0-1 011 - Número do Fax, com DDD
-::incluiTag(3,"email","ideRespInformacao")         //E C 0-1 060 - Endereço eletrônico
+::incluiTag(3,"fax",::fax )           //E C 0-1 011 - Número do Fax, com DDD
+::incluiTag(3,"email",::email )         //E C 0-1 060 - Endereço eletrônico
 
 ::incluiTag(3,"/ideRespInformacao")
 ::incluiTag(3,"infoSubstPatronal")
@@ -2023,10 +2111,10 @@ METHOD S2100() CLASS eSocial
 
 ::incluiTag(4,"/trabEstrangeiro")
 ::incluiTag(4,"infBancarias")
-::incluiTag(4,"banco"," infBancarias")           // E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
-::incluiTag(4,"agencia"," infBancarias")         // E C 0-1 015 - Preencher com o código da agência, no caso de depósito
-::incluiTag(4,"tpContaBancaria"," infBancarias") // E N 1-1 001 - Tipo de Conta:
-::incluiTag(4,"nrContaBancaria"," infBancarias") // E C 1-1 020 - Número da Conta Bancária
+::incluiTag(4,"banco",::banco )           // E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+::incluiTag(4,"agencia",::agencia )         // E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+::incluiTag(4,"tpContaBancaria",::tpContaBancaria ) // E N 1-1 001 - Tipo de Conta:
+::incluiTag(4,"nrContaBancaria",::nrContaBancaria ) // E C 1-1 020 - Número da Conta Bancária
 
 ::incluiTag(4,"/infBancarias")
 ::incluiTag(4,"infoDeficiencia")
@@ -2294,10 +2382,10 @@ METHOD S2200() CLASS eSocial
 
 ::incluiTag(4,"/trabEstrangeiro")
 ::incluiTag(4,"infBancarias")
-::incluiTag(4,"banco"," infBancarias")// E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
-::incluiTag(4,"agencia"," infBancarias")// E C 0-1 015 - Preencher com o código da agência, no caso de depósito
-::incluiTag(4,"tpContaBancaria"," infBancarias")// E N 1-1 001 - Tipo de Conta:
-::incluiTag(4,"nrContaBancaria"," infBancarias")// E C 1-1 020 - Número da Conta Bancária
+::incluiTag(4,"banco",::banco )// E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+::incluiTag(4,"agencia",::agencia )// E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+::incluiTag(4,"tpContaBancaria",::tpContaBancaria )// E N 1-1 001 - Tipo de Conta:
+::incluiTag(4,"nrContaBancaria",::nrContaBancaria )// E C 1-1 020 - Número da Conta Bancária
 
 ::incluiTag(4,"/infBancarias")
 ::incluiTag(4,"infoDeficiencia")
@@ -2570,10 +2658,10 @@ METHOD S2220() CLASS eSocial
 
 ::incluiTag(5,"/trabEstrangeiro")
 ::incluiTag(5,"infBancarias")
-::incluiTag(5,"banco"," infBancarias") // E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
-::incluiTag(5,"agencia"," infBancarias") // E C 0-1 015 - Preencher com o código da agência, no caso de depósito
-::incluiTag(5,"tpContaBancaria"," infBancarias") // E N 1-1 001 - Tipo de Conta:
-::incluiTag(5,"nrContaBancaria"," infBancarias") // E C 1-1 020 - Número da Conta Bancária
+::incluiTag(5,"banco",::banco ) // E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+::incluiTag(5,"agencia",::agencia ) // E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+::incluiTag(5,"tpContaBancaria",::tpContaBancaria ) // E N 1-1 001 - Tipo de Conta:
+::incluiTag(5,"nrContaBancaria",::nrContaBancaria ) // E C 1-1 020 - Número da Conta Bancária
 
 ::incluiTag(5,"/infBancarias")
 ::incluiTag(5,"infoDeficiencia")
@@ -3549,18 +3637,21 @@ METHOD S2600() CLASS eSocial
 ::incluiTag(4,"residenciaPropria"," infoCasaPropria") // E C 1-1 001 - indicar se a residência pertence ao trabalhador
 ::incluiTag(4,"recursoFGTS"," infoCasaPropria") // E C 0-1 001 - Indicar se foi adquirido o imóvel próprio foi adquirido com
 ::incluiTag(4,"/infoCasaPropria")
+
 ::incluiTag(4,"trabEstrangeiro")   // trabalhador 4 Informações do Trabalhador Estrangeiro 0-1 - OC
 ::incluiTag(4,"dtChegada"," trabEstrangeiro") // E D 1-1 010 - Data de chegada do trabalhador ao Brasil, em caso de
 ::incluiTag(4,"dtNaturalizacao"," trabEstrangeiro") // E D 0-1 010 - Data de naturalização brasileira em caso de estrangeiro
 ::incluiTag(4,"casadoBr"," trabEstrangeiro") // E C 1-1 001 - Condição de casado com brasileiro(s) em caso de trabalhador
 ::incluiTag(4,"filhosBr"," trabEstrangeiro") // E C 1-1 001 - Se o trabalhador estrangeiro tem filhos com brasileiro,
 ::incluiTag(4,"/trabEstrangeiro")
+
 ::incluiTag(4,"infBancarias")      // trabalhador 4 Informações Bancárias do Trabalhador 0-1 - OC
-::incluiTag(4,"banco"," infBancarias") // E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
-::incluiTag(4,"agencia"," infBancarias ") //E C 0-1 015 - Preencher com o código da agência, no caso de depósito
-::incluiTag(4,"tpContaBancaria"," infBancarias") // E N 1-1 001 - Tipo de Conta:
-::incluiTag(4,"nrContaBancaria"," infBancarias") // E C 1-1 020 - Número da Conta Bancária
+::incluiTag(4,"banco",::banco ) // E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+::incluiTag(4,"agencia",::agencia ) //E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+::incluiTag(4,"tpContaBancaria",::tpContaBancaria ) // E N 1-1 001 - Tipo de Conta:
+::incluiTag(4,"nrContaBancaria",::nrContaBancaria ) // E C 1-1 020 - Número da Conta Bancária
 ::incluiTag(4,"/infBancarias")
+
 ::incluiTag(4,"infoDeficiencia")   // trabalhador 4 Pessoa com Deficiência 0-1 - OC
 ::incluiTag(4,"defMotora"," infoDeficiencia ")  //E C 1-1 001 - Indicar se o trabalhador possui deficiência motora.
 ::incluiTag(4,"defVisual"," infoDeficiencia ")  //E C 1-1 001 - Indicar se o trabalhador possui deficiência visual
@@ -3635,7 +3726,7 @@ METHOD S2600() CLASS eSocial
 ::incluiTag(4,"dtPrevistaTermino"," estagiario") // E D 1-1 010 - Data prevista para o término do estágio
 ::incluiTag(5,"instEnsino")        // estagiario 5 Instituição de Ensino 1-1 - O
 ::incluiTag(5,"cnpjInstEnsino"," instEnsino") // E N 1-1 014 - Preencher com o cnpj da instituição de ensino.
-::incluiTag(5,"nomeRazao"," instEnsino") // E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+::incluiTag(5,"nomeRazao",::nomeRazao ) // E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
 ::incluiTag(5,"descLogradouro"," instEnsino") // E C 1-1 080 - Descrição do logradouro
 ::incluiTag(5,"nrLogradouro"," instEnsino") // E C 0-1 010 - Número do logradouro.
 ::incluiTag(5,"bairro"," instEnsino") // E C 0-1 030 - Nome do bairro/distrito
@@ -3645,7 +3736,7 @@ METHOD S2600() CLASS eSocial
 ::incluiTag(5,"/instEnsino")
 ::incluiTag(5,"ageIntegracao")     // estagiario 5 Agente de Integração 1-1 - O
 ::incluiTag(5,"cnpjAgenteIntegracao"," ageIntegracao") // E N 1-1 014 - CNPJ do agente de integração
-::incluiTag(5,"nomeRazao"," ageIntegracao") // E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+::incluiTag(5,"nomeRazao",::nomeRazao ) // E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
 ::incluiTag(5,"descLogradouro"," ageIntegracao") // E C 1-1 080 - Descrição do logradouro
 ::incluiTag(5,"nrLogradouro","ageIntegracao") // E C 0-1 010 - Número do logradouro.
 ::incluiTag(5,"bairro"," ageIntegracao") // E C 0-1 030 - Nome do bairro/distrito
@@ -3711,7 +3802,7 @@ METHOD S2620() CLASS eSocial
 ::incluiTag(4,"dtPrevistaTermino"," estagiario") // E D 1-1 010 - Data prevista para o término do estágio
 ::incluiTag(5,"instEnsino")          // estagiario 5 Instituição de Ensino 1-1 - O
 ::incluiTag(5,"cnpjInstEnsino"," instEnsino") // E N 1-1 014 - Preencher com o cnpj da instituição de ensino.
-::incluiTag(5,"nomeRazao"," instEnsino") // E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+::incluiTag(5,"nomeRazao",::nomeRazao ) // E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
 ::incluiTag(5,"descLogradouro"," instEnsino") // E C 1-1 080 - Descrição do logradouro
 ::incluiTag(5,"nrLogradouro"," instEnsino") // E C 0-1 010 - Número do logradouro.
 ::incluiTag(5,"bairro"," instEnsino") // E C 0-1 030 - Nome do bairro/distrito
@@ -3721,7 +3812,7 @@ METHOD S2620() CLASS eSocial
 ::incluiTag(5,"/instEnsino")
 ::incluiTag(5,"ageIntegracao")       // estagiario 5 Agente de Integração 1-1 - O
 ::incluiTag(5,"cnpjAgenteIntegracao"," ageIntegracao") // E N 1-1 014 - CNPJ do agente de integração
-::incluiTag(5,"nomeRazao"," ageIntegracao") // E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
+::incluiTag(5,"nomeRazao",::nomeRazao ) // E C 1-1 080 - Informar o nome do contribuinte, no caso de pessoa física, ou a
 ::incluiTag(5,"descLogradouro"," ageIntegracao") // E C 1-1 080 - Descrição do logradouro
 ::incluiTag(5,"nrLogradouro"," ageIntegracao") // E C 0-1 010 - Número do logradouro.
 ::incluiTag(5,"bairro"," ageIntegracao") // E C 0-1 030 - Nome do bairro/distrito
@@ -4100,6 +4191,9 @@ RETURN ::nHandle
 
 
 
+
+
+
 METHOD incluiTag(nTipo,cTag,cValor) CLASS eSocial
 
    IF nTipo = Nil
@@ -4185,6 +4279,13 @@ METHOD incluiTag(nTipo,cTag,cValor) CLASS eSocial
 
    
 RETURN Nil
+
+
+FUNCTION FormatData(dData)
+
+cResultado := SUBSTR(DTOS(dData),7,2)+"/"+SUBSTR(DTOS(dData),5,2)+"/"+SUBSTR(DTOS(dData),1,4)
+
+RETURN(cResultado)
 
 
 
