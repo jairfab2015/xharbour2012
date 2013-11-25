@@ -111,8 +111,8 @@ CLASS eSocial
    DATA tpAmb                INIT "1"   // 1-Producao 
    DATA procEmi              INIT "1"   // 1-emissão com aplicativo do empregador 
    DATA indSegmento          INIT "1"   // 1-Normal 
-   DATA verProc              INIT "Versao 001"
-   DATA versao               INIT "123"
+   DATA verProc              INIT "Versao 1.01"
+   DATA versao               INIT "1.0"
    DATA tpInscricao          INIT "1"
    DATA cNpjEmp              INIT "99999999999999"
                              
@@ -148,10 +148,10 @@ CLASS eSocial
    DATA fax                  INIT ""   //E C 0-1 011 - Número do Fax, com DDD
    DATA email                INIT ""   //E C 0-1 060 - Endereço eletrônico
 
-   DATA banco               INIT ""    //E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
-   DATA agencia             INIT ""    //E C 0-1 015 - Preencher com o código da agência, no caso de depósito
-   DATA tpContaBancaria     INIT "1"   //E N 1-1 001 - Tipo de Conta:
-   DATA nrContaBancaria     INIT ""    //E C 1-1 020 - Número da Conta Bancária
+   DATA banco                INIT ""    //E N 0-1 003 - Preencher com o código do banco, no caso de depósito bancário
+   DATA agencia              INIT ""    //E C 0-1 015 - Preencher com o código da agência, no caso de depósito
+   DATA tpContaBancaria      INIT "1"   //E N 1-1 001 - Tipo de Conta:
+   DATA nrContaBancaria      INIT ""    //E C 1-1 020 - Número da Conta Bancária
 
    DATA utilizaFinanciamento INIT "N"  //E C 1-1 001 - Utilização de recursos do FGTS em financiamentos:
    DATA debitoAutomatico     INIT "N"  //E C 1-1 001 - Débito automático do FGTS:
