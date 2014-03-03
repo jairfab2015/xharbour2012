@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37991,7450490972" ReportOptions.Description.Text="" ReportOptions.LastChange="37994,7837028009" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C80008446174617365747301010C2800000020446174615365743D22534552494149532220446174615365744E616D653D2253455249414953220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="9" RightMargin="9" TopMargin="4" BottomMargin="4" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="" Height="40" Left="-34" Top="5" Width="758">
+      <TfrxMemoView Name="" Align="baWidth" Left="0" Top="8" Width="690" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="15" Text=""/>
+      <TfrxMemoView Name="" Align="baCenter" Left="270" Top="9" Width="150" Height="18" AutoWidth="True" Color="12111048" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="LISTAGEM DE SERIAIS"/>
+    </TfrxReportTitle>
+    <TfrxPageFooter Name="" Height="20" Left="-34" Top="297" Width="758">
+      <TfrxMemoView Name="" Align="baWidth" Left="0" Top="0" Width="690" Height="20" Color="12111048" Frame.Typ="8" Text=""/>
+      <TfrxMemoView Name="" Align="baLeft" Left="0" Top="0" Width="222" Height="20" AutoWidth="True" Color="12111048" Text="Página: [PAGE#] de [TOTALPAGES]"/>
+      <TfrxMemoView Name="" Align="baRight" Left="600" Top="0" Width="90" Height="20" AutoWidth="True" Color="12111048" Text="[DATE] [TIME]"/>
+      <TfrxMemoView Name="" Align="baCenter" Left="189" Top="0" Width="312" Height="20" AutoWidth="True" Color="12111048" Text="SIGHA - Sistema Integrado de Gestão Administrativa"/>
+    </TfrxPageFooter>
+    <TfrxGroupHeader Name="GroupHeader1" Height="20" Left="-34" Top="139" Width="758" Condition="[DialogForm.SERIAIS.&#34;CODIGOPRODUTO&#34;]">
+      <TfrxMemoView Name="" Left="1" Top="2" Width="620" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[SERIAIS.&#34;CODIGOPRODUTO&#34;] - [SERIAIS.&#34;NOME&#34;]"/>
+    </TfrxGroupHeader>
+    <TfrxMasterData Name="MasterData1" Height="19" Left="-34" Top="193" Width="758" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="SERIAIS" DataSetName="SERIAIS" RowCount="0">
+      <TfrxMemoView Name="Memo7" Left="18" Top="2" Width="124" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[SERIAIS.&#34;CODIGOSERIE&#34;]"/>
+      <TfrxMemoView Name="Memo8" Left="142" Top="2" Width="80" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SERIAIS.&#34;QUANTIDADE&#34;]"/>
+      <TfrxMemoView Name="Memo9" Left="222" Top="2" Width="72" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SERIAIS.&#34;SALDO&#34;]"/>
+      <TfrxMemoView Name="Memo10" Left="294" Top="2" Width="128" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[SERIAIS.&#34;COR&#34;]"/>
+      <TfrxMemoView Name="Memo11" Left="422" Top="2" Width="44" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SERIAIS.&#34;ANO&#34;]"/>
+      <TfrxMemoView Name="Memo12" Left="466" Top="2" Width="224" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[SERIAIS.&#34;MODELO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageHeader Name="PageHeader1" Height="40" Left="-34" Top="71" Width="758">
+      <TfrxMemoView Name="" Left="17" Top="21" Width="124" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Nº Série"/>
+      <TfrxMemoView Name="Memo1" Left="141" Top="21" Width="80" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Qtde. entrada"/>
+      <TfrxMemoView Name="Memo2" Left="221" Top="21" Width="68" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Qtde. saldo"/>
+      <TfrxMemoView Name="Memo3" Left="289" Top="21" Width="128" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Cor"/>
+      <TfrxMemoView Name="Memo4" Left="417" Top="21" Width="44" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Ano"/>
+      <TfrxMemoView Name="Memo5" Left="461" Top="21" Width="228" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Modelo"/>
+      <TfrxMemoView Name="Memo6" Left="1" Top="0" Width="220" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Produto - Descrição"/>
+    </TfrxPageHeader>
+    <TfrxGroupFooter Name="GroupFooter1" Height="20" Left="-34" Top="245" Width="758">
+      <TfrxMemoView Name="Memo13" Left="18" Top="2" Width="124" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="Total de seriais..:"/>
+      <TfrxMemoView Name="Memo14" Left="142" Top="2" Width="80" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM([DialogForm.SERIAIS.&#34;QUANTIDADE&#34;])]"/>
+      <TfrxMemoView Name="Memo15" Left="222" Top="2" Width="72" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM([DialogForm.SERIAIS.&#34;SALDO&#34;])]"/>
+    </TfrxGroupFooter>
+  </TfrxReportPage>
+  <TfrxDialogPage Name="Page1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" BorderStyle="bsDialog" Caption="Form" Color="-2147483633" Height="300" Left="221" Top="170" Width="380">
+    <TfrxIBXQuery Name="SERIAIS" UserName="SERIAIS" CloseDataSource="True" FieldAliases.Text="" SQL.Text="SELECT P.NOME, PC.*&#13;&#10;FROM PRODUTO P, PRODUTOCONTROLE PC&#13;&#10;WHERE P.CODIGO = PC.CODIGOPRODUTO AND PC.SALDO &#62; 0&#13;&#10;ORDER BY PC.CODIGOPRODUTO, PC.CODIGOSERIE" PropData="0A506172616D65746572730100"/>
+  </TfrxDialogPage>
+</TfrxReport>

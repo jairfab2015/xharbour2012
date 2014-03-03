@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="NOTA on LPT1:" ReportOptions.CreateDate="38092,7213064815" ReportOptions.Description.Text="" ReportOptions.LastChange="38119,5953623843" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C80008446174617365747301010C2A00000020446174615365743D227172507265636F732220446174615365744E616D653D227172507265636F73220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="" PaperWidth="215,9" PaperHeight="279,4" PaperSize="1" LeftMargin="9" RightMargin="9" TopMargin="4" BottomMargin="4" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="" Height="40" Left="-34" Top="5" Width="779">
+      <TfrxMemoView Name="" Align="baWidth" Left="0" Top="0" Width="710" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="15" Text=""/>
+      <TfrxMemoView Name="" Align="baCenter" Left="279" Top="1" Width="152" Height="18" AutoWidth="True" Color="12111048" Text="LISTAGEM DE PREÃ‡OS"/>
+    </TfrxReportTitle>
+    <TfrxHeader Name="" Height="18" Left="-34" Top="85" Width="779">
+      <TfrxMemoView Name="" Left="1" Top="0" Width="100" Height="16" Frame.Typ="8" Text="CODIGO"/>
+      <TfrxMemoView Name="" Left="101" Top="0" Width="168" Height="16" Frame.Typ="8" Text="Produto"/>
+      <TfrxMemoView Name="" Left="269" Top="0" Width="100" Height="16" Frame.Typ="8" Text="Data"/>
+      <TfrxMemoView Name="" Left="369" Top="0" Width="128" Height="16" Frame.Typ="8" Text="PreÃ§o"/>
+    </TfrxHeader>
+    <TfrxMasterData Name="" Height="18" Left="-34" Top="141" Width="779" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="qrPrecos" DataSetName="qrPrecos" RowCount="0">
+      <TfrxMemoView Name="" Left="1" Top="0" Width="100" Height="16" Text="[qrPrecos.&#34;CODIGO&#34;]"/>
+      <TfrxMemoView Name="" Left="101" Top="0" Width="168" Height="16" Text="[qrPrecos.&#34;PRODUTO&#34;]"/>
+      <TfrxMemoView Name="" Left="269" Top="0" Width="100" Height="16" Text="[qrPrecos.&#34;DATA&#34;]"/>
+      <TfrxMemoView Name="" Left="369" Top="0" Width="124" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%g" DisplayFormat.Kind="fkNumeric" Text="[qrPrecos.&#34;PRECO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="" Height="20" Left="-34" Top="181" Width="779">
+      <TfrxMemoView Name="" Align="baWidth" Left="0" Top="0" Width="710" Height="20" Color="12111048" Frame.Typ="8" Text=""/>
+      <TfrxMemoView Name="" Align="baLeft" Left="0" Top="0" Width="222" Height="20" AutoWidth="True" Color="12111048" Text="PÃ¡gina: [PAGE#] de [TOTALPAGES]"/>
+      <TfrxMemoView Name="" Align="baRight" Left="621" Top="0" Width="90" Height="20" AutoWidth="True" Color="12111048" Text="[DATE] [TIME]"/>
+      <TfrxMemoView Name="" Align="baCenter" Left="199" Top="0" Width="312" Height="20" AutoWidth="True" Color="12111048" Text="SIGHA - Sistema Integrado de GestÃ£o Administrativa"/>
+    </TfrxPageFooter>
+  </TfrxReportPage>
+  <TfrxDialogPage Name="Page1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" BorderStyle="bsDialog" Caption="Relatório de Preços" Color="-2147483633" Height="125" Left="123" Top="120" Width="252">
+    <TfrxIBXQuery Name="qrPrecos" UserName="qrPrecos" CloseDataSource="True" FieldAliases.Text="" SQL.Text="SELECT CP.CODIGO, P.NOME AS PRODUTO, CP.DATA, CP.PRECO&#13;&#10;&#13;&#10;FROM PRODUTO P, CRPRECOS CP&#13;&#10;&#13;&#10;WHERE DATA BETWEEN :DATAI AND :DATAF&#13;&#10;AND CP.CODIGOPRODUTO = :PRODUTO&#13;&#10;AND CP.CODIGOPRODUTO = P.CODIGO" PropData="0A506172616D657465727301010CB3000000204E616D653D224441544149222044617461547970653D2200000000150008526561644F6E6C7900104000450000FF450000FF010000000000008000000000160008526571756972656400104000440000FF24FD530001000000000000800100000017000756697369626C6598675300C00000FFC00000FF0100000000000080000000801800084F6E4368616E6765C8675300D00000FFD0222045787072657373696F6E3D225B44415441492E444154455D2200010CB3000000204E616D653D224441544146222044617461547970653D2200000000150008526561644F6E6C7900104000450000FF450000FF010000000000008000000000160008526571756972656400104000440000FF24FD530001000000000000800100000017000756697369626C6598675300C00000FFC00000FF0100000000000080000000801800084F6E4368616E6765C8675300D00000FFD0222045787072657373696F6E3D225B44415441462E444154455D2200010CBE000000204E616D653D2250524F4455544F222044617461547970653D2200000000150008526561644F6E6C7900104000450000FF450000FF010000000000008000000000160008526571756972656400104000440000FF24FD530001000000000000800100000017000756697369626C6598675300C00000FFC00000FF0100000000000080000000801800084F6E4368616E6765C8675300D00000FFD0222045787072657373696F6E3D225349474841504152414D282750524F4455544F2729220000"/>
+    <TfrxLabelControl Name="LDatas" Left="8" Top="8" Width="141" Height="18" Font.Charset="0" Font.Color="-2147483640" Font.Height="-16" Font.Name="Arial" Font.Style="0" ParentFont="False" Caption="Intervalo de Datas...:" Color="-2147483633"/>
+    <TfrxLabelControl Name="Label2" Left="112" Top="36" Width="16" Height="13" Font.Charset="1" Font.Color="-2147483640" Font.Height="-11" Font.Name="MS Sans Serif" Font.Style="0" ParentFont="False" Caption="Até" Color="-2147483633"/>
+    <TfrxDateEditControl Name="Datai" Left="4" Top="32" Width="97" Height="21" Font.Charset="1" Font.Color="-2147483640" Font.Height="-13" Font.Name="MS Sans Serif" Font.Style="0" ParentFont="False" Color="-2147483643" Date="39182,6016234375" Time="39182,6016234375"/>
+    <TfrxDateEditControl Name="Dataf" Left="140" Top="32" Width="97" Height="21" Font.Charset="1" Font.Color="-2147483640" Font.Height="-13" Font.Name="MS Sans Serif" Font.Style="0" ParentFont="False" Color="-2147483643" Date="39182,6016234375" Time="39182,6016234375"/>
+    <TfrxButtonControl Name="Button1" Left="12" Top="64" Width="75" Height="25" Font.Charset="1" Font.Color="-2147483640" Font.Height="-11" Font.Name="MS Sans Serif" Font.Style="0" ParentFont="False" Caption="&Visualizar" Default="True" ModalResult="1"/>
+    <TfrxButtonControl Name="Button2" Left="152" Top="64" Width="75" Height="25" Font.Charset="1" Font.Color="-2147483640" Font.Height="-11" Font.Name="MS Sans Serif" Font.Style="0" ParentFont="False" Cancel="True" Caption="&Sair" ModalResult="2"/>
+  </TfrxDialogPage>
+</TfrxReport>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="39917,462373044" ReportOptions.Description.Text="" ReportOptions.LastChange="39917,6743381019" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C656674023803546F7003600108446174617365747301010C2C00000020446174615365743D226672446174617365742220446174615365744E616D653D22667244617461736574220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" Orientation="poLandscape" PaperWidth="297" PaperHeight="210" PaperSize="9" LeftMargin="30" RightMargin="15" TopMargin="30" BottomMargin="15" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="50" Left="0" Top="18,89765" Width="952,44156">
+      <TfrxMemoView Name="Memo1" Align="baWidth" Left="0" Top="0" Width="952,44156" Height="20" AutoWidth="True" Color="12111048" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="LISTAGEM DE MODELONF"/>
+    </TfrxReportTitle>
+    <TfrxHeader Name="Header1" Height="18" Left="0" Top="128,50402" Width="952,44156">
+      <TfrxMemoView Name="" Align="baLeft" Left="0" Top="0" Width="88,66141" Height="16" Frame.Typ="8" Text="Modelo"/>
+      <TfrxMemoView Name="" Align="baWidth" Left="88,66141" Top="0" Width="142,55906" Height="16" Frame.Typ="8" Text="Descrição"/>
+      <TfrxMemoView Name="" Left="231,22047" Top="0" Width="62,2047" Height="16" Frame.Typ="8" Text="Entrada"/>
+      <TfrxMemoView Name="" Left="293,42517" Top="0" Width="103,77953" Height="16" Frame.Typ="8" Text="Saída"/>
+      <TfrxMemoView Name="" Left="397,2047" Top="0" Width="96,22047" Height="16" Frame.Typ="8" Text="Espécie"/>
+      <TfrxMemoView Name="" Left="493,42517" Top="0" Width="111,33859" Height="16" Frame.Typ="8" Text="CFOPS"/>
+      <TfrxMemoView Name="" Left="604,76376" Top="0" Width="100" Height="16" Frame.Typ="8" Text="Última Nota"/>
+      <TfrxMemoView Name="" Left="704,76376" Top="0" Width="81,10235" Height="16" Frame.Typ="8" Text="Nome da Impressora"/>
+      <TfrxMemoView Name="" Left="785,86611" Top="0" Width="96,22047" Height="16" Frame.Typ="8" Text="Série"/>
+      <TfrxMemoView Name="" Left="882,08658" Top="0" Width="122,67718" Height="16" Frame.Typ="8" Text="Layout"/>
+      <TfrxMemoView Name="" Left="1035" Top="0" Width="100" Height="16" Frame.Typ="8" Text="Ativar Serviço"/>
+      <TfrxMemoView Name="" Left="1135" Top="0" Width="100" Height="16" Frame.Typ="8" Text="Entrada no LF"/>
+      <TfrxMemoView Name="" Left="1235" Top="0" Width="100" Height="16" Frame.Typ="8" Text="Séries Válidas"/>
+      <TfrxMemoView Name="" Left="1335" Top="0" Width="100" Height="16" Frame.Typ="8" Text="Saída no LF"/>
+      <TfrxMemoView Name="" Left="1435" Top="0" Width="100" Height="16" Frame.Typ="8" Text="Lançar Serviço"/>
+    </TfrxHeader>
+    <TfrxMasterData Name="MasterData1" Height="18" Left="0" Top="170,07885" Width="952,44156" ColumnWidth="0" ColumnGap="0" DataSet="frDataset" DataSetName="frDataset" RowCount="0">
+      <TfrxMemoView Name="" Left="0,98423" Top="0" Width="88,66141" Height="16" DataField="MODELO" Text="[FRDataSet.&#34;MODELO&#34;]"/>
+      <TfrxMemoView Name="" Align="baWidth" Left="89,64564" Top="0" Width="137,7953" Height="16" DataField="DESCRICAO" Text="[FRDataSet.&#34;DESCRICAO&#34;]"/>
+      <TfrxMemoView Name="" Left="227,44094" Top="0" Width="73,54329" Height="16" DataField="ATIVOENTRADA" HAlign="haCenter" Text="[FRDataSet.&#34;ATIVOENTRADA&#34;]"/>
+      <TfrxMemoView Name="" Left="300,98423" Top="0" Width="100" Height="16" DataField="ATIVOSAIDA" Text="[FRDataSet.&#34;ATIVOSAIDA&#34;]"/>
+      <TfrxMemoView Name="" Left="400,98423" Top="0" Width="100" Height="16" DataField="ESPECIE" Text="[FRDataSet.&#34;ESPECIE&#34;]"/>
+      <TfrxMemoView Name="" Left="500,98423" Top="0" Width="100" Height="16" DataField="CFOPS" Text="[FRDataSet.&#34;CFOPS&#34;]"/>
+      <TfrxMemoView Name="" Left="600,98423" Top="0" Width="100" Height="16" DataField="PROXIMANOTA" Text="[FRDataSet.&#34;PROXIMANOTA&#34;]"/>
+      <TfrxMemoView Name="" Left="700,98423" Top="0" Width="100" Height="16" DataField="IMPRESSORA" Text="[FRDataSet.&#34;IMPRESSORA&#34;]"/>
+      <TfrxMemoView Name="" Left="800,98423" Top="0" Width="100" Height="16" DataField="SERIE" Text="[FRDataSet.&#34;SERIE&#34;]"/>
+      <TfrxMemoView Name="" Left="900,98423" Top="0" Width="100" Height="16" DataField="LAYOUTNF" Text="[FRDataSet.&#34;LAYOUTNF&#34;]"/>
+      <TfrxMemoView Name="" Left="1035" Top="0" Width="100" Height="16" DataField="ATIVOPRESTACAOSERVICO" Text="[FRDataSet.&#34;ATIVOPRESTACAOSERVICO&#34;]"/>
+      <TfrxMemoView Name="" Left="1135" Top="0" Width="100" Height="16" DataField="LANCAENTRADALF" Text="[FRDataSet.&#34;LANCAENTRADALF&#34;]"/>
+      <TfrxMemoView Name="" Left="1235" Top="0" Width="100" Height="16" DataField="SERIESVALIDAS" Text="[FRDataSet.&#34;SERIESVALIDAS&#34;]"/>
+      <TfrxMemoView Name="" Left="1335" Top="0" Width="100" Height="16" DataField="LANCARSAIDALF" Text="[FRDataSet.&#34;LANCARSAIDALF&#34;]"/>
+      <TfrxMemoView Name="" Left="1435" Top="0" Width="100" Height="16" DataField="LANCARSERVICO" Text="[FRDataSet.&#34;LANCARSERVICO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="" Height="20" Left="0" Top="249,44898" Width="952,44156">
+      <TfrxMemoView Name="" Align="baLeft" Left="0" Top="0" Width="250" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="8" Text="Página: [Page#] de [TotalPages#]"/>
+      <TfrxMemoView Name="" Align="baRight" Left="702,44156" Top="0" Width="250" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="8" Text="[Date] [Time]"/>
+      <TfrxMemoView Name="" Align="baWidth" Left="250" Top="0" Width="452,44156" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="8" HAlign="haCenter" Text="SIGHA - Sistema Integrado de Gestão Administrativa"/>
+    </TfrxPageFooter>
+  </TfrxReportPage>
+</TfrxReport>

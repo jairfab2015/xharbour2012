@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="39182,6016062616" ReportOptions.Description.Text="" ReportOptions.LastChange="39182,6016062616" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C8000844617461736574730100095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="9" RightMargin="9" TopMargin="4" BottomMargin="4" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxPageFooter Name="" Height="20" Left="-34" Top="1009" Width="758">
+      <TfrxMemoView Name="" Align="baWidth" Left="0" Top="0" Width="690" Height="20" Frame.Typ="8" Text=""/>
+      <TfrxMemoView Name="" Align="baLeft" Left="0" Top="0" Width="106" Height="20" AutoWidth="True" Text="Página: [PAGE#]"/>
+      <TfrxMemoView Name="" Align="baRight" Left="600" Top="0" Width="90" Height="20" AutoWidth="True" Text="[DATE] [TIME]"/>
+      <TfrxMemoView Name="" Align="baCenter" Left="189" Top="0" Width="312" Height="20" AutoWidth="True" Text="SIGHA - Sistema Integrado de Gestão Administrativa"/>
+    </TfrxPageFooter>
+    <TfrxReportTitle Name="ReportTitle1" Height="123" Left="-34" Top="29" Width="758">
+      <TfrxMemoView Name="Memo4" Left="173" Top="40" Width="509" Height="18" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="[DMCadastro.QREmpresa.&#34;RAZAOSOCIAL&#34;]"/>
+      <TfrxPictureView Name="Picture1" Align="baLeft" Left="0" Top="9" Width="168" Height="74" Center="True" DataField="[DMCadastro.QREmpresa.&#34;LOGO&#34;]" KeepAspectRatio="False"/>
+      <TfrxLineView Name="Line2" Left="2" Top="0" Width="688" Height="0" Frame.Typ="4"/>
+      <TfrxMemoView Name="Memo1" Align="baWidth" Left="0" Top="92" Width="690" Height="26" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="8" HAlign="haCenter" ParentFont="False" Text="Ficha do Fornecedor"/>
+    </TfrxReportTitle>
+    <TfrxMemoView Name="" Left="2" Top="285" Width="126" Height="16" StretchMode="smMaxHeight" Text="Endereço:"/>
+    <TfrxMemoView Name="Memo6" Left="128" Top="198" Width="390" Height="18" StretchMode="smMaxHeight" AutoWidth="True" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="CNPJ: [DMCadastro.QREmpresa.&#34;CNPJ&#34;]  IE: [DMCadastro.QREmpresa.&#34;INSCRICAOESTADUAL&#34;]"/>
+    <TfrxMemoView Name="Memo2" Left="1" Top="169" Width="126" Height="16" StretchMode="smMaxHeight" Text="Nome/Razão Social:"/>
+    <TfrxMemoView Name="Memo3" Left="1" Top="198" Width="126" Height="16" StretchMode="smMaxHeight" Text="CPF/CNPJ:"/>
+    <TfrxMemoView Name="Memo7" Left="128" Top="169" Width="390" Height="18" StretchMode="smMaxHeight" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="[DMCadastro.QRFornecedor.&#34;NOME&#34;]"/>
+    <TfrxMemoView Name="Memo8" Left="1" Top="227" Width="126" Height="16" StretchMode="smMaxHeight" Text="RG/IE:"/>
+    <TfrxPictureView Name="Picture2" Align="baRight" Left="522" Top="169" Width="168" Height="74" Center="True" DataField="[DMCadastro.QRFornecedor.&#34;LOGOMARCA&#34;]" KeepAspectRatio="False"/>
+    <TfrxMemoView Name="Memo9" Left="128" Top="227" Width="390" Height="18" StretchMode="smMaxHeight" AutoWidth="True" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="CNPJ: [DMCadastro.QREmpresa.&#34;CNPJ&#34;]  IE: [DMCadastro.QREmpresa.&#34;INSCRICAOESTADUAL&#34;]"/>
+    <TfrxMemoView Name="Memo10" Left="2" Top="314" Width="126" Height="16" StretchMode="smMaxHeight" Text="Bairro:"/>
+    <TfrxMemoView Name="Memo11" Left="2" Top="343" Width="126" Height="16" StretchMode="smMaxHeight" Text="Cidade:"/>
+    <TfrxMemoView Name="Memo12" Left="2" Top="372" Width="126" Height="16" StretchMode="smMaxHeight" Text="Estado:"/>
+    <TfrxMemoView Name="Memo13" Left="2" Top="256" Width="126" Height="16" StretchMode="smMaxHeight" Text="Apelido/Fantasia:"/>
+    <TfrxMemoView Name="Memo14" Left="130" Top="256" Width="390" Height="18" StretchMode="smMaxHeight" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="[DMCadastro.QREmpresa.&#34;FANTASIA&#34;]"/>
+    <TfrxMemoView Name="Memo15" Left="2" Top="401" Width="126" Height="16" StretchMode="smMaxHeight" Text="Cep:"/>
+    <TfrxMemoView Name="Memo16" Left="2" Top="433" Width="126" Height="16" StretchMode="smMaxHeight" Text="Cx. Postal:"/>
+    <TfrxMemoView Name="Memo17" Left="2" Top="465" Width="126" Height="16" StretchMode="smMaxHeight" Text="Telefone:"/>
+    <TfrxMemoView Name="Memo18" Left="2" Top="497" Width="126" Height="16" StretchMode="smMaxHeight" Text="Fax:"/>
+    <TfrxMemoView Name="Memo19" Left="2" Top="529" Width="126" Height="16" StretchMode="smMaxHeight" Text="E-mail:"/>
+    <TfrxMemoView Name="Memo20" Left="2" Top="561" Width="126" Height="16" StretchMode="smMaxHeight" Text="Home Page:"/>
+    <TfrxMemoView Name="Memo21" Left="2" Top="593" Width="126" Height="16" StretchMode="smMaxHeight" Text="Contato:"/>
+    <TfrxMemoView Name="Memo22" Left="2" Top="625" Width="126" Height="16" StretchMode="smMaxHeight" Text="Fone Contato:"/>
+    <TfrxMemoView Name="Memo23" Left="2" Top="657" Width="126" Height="16" StretchMode="smMaxHeight" Text="Agência:"/>
+    <TfrxMemoView Name="Memo24" Left="2" Top="689" Width="126" Height="16" StretchMode="smMaxHeight" Text="Banco:"/>
+    <TfrxMemoView Name="Memo25" Left="2" Top="721" Width="126" Height="16" StretchMode="smMaxHeight" Text="Conta:"/>
+    <TfrxMemoView Name="Memo26" Left="2" Top="753" Width="126" Height="16" StretchMode="smMaxHeight" Text="Praça Pagamento:"/>
+  </TfrxReportPage>
+</TfrxReport>

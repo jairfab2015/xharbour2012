@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" EngineOptions.UseFileCache="True" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4031" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PrintOptions.Printer="CHEQUE" ReportOptions.CreateDate="37819,579961875" ReportOptions.Description.Text="" ReportOptions.Name="LISTA DE ADVERT�NCIAS" ReportOptions.LastChange="39630,4399377894" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C656674021C03546F70020808446174617365747301010C5A00000020446174615365743D2266726D496D706F7274614461646F732E6672446174615365744572726F73496D706F72746163616F2220446174615365744E616D653D226672446174615365744572726F73496D706F72746163616F220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="" PaperWidth="215,9" PaperHeight="279,4" PaperSize="1" LeftMargin="6" RightMargin="6" TopMargin="6" BottomMargin="6" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="82,67718" Left="0" Top="18,89765" Width="770,646167">
+      <TfrxMemoView Name="Memo1" Align="baCenter" Left="294,3230835" Top="8" Width="182" Height="20" AutoWidth="True" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Draft 17cpi" Font.Style="0" Frame.Typ="8" HAlign="haCenter" ParentFont="False" Text="[SIGHAPARAM('TITULO')]"/>
+      <TfrxMemoView Name="Memo2" Align="baLeft" Left="0" Top="32" Width="768,20501" Height="20" AutoWidth="True" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Draft 17cpi" Font.Style="0" ParentFont="False" Text="DATA/HORA:  [DATE] [TIME]                                                                         [FILENAME()]&#13;&#10;     "/>
+    </TfrxReportTitle>
+    <TfrxHeader Name="MasterHeader1" Height="23,77953" Left="0" Top="162,51979" Width="770,646167">
+      <TfrxMemoView Name="Memo5" Align="baRight" Left="647,528047" Top="0" Width="123,11812" Height="20" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Draft 17cpi" Font.Style="0" ParentFont="False" Text="Nº Registro"/>
+      <TfrxMemoView Name="Memo6" Align="baLeft" Left="0" Top="0" Width="648,677490000002" Height="20" AutoWidth="True" Text="DESCRIÇÃO DO ERRO"/>
+    </TfrxHeader>
+    <TfrxMasterData Name="MasterData1" Height="20" Left="0" Top="207,87415" Width="770,646167" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="frmImportaDados.frDataSetErrosImportacao" DataSetName="frDataSetErrosImportacao" RowCount="0">
+      <TfrxMemoView Name="Memo7" Align="baRight" Left="689,102877" Top="0" Width="81,54329" Height="20" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Draft 17cpi" Font.Style="0" ParentFont="False" Text="[frDataSetErrosImportacao.&#34;REGISTRO&#34;]"/>
+      <TfrxMemoView Name="Memo8" Align="baWidth" Left="0" Top="0" Width="689,102877" Height="20" AutoWidth="True" Text="[frDataSetErrosImportacao.&#34;ERRO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxMemoView Name="Memo3" Align="baRight" Left="555,835097" Top="9,32281999999999" Width="214,81107" Height="20" AutoWidth="True" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Draft 17cpi" Font.Style="0" ParentFont="False" Text="PÁGINA:  [PAGE#] "/>
+  </TfrxReportPage>
+</TfrxReport>

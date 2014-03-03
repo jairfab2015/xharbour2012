@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PrintOptions.Printer="Padr�o" ReportOptions.CreateDate="40133,6846531366" ReportOptions.Description.Text="" ReportOptions.LastChange="40143,6248979977" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403200103546F7003100108446174617365747301010C2C00000020446174615365743D226672446174617365742220446174615365744E616D653D22667244617461736574220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" Orientation="poLandscape" PaperWidth="297" PaperHeight="210" PaperSize="9" LeftMargin="30" RightMargin="15" TopMargin="30" BottomMargin="15" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="50" Left="0" Top="18,89765" Width="952,44156">
+      <TfrxMemoView Name="Memo1" Align="baWidth" Left="0" Top="0" Width="952,44156" Height="20" AutoWidth="True" Color="12111048" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="LISTAGEM DE PDVORDEMFABRICA"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="MasterData1" Height="18" Left="0" Top="173,85838" Width="952,44156" ColumnWidth="0" ColumnGap="0" DataSet="frDataset" DataSetName="frDataset" RowCount="0">
+      <TfrxMemoView Name="" Left="0,98423" Top="0" Width="62,2047" Height="16" DataField="CODIGO" Text="[FRDataSet.&#34;CODIGO&#34;]"/>
+      <TfrxMemoView Name="" Left="63,18893" Top="0" Width="137,7953" Height="16" DataField="DESCRICAO" Text="[FRDataSet.&#34;DESCRICAO&#34;]"/>
+      <TfrxMemoView Name="" Left="200,98423" Top="0" Width="100" Height="16" DataField="CODIGOCLIENTE" HAlign="haCenter" Text="[FRDataSet.&#34;CODIGOCLIENTE&#34;]"/>
+      <TfrxMemoView Name="" Left="406,81107" Top="0" Width="62,2047" Height="16" DataField="STATUS" HAlign="haCenter" Text="[FRDataSet.&#34;STATUS&#34;]"/>
+      <TfrxMemoView Name="" Left="469,01577" Top="0" Width="81,10235" Height="16" DataField="ENCERADO" HAlign="haCenter" Text="[FRDataSet.&#34;ENCERADO&#34;]"/>
+      <TfrxMemoView Name="" Left="550,11812" Top="0" Width="100" Height="16" DataField="PRECOVENDA" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" HAlign="haRight" Text="[FRDataSet.&#34;PRECOVENDA&#34;]"/>
+      <TfrxMemoView Name="" Left="650,11812" Top="0" Width="100" Height="16" DataField="VENDAEFETIVO" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" HAlign="haRight" Text="[FRDataSet.&#34;VENDAEFETIVO&#34;]"/>
+      <TfrxMemoView Name="" Left="750,11812" Top="0" Width="100" Height="16" DataField="DATAINICIO" HAlign="haCenter" Text="[FRDataSet.&#34;DATAINICIO&#34;]"/>
+      <TfrxMemoView Name="" Left="850,11812" Top="0" Width="100" Height="16" DataField="CUSTOTOTAL" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" HAlign="haRight" Text="[FRDataSet.&#34;CUSTOTOTAL&#34;]"/>
+      <TfrxMemoView Name="" Left="300,03896" Top="0" Width="107,55906" Height="16" DataField="NOME" Text="[FRDataSet.&#34;NOME&#34;]"/>
+      <TfrxMemoView Name="" Left="1035" Top="0" Width="100" Height="16" DataField="CONTATO" Text="[FRDataSet.&#34;CONTATO&#34;]"/>
+      <TfrxMemoView Name="" Left="1135" Top="0" Width="100" Height="16" DataField="ENDERECO" Text="[FRDataSet.&#34;ENDERECO&#34;]"/>
+      <TfrxMemoView Name="" Left="1235" Top="0" Width="100" Height="16" DataField="ENDERECONUMERORUA" Text="[FRDataSet.&#34;ENDERECONUMERORUA&#34;]"/>
+      <TfrxMemoView Name="" Left="1335" Top="0" Width="100" Height="16" DataField="RESIDENCIALFONE" Text="[FRDataSet.&#34;RESIDENCIALFONE&#34;]"/>
+      <TfrxMemoView Name="" Left="1435" Top="0" Width="100" Height="16" DataField="CHASSIS" Text="[FRDataSet.&#34;CHASSIS&#34;]"/>
+      <TfrxMemoView Name="" Left="1535" Top="0" Width="100" Height="16" DataField="CONVERTEPARA" Text="[FRDataSet.&#34;CONVERTEPARA&#34;]"/>
+      <TfrxMemoView Name="" Left="1635" Top="0" Width="100" Height="16" DataField="CODIGOMODELO" Text="[FRDataSet.&#34;CODIGOMODELO&#34;]"/>
+      <TfrxMemoView Name="" Left="1735" Top="0" Width="100" Height="16" DataField="CEP" Text="[FRDataSet.&#34;CEP&#34;]"/>
+      <TfrxMemoView Name="" Left="1835" Top="0" Width="100" Height="16" DataField="ESTADO" Text="[FRDataSet.&#34;ESTADO&#34;]"/>
+      <TfrxMemoView Name="" Left="1935" Top="0" Width="100" Height="16" DataField="CIDADE" Text="[FRDataSet.&#34;CIDADE&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="" Height="20" Left="0" Top="253,22851" Width="952,44156">
+      <TfrxMemoView Name="" Align="baLeft" Left="0" Top="0" Width="250" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="8" Text="Página: [Page#] de [TotalPages#]"/>
+      <TfrxMemoView Name="" Align="baRight" Left="702,44156" Top="0" Width="250" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="8" Text="[Date] [Time]"/>
+      <TfrxMemoView Name="" Align="baWidth" Left="250" Top="0" Width="452,44156" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="8" HAlign="haCenter" Text="SIGHA - Sistema Integrado de Gestão Administrativa"/>
+    </TfrxPageFooter>
+    <TfrxPageHeader Name="PageHeader1" Height="22,67718" Left="0" Top="90,70872" Width="952,44156">
+      <TfrxMemoView Name="" Left="0,98423" Top="0" Width="62,2047" Height="16" Frame.Typ="8" Text="Código"/>
+      <TfrxMemoView Name="" Left="63,18893" Top="0" Width="137,7953" Height="16" Frame.Typ="8" Text="Descrição"/>
+      <TfrxMemoView Name="" Left="200,98423" Top="0" Width="100" Height="16" Frame.Typ="8" Text="Código Cliente"/>
+      <TfrxMemoView Name="" Left="406,81107" Top="0" Width="62,2047" Height="16" Frame.Typ="8" Text="Status"/>
+      <TfrxMemoView Name="" Left="469,01577" Top="0" Width="81,10235" Height="16" Frame.Typ="8" HAlign="haCenter" Text="Situação"/>
+      <TfrxMemoView Name="" Left="550,11812" Top="0" Width="100" Height="16" Frame.Typ="8" HAlign="haRight" Text="Preço Venda"/>
+      <TfrxMemoView Name="" Left="650,11812" Top="0" Width="100" Height="16" Frame.Typ="8" HAlign="haRight" Text="Venda Efetiva"/>
+      <TfrxMemoView Name="" Left="750,11812" Top="0" Width="100" Height="16" Frame.Typ="8" HAlign="haCenter" Text="Data Início"/>
+      <TfrxMemoView Name="" Left="850,11812" Top="0" Width="100" Height="16" Frame.Typ="8" HAlign="haRight" Text="Custo Total"/>
+      <TfrxMemoView Name="" Left="300,03896" Top="0" Width="107,55906" Height="16" Frame.Typ="8" Text="Nome"/>
+    </TfrxPageHeader>
+  </TfrxReportPage>
+</TfrxReport>

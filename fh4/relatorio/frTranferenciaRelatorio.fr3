@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" EngineOptions.DoublePass="True" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="38097,6549158565" ReportOptions.Description.Text="" ReportOptions.LastChange="38104,7186390046" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C8000844617461736574730100095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="215,9" PaperHeight="279,4" PaperSize="1" LeftMargin="15" RightMargin="15" TopMargin="15" BottomMargin="20" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxPageHeader Name="PageHeader1" Height="96" Left="-57" Top="15" Width="779">
+      <TfrxMemoView Name="Memo1" Left="11" Top="4" Width="628" Height="20" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Draft 6cpi" Font.Style="0" Frame.Typ="7" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[DMCadastro.QREmpresa.&#34;FANTASIA&#34;]"/>
+      <TfrxMemoView Name="Memo2" Left="11" Top="24" Width="628" Height="24" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Draft 10cpi" Font.Style="0" Frame.Typ="3" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Endereço: [DMCadastro.QREmpresa.&#34;ENDERECO&#34;]"/>
+      <TfrxMemoView Name="Memo3" Left="11" Top="44" Width="628" Height="24" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Draft 10cpi" Font.Style="0" Frame.Typ="3" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="CNPJ - [DMCadastro.QREmpresa.&#34;CNPJ&#34;]    IE  - [DMCadastro.QREmpresa.&#34;INSCRICAOESTADUAL&#34;]"/>
+      <TfrxMemoView Name="Memo4" Left="11" Top="64" Width="628" Height="24" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Draft 10cpi" Font.Style="0" Frame.Typ="11" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Telefone: [DMCadastro.QREmpresa.&#34;FONE&#34;]  -  Fax: [DMCadastro.QREmpresa.&#34;FAX&#34;]"/>
+    </TfrxPageHeader>
+    <TfrxMasterData Name="MasterData1" Height="19" Left="-57" Top="251" Width="779" Columns="1" ColumnWidth="200" ColumnGap="20" RowCount="1">
+      <TfrxMemoView Name="Memo5" Left="11" Top="2" Width="76" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" ParentFont="False" Text="[frmTransferenciaConsulta.qrGrid.&#34;USUARIO&#34;]"/>
+      <TfrxMemoView Name="Memo8" Left="87" Top="2" Width="76" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" ParentFont="False" Text="[frmTransferenciaConsulta.qrGrid.&#34;DATA&#34;]"/>
+      <TfrxMemoView Name="Memo10" Left="163" Top="2" Width="68" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" ParentFont="False" Text="[frmTransferenciaConsulta.qrGrid.&#34;HORA&#34;]"/>
+      <TfrxMemoView Name="Memo12" Left="231" Top="2" Width="100" Height="17" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.0g" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" ParentFont="False" Text="[frmTransferenciaConsulta.qrGrid.&#34;QUANTIDADE&#34;] Kg"/>
+      <TfrxMemoView Name="Memo15" Left="331" Top="2" Width="256" Height="17" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.0g" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" ParentFont="False" Text="[frmTransferenciaConsulta.qrGrid.&#34;CLIENTE_R&#34;] - [frmTransferenciaConsulta.qrRelatorio.&#34;NOME&#34;]"/>
+    </TfrxMasterData>
+    <TfrxColumnHeader Name="ColumnHeader1" Height="19" Left="-57" Top="199" Width="779">
+      <TfrxMemoView Name="Memo6" Left="11" Top="2" Width="76" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Usuário"/>
+      <TfrxMemoView Name="Memo7" Left="87" Top="2" Width="76" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Data"/>
+      <TfrxMemoView Name="Memo9" Left="163" Top="2" Width="68" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Hora"/>
+      <TfrxMemoView Name="Memo11" Left="231" Top="2" Width="100" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Quantidade"/>
+      <TfrxMemoView Name="Memo14" Left="331" Top="2" Width="256" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 10cpi" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Cliente Receptor"/>
+    </TfrxColumnHeader>
+    <TfrxGroupHeader Name="GroupHeader1" Height="20" Left="-57" Top="139" Width="779" Condition="[frmTransferenciaConsulta.qrGrid.&#34;PRODUTO&#34;]">
+      <TfrxMemoView Name="Memo13" Left="11" Top="2" Width="624" Height="16" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 6cpi" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[frmTransferenciaConsulta.qrGrid.&#34;PRODUTO&#34;]"/>
+    </TfrxGroupHeader>
+    <TfrxPageFooter Name="PageFooter1" Height="40" Left="-57" Top="311" Width="779">
+      <TfrxMemoView Name="Memo16" Left="11" Top="8" Width="372" Height="20" Frame.Typ="4" Text="Data: [DATE] - Hora: [TIME]"/>
+      <TfrxMemoView Name="Memo17" Left="383" Top="8" Width="256" Height="20" Frame.Typ="4" HAlign="haRight" Text="Página [PAGE#] de [TOTALPAGES]"/>
+    </TfrxPageFooter>
+  </TfrxReportPage>
+</TfrxReport>

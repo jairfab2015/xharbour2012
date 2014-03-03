@@ -1,0 +1,1950 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<?fr-application created="FastReport"?>
+<?fr-application homesite="http://www.fast-report.com"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+<DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+<Title>Work area as UserDS</Title>
+<Author></Author>
+<Created>22/08/2013T22:13:27Z</Created>
+<Version>12.13.1.1</Version>
+</DocumentProperties>
+<ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+<ProtectStructure>False</ProtectStructure>
+<ProtectWindows>False</ProtectWindows>
+</ExcelWorkbook>
+<Styles>
+<Style ss:ID="s0">
+<Font ss:FontName="Arial" ss:Size="7" ss:Color="#808080"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s1">
+<Font ss:FontName="Arial" ss:Size="12" ss:Color="#FFFFFF" ss:Bold="1"/>
+<Interior ss:Color="#008080" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s2">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s3">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#800000" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s4">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#C8C8C8"/>
+<Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s5">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s6">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+<NumberFormat ss:Format="0.##"/>
+</Style>
+<Style ss:ID="s7">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s8">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+<NumberFormat ss:Format="#,##0.00"/>
+</Style>
+<Style ss:ID="s9">
+<Font ss:FontName="Arial" ss:Size="13" ss:Color="#FF0000" ss:Bold="1" ss:Underline="Single"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+<NumberFormat ss:Format="#,##0.00"/>
+</Style>
+<Style ss:ID="s10">
+<Font ss:FontName="Arial" ss:Size="8" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="3" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s11">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s12">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s13">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+<NumberFormat ss:Format="0.##"/>
+</Style>
+<Style ss:ID="s14">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s15">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+<NumberFormat ss:Format="#,##0.00"/>
+</Style>
+<Style ss:ID="s16">
+<Font ss:FontName="Arial" ss:Size="13" ss:Color="#FF0000" ss:Bold="1" ss:Underline="Single"/>
+<Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+<NumberFormat ss:Format="#,##0.00"/>
+</Style>
+</Styles>
+<Worksheet ss:Name="Page 1">
+<Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="87" x:FullColumns="1" x:FullRows="1">
+<Column ss:AutoFitWidth="0" ss:Width="2.75"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.75"/>
+<Column ss:AutoFitWidth="0" ss:Width="35.71"/>
+<Column ss:AutoFitWidth="0" ss:Width="5.49"/>
+<Column ss:AutoFitWidth="0" ss:Width="151.07"/>
+<Column ss:AutoFitWidth="0" ss:Width="38.45"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.75"/>
+<Column ss:AutoFitWidth="0" ss:Width="90.64"/>
+<Column ss:AutoFitWidth="0" ss:Width="87.90"/>
+<Column ss:AutoFitWidth="0" ss:Width="101.63"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.75"/>
+<Column ss:AutoFitWidth="0" ss:Width="2.75"/>
+<Column ss:AutoFitWidth="0" ss:Width="24.94"/>
+<Row ss:Height="3.36">
+<Cell ss:Index="1" ss:MergeAcross="12" ss:MergeDown="2" ss:StyleID="s1" >
+<Data ss:Type="String">Parts</Data>
+</Cell>
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="7.27">
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="5.86">
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="2.75">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s2" >
+<Data ss:Type="String">Highlight &gt; 100000</Data>
+</Cell>
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="5.49">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="2" ss:StyleID="s3" >
+<Data ss:Type="String">PartNo</Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">Part</Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">Total QTY</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s3" >
+<Data ss:Type="String">Price</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">Total sale</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="5.49">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">900</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Dive kayak                    </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">113</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 3.999.95</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:MergeDown="1" ss:StyleID="s16" >
+<Data ss:Type="String">R$ 451.994.35</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="2.25">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">912</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Underwater Diver Vehicle      </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">27</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 1.680.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 45.360.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">1313</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Regulator System              </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">81</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 250.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 20.250.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">1314</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Second Stage Regulator        </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">83</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 365.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 30.295.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">1316</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Regulator System              </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">85</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 341.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 28.985.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">1320</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Second Stage Regulator        </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">150</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 171.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 25.650.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">1328</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Regulator System              </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">135</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 430.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 58.050.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">1330</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Alternate Inflation Regulator </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">196</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 260.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 50.960.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">1364</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Second Stage Regulator        </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">67</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 270.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 18.090.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">1390</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">First Stage Regulator         </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">151</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 170.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 25.670.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">1946</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Second Stage Regulator        </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">71</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 309.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 21.939.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">1986</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Depth/Pressure Gauge Console  </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">151</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 188.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 28.388.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2314</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Electronic Console            </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">46</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 390.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 17.940.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">2341</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Depth/Pressure Gauge          </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">119</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 105.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 12.495.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2343</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Personal Dive Sonar           </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">72</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 235.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 16.920.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">2350</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Compass Console Mount         </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">76</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 29.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 2.204.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2367</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Compass (meter only)          </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">120</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 52.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 6.240.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">2383</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Depth/Pressure Gauge          </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">98</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 206.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 20.188.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2390</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Electronic Console w/ options </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">123</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 420.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 51.660.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">2612</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Direct Sighting Compass       </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">35</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 34.95</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 1.223.25</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2613</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Dive Computer                 </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">60</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 179.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 10.740.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">2619</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Navigation Compass            </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">150</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 19.95</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 2.992.50</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2630</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Wrist Band Thermometer (F)    </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">134</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 18.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 2.412.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">2632</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Depth/Pressure Gauge (Digital)</Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">94</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 149.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 14.006.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2648</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Depth/Pressure Gauge (Analog) </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">63</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 119.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 7.497.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">2657</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Wrist Band Thermometer (C)    </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">72</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 18.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 1.296.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">2954</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Dive Computer                 </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">213</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 650.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:MergeDown="1" ss:StyleID="s16" >
+<Data ss:Type="String">R$ 138.450.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="2.25">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">3316</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Stabilizing Vest              </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">186</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 430.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 79.980.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">3326</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Front Clip Stabilizing Vest   </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">79</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 280.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 22.120.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">3340</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Trim Fit Stabilizing Vest     </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">196</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 395.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 77.420.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">3386</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Welded Seam Stabilizing Vest  </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">185</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 280.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 51.800.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">5313</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Safety Knife                  </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">172</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 41.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 7.052.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">5318</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Medium Titanium Knife         </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">180</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 56.95</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 10.251.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">5324</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Chisel Point Knife            </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">243</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 41.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 9.963.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">5349</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Flashlight                    </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">268</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 65.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 17.420.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">5356</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Medium Stainless Steel Knife  </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">109</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 70.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 7.630.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">5378</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Divers Knife and Sheath       </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">142</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 70.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 9.940.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">5386</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Large Stainless Steel Knife   </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">118</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 80.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 9.440.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">7612</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Krypton Flashlight            </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">124</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 44.95</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 5.573.80</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">7619</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Flashlight (Rechargeable)     </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">193</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 169.95</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 32.800.35</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">7654</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Halogen Flashlight            </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">81</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 59.95</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 4.855.95</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">9312</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">60.6 cu ft Tank               </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">145</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 179.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 25.955.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">9316</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">95.1 cu ft Tank               </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">108</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 325.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 35.100.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">9318</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">71.4 cu ft Tank               </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">76</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 195.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 14.820.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">9354</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">75.8 cu ft Tank               </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">47</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 235.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 11.045.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">11221</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Remotely Operated Video System</Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">115</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 2.369.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:MergeDown="1" ss:StyleID="s9" >
+<Data ss:Type="String">R$ 272.435.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="2.25">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">11238</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Marine Super VHS Video Package</Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">165</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 2.498.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:MergeDown="1" ss:StyleID="s16" >
+<Data ss:Type="String">R$ 412.170.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="2.25">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">11518</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Towable Video Camera (B&amp;W)    </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">168</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 1.999.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:MergeDown="1" ss:StyleID="s9" >
+<Data ss:Type="String">R$ 335.832.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="2.25">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">11564</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Towable Video Camera (Color)  </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">47</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 3.299.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:MergeDown="1" ss:StyleID="s16" >
+<Data ss:Type="String">R$ 155.053.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="2.25">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">11635</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Camera and Case               </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">155</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 119.95</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 18.592.25</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.94">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="10.99">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="8" ss:StyleID="s10" >
+<Data ss:Type="String">Page 1</Data>
+</Cell>
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="5.86">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="0.61">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="2" ss:MergeDown="2" ss:StyleID="s3" >
+<Data ss:Type="String">PartNo</Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:MergeDown="2" ss:StyleID="s3" >
+<Data ss:Type="String">Part</Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:MergeDown="2" ss:StyleID="s3" >
+<Data ss:Type="String">Total QTY</Data>
+</Cell>
+<Cell ss:Index="9" ss:MergeDown="2" ss:StyleID="s3" >
+<Data ss:Type="String">Price</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:MergeDown="2" ss:StyleID="s3" >
+<Data ss:Type="String">Total sale</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="7.27">
+<Cell ss:Index="1" ss:StyleID="s0" >
+<Data ss:Type="String">FastReport - Unregistered version (only 5 pages)</Data>
+</Cell>
+<Cell ss:Index="12" ss:MergeAcross="1" ss:StyleID="s0" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="5.86">
+<Cell ss:Index="1" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="5.49">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">11652</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Video Light                   </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">34</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 359.95</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 12.238.30</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">12301</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Boat Towable Metal Detector   </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">103</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 599.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 61.697.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">12303</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Boat Towable Metal Detector   </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">36</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 735.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 26.460.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">12306</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Underwater Altimeter          </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">43</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 350.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 15.050.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">12310</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Sonar System                  </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">15</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 439.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 6.585.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">12316</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Marine Magnetometer           </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">18</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 1.299.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 23.382.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">12317</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Underwater Metal Detector     </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">49</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 899.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 44.051.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s7" >
+<Data ss:Type="String">12386</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s5" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s5" >
+<Data ss:Type="String">Underwater Metal Detector     </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s6" >
+<Data ss:Type="Number">13</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 995.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s8" >
+<Data ss:Type="String">R$ 12.935.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s14" >
+<Data ss:Type="String">13545</Data>
+</Cell>
+<Cell ss:Index="4" ss:StyleID="s4" >
+<Data ss:Type="String"></Data>
+</Cell>
+<Cell ss:Index="5" ss:MergeAcross="1" ss:StyleID="s12" >
+<Data ss:Type="String">Air Compressor                </Data>
+</Cell>
+<Cell ss:Index="7" ss:MergeAcross="1" ss:StyleID="s13" >
+<Data ss:Type="Number">66</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s15" >
+<Data ss:Type="String">R$ 2.295.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:MergeDown="1" ss:StyleID="s16" >
+<Data ss:Type="String">R$ 151.470.00</Data>
+</Cell>
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="2.25">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="2.75">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="10" ss:StyleID="s11" >
+<Data ss:Type="String">Total:  R$ 3.093.011.75</Data>
+</Cell>
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="409.00">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="195.78">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+<Row ss:Height="10.99">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="8" ss:StyleID="s10" >
+<Data ss:Type="String">Page 2</Data>
+</Cell>
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+<Cell ss:Index="14" />
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<PageSetup>
+<PageMargins x:Bottom="0.19" x:Left="0.19" x:Right="0.19" x:Top="0.19"/>
+</PageSetup>
+</WorksheetOptions>
+<PageBreaks xmlns="urn:schemas-microsoft-com:office:excel">
+<RowBreaks>
+<RowBreak>
+<Row>67</Row>
+</RowBreak>
+</RowBreaks>
+</PageBreaks>
+</Worksheet>
+</Workbook>

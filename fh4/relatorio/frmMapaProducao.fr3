@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="38483,3915071296" ReportOptions.Description.Text="" ReportOptions.LastChange="38483,3916729977" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C8000844617461736574730100095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="6" RightMargin="6" TopMargin="4" BottomMargin="4" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="37" Left="-23" Top="34" Width="758">
+      <TfrxMemoView Name="Memo21" Left="-3" Top="2" Width="709" Height="18" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Draft 17cpi" Font.Style="3" HAlign="haCenter" ParentFont="False" Text="FORMULÁRIO MAPA DE PRODUÇÃO DIA  : [DATE]"/>
+    </TfrxReportTitle>
+    <TfrxPageHeader Name="PageHeader1" Height="18" Left="-23" Top="97" Width="758">
+      <TfrxMemoView Name="Memo8" Left="-3" Top="0" Width="145" Height="18" Color="16777215" Font.Charset="0" Font.Color="8388608" Font.Height="-12" Font.Name="Draft 17cpi" Font.Style="0" Frame.Typ="12" ParentFont="False" Text="CÓDIGO PRODUTO"/>
+      <TfrxMemoView Name="Memo2" Left="142" Top="0" Width="444" Height="18" Color="16777215" Font.Charset="0" Font.Color="8388608" Font.Height="-12" Font.Name="Draft 17cpi" Font.Style="0" Frame.Typ="12" ParentFont="False" Text="DESCRIÇÃO"/>
+      <TfrxMemoView Name="Memo3" Left="581" Top="0" Width="134" Height="18" Color="16777215" Font.Charset="0" Font.Color="8388608" Font.Height="-12" Font.Name="Draft 17cpi" Font.Style="0" Frame.Typ="12" ParentFont="False" Text="QUANTIDADE"/>
+      <TfrxLineView Name="Line3" Left="142" Top="0" Width="0" Height="25" Frame.Typ="1"/>
+      <TfrxLineView Name="Line4" Left="572" Top="0" Width="0" Height="25" Frame.Typ="1"/>
+    </TfrxPageHeader>
+    <TfrxMasterData Name="MasterData1" Height="25" Left="-23" Top="157" Width="758" Columns="1" ColumnWidth="200" ColumnGap="20" RowCount="38">
+      <TfrxMemoView Name="Memo1" Left="1" Top="4" Width="713" Height="20" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Draft 17cpi" Font.Style="0" Frame.Typ="8" ParentFont="False" Text=""/>
+      <TfrxLineView Name="Line1" Left="142" Top="0" Width="0" Height="25" Frame.Typ="1"/>
+      <TfrxLineView Name="Line2" Left="572" Top="0" Width="0" Height="25" Frame.Typ="1"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>

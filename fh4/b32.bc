@@ -1,0 +1,30 @@
+c:\bcc582\lib\c0w32.obj + 
+jair.obj, + 
+jair.exe, + 
+jair.map, + 
+c:\fwh\lib\Fivehx.lib c:\fwh\lib\FiveHC.lib + 
+c:\xharbour\lib\rtl.lib + 
+c:\xharbour\lib\vm.lib + 
+c:\xharbour\lib\gtgui.lib + 
+c:\xharbour\lib\lang.lib + 
+c:\xharbour\lib\macro.lib + 
+c:\xharbour\lib\rdd.lib + 
+c:\xharbour\lib\dbfntx.lib + 
+c:\xharbour\lib\dbfcdx.lib + 
+c:\xharbour\lib\dbffpt.lib + 
+c:\xharbour\lib\hbsix.lib + 
+c:\xharbour\lib\debug.lib + 
+c:\xharbour\lib\common.lib + 
+c:\xharbour\lib\pp.lib + 
+c:\xharbour\lib\pcrepos.lib + 
+c:\xharbour\lib\ct.lib + 
+c:\xharbour\lib\zlib.lib + 
+c:\xharbour\lib\hbzip.lib + 
+c:\bcc582\lib\cw32.lib + 
+c:\bcc582\lib\import32.lib + 
+c:\bcc582\lib\uuid.lib + 
+c:\bcc582\lib\psdk\odbc32.lib + 
+c:\bcc582\lib\psdk\rasapi32.lib + 
+c:\bcc582\lib\psdk\nddeapi.lib + 
+c:\bcc582\lib\psdk\msimg32.lib + 
+c:\bcc582\lib\psdk\iphlpapi.lib, 

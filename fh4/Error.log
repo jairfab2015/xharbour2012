@@ -1,0 +1,149 @@
+Application
+===========
+   Path and name: C:\Util\fh4\x.exe (32 bits)
+   Size: 1,703,424 bytes
+   Time from start: 0 hours 0 mins 4 secs 
+   Error occurred at: 08/16/13, 09:39:54
+   Error description: Error FiveWin/3  Cannot create Dialog Box: 
+                      Resource: DEMO
+
+Stack Calls
+===========
+   Called from: .\source\classes\DIALOG.PRG => CREATEDLGERROR(559)
+   Called from: .\source\classes\DIALOG.PRG => TDIALOG:ACTIVATE(290)
+   Called from: DEMO_FWH.PRG => MAIN(148)
+
+System
+======
+   CPU type: Pentium(R) Dual-Core  CPU      E5200  @ 2.50GHz 2517 Mhz
+   Hardware memory: 2039 megs
+
+   Free System resources: 90 %
+        GDI    resources: 90 %
+        User   resources: 90 %
+
+   Compiler version: xHarbour build 1.2.1 Intl. (SimpLex) (Rev. 6714)
+   Windows version: 5.1, Build 2600 Service Pack 3
+
+   Windows total applications running: 0
+
+Variables in use
+================
+   Procedure     Type   Value
+   ==========================
+   CREATEDLGERROR
+     Param   1:    O    Class: TDIALOG
+     Local   1:    C    "DEMO"
+     Local   2:    C    "                      "
+   TDIALOG:ACTIVATE
+     Param   1:    U    
+     Param   2:    U    
+     Param   3:    U    
+     Param   4:    L    .T.
+     Param   5:    U    
+     Param   6:    L    .T.
+     Param   7:    B    {|| ... }
+     Param   8:    U    
+     Param   9:    U    
+     Param  10:    L    .F.
+     Local   1:    O    Class: TDIALOG
+     Local   2:    N    0
+     Local   3:    U    
+     Local   4:    U    
+   MAIN
+     Local   1:    U    
+     Local   2:    U    
+     Local   3:    O    Class: TDIALOG
+     Local   4:    O    Class: TFONT
+
+Linked RDDs
+===========
+   DBF
+   DBFFPT
+   DBFBLOB
+   DBFCDX
+   DBFNTX
+
+DataBases in use
+================
+
+  1:    CUSTOMER                           RddName: DBFNTX
+     ==============================
+     RecNo    RecCount    BOF   EOF
+         14           55      .F.   .F.
+
+     Indexes in use                        TagName
+           CustNo                             CUSTA
+        => Company                            CUSTB
+
+     Relations in use
+
+  2:    ORDERS                             RddName: DBFNTX
+     ==============================
+     RecNo    RecCount    BOF   EOF
+         21          205      .F.   .F.
+
+     Indexes in use                        TagName
+           OrderNo                            ORDERSA
+        => CustNo                             ORDERSB
+
+     Relations in use
+
+  3:    ITEMS                              RddName: DBFNTX
+     ==============================
+     RecNo    RecCount    BOF   EOF
+          1          945      .F.   .F.
+
+     Indexes in use                        TagName
+           str(OrderNo, 15)+str(ItemNo, 15)   ITEMSA
+        => OrderNo                            ITEMSB
+           PartNo                             ITEMSC
+
+     Relations in use
+
+  4: => PARTS                              RddName: DBFNTX
+     ==============================
+     RecNo    RecCount    BOF   EOF
+          1           59      .F.   .F.
+
+     Indexes in use                        TagName
+        => PartNo                             PARTS
+
+     Relations in use
+
+Classes in use:
+===============
+     1 ERROR
+     2 HASHENTRY
+     3 HBCLASS
+     4 HBOBJECT
+     5 TFONT
+     6 TWINDOW
+     7 TDIALOG
+     8 TCONTROL
+     9 TICON
+    10 TBRUSH
+    11 TRADMENU
+    12 TRADIO
+    13 TCOMBOBOX
+    14 TGET
+    15 GET
+    16 TCLIPGET
+    17 TBUTTON
+    18 TSAY
+    19 TSAYREF
+    20 FRREPORTMANAGER
+    21 FRPRINTOPTIONS
+    22 FRPREVIEWOPTIONS
+    23 FRENGINEOPTIONS
+    24 FRREPORTOPTIONS
+    25 TREG32
+
+Memory Analysis
+===============
+      139 Static variables
+
+   Dynamic memory consume:
+      Actual  Value:          0 bytes
+      Highest Value:          0 bytes
+

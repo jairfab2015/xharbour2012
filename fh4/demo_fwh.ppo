@@ -1,0 +1,550 @@
+#line 112 "hbclass.ch"
+   DYNAMIC DivertConstructorCall
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DECLARE HBClass  New( cName AS String, OPTIONAL SuperParams ) AS CLASS HBClass  Create() AS Object  Instance() AS Object  AddClsMethod( cName AS String, @MethodName(), nScope AS Numeric, n2 AS Numeric, n3 AS Numeric )  AddDelegate( cName AS String, cDelegate AS String, cObject AS String, nScope AS Numeric, lPersistent AS LOGICAL )  AddMultiClsData( cType AS String, uVal, nScope AS Numeric, aDatas AS Array OF String )  AddMultiData( cType AS String, uVal, nScope AS Numeric, aDatas AS Array OF String, x AS LOGICAL, lPer AS LOGICAL )  AddMethod( cName AS String, @MethodName(), nScope AS Numeric, lPersistent AS LOGICAL )  AddInLine( cName AS String, bBlock AS CodeBlock, nScope AS Numeric, lPersistent AS LOGICAL )  AddVirtual( cName AS String )  ModMethod( cName AS String, @MethodName(), nScope AS Numeric, lPersistent AS LOGICAL )  ModClsMethod( cName AS String, @MethodName(), nScope AS Numeric )  ModInline( cName AS String, bBlock AS CodeBlock, nScope AS Numeric, lPersistent AS LOGICAL )  SetOnError( @MethodName() )
+#line 85 "c:\fwh\include\fivewin.ch"
+   EXTERNAL GetProcAdd
+   EXTERNAL TActiveX
+
+
+
+
+extern errorsys
+#line 19 "demo_fwh.prg"
+function Main()
+
+local aTmp, x, oDlg, oFont
+
+MEMVAR RepDir, DataDir, ResDir
+MEMVAR FrPrn, lShowCustName
+FIELD CustNo, Company, OrderNo, ItemNo, PartNo
+PRIVATE FrPrn, lShowCustName := .F., nAction:=1
+
+EXTERNAL DBFCDX
+oFont := TFont():New( "MS Sans Serif", 0, -8,,,,,,, .T.,,,,,,, )
+
+RepDir := CurDrive() +":\"+ CurDir() + "\REPS\"
+DataDir := CurDrive() +":\"+ CurDir() + "\DATA\"
+ResDir := CurDrive() +":\"+ CurDir() + "\LANGRES\"
+
+Set( 7, "data\" )
+
+IF ! AllFilesExist( { "CUSTA.NTX", "CUSTB.NTX" } )
+        dbUseArea( .F.,, "Customer",, if(.F. .OR. .T., !.T., NIL), .F.,, )
+        dbCreateIndex( "CustA", "CustNo", {|| CustNo}, if( .F., .T., NIL ) )
+        dbCreateIndex( "CustB", "Company", {|| Company}, if( .F., .T., NIL ) )
+        dbCloseArea()
+ENDIF
+
+IF ! AllFilesExist( { "ORDERSA.NTX", "ORDERSB.NTX" } )
+        dbUseArea( .F.,, "Orders",, if(.F. .OR. .T., !.T., NIL), .F.,, )
+        dbCreateIndex( "ORDERSA", "OrderNo", {|| OrderNo}, if( .F., .T., NIL ) )
+        dbCreateIndex( "ORDERSB", "CustNo", {|| CustNo}, if( .F., .T., NIL ) )
+        dbCloseArea()
+ENDIF
+
+IF ! AllFilesExist( { "itemsa.NTX", "itemsb.NTX", "itemsc.NTX" } )
+        dbUseArea( .F.,, "Items",, if(.F. .OR. .T., !.T., NIL), .F.,, )
+        dbCreateIndex( "itemsa", "str(OrderNo, 15)+str(ItemNo, 15)", {|| str(OrderNo, 15)+str(ItemNo, 15)}, if( .F., .T., NIL ) )
+        dbCreateIndex( "itemsb", "OrderNo", {|| OrderNo}, if( .F., .T., NIL ) )
+        dbCreateIndex( "itemsc", "PartNo", {|| PartNo}, if( .F., .T., NIL ) )
+        dbCloseArea()
+ENDIF
+
+IF ! AllFilesExist( { "parts.NTX", } )
+        dbUseArea( .F.,, "Parts",, if(.F. .OR. .T., !.T., NIL), .F.,, )
+        dbCreateIndex( "parts", "PartNo", {|| PartNo}, if( .F., .T., NIL ) )
+        dbCloseArea()
+ENDIF
+
+
+Set( 11, "ON" )
+
+dbUseArea( .T.,, "Customer",, if(.F. .OR. .F., !.F., NIL), .F.,, )
+if !.F. ; ordListClear() ; end ; ordListAdd( "CustA" ) ; ordListAdd( "CustB" )
+ordSetFocus( 2 )
+dbGoTop()
+
+dbUseArea( .T.,, "Orders",, if(.F. .OR. .F., !.F., NIL), .F.,, )
+if !.F. ; ordListClear() ; end ; ordListAdd( "ORDERSA" ) ; ordListAdd( "ORDERSB" )
+ordSetFocus( 2 )
+dbGoTop()
+
+dbUseArea( .T.,, "Items",, if(.F. .OR. .F., !.F., NIL), .F.,, )
+if !.F. ; ordListClear() ; end ; ordListAdd( "itemsa" ) ; ordListAdd( "itemsb" ) ; ordListAdd( "itemsc" )
+ordSetFocus( 2 )
+dbGoTop()
+
+dbUseArea( .T.,, "Parts",, if(.F. .OR. .F., !.F., NIL), .F.,, )
+if !.F. ; ordListClear() ; end ; ordListAdd( "Parts" )
+ordSetFocus( 1 )
+dbGoTop()
+
+oDlg = TDialog():New(,,,,, "DEMO",, .F.,,,,,, .F., "DEMO",,,,, .F., )
+oDlg:lHelpIcon := .F.
+
+cCombo:="English";cNome:=space(50);cDesc:=space(300);cStat1:="No report";cStat2:=space(50)
+
+oGet1 := TRadMenu():Redefine( { | u | If( PCount()==0, nAction, nAction:= u ) }, oDlg,, { 101, 102, 103, 104 },,,,, .T.,, )
+
+
+
+oCombo := TComboBox():ReDefine( 105, { | u | If( PCount()==0, cCombo, cCombo:= u ) },,,,, {|Self|FrPrn:LoadLangRes(ResDir + alltrim(cCombo)+".xml")},,,, .T.,,,,,, )
+TButton():ReDefine( 501, {||DoSimpleList()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 502, {||DoSimpleGroup()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 503, {||DoMoreComplex()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 504, {||DoUserDS()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 505, {||DoWAUserDS()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 506, {||DoADO()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 507, {||DoSomeCalls()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 508, {||DoInFR_MoreComplex()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 509, {||DoMemPict()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 510, {||DoManualReport()}, oDlg,,, .T.,,,, .F. )
+TButton():ReDefine( 550, {||( oDlg:End() )}, oDlg,,, .T.,,,, .F. )
+oNome := TSay():ReDefine( 108, {|| cNome}, oDlg,,,, .T.,, .F., .F. )
+oDesc := MEMO := TSay():ReDefine( 109, {|| cDesc}, oDlg,,,, .T.,, .F., .F. )
+oStat1 := TSay():ReDefine( 110, {|| cStat1}, oDlg,,,, .T.,, .F., .F. )
+oStat2 := TSay():ReDefine( 112, {|| cStat2}, oDlg,,,, .T.,, .F., .F. )
+
+
+oSayRef := TSayRef():ReDefine( 111, {|| "http://www.paritetsoft.ru/frh.htm"}, oDlg, "http://www.paritetsoft.ru/frh.htm",, 8388608,, .F., oFont )
+
+
+
+
+FrPrn := frReportManager():new()
+
+
+
+FrPrn:SetIcon(2)
+
+
+
+FrPrn:SetTitle("FastReport for [x]Harbour Demo")
+
+
+
+
+
+
+
+
+FrPrn:SetEventHandler("Report", "OnProgressStart", {|x,y|ShowProgress(x, y, 1)})
+FrPrn:SetEventHandler("Report", "OnProgressStop", {|x,y|ShowProgress(x, y, 2)})
+FrPrn:SetEventHandler("Report", "OnProgress", {|x,y|ShowProgress(x, y, 3)})
+FrPrn:SetEventHandler("Report", "OnBeforePrint", {|ObjName|ShowProcess(ObjName)})
+
+
+
+FrPrn:SetEventHandler("Report", "OnUserFunction", {|FName, FParams| CallUserFunction(FName, FParams)})
+
+FrPrn:AddFunction("function XBaseStr(nValue: Double, nLength: Variant = EmptyVar, nDecimals: Variant = EmptyVar): Variant", "My Lovely Functions!", "It's a XBase Str() function!")
+
+oDlg:Activate( oDlg:bLClicked, oDlg:bMoved, oDlg:bPainted, .T.,,, {|Self|GenerateItems()}, oDlg:bRClicked,,, )
+
+UnloadFr()
+
+return nil
+
+
+
+
+
+function GenerateItems()
+local aItem:={},cItem:=cCombo
+   aTmp := Directory(ResDir + "*.xml")
+   FOR x := 1 TO Len(aTmp)
+     aAdd(aItem,Substr(aTmp[x, 1], 1, Len(aTmp[x, 1]) - 4))
+   NEXT
+   oCombo:SetItems( aItem )
+   oCombo:Set(cItem)
+
+return nil
+
+
+
+
+function UnloadFr()
+
+FrPrn:DestroyFR()
+
+return nil
+
+
+function DoFrAction( cFileName, lPrepared )
+
+local lNotOpened := .F.
+
+private cExpObj, cExpFile, lExpOpt, lExpOpen, cExtention
+
+lPrepared := IF(lPrepared <> NIL, lPrepared, .F.)
+if !lPrepared .AND. (cFileName <> NIL)
+        FrPrn:LoadFromFile(RepDir + cFileName)
+endif
+
+cNome := FrPrn:ReportOptions:SetName()
+cDesc := FrPrn:ReportOptions:SetDescription()
+oNome:Refresh()
+oDesc:Refresh()
+
+
+DO CASE
+CASE nAction == 1
+        FrPrn:ShowReport()
+CASE nAction == 2
+        FrPrn:DesignReport()
+CASE nAction == 3
+        FrPrn:SetProperty("Report", "ShowProgress", .F.)
+        if !lPrepared
+                FrPrn:PrepareReport()
+        endif
+        FrPrn:Print(.T.)
+        FrPrn:SetProperty("Report", "ShowProgress", .T.)
+CASE nAction == 4
+        if GetExportObject()
+                FrPrn:SetProperty("Report", "ShowProgress", .F.)
+                if !lPrepared
+                        FrPrn:PrepareReport()
+                endif
+                FrPrn:SetProperty(cExpObj, "ShowDialog", lExpOpt)
+                if (cExpObj = "MailExport").AND. !lExpOpt
+                        FrPrn:SetProperty(cExpObj, "ShowDialog", .T.)
+                endif
+                if AScan({"XLSExport","XMLExport"},  cExpObj) > 0
+                        FrPrn:SetProperty(cExpObj, "OpenExcelAfterExport", lExpOpen)
+                else
+
+                        if AScan({"BMPExport", "TIFFExport", "JPEGExport", "GIFExport", "DotMatrixExport", "TXTExport"},  cExpObj) > 0
+                                lNotOpened := .T.
+                        else
+                                FrPrn:SetProperty(cExpObj, "OpenAfterExport", lExpOpen)
+                        endif
+                endif
+                if lExpOpen .AND. !lNotOpened
+                        if cExpObj <> "SimpleTextExport"
+                                cExtention := "." + Left(cExpObj, 3)
+                        else
+                                cExtention := ".TXT"
+                        endif
+                        if right(cExpFile, 4) <> cExtention
+                                cExpFile := cExpFile + cExtention
+                        endif
+                endif
+                FrPrn:SetProperty(cExpObj, "FileName", cExpFile)
+                FrPrn:DoExport(cExpObj)
+                if lExpOpen .AND. lNotOpened
+                        Msgalert("Sorry, this type of export has not OpenAfterExport-property. Please, see result file.", "Atenção")
+                endif
+                FrPrn:SetProperty("Report", "ShowProgress", .T.)
+        endif
+ENDCASE
+
+return nil
+
+
+function DoSimpleList()
+
+FrPrn:SetWorkArea("Customers", 1)
+FrPrn:SetFieldAliases("Customers", "CUSTNO=Cust No;Company;ADDR1=Address;Phone;Fax;Contact")
+lShowCustName := .T.
+DoFrAction("1.fr3")
+FrPrn:ClearDataSets()
+lShowCustName := .F.
+
+return
+
+
+function DoSimpleGroup()
+
+FrPrn:SetWorkArea("Customers", 1)
+FrPrn:SetFieldAliases("Customers", "CUSTNO=Cust No;Company;ADDR1=Address;Phone;Fax;Contact")
+lShowCustName := .T.
+DoFrAction("2gr.fr3")
+FrPrn:ClearDataSets()
+lShowCustName := .F.
+
+return
+
+
+function DoMoreComplex()
+
+dbSelectArea( "Items" )
+ordSetFocus( 2 )
+lShowCustName := .T.
+FrPrn:SetWorkArea("Customers", 1)
+FrPrn:SetFieldAliases("Customers", "CUSTNO=Cust No;Company;ADDR1=Address;Phone;Fax;Contact")
+FrPrn:SetWorkArea("Orders", 2)
+FrPrn:SetWorkArea("Items", 3)
+FrPrn:SetWorkArea("Parts", 4)
+FrPrn:SetMasterDetail("Customers", "Orders", {||Customer->CustNo})
+FrPrn:SetMasterDetail("Orders", "Items", {||Orders->OrderNo})
+DbSetRelation(4,  {||PartNo})
+FrPrn:SetResyncPair("Items", "Parts")
+DoFrAction("4.fr3")
+FrPrn:ClearDataSets()
+dbSelectArea( "Items" )
+DbClearRelation()
+lShowCustName := .F.
+
+return
+
+
+function DoInFR_MoreComplex()
+
+DoFrAction("md.fr3")
+
+return
+
+
+
+
+function MyManualReport()
+
+FrPrn:SetDefaultFontProperty("Name", "Times New Roman")
+FrPrn:SetDefaultFontProperty("Size", 16)
+
+tmp_Name := FrPrn:MemoAt("Some memo with bottom frame ...", 30, 30, 300, 50)
+FrPrn:SetManualObjProperty(tmp_Name + ".Frame", "Typ", "[ftBottom]")
+
+FrPrn:LineAt(30, 200, 100, 100)
+FrPrn:MemoAt("<-- It's a some line ...", 200, 250, 350, 50)
+
+FrPrn:PictureAt(DataDir + "logo.bmp" , 30, 400, 300, 300)
+FrPrn:MemoAt("<-- It's a some picture ...", 350, 420, 320, 50)
+
+FrPrn:NewPage()
+
+FrPrn:MemoAt("It's a second page..................", 30, 30, 100, 1000)
+
+return
+
+
+function DoManualReport()
+
+FrPrn:StartManualBuild({||MyManualReport()}, 1, , 3)
+DoFrAction()
+
+return
+
+
+function DoMemPict()
+
+dbUseArea( .T., "DBFCDX", ( DataDir + "Biolife.dbf" ),, if(.F. .OR. .F., !.F., NIL), .F.,, )
+dbGoTop()
+
+FrPrn:SetWorkArea("Biolife", 5)
+DoFrAction("9new.fr3")
+
+BioLife->( dbCloseArea() )
+
+return
+
+
+function DoUserDS()
+
+PRIVATE aDir, I := 1, DirName := "C:\*.*"
+
+aDir := Directory(DirName)
+
+
+
+FrPrn:SetUserDataSet("Dir", "F_NAME;F_SIZE;F_CREATION_DATE", {||I := 1}, {||I := I + 1},  {||I := I - 1}, {||I > Len(aDir)}, {|aField|xx := IF(aField="F_NAME",1, IF(aField="F_SIZE", 2, 3)) , aDir[I, xx]})
+
+DoFrAction("6.fr3")
+FrPrn:ClearDataSets()
+
+return
+
+
+function GetDSValue(cField)
+
+local RES
+
+DO CASE
+CASE cField == "PartNo"
+        RETURN Parts->PartNo
+CASE cField == "Part"
+        RETURN Parts->Descriptio
+CASE cField == "Total qty"
+        dbSelectArea( "Items" )
+        OrdScope(0, Parts->PartNo)
+        OrdScope(1, Parts->PartNo)
+        RES := 0 ; DBEval( {|| RES := RES + QTY},,,,, .F. )
+        RETURN RES
+CASE cField == "Price"
+        RETURN Parts->ListPrice
+ENDCASE
+
+return nil
+
+
+function DoWAUserDS()
+
+dbSelectArea( "Items" )
+ordSetFocus( 3 )
+
+
+
+
+
+FrPrn:SetUserDataSet("Parts in oders", "PartNo;Part;Total qty;Price", {|| Parts->( DbGoTop() )} , {|| Parts->( DbSkip(1) )}, {|| Parts->( DbSkip(-1) )}, {|| Parts->( Eof() )}, {|cField| GetDSValue(cField)})
+
+DoFrAction("9.fr3")
+dbSelectArea( "Items" )
+OrdScope(0, nil)
+OrdScope(1, nil)
+FrPrn:ClearDataSets()
+
+return
+
+
+function DoADO()
+
+FrPrn:LoadFromFile(RepDir + "24.fr3")
+FrPrn:SetADOConnectPartStr("ADODatabase1", "Data Source", DataDir + "demo.mdb")
+DoFrAction()
+
+return
+
+
+function DoSomeCalls()
+
+FrPrn:LoadFromFile(RepDir + "7.fr3")
+FrPrn:AddVariable("My Lovely Vars", "My and only my var", 10)
+FrPrn:AddVariable("My Lovely Vars", "test", 100.25)
+FrPrn:AddVariable("My Lovely Vars", "test1", "'Test'")
+FrPrn:AddVariable("My Lovely Vars", "test2", ctod("01/01/2007"))
+DoFrAction()
+
+return
+
+
+function GetExportObject()
+
+
+
+
+local aExpList := {"PDFExport", "HTMLExport", "RTFExport", "CSVExport", "XLSExport", "DotMatrixExport", "BMPExport", "JPEGExport", "TXTExport", "TIFFExport", "GIFExport", "SimpleTextExport", "MailExport", "XMLExport"}
+local aDados:={}, aoGets:={}, aTiposExp:={}, lExport := .F.
+local oLbx, oDlg
+
+for x=1 to len( aExpList )
+        aadd( aTiposExp, { aExpList[x] } )
+next
+aadd( aDados, RepDir + "export"  )
+aadd( aDados, .T. )
+aadd( aDados, .T. )
+aoGets:=array( len( aDados ) )
+
+oDlg = TDialog():New(,,,,, "EXPORTA",, .F.,,,,,, .F., "DEMO",,,,, .F., )
+oDlg:lHelpIcon := .F.
+
+
+
+
+
+oLbx := TWBrowse():ReDefine( 1101, {|| { aTiposExp[oLbx:nat,1] } }, oDlg, {"Export types"}, {250},,,,,,,,, 8388608, 16777215,, .F.,,,,, )
+oLbx:SetArray(aTiposExp)
+
+aoGets[1] := TGet():ReDefine( 101, { | u | If( PCount()==0, aDados[1], aDados[1]:= u ) }, oDlg,,,,,,,,, .T.,,, .F., .F.,,,,,,, "aDados[1]", )
+aoGets[2] := TCheckBox():ReDefine( 102, { | u | If( PCount()==0, aDados[2], aDados[2]:= u ) }, oDlg,,,,,,, .F.,, )
+aoGets[3] := TCheckBox():ReDefine( 103, { | u | If( PCount()==0, aDados[3], aDados[3]:= u ) }, oDlg,,,,,,, .F.,, )
+
+TButton():ReDefine( 501, {||( lExport:=.T., OnExpRelease(aTiposExp, oLbx, aDados), oDlg:End() )}, oDlg,,, .F.,,,, .F. )
+TButton():ReDefine( 510, {||oDlg:End()}, oDlg,,, .F.,,,, .F. )
+
+oDlg:Activate( oDlg:bLClicked, oDlg:bMoved, oDlg:bPainted, .T.,,,, oDlg:bRClicked,,, )
+
+return lExport
+
+
+function OnExpRelease(aExpList, oLbx, aDados)
+
+cExpObj  := aExpList[oLbx:nat,1]
+cExpFile := aDados[1]
+lExpOpt  := aDados[2]
+lExpOpen := aDados[3]
+
+return .T.
+
+
+function CallUserFunction(FName, FParams)
+
+local RES
+
+if (FName == "XBASESTR")
+   RES := Str(FParams[1], FParams[2], FParams[3])
+endif
+
+return RES
+
+
+
+
+
+function AllFilesExist( aFiles )
+
+local lExist := .T., i:=0, imax := len(aFiles)
+
+while ++i <= imax .AND. lExist
+        lExist := File( aFiles[i] )
+enddo
+
+return lExist
+
+
+
+
+Function ShowProgress(x, y, z)
+LOCAL Res
+  DO CASE
+      CASE x == 0
+         Res := "Prepare "
+      CASE x == 1
+         Res := "Export "
+      CASE x == 2
+         Res := "Printing "
+  ENDCASE
+
+  DO CASE
+      CASE z == 1
+         Res := Res + "Started"
+      CASE z == 2
+         Res := Res + "Finished"
+         cStat2:=""
+         oStat2:Refresh()
+      CASE z == 3
+         Res := Res + " - " + Str(y)
+  ENDCASE
+  cStat1 := Res
+  oStat1:Refresh()
+RETURN
+
+
+
+
+Function ShowProcess(sObjectName)
+LOCAL cRes
+  IF lShowCustName
+    cRes := "Proccessing - " + Trim((1)->Company) + " " + sObjectName
+  ELSE
+    cRes := "Proccessing - " + " " + sObjectName
+  ENDIF
+  cStat2 := cRes
+  oStat2:Refresh()
+RETURN

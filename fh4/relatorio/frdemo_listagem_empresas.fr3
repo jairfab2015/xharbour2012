@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37872,4673897222" ReportOptions.Description.Text="" ReportOptions.LastChange="38183,9396609144" ScriptLanguage="PascalScript" ScriptText.Text="procedure Button1OnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  with Button1, Engine do&#13;&#10;  begin&#13;&#10;  if rbCodigo.checked then&#13;&#10;    EMPRESA.SQL.ADD('ORDER BY ES.CODIGO')&#13;&#10;  else&#13;&#10;    EMPRESA.SQL.ADD('ORDER BY ES.NOMERAZAO');&#13;&#10;  EMPRESA.OPEN;&#13;&#10;  [SIGHAPARAMVALOR(RELOADED, 1)];&#13;&#10;  end&#13;&#10;end;&#13;&#10;&#13;&#10;procedure Button2OnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  with Button2, Engine do&#13;&#10;  begin&#13;&#10;  [SIGHAPARAMVALOR(RELOADED, 0)];&#13;&#10;  end&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C80008446174617365747301010C2800000020446174615365743D22454D50524553412220446174615365744E616D653D22454D5052455341220000095661726961626C65730100055374796C650100">
+  <TfrxDialogPage Name="Page2" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" BorderStyle="bsDialog" Caption="Relatório de Funcionário / Empresa" Color="-2147483633" Height="139" Left="182" Top="179" Width="318">
+    <TfrxIBXQuery Name="EMPRESA" UserName="EMPRESA" CloseDataSource="True" FieldAliases.Text="" SQL.Text="SELECT ES.CODIGO, ES.NOMERAZAO, ES.CNPJ, ES.FAXEMPRESA&#13;&#10;FROM EMPRESAS ES" PropData="0A506172616D65746572730100"/>
+    <TfrxButtonControl Name="Button1" Left="44" Top="64" Width="107" Height="33" Font.Charset="0" Font.Color="-2147483640" Font.Height="-13" Font.Name="Courier New" Font.Style="1" ParentFont="False" Caption="&Relatório" Default="True" ModalResult="1" OnClick="Button1OnClick"/>
+    <TfrxButtonControl Name="Button2" Left="160" Top="64" Width="107" Height="33" Font.Charset="0" Font.Color="-2147483640" Font.Height="-13" Font.Name="Courier New" Font.Style="1" ParentFont="False" Cancel="True" Caption="&Fechar" ModalResult="2" OnClick="Button2OnClick"/>
+    <TfrxRadioButtonControl Name="rbCodigo" Left="12" Top="12" Width="217" Height="17" Font.Charset="0" Font.Color="-2147483640" Font.Height="-13" Font.Name="Courier New" Font.Style="0" ParentFont="False" Caption="Ordem de númeração" Color="-2147483633"/>
+    <TfrxRadioButtonControl Name="rbNome" Left="12" Top="36" Width="217" Height="17" Font.Charset="0" Font.Color="-2147483640" Font.Height="-13" Font.Name="Courier New" Font.Style="0" ParentFont="False" Caption="Ordem alfabética" Checked="True" Color="-2147483633"/>
+  </TfrxDialogPage>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="8" RightMargin="8" TopMargin="8" BottomMargin="8" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="25" Left="-30" Top="2" Width="758">
+      <TfrxMemoView Name="Memo5" Align="baWidth" Left="-1" Top="0" Width="700" Height="24" Color="16739436" Font.Charset="1" Font.Color="16777215" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[SIGHAPARAM('TITULO')]"/>
+      <TfrxMemoView Name="Memo10" Left="2" Top="4" Width="96" Height="20" AutoWidth="True" Color="16739436" Font.Charset="1" Font.Color="16777215" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" WordWrap="False" Text="DATA: [DATE] [TIME] "/>
+      <TfrxMemoView Name="Memo11" Left="574" Top="4" Width="120" Height="20" AutoWidth="True" Color="16739436" Font.Charset="1" Font.Color="16777215" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="PÃGINA: [PAGE#] "/>
+    </TfrxReportTitle>
+    <TfrxHeader Name="MasterHeader1" Height="20" Left="-30" Top="58" Width="758">
+      <TfrxMemoView Name="Memo1" Left="-1" Top="1" Width="64" Height="17" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" WordWrap="False" Text="NÃºmero"/>
+      <TfrxMemoView Name="Memo2" Left="63" Top="1" Width="392" Height="17" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" WordWrap="False" Text="RazÃ£o Social"/>
+      <TfrxMemoView Name="Memo3" Left="455" Top="1" Width="120" Height="17" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" WordWrap="False" Text="CNPJ"/>
+      <TfrxMemoView Name="Memo4" Left="575" Top="1" Width="124" Height="17" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="8" ParentFont="False" WordWrap="False" Text="FONE / FAX"/>
+    </TfrxHeader>
+    <TfrxMasterData Name="MasterData1" Height="20" Left="-30" Top="114" Width="758" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="EMPRESA" DataSetName="EMPRESA" RowCount="0">
+      <TfrxMemoView Name="Memo6" Left="-1" Top="0" Width="64" Height="20" WordWrap="False" Text="[EMPRESA.&#34;CODIGO&#34;]"/>
+      <TfrxMemoView Name="Memo7" Left="63" Top="0" Width="392" Height="20" WordWrap="False" Text="[EMPRESA.&#34;NOMERAZAO&#34;]"/>
+      <TfrxMemoView Name="Memo8" Left="455" Top="0" Width="120" Height="20" WordWrap="False" Text="[EMPRESA.&#34;CNPJ&#34;]"/>
+      <TfrxMemoView Name="Memo9" Left="575" Top="0" Width="124" Height="20" WordWrap="False" Text="[EMPRESA.&#34;FAXEMPRESA&#34;]"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>

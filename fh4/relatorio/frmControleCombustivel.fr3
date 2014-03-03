@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="38238,5665527315" ReportOptions.Description.Text="" ReportOptions.LastChange="38238,5675220718" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C8000844617461736574730100095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="6" RightMargin="6" TopMargin="4" BottomMargin="4" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="163" Left="-23" Top="3" Width="758">
+      <TfrxMemoView Name="Memo4" Left="132" Top="8" Width="301" Height="18" AutoWidth="True" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="[DMCadastro.QREmpresa.&#34;RAZAOSOCIAL&#34;]"/>
+      <TfrxPictureView Name="Picture1" Align="baLeft" Left="-5" Top="1" Width="120" Height="102" Center="True" DataField="[DMCadastro.QREmpresa.&#34;LOGO&#34;]" KeepAspectRatio="False"/>
+      <TfrxMemoView Name="Memo5" Left="133" Top="56" Width="457" Height="18" AutoWidth="True" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="FONE: [DMCadastro.QREmpresa.&#34;FONE&#34;] FAX: [DMCadastro.QREmpresa.&#34;FAX&#34;]"/>
+      <TfrxMemoView Name="Memo6" Left="133" Top="32" Width="297" Height="18" AutoWidth="True" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="CNPJ: [DMCadastro.QREmpresa.&#34;CNPJ&#34;]  IE: [DMCadastro.QREmpresa.&#34;INSCRICAOESTADUAL&#34;]"/>
+      <TfrxMemoView Name="Memo8" Left="133" Top="80" Width="173" Height="17" AutoWidth="True" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="REL: frVendasVeiculo.frf"/>
+      <TfrxLineView Name="Line3" Left="-3" Top="0" Width="720" Height="0" Frame.Typ="4"/>
+      <TfrxRichView Name="Rich1" Align="baWidth" Left="-5" Top="110" Width="722" Height="52" GapX="2" GapY="1" PropData="0852696368456469740AEE0000007B5C727466315C616E73695C616E7369637067313235325C64656666305C6465666C616E67313034367B5C666F6E7474626C7B5C66305C6673776973735C66636861727365743020417269616C3B7D7B5C66315C667377697373204D532053616E732053657269663B7D7D0D0A7B5C636F6C6F7274626C203B5C726564305C677265656E305C626C7565303B7D0D0A5C766965776B696E64345C7563315C706172645C71635C6366315C625C66305C667332302052454C41545C27643352494F2044452056454E44415320504F522056455C27636443554C4F5C62305C66315C667331365C7061720D0A7D0D0A00"/>
+    </TfrxReportTitle>
+    <TfrxPageFooter Name="PageFooter1" Height="26" Left="-23" Top="377" Width="758">
+      <TfrxMemoView Name="Memo10" Align="baRight" Left="499" Top="4" Width="218" Height="18" AutoWidth="True" Font.Charset="0" Font.Color="0" Font.Height="-13" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="PAGINA: [PAGE#] de [TOTALPAGES]"/>
+      <TfrxMemoView Name="Memo11" Align="baLeft" Left="-5" Top="4" Width="132" Height="18" AutoWidth="True" Font.Charset="0" Font.Color="0" Font.Height="-13" Font.Name="Times New Roman" Font.Style="2" ParentFont="False" Text="DATA: [DATE] [TIME]"/>
+    </TfrxPageFooter>
+    <TfrxGroupHeader Name="GroupHeader1" Height="42" Left="-23" Top="201" Width="758" Condition="[QrVendas.&#34;PLACA&#34;]">
+      <TfrxMemoView Name="Memo2" Left="51" Top="1" Width="184" Height="18" Text="[QrVendas.&#34;VEICULO&#34;]"/>
+      <TfrxMemoView Name="Memo3" Left="-3" Top="22" Width="89" Height="18" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="DOCUMENTO"/>
+      <TfrxMemoView Name="Memo9" Left="623" Top="22" Width="105" Height="18" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="TOTAL VENDA"/>
+      <TfrxMemoView Name="Memo12" Left="-19" Top="1" Width="70" Height="18" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="VEÍCULO : "/>
+      <TfrxMemoView Name="Memo17" Left="248" Top="1" Width="70" Height="18" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="PLACA : "/>
+      <TfrxMemoView Name="Memo13" Left="200" Top="22" Width="89" Height="18" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="TIPO VENDA"/>
+      <TfrxMemoView Name="Memo14" Left="90" Top="22" Width="105" Height="18" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="DATA EMISSÃO"/>
+      <TfrxMemoView Name="Memo15" Left="319" Top="1" Width="132" Height="18" Text="[QrVendas.&#34;PLACA&#34;]"/>
+      <TfrxShapeView Name="Shape3" Left="-5" Top="41" Width="720" Height="0" Shape="skRoundRectangle"/>
+    </TfrxGroupHeader>
+    <TfrxMasterData Name="MasterData1" Height="23" Left="-23" Top="275" Width="758" Columns="1" ColumnWidth="200" ColumnGap="20" DataSetName="frDataSet" RowCount="0">
+      <TfrxMemoView Name="Memo1" Left="-1" Top="4" Width="80" Height="18" Text="[QrVendas.&#34;DOCUMENTO&#34;]"/>
+      <TfrxMemoView Name="Memo7" Left="624" Top="1" Width="104" Height="21" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Text="[QrVendas.&#34;TOTALVENDA&#34;]"/>
+      <TfrxMemoView Name="Memo18" Left="90" Top="4" Width="105" Height="18" Text="[QrVendas.&#34;DATAEMISSAO&#34;]"/>
+      <TfrxMemoView Name="Memo20" Left="201" Top="4" Width="349" Height="18" Text="[QrVendas.&#34;DESCRICAO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxGroupFooter Name="GroupFooter1" Height="26" Left="-23" Top="320" Width="758">
+      <TfrxMemoView Name="Memo16" Left="485" Top="3" Width="117" Height="18" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="TOTAL VENDAS :"/>
+      <TfrxMemoView Name="Memo19" Left="625" Top="2" Width="104" Height="21" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Text="[SUM([QrVendas.&#34;TOTALVENDA&#34;])]"/>
+      <TfrxShapeView Name="Shape1" Left="-5" Top="1" Width="720" Height="0" Shape="skRoundRectangle"/>
+      <TfrxShapeView Name="Shape2" Left="-5" Top="24" Width="720" Height="0" Shape="skRoundRectangle"/>
+    </TfrxGroupFooter>
+  </TfrxReportPage>
+</TfrxReport>

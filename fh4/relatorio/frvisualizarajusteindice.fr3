@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.24" DotMatrixReport="False" EngineOptions.DoublePass="True" EngineOptions.UseFileCache="True" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4031" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="38359,7172329051" ReportOptions.Description.Text="" ReportOptions.Name="Listagem de Produtos que sofrer�o reajuste" ReportOptions.LastChange="39732,4360814468" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;  PAGE1.VISIBLE := FALSE;&#13;&#10;  PAGE2.VISIBLE := FALSE;&#13;&#10;  PAGE3.VISIBLE := FALSE;&#13;&#10;  PAGE4.VISIBLE := FALSE;&#13;&#10;&#13;&#10;  IF SIGHAPARAM('PAGINA') = '1' THEN&#13;&#10;    PAGE1.VISIBLE := TRUE;&#13;&#10;  IF SIGHAPARAM('PAGINA') = '2' THEN&#13;&#10;    PAGE2.VISIBLE := TRUE;&#13;&#10;  IF SIGHAPARAM('PAGINA') = '3' THEN&#13;&#10;    PAGE3.VISIBLE := TRUE;&#13;&#10;  IF SIGHAPARAM('PAGINA') = '4' THEN&#13;&#10;    PAGE4.VISIBLE := TRUE;&#13;&#10;&#13;&#10;end." PropData="044C656674021C03546F70020808446174617365747301010C4100000020446174615365743D2266726473436164617374726F456D70726573612220446174615365744E616D653D22444D436164617374726F2E5152456D70726573612200010C3D00000020446174615365743D2266726D56697375616C697A61416A75737465496E646963652E717253514C2220446174615365744E616D653D22717253514C220000095661726961626C65730100055374796C650100">
+  <TfrxReportPage Name="Page1" Orientation="poLandscape" PaperWidth="279,4" PaperHeight="215,9" PaperSize="1" LeftMargin="4" RightMargin="4" TopMargin="9" BottomMargin="9" ColumnWidth="0" ColumnPositions.Text="" Bin="1" BinOtherPages="1" HGuides.Text="" VGuides.Text="147,40167">
+    <TfrxReportTitle Name="" Height="34" Left="0" Top="18,89765" Width="1025,764442">
+      <TfrxMemoView Name="" Align="baWidth" Left="0" Top="0" Width="1025,764442" Height="21" AutoWidth="True" Color="16777215" HAlign="haRight" Text="REL: [filename()]"/>
+      <TfrxMemoView Name="" Align="baCenter" Left="383,882221" Top="1" Width="258" Height="19" AutoWidth="True" Color="14211288" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" HAlign="haBlock" ParentFont="False" Text="Listagem de produtos que sofrerão reajuste"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="" Height="15" Left="0" Top="154,96073" Width="1025,764442" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="frmVisualizaAjusteIndice.qrSQL" DataSetName="qrSQL" RowCount="0">
+      <TfrxMemoView Name="" Left="493,42517" Top="0" Width="73" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_VENDA&#34;]"/>
+      <TfrxMemoView Name="" Left="576,52752" Top="0" Width="100" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_VENDA_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo2" Left="688,96846" Top="0" Width="72" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;PRECO_VENDA&#34;]"/>
+      <TfrxMemoView Name="Memo4" Left="773,4094" Top="0" Width="100" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;PRECO_VENDA_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo6" Left="21" Top="0" Width="254" Height="12" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[qrSQL.&#34;CODIGO&#34;] - [qrSQL.&#34;DESCRICAO_DO_PRODUTO&#34;]"/>
+      <TfrxMemoView Name="Memo64" Left="399,64564" Top="0" Width="73" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_REPOSICAO_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo66" Left="281,44094" Top="0" Width="89" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_REPOSICAO&#34;]"/>
+      <TfrxMemoView Name="Memo90" Left="899,52814" Top="0" Width="100" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;PRECO_VENDA_ANT&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="" Height="20" Left="0" Top="283,46475" Width="1025,764442">
+      <TfrxMemoView Name="" Align="baWidth" Left="222" Top="0" Width="713,764442" Height="20" Color="12111048" Frame.Typ="8" Text=""/>
+      <TfrxMemoView Name="" Align="baLeft" Left="0" Top="0" Width="222" Height="20" AutoWidth="True" Color="12111048" Text="Página: [PAGE#] de [TOTALPAGES]"/>
+      <TfrxMemoView Name="" Align="baRight" Left="935,764442" Top="0" Width="90" Height="20" AutoWidth="True" Color="12111048" Text="[DATE] [TIME]"/>
+      <TfrxMemoView Name="" Align="baCenter" Left="356,882221" Top="0" Width="312" Height="20" AutoWidth="True" Color="12111048" Text="SIGHA - Sistema Integrado de Gestão Administrativa"/>
+    </TfrxPageFooter>
+    <TfrxColumnHeader Name="ColumnHeader1" Height="20" Left="0" Top="75,5906" Width="1025,764442">
+      <TfrxMemoView Name="" Left="484,86611" Top="4" Width="82,66141" Height="16" Frame.Typ="8" Text="Custo Venda"/>
+      <TfrxMemoView Name="" Left="571,30705" Top="4" Width="116,44094" Height="16" Frame.Typ="8" Text="Custo Venda Novo"/>
+      <TfrxMemoView Name="Memo1" Left="687,74799" Top="4" Width="82,44094" Height="16" Frame.Typ="8" Text="Preço Venda"/>
+      <TfrxMemoView Name="Memo3" Left="772,96846" Top="4" Width="117,77953" Height="16" Frame.Typ="8" Text="Preço Venda Novo"/>
+      <TfrxMemoView Name="Memo5" Left="21" Top="4" Width="258" Height="16" Frame.Typ="8" Text="Código - Produto"/>
+      <TfrxMemoView Name="Memo63" Left="369,88188" Top="4" Width="108,42517" Height="16" Frame.Typ="8" Text="Custo Rep. Novo"/>
+      <TfrxMemoView Name="Memo65" Left="284,55906" Top="4" Width="79,76376" Height="16" Frame.Typ="8" Text="Custo Rep."/>
+      <TfrxMemoView Name="Memo89" Left="895,74861" Top="3,77953" Width="129,11812" Height="16" Frame.Typ="8" Text="Preço Venda Antigo"/>
+    </TfrxColumnHeader>
+    <TfrxReportSummary Name="ReportSummary1" Height="29" Left="0" Top="230,55133" Width="1025,764442">
+      <TfrxMemoView Name="Memo67" Left="29" Top="8" Width="89" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="TOTALIZAÇÃO : "/>
+      <TfrxMemoView Name="Memo68" Left="281,22047" Top="8" Width="89" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_REPOSICAO&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo69" Left="399,2047" Top="8" Width="73" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_REPOSICAO_NOVO&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo70" Left="495,2047" Top="8" Width="73" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_VENDA&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo71" Left="576,30705" Top="8" Width="100" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_VENDA_NOVO&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo72" Left="688,52752" Top="8" Width="72" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;PRECO_VENDA&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo73" Left="773,4094" Top="8" Width="100" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;PRECO_VENDA_NOVO&#34;&#62;)]"/>
+      <TfrxLineView Name="Line4" Left="21" Top="2" Width="1003,03154" Height="0" Frame.Typ="4" Frame.Width="2"/>
+      <TfrxMemoView Name="Memo95" Left="903,30767" Top="7,55906" Width="100" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;PRECO_VENDA_ANT&#34;&#62;)]"/>
+    </TfrxReportSummary>
+  </TfrxReportPage>
+  <TfrxReportPage Name="Page2" Orientation="poLandscape" PaperWidth="279,4" PaperHeight="215,9" PaperSize="1" LeftMargin="4" RightMargin="4" TopMargin="9" BottomMargin="9" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="Band1" Height="28" Left="0" Top="18,89765" Width="1025,764442">
+      <TfrxMemoView Name="Memo7" Align="baWidth" Left="0" Top="0" Width="1025,764442" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="15" HAlign="haRight" Text="REL: [filename()]"/>
+      <TfrxMemoView Name="Memo8" Align="baCenter" Left="383,882221" Top="1" Width="258" Height="18" AutoWidth="True" Color="12111048" HAlign="haBlock" Text="Listagem de Produtos que sofrerão reajuste"/>
+    </TfrxReportTitle>
+    <TfrxColumnHeader Name="Band2" Height="20" Left="0" Top="68,03154" Width="1025,764442">
+      <TfrxMemoView Name="Memo9" Left="279" Top="4" Width="113" Height="16" Frame.Typ="8" Text="Despesa Venda"/>
+      <TfrxMemoView Name="Memo10" Left="392" Top="4" Width="146" Height="16" Frame.Typ="8" Text="Despesa Venda Novo"/>
+      <TfrxMemoView Name="Memo11" Left="538" Top="4" Width="90" Height="16" Frame.Typ="8" Text="Custo Venda"/>
+      <TfrxMemoView Name="Memo12" Left="628" Top="4" Width="120" Height="16" Frame.Typ="8" Text="Custo Venda Novo"/>
+      <TfrxMemoView Name="Memo13" Left="748" Top="4" Width="90" Height="16" Frame.Typ="8" Text="Preço Venda"/>
+      <TfrxMemoView Name="Memo14" Left="837" Top="4" Width="118" Height="16" Frame.Typ="8" Text="Preço Venda Novo"/>
+      <TfrxMemoView Name="Memo15" Left="21" Top="4" Width="258" Height="16" Frame.Typ="8" Text="Código - Produto"/>
+    </TfrxColumnHeader>
+    <TfrxMasterData Name="Band3" Height="15" Left="0" Top="147,40167" Width="1025,764442" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="frmVisualizaAjusteIndice.qrSQL" DataSetName="qrSQL" RowCount="0">
+      <TfrxMemoView Name="Memo16" Left="283" Top="0" Width="89" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;DESPESAS_COM_VENDAS&#34;]"/>
+      <TfrxMemoView Name="Memo17" Left="404" Top="0" Width="114" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;DESPESAS_COM_VENDAS_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo18" Left="543" Top="0" Width="73" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_VENDA&#34;]"/>
+      <TfrxMemoView Name="Memo19" Left="641" Top="0" Width="100" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_VENDA_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo20" Left="757" Top="0" Width="72" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;PRECO_VENDA&#34;]"/>
+      <TfrxMemoView Name="Memo21" Left="849" Top="0" Width="100" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;PRECO_VENDA_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo22" Left="21" Top="0" Width="254" Height="12" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[frmAjusteIndice.qrSQL.&#34;CODIGO&#34;] - [frmAjusteIndice.qrSQL.&#34;DESCRICAO_DO_PRODUTO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="Band4" Height="20" Left="0" Top="264,5671" Width="1025,764442">
+      <TfrxMemoView Name="Memo23" Align="baWidth" Left="222" Top="0" Width="713,764442" Height="20" Color="12111048" Frame.Typ="8" Text=""/>
+      <TfrxMemoView Name="Memo24" Align="baLeft" Left="0" Top="0" Width="222" Height="20" AutoWidth="True" Color="12111048" Text="Página: [PAGE#] de [TOTALPAGES]"/>
+      <TfrxMemoView Name="Memo25" Align="baRight" Left="935,764442" Top="0" Width="90" Height="20" AutoWidth="True" Color="12111048" Text="[DATE] [TIME]"/>
+      <TfrxMemoView Name="Memo26" Align="baCenter" Left="356,882221" Top="0" Width="312" Height="20" AutoWidth="True" Color="12111048" Text="SIGHA - Sistema Integrado de Gestão Administrativa"/>
+    </TfrxPageFooter>
+    <TfrxReportSummary Name="ReportSummary2" Height="20" Left="0" Top="222,99227" Width="1025,764442">
+      <TfrxMemoView Name="Memo74" Left="21" Top="0" Width="89" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="TOTALIZAÇÃO : "/>
+      <TfrxMemoView Name="Memo75" Left="277" Top="0" Width="89" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;DESPESAS_COM_VENDAS&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo76" Left="433" Top="0" Width="73" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;DESPESAS_COM_VENDAS_NOVO&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo77" Left="549" Top="0" Width="73" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_VENDA&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo78" Left="645" Top="0" Width="100" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_VENDA_NOVO&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo79" Left="765" Top="0" Width="72" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;PRECO_VENDA&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo80" Left="849" Top="0" Width="100" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;PRECO_VENDA_NOVO&#34;&#62;)]"/>
+      <TfrxLineView Name="Line3" Left="21" Top="0" Width="935" Height="0" Frame.Typ="4" Frame.Width="2"/>
+    </TfrxReportSummary>
+  </TfrxReportPage>
+  <TfrxReportPage Name="Page3" Orientation="poLandscape" PaperWidth="279,4" PaperHeight="215,9" PaperSize="1" LeftMargin="4" RightMargin="4" TopMargin="9" BottomMargin="9" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="Band5" Height="28" Left="0" Top="18,89765" Width="1025,764442">
+      <TfrxMemoView Name="Memo27" Align="baWidth" Left="0" Top="0" Width="1025,764442" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="15" HAlign="haRight" Text="REL: [filename()]"/>
+      <TfrxMemoView Name="Memo28" Align="baCenter" Left="383,882221" Top="1" Width="258" Height="18" AutoWidth="True" Color="12111048" HAlign="haBlock" Text="Listagem de Produtos que sofrerão reajuste"/>
+    </TfrxReportTitle>
+    <TfrxColumnHeader Name="Band6" Height="20" Left="0" Top="68,03154" Width="1025,764442">
+      <TfrxMemoView Name="Memo29" Left="279" Top="4" Width="113" Height="16" Frame.Typ="8" Text="Margem Lucro"/>
+      <TfrxMemoView Name="Memo30" Left="392" Top="4" Width="146" Height="16" Frame.Typ="8" Text="Margem Lucro Novo"/>
+      <TfrxMemoView Name="Memo31" Left="538" Top="4" Width="90" Height="16" Frame.Typ="8" Text="Custo Venda"/>
+      <TfrxMemoView Name="Memo32" Left="628" Top="4" Width="120" Height="16" Frame.Typ="8" Text="Custo Venda Novo"/>
+      <TfrxMemoView Name="Memo33" Left="748" Top="4" Width="90" Height="16" Frame.Typ="8" Text="Preço Venda"/>
+      <TfrxMemoView Name="Memo34" Left="837" Top="4" Width="118" Height="16" Frame.Typ="8" Text="Preço Venda Novo"/>
+      <TfrxMemoView Name="Memo35" Left="21" Top="4" Width="258" Height="16" Frame.Typ="8" Text="Código - Produto"/>
+    </TfrxColumnHeader>
+    <TfrxMasterData Name="Band7" Height="15" Left="0" Top="147,40167" Width="1025,764442" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="frmVisualizaAjusteIndice.qrSQL" DataSetName="qrSQL" RowCount="0">
+      <TfrxMemoView Name="Memo36" Left="283" Top="0" Width="81" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;MARGEM_LUCRO_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo37" Left="404" Top="0" Width="106" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;MARGEM_LUCRO_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo38" Left="543" Top="0" Width="73" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_VENDA&#34;]"/>
+      <TfrxMemoView Name="Memo39" Left="641" Top="0" Width="100" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_VENDA_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo40" Left="757" Top="0" Width="72" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;PRECO_VENDA&#34;]"/>
+      <TfrxMemoView Name="Memo41" Left="849" Top="0" Width="100" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;PRECO_VENDA_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo42" Left="21" Top="0" Width="254" Height="12" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[qrSQL.&#34;CODIGO&#34;] -[qrSQL.&#34;DESCRICAO_DO_PRODUTO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="Band8" Height="20" Left="0" Top="264,5671" Width="1025,764442">
+      <TfrxMemoView Name="Memo43" Align="baWidth" Left="222" Top="0" Width="713,764442" Height="20" Color="12111048" Frame.Typ="8" Text=""/>
+      <TfrxMemoView Name="Memo44" Align="baLeft" Left="0" Top="0" Width="222" Height="20" AutoWidth="True" Color="12111048" Text="Página: [PAGE#] de [TOTALPAGES]"/>
+      <TfrxMemoView Name="Memo45" Align="baRight" Left="935,764442" Top="0" Width="90" Height="20" AutoWidth="True" Color="12111048" Text="[DATE] [TIME]"/>
+      <TfrxMemoView Name="Memo46" Align="baCenter" Left="356,882221" Top="0" Width="312" Height="20" AutoWidth="True" Color="12111048" Text="SIGHA - Sistema Integrado de Gestão Administrativa"/>
+    </TfrxPageFooter>
+    <TfrxReportSummary Name="ReportSummary3" Height="20" Left="0" Top="222,99227" Width="1025,764442">
+      <TfrxMemoView Name="Memo81" Left="21" Top="0" Width="89" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="TOTALIZAÇÃO : "/>
+      <TfrxMemoView Name="Memo82" Left="273" Top="0" Width="89" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;MARGEM_LUCRO&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo83" Left="433" Top="0" Width="73" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;MARGEM_LUCRO_NOVO&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo84" Left="545" Top="0" Width="73" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_VENDA&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo85" Left="637" Top="0" Width="100" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_VENDA_NOVO&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo86" Left="753" Top="0" Width="72" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;PRECO_VENDA&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo87" Left="853" Top="0" Width="100" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;PRECO_VENDA_NOVO&#34;&#62;)]"/>
+      <TfrxLineView Name="Line2" Left="21" Top="0" Width="935" Height="0" Frame.Typ="4" Frame.Width="2"/>
+    </TfrxReportSummary>
+  </TfrxReportPage>
+  <TfrxReportPage Name="Page4" Orientation="poLandscape" PaperWidth="279,4" PaperHeight="215,9" PaperSize="1" LeftMargin="4" RightMargin="4" TopMargin="9" BottomMargin="9" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="Band9" Height="28" Left="0" Top="18,89765" Width="1025,764442">
+      <TfrxMemoView Name="Memo47" Align="baWidth" Left="0" Top="0" Width="1025,764442" Height="20" AutoWidth="True" Color="12111048" Frame.Typ="15" HAlign="haRight" Text="REL: [filename()]"/>
+      <TfrxMemoView Name="Memo48" Align="baCenter" Left="383,882221" Top="1" Width="258" Height="18" AutoWidth="True" Color="12111048" HAlign="haBlock" Text="Listagem de Produtos que sofrerão reajuste"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="Band10" Height="15" Left="0" Top="147,40167" Width="1025,764442" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="frmVisualizaAjusteIndice.qrSQL" DataSetName="qrSQL" RowCount="0">
+      <TfrxMemoView Name="Memo50" Left="375" Top="0" Width="73" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_VENDA&#34;]"/>
+      <TfrxMemoView Name="Memo52" Left="525" Top="0" Width="100" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;CUSTO_VENDA_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo58" Left="685" Top="0" Width="72" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;PRECO_VENDA&#34;]"/>
+      <TfrxMemoView Name="Memo60" Left="821" Top="0" Width="100" Height="12" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[qrSQL.&#34;PRECO_VENDA_NOVO&#34;]"/>
+      <TfrxMemoView Name="Memo62" Left="21" Top="0" Width="342" Height="12" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[qrSQL.&#34;CODIGO&#34;] - [qrSQL.&#34;DESCRICAO_DO_PRODUTO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="Band11" Height="20" Left="0" Top="264,5671" Width="1025,764442">
+      <TfrxMemoView Name="Memo53" Align="baWidth" Left="222" Top="0" Width="713,764442" Height="20" Color="12111048" Frame.Typ="8" Text=""/>
+      <TfrxMemoView Name="Memo54" Align="baLeft" Left="0" Top="0" Width="222" Height="20" AutoWidth="True" Color="12111048" Text="Página: [PAGE#] de [TOTALPAGES]"/>
+      <TfrxMemoView Name="Memo55" Align="baRight" Left="935,764442" Top="0" Width="90" Height="20" AutoWidth="True" Color="12111048" Text="[DATE] [TIME]"/>
+      <TfrxMemoView Name="Memo56" Align="baCenter" Left="356,882221" Top="0" Width="312" Height="20" AutoWidth="True" Color="12111048" Text="SIGHA - Sistema Integrado de Gestão Administrativa"/>
+    </TfrxPageFooter>
+    <TfrxColumnHeader Name="Band12" Height="20" Left="0" Top="68,03154" Width="1025,764442">
+      <TfrxMemoView Name="Memo49" Left="374" Top="4" Width="142" Height="16" Frame.Typ="8" Text="Custo Venda"/>
+      <TfrxMemoView Name="Memo51" Left="516" Top="4" Width="164" Height="16" Frame.Typ="8" Text="Custo Venda Novo"/>
+      <TfrxMemoView Name="Memo57" Left="680" Top="4" Width="134" Height="16" Frame.Typ="8" Text="Preço Venda"/>
+      <TfrxMemoView Name="Memo59" Left="813" Top="4" Width="142" Height="16" Frame.Typ="8" Text="Preço Venda Novo"/>
+      <TfrxMemoView Name="Memo61" Left="21" Top="4" Width="354" Height="16" Frame.Typ="8" Text="Código - Produto"/>
+    </TfrxColumnHeader>
+    <TfrxReportSummary Name="ReportSummary4" Height="20" Left="0" Top="222,99227" Width="1025,764442">
+      <TfrxMemoView Name="Memo88" Left="25" Top="0" Width="89" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="TOTALIZAÇÃO : "/>
+      <TfrxMemoView Name="Memo91" Left="373" Top="0" Width="73" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_VENDA&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo92" Left="529" Top="0" Width="100" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;CUSTO_VENDA_NOVO&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo93" Left="685" Top="0" Width="72" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;PRECO_VENDA&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo94" Left="813" Top="0" Width="100" Height="16" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;qrSQL.&#34;PRECO_VENDA_NOVO&#34;&#62;)]"/>
+      <TfrxLineView Name="Line1" Left="21" Top="0" Width="935" Height="0" Frame.Typ="4" Frame.Width="2"/>
+    </TfrxReportSummary>
+  </TfrxReportPage>
+</TfrxReport>
