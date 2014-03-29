@@ -1,3 +1,4 @@
-@if not exist obj md obj
-c:\bcc582\bin\make -fvisualfw.mak
-RhEsocial.exe
+rem d:\dev_Prj\hbmake_k\visual\hbmkbc.bat visualfw
+
+.\hbmkbc.bat visualfw
+ 
