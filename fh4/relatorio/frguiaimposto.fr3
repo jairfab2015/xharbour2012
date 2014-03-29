@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="NOTA" ReportOptions.CreateDate="39182,6015641204" ReportOptions.Description.Text="" ReportOptions.LastChange="39182,6015641204" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C8000844617461736574730100095661726961626C65730100055374796C650100">
-  <TfrxReportPage Name="Page1" PaperWidth="215,9" PaperHeight="279,4" PaperSize="1" LeftMargin="6" RightMargin="6" TopMargin="4" BottomMargin="4" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text=""/>
-</TfrxReport>

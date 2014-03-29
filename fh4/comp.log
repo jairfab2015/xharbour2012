@@ -1,194 +1,0 @@
-xHarbour Compiler build 1.2.1 (SimpLex) (Rev. 6714)
-Copyright 1999-2010, http://www.xharbour.org http://www.harbour-project.org/
-Compiling 'jair.prg' and generating preprocessed output to 'jair.ppo'...
-100100100200300400500600700800900100011001002001002001002003004005006007008009001000110012001300140015001600100jair.prg(26) Warning W0001  Ambiguous reference: 'NACTION'
-jair.prg(91) Warning W0001  Ambiguous reference: 'CCOMBO'
-jair.prg(91) Warning W0001  Ambiguous reference: 'CNOME'
-jair.prg(91) Warning W0001  Ambiguous reference: 'CDESC'
-jair.prg(91) Warning W0001  Ambiguous reference: 'CSTAT1'
-jair.prg(91) Warning W0001  Ambiguous reference: 'CSTAT2'
-jair.prg(93) Warning W0001  Ambiguous reference: 'NACTION'
-jair.prg(93) Warning W0001  Ambiguous reference: 'NACTION'
-jair.prg(93) Warning W0001  Ambiguous reference: 'OGET1'
-jair.prg(97) Warning W0001  Ambiguous reference: 'CCOMBO'
-jair.prg(97) Warning W0001  Ambiguous reference: 'CCOMBO'
-jair.prg(97) Warning W0001  Ambiguous reference: 'CCOMBO'
-jair.prg(97) Warning W0001  Ambiguous reference: 'OCOMBO'
-100jair.prg(109) Warning W0001  Ambiguous reference: 'CNOME'
-jair.prg(109) Warning W0001  Ambiguous reference: 'ONOME'
-jair.prg(110) Warning W0001  Ambiguous reference: 'CDESC'
-jair.prg(110) Warning W0001  Ambiguous reference: 'MEMO'
-jair.prg(110) Warning W0001  Ambiguous reference: 'ODESC'
-jair.prg(111) Warning W0001  Ambiguous reference: 'CSTAT1'
-jair.prg(111) Warning W0001  Ambiguous reference: 'OSTAT1'
-jair.prg(112) Warning W0001  Ambiguous reference: 'CSTAT2'
-jair.prg(112) Warning W0001  Ambiguous reference: 'OSTAT2'
-jair.prg(115) Warning W0001  Ambiguous reference: 'OSAYREF'
-jair.prg(159) Warning W0001  Ambiguous reference: 'CCOMBO'
-jair.prg(160) Warning W0001  Ambiguous reference: 'RESDIR'
-jair.prg(160) Warning W0001  Ambiguous reference: 'ATMP'
-jair.prg(161) Warning W0001  Ambiguous reference: 'X'
-jair.prg(161) Warning W0001  Ambiguous reference: 'X'
-jair.prg(161) Warning W0001  Ambiguous reference: 'ATMP'
-jair.prg(162) Warning W0002  Ambiguous reference, assuming memvar: 'ATMP'
-jair.prg(162) Warning W0001  Ambiguous reference: 'X'
-jair.prg(162) Warning W0002  Ambiguous reference, assuming memvar: 'ATMP'
-jair.prg(162) Warning W0001  Ambiguous reference: 'X'
-jair.prg(163) Warning W0001  Ambiguous reference: 'X'
-jair.prg(163) Warning W0001  Ambiguous reference: 'X'
-jair.prg(164) Warning W0001  Ambiguous reference: 'OCOMBO'
-jair.prg(165) Warning W0001  Ambiguous reference: 'OCOMBO'
-jair.prg(174) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(187) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(187) Warning W0001  Ambiguous reference: 'REPDIR'
-jair.prg(190) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(190) Warning W0001  Ambiguous reference: 'CNOME'
-jair.prg(191) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(191) Warning W0001  Ambiguous reference: 'CDESC'
-jair.prg(192) Warning W0001  Ambiguous reference: 'ONOME'
-jair.prg(193) Warning W0001  Ambiguous reference: 'ODESC'
-jair.prg(197) Warning W0001  Ambiguous reference: 'NACTION'
-jair.prg(198) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(199) Warning W0001  Ambiguous reference: 'NACTION'
-200jair.prg(200) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(201) Warning W0001  Ambiguous reference: 'NACTION'
-jair.prg(202) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(204) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(206) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(207) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(208) Warning W0001  Ambiguous reference: 'NACTION'
-jair.prg(210) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(212) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(214) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(214) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(214) Warning W0001  Ambiguous reference: 'LEXPOPT'
-jair.prg(215) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(215) Warning W0001  Ambiguous reference: 'LEXPOPT'
-jair.prg(216) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(216) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(218) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(219) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(219) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(219) Warning W0001  Ambiguous reference: 'LEXPOPEN'
-jair.prg(222) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(225) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(225) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(225) Warning W0001  Ambiguous reference: 'LEXPOPEN'
-jair.prg(228) Warning W0001  Ambiguous reference: 'LEXPOPEN'
-jair.prg(229) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(230) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(230) Warning W0001  Ambiguous reference: 'CEXTENTION'
-jair.prg(232) Warning W0001  Ambiguous reference: 'CEXTENTION'
-jair.prg(234) Warning W0001  Ambiguous reference: 'CEXPFILE'
-jair.prg(234) Warning W0001  Ambiguous reference: 'CEXTENTION'
-jair.prg(235) Warning W0001  Ambiguous reference: 'CEXPFILE'
-jair.prg(235) Warning W0001  Ambiguous reference: 'CEXTENTION'
-jair.prg(235) Warning W0001  Ambiguous reference: 'CEXPFILE'
-jair.prg(238) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(238) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(238) Warning W0001  Ambiguous reference: 'CEXPFILE'
-jair.prg(239) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(239) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(240) Warning W0001  Ambiguous reference: 'LEXPOPEN'
-jair.prg(243) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(252) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(253) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(254) Warning W0001  Ambiguous reference: 'LSHOWCUSTNAME'
-jair.prg(256) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(257) Warning W0001  Ambiguous reference: 'LSHOWCUSTNAME'
-jair.prg(259) Warning W0005  RETURN statement with no return value in function
-jair.prg(264) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(265) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(266) Warning W0001  Ambiguous reference: 'LSHOWCUSTNAME'
-jair.prg(268) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(269) Warning W0001  Ambiguous reference: 'LSHOWCUSTNAME'
-jair.prg(271) Warning W0005  RETURN statement with no return value in function
-jair.prg(278) Warning W0001  Ambiguous reference: 'LSHOWCUSTNAME'
-jair.prg(279) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(280) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(281) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(282) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(283) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(284) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(285) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(286) Warning W0001  Ambiguous reference: 'PARTNO'
-jair.prg(287) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(289) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(292) Warning W0001  Ambiguous reference: 'LSHOWCUSTNAME'
-jair.prg(294) Warning W0005  RETURN statement with no return value in function
-300jair.prg(301) Warning W0005  RETURN statement with no return value in function
-jair.prg(308) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(309) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(311) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(311) Warning W0001  Ambiguous reference: 'TMP_NAME'
-jair.prg(312) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(312) Warning W0001  Ambiguous reference: 'TMP_NAME'
-jair.prg(314) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(315) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(317) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(317) Warning W0001  Ambiguous reference: 'DATADIR'
-jair.prg(318) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(320) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(322) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(324) Warning W0005  RETURN statement with no return value in function
-jair.prg(329) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(332) Warning W0005  RETURN statement with no return value in function
-jair.prg(337) Warning W0001  Ambiguous reference: 'DATADIR'
-jair.prg(340) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(345) Warning W0005  RETURN statement with no return value in function
-jair.prg(350) Warning W0001  Ambiguous reference: 'DIRNAME'
-jair.prg(350) Warning W0001  Ambiguous reference: 'I'
-jair.prg(352) Warning W0001  Ambiguous reference: 'DIRNAME'
-jair.prg(352) Warning W0001  Ambiguous reference: 'ADIR'
-jair.prg(356) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(356) Warning W0001  Ambiguous reference: 'I'
-jair.prg(356) Warning W0001  Ambiguous reference: 'I'
-jair.prg(356) Warning W0001  Ambiguous reference: 'I'
-jair.prg(356) Warning W0001  Ambiguous reference: 'I'
-jair.prg(356) Warning W0001  Ambiguous reference: 'I'
-jair.prg(356) Warning W0001  Ambiguous reference: 'I'
-jair.prg(356) Warning W0001  Ambiguous reference: 'ADIR'
-jair.prg(356) Warning W0001  Ambiguous reference: 'XX'
-jair.prg(356) Warning W0002  Ambiguous reference, assuming memvar: 'ADIR'
-jair.prg(356) Warning W0001  Ambiguous reference: 'I'
-jair.prg(356) Warning W0001  Ambiguous reference: 'XX'
-jair.prg(359) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(361) Warning W0005  RETURN statement with no return value in function
-jair.prg(377) Warning W0001  Ambiguous reference: 'QTY'
-jair.prg(395) Warning W0001  Ambiguous reference: 'FRPRN'
-400jair.prg(401) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(403) Warning W0005  RETURN statement with no return value in function
-jair.prg(408) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(408) Warning W0001  Ambiguous reference: 'REPDIR'
-jair.prg(409) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(409) Warning W0001  Ambiguous reference: 'DATADIR'
-jair.prg(412) Warning W0005  RETURN statement with no return value in function
-jair.prg(417) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(417) Warning W0001  Ambiguous reference: 'REPDIR'
-jair.prg(418) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(419) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(420) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(421) Warning W0001  Ambiguous reference: 'FRPRN'
-jair.prg(424) Warning W0005  RETURN statement with no return value in function
-jair.prg(436) Warning W0001  Ambiguous reference: 'X'
-jair.prg(436) Warning W0001  Ambiguous reference: 'X'
-jair.prg(437) Warning W0001  Ambiguous reference: 'X'
-jair.prg(438) Warning W0001  Ambiguous reference: 'X'
-jair.prg(438) Warning W0001  Ambiguous reference: 'X'
-jair.prg(439) Warning W0001  Ambiguous reference: 'REPDIR'
-jair.prg(468) Warning W0001  Ambiguous reference: 'CEXPOBJ'
-jair.prg(469) Warning W0001  Ambiguous reference: 'CEXPFILE'
-jair.prg(470) Warning W0001  Ambiguous reference: 'LEXPOPT'
-jair.prg(471) Warning W0001  Ambiguous reference: 'LEXPOPEN'
-500jair.prg(519) Warning W0001  Ambiguous reference: 'CSTAT2'
-jair.prg(520) Warning W0001  Ambiguous reference: 'OSTAT2'
-jair.prg(524) Warning W0001  Ambiguous reference: 'CSTAT1'
-jair.prg(525) Warning W0001  Ambiguous reference: 'OSTAT1'
-jair.prg(526) Warning W0005  RETURN statement with no return value in function
-jair.prg(533) Warning W0001  Ambiguous reference: 'LSHOWCUSTNAME'
-jair.prg(538) Warning W0001  Ambiguous reference: 'CSTAT2'
-jair.prg(539) Warning W0001  Ambiguous reference: 'OSTAT2'
-jair.prg(540) Warning W0005  RETURN statement with no return value in function
-10020010020030040050060070080090010001100100100100300400500600700800900100011001200130014001500160017001800190020002100Lines 2168, Functions/Procedures 153
-Generating C source output to 'jair.c'...
-Done.

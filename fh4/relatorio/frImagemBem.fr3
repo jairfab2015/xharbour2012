@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TfrxReport Version="3.24" DotMatrixReport="False" EngineOptions.UseFileCache="True" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4031" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PrintOptions.Printer="Padrão" ReportOptions.CreateDate="39442,6314141435" ReportOptions.Description.Text="" ReportOptions.LastChange="39442,6340474306" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C656674021C03546F70020808446174617365747301010C3400000020446174615365743D2266726D466F746F7342656D2E42454D464F544F2220446174615365744E616D653D2242454D464F544F220000095661726961626C65730100055374796C650100">
-  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
-    <TfrxPictureView Name="Picture1" Align="baBottom" Left="0" Top="30,23624" Width="718,1107" Height="1016,69357" DataField="FOTO" DataSet="frmFotosBem.BEMFOTO" DataSetName="BEMFOTO" Stretched="False"/>
-    <TfrxMemoView Name="Memo1" Align="baWidth" Left="0" Top="0" Width="718,1107" Height="18,89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-19" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[BEMFOTO.&#34;DESCRICAO&#34;]"/>
-  </TfrxReportPage>
-  <TfrxDialogPage Name="DialogPage1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" Height="200" Left="352" Top="144" Width="300"/>
-</TfrxReport>

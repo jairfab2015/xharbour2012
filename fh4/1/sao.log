@@ -1,56 +1,0 @@
-xHarbour Compiler build 1.2.1 (SimpLex) (Rev. 6714)
-Copyright 1999-2010, http://www.xharbour.org http://www.harbour-project.org/
-Compiling '2.PRG'...
-100Lines 14, Functions/Procedures 1
-Generating C source output to 'obj\2.c'...
-Done.
-
-Building object module for 'obj\2.c'
-using C compiler 'BCC32' as defined in 'C:\xharbour\bin\harbour.cfg'...
-Exec: BCC32  -c -D__EXPORT__ -IC:\xharbour\include  -d -LC:\xharbour\lib -oobj\2.obj obj\2.c
-Borland C++ 5.5.1 for Win32 Copyright (c) 1993, 2000 Borland
-obj\2.c:
-Done.
-Deleting: "obj\2.c"
-Done.
-xHarbour Compiler build 1.2.1 (SimpLex) (Rev. 6714)
-Copyright 1999-2010, http://www.xharbour.org http://www.harbour-project.org/
-Compiling 'FASTREPH.PRG'...
-10020010010020030040050060070080090010001100100100100300400500600700800900100011001200130014001500160017001800190020002100Lines 2168, Functions/Procedures 131
-Generating C source output to 'obj\FASTREPH.c'...
-Done.
-
-Building object module for 'obj\FASTREPH.c'
-using C compiler 'BCC32' as defined in 'C:\xharbour\bin\harbour.cfg'...
-Exec: BCC32  -c -D__EXPORT__ -IC:\xharbour\include  -d -LC:\xharbour\lib -oobj\FASTREPH.obj obj\FASTREPH.c
-Borland C++ 5.5.1 for Win32 Copyright (c) 1993, 2000 Borland
-obj\FASTREPH.c:
-Warning W8075 FASTREPH.PRG 80: Suspicious pointer conversion in function HB_FUN_CALL_PROC_C
-Warning W8075 FASTREPH.PRG 86: Suspicious pointer conversion in function HB_FUN_CALL_PROC_IC
-Warning W8075 FASTREPH.PRG 92: Suspicious pointer conversion in function HB_FUN_CALL_PROC_CC
-Warning W8075 FASTREPH.PRG 92: Suspicious pointer conversion in function HB_FUN_CALL_PROC_CC
-Warning W8075 FASTREPH.PRG 98: Suspicious pointer conversion in function HB_FUN_CALL_PROC_CCC
-Warning W8075 FASTREPH.PRG 98: Suspicious pointer conversion in function HB_FUN_CALL_PROC_CCC
-Warning W8075 FASTREPH.PRG 98: Suspicious pointer conversion in function HB_FUN_CALL_PROC_CCC
-Warning W8075 FASTREPH.PRG 124: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_C_I
-Warning W8075 FASTREPH.PRG 136: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_IC_I
-Warning W8075 FASTREPH.PRG 142: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CC_I
-Warning W8075 FASTREPH.PRG 142: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CC_I
-Warning W8075 FASTREPH.PRG 148: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CCC_I
-Warning W8075 FASTREPH.PRG 148: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CCC_I
-Warning W8075 FASTREPH.PRG 148: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CCC_I
-Warning W8075 FASTREPH.PRG 154: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CCI_I
-Warning W8075 FASTREPH.PRG 154: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CCI_I
-Warning W8075 FASTREPH.PRG 166: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CIII_I
-Warning W8075 FASTREPH.PRG 173: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CICCCCCCCC_I
-Warning W8075 FASTREPH.PRG 173: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CICCCCCCCC_I
-Warning W8075 FASTREPH.PRG 173: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CICCCCCCCC_I
-Warning W8075 FASTREPH.PRG 173: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CICCCCCCCC_I
-Warning W8075 FASTREPH.PRG 173: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CICCCCCCCC_I
-Warning W8075 FASTREPH.PRG 173: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CICCCCCCCC_I
-Warning W8075 FASTREPH.PRG 173: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CICCCCCCCC_I
-Warning W8075 FASTREPH.PRG 173: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CICCCCCCCC_I
-Warning W8075 FASTREPH.PRG 173: Suspicious pointer conversion in function HB_FUN_CALL_FUNC_CICCCCCCCC_I
-Done.
-Deleting: "obj\FASTREPH.c"
-Done.

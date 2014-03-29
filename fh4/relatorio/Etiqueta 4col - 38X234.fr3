@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TfrxReport Version="3.24" DotMatrixReport="False" EngineOptions.UseFileCache="True" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4031" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PrintOptions.Printer="\\EDILSON\NOTA" ReportOptions.CreateDate="37810,5905603009" ReportOptions.Description.Text="" ReportOptions.Name="0" ReportOptions.LastChange="39338,6925247685" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C656674021C03546F70020808446174617365747301010C4300000020446174615365743D2266726D496D7072657373616F45746971756574612E667245544951554554412220446174615365744E616D653D2266724554495155455441220000095661726961626C65730100055374796C650100">
-  <TfrxReportPage Name="Page" PaperWidth="220" PaperHeight="3050" PaperSize="256" LeftMargin="0" RightMargin="0" TopMargin="1,5" BottomMargin="1,5" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
-    <TfrxMasterData Name="MasterData1" Height="56,69291339" Left="0" Top="18,89765" Width="831,4966" Columns="4" ColumnWidth="192,755905511811" ColumnGap="3,77952755905512" DataSet="frmImpressaoEtiqueta.frETIQUETA" DataSetName="frETIQUETA" RowCount="0">
-      <TfrxMemoView Name="Memo1" Left="3,77953" Top="7,55906" Width="181,41744" Height="45,35436" Font.Charset="1" Font.Color="-16777208" Font.Height="-16" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[frETIQUETA.&#34;CODIGOPRODUTO&#34;]&#13;&#10;[frETIQUETA.&#34;NOME&#34;]"/>
-    </TfrxMasterData>
-  </TfrxReportPage>
-</TfrxReport>

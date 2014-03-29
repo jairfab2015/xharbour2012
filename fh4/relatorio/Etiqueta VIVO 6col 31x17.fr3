@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37946,715497338" ReportOptions.Description.Text="" ReportOptions.LastChange="37946,7575763889" ScriptLanguage="PascalScript" ScriptText.Text="procedure OnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  with , Engine do&#13;&#10;  begin&#13;&#10;  [SIGHAPARAMVALOR('TITULO', [FILENAME()] )];&#13;&#10;  end&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C8000844617461736574730100095661726961626C65730100055374796C650100">
-  <TfrxReportPage Name="" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="8" RightMargin="6" TopMargin="13" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" PrintOnPreviousPage="True" HGuides.Text="" VGuides.Text="">
-    <TfrxMasterData Name="MasterData1" Height="61" Left="-30" Top="3" Width="758" Columns="6" ColumnWidth="112" ColumnGap="8" DataSetName="frmImpressaoEtiqueta.frETIQUETA" RowCount="0">
-      <TfrxMemoView Name="Memo3" Left="0" Top="32" Width="108" Height="23" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-8" Font.Name="Arial" Font.Style="0" ParentFont="False" WordWrap="False" Text="[frmImpressaoEtiqueta.TB_IMPR.&#34;NOME&#34;]&#13;&#10;R$ [frmImpressaoEtiqueta.TB_IMPR.&#34;PRECOVENDA&#34;]"/>
-      <TfrxBarCodeView Name="Bar1" Left="0" Top="8" Width="129" Height="22" BarType="bcCode39" Expression="[frmImpressaoEtiqueta.TB_IMPR.&#34;CODIGOPRODUTO&#34;]" Rotation="0" ShowText="False" Text="12345678" WideBarRatio="2" Zoom="0,5"/>
-    </TfrxMasterData>
-  </TfrxReportPage>
-</TfrxReport>

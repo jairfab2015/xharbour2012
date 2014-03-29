@@ -1,45 +1,0 @@
-xHarbour Compiler build 1.0.0 (SimpLex)
-Copyright 1999-2007, http://www.xharbour.org http://www.harbour-project.org/
-Compiling 'DEMO_GTWVT.PRG'...
-100200300Lines 89, Functions/Procedures 3
-Generating C source output to 'obj\DEMO_GTWVT.c'...
-Done.
-
-Building object module for 'obj\DEMO_GTWVT.c'
-using C compiler 'BCC32' as defined in 'C:\xHWGUI\xharbour\bin\harbour.cfg'...
-Exec: BCC32  -c -D__EXPORT__ -IC:\xHWGUI\xharbour\include  -d -LC:\xHWGUI\xharbour\lib -oobj\DEMO_GTWVT.obj obj\DEMO_GTWVT.c
-Borland C++ 5.5.1 for Win32 Copyright (c) 1993, 2000 Borland
-obj\DEMO_GTWVT.c:
-Done.
-Deleting: "obj\DEMO_GTWVT.c"
-Done.
-xHarbour Compiler build 1.0.0 (SimpLex)
-Copyright 1999-2007, http://www.xharbour.org http://www.harbour-project.org/
-Compiling 'FASTDEMO.PRG'...
-100200300100100200300400500600Lines 693, Functions/Procedures 23
-Generating C source output to 'obj\FASTDEMO.c'...
-Done.
-
-Building object module for 'obj\FASTDEMO.c'
-using C compiler 'BCC32' as defined in 'C:\xHWGUI\xharbour\bin\harbour.cfg'...
-Exec: BCC32  -c -D__EXPORT__ -IC:\xHWGUI\xharbour\include  -d -LC:\xHWGUI\xharbour\lib -oobj\FASTDEMO.obj obj\FASTDEMO.c
-Borland C++ 5.5.1 for Win32 Copyright (c) 1993, 2000 Borland
-obj\FASTDEMO.c:
-Done.
-Deleting: "obj\FASTDEMO.c"
-Done.
-xHarbour Compiler build 1.0.0 (SimpLex)
-Copyright 1999-2007, http://www.xharbour.org http://www.harbour-project.org/
-Compiling 'FASTREPH.PRG'...
-1002001001002003004005006007008009001000100100100300400500600700800900100011001200130014001500160017001800190020002100Lines 2168, Functions/Procedures 131
-Generating C source output to 'obj\FASTREPH.c'...
-Done.
-
-Building object module for 'obj\FASTREPH.c'
-using C compiler 'BCC32' as defined in 'C:\xHWGUI\xharbour\bin\harbour.cfg'...
-Exec: BCC32  -c -D__EXPORT__ -IC:\xHWGUI\xharbour\include  -d -LC:\xHWGUI\xharbour\lib -oobj\FASTREPH.obj obj\FASTREPH.c
-Borland C++ 5.5.1 for Win32 Copyright (c) 1993, 2000 Borland
-obj\FASTREPH.c:
-Done.
-Deleting: "obj\FASTREPH.c"
-Done.

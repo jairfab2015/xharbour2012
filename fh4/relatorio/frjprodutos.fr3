@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TfrxReport Version="3.24" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="37959,4536622685" ReportOptions.Description.Text="" ReportOptions.LastChange="37959,4681806713" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403A00103546F7003C8000844617461736574730100095661726961626C65730100055374796C650100">
-  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="6" RightMargin="6" TopMargin="4" BottomMargin="4" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
-    <TfrxReportTitle Name="ReportTitle1" Height="44" Left="-23" Top="9" Width="758">
-      <TfrxMemoView Name="Memo1" Left="-3" Top="0" Width="716" Height="24" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="0" HAlign="haCenter" ParentFont="False" Underlines="True" Text="[DMCadastro.QREmpresa.&#34;FANTASIA&#34;]"/>
-      <TfrxRichView Name="Rich1" Left="-3" Top="24" Width="716" Height="16" GapX="2" GapY="1" PropData="0852696368456469740AAB0000007B5C727466315C616E73695C64656666305C6465666C616E67313034367B5C666F6E7474626C7B5C66305C667377697373204D532053616E732053657269663B7D7D0D0A7B5C636F6C6F7274626C203B5C726564305C677265656E305C626C7565303B7D0D0A5C766965776B696E64345C7563315C706172645C71635C6366315C66305C667331362052656C61745C27663372696F2064652050726F6475746F735C7061720D0A7D0D0A00"/>
-    </TfrxReportTitle>
-  </TfrxReportPage>
-</TfrxReport>
