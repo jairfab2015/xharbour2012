@@ -1,0 +1,17 @@
+/*
+ * $Id: ChangeLog.txt, v 12.0621 17:36:25 migsoft Exp $
+ */
+/* Use this format for the entry headers:
+   YYYY-MM-DD HH:MM UTC[-|+]hhmm Your Full Name <your_email@address>
+   For example:
+   2002-12-01 23:12 UTC+0100 Foo Bar <foo.bar@foobar.org>
+*/
+
+2012-06-21 17:36 UTC-0400 MigSoft <mig2soft at yahoo.com>
+  * dbview.prg
+    * cambio modalidad de navegar por registros, al final, al inicio, retroceso, siguiente.
+      Se controla la asignación de control por tipo de campo en edición del browse
+      Se agrega la opción de insertar registros.
+      opcion para importar archivos
+      index manager
+      Seleccionar y pegar registro
