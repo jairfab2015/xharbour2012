@@ -1,0 +1,1372 @@
+********************************************************************************
+/* Programa.: SAOBIB.PRG 
+   Data.....: 08/03/92
+   Aviso....: Copyright (c) 1992, AGV Desenv.de Sistemas , All Rights Reserved
+   Fun‡„o...: Rotinas de biblioteca do sistema.        */
+********************************************************************************
+// Defini‡ao dos arquivos-cabe‡alho e das constantes utilizadas.
+STATIC vlin                      // Variavel estatica
+#include "INKEY.CH"              // Codigo das teclas 
+#include "SETCURS.CH"            // Formato do cursor
+#define LI_SEPH         "ÍÑÍ"    // Molduras
+#define LI_SEPV         " ³ "    // Molduras
+********************************************************************************
+********************************************************************************
+
+******************************************************************************
+FUNCTION Calc
+// Calculadora volante
+******************************************************************************
+LOCAL vtela,vdado,lin:=vclin,col:=vccol,vcor,vcur,vnum:=0,vope
+vtela:=SAVESCREEN(lin,col,lin+16,col+27)
+vcor:=SETCOLOR(vcn)
+vcur:=SETCURSOR(0)
+vdado:=vope:=""
+Caixa(lin,col,lin+15,col+25,frame[1])
+@ lin+1,col+2,lin+3, col+23 BOX frame[3]
+SETCOLOR(vci)
+@ lin+05,col+04 SAY " 7 "
+@ lin+05,col+09 SAY " 8 "
+@ lin+05,col+14 SAY " 9 "
+@ lin+05,col+19 SAY " û "
+@ lin+07,col+04 SAY " 4 "
+@ lin+07,col+09 SAY " 5 "
+@ lin+07,col+14 SAY " 6 "
+@ lin+07,col+19 SAY " * "
+@ lin+09,col+04 SAY " 1 "
+@ lin+09,col+09 SAY " 2 "
+@ lin+09,col+14 SAY " 3 "
+@ lin+09,col+19 SAY " / "
+@ lin+11,col+04 SAY " 0 "
+@ lin+11,col+09 SAY " . "
+@ lin+11,col+14 SAY " + "
+@ lin+11,col+19 SAY " - "
+@ lin+13,col+04 SAY " C "
+@ lin+13,col+09 SAY " ñ "
+@ lin+13,col+14 SAY " =Enter "
+SETCOLOR(vcn)
+@ lin+8 ,col+25 SAY CHR(24)
+@ lin+8 ,col    SAY CHR(25)
+@ lin   ,col+23 SAY CHR(26)
+@ lin   ,col+2  SAY CHR(27)
+SETCOLOR(vca)
+@ lin+02,col+3 SAY VAL(vdado) PICTURE "@E 9,999,999,999,999.99"
+SETCOLOR(vcn)
+tcalc:=SAVESCREEN(lin,col,lin+15,col+25)
+SETCOLOR(vca)
+DO WHILE .T.
+   vdado:=""
+   FOR i=1 TO 20
+       tk:=INKEY(0)
+       IF tk=45 .AND. EMPTY(vdado)
+	  vdado:="-"
+	  @ lin+02,col+3 SAY PADL(vdado,20)
+       ELSEIF tk>=48 .AND. tk<=57
+	  IF EMPTY(vdado)
+	     @ lin+02,col+3 SAY SPACE(20)
+	  ENDIF
+	  vdado:=ALLTRIM(vdado)+CHR(tk)
+	  @ lin+02,col+23-LEN(vdado) SAY vdado
+       ELSEIF tk=46
+	  IF !"."$vdado
+	     vdado:=ALLTRIM(vdado)+CHR(tk)
+	     @ lin+02,col+23-LEN(vdado) SAY vdado
+	  ENDIF
+       ELSEIF tk=99
+	  vnum:=0
+	  vdado:=vope:=""
+	  EXIT
+       ELSEIF tk=43
+	  vdado:=ALLTRIM(STR(vnum+VAL(vdado)))
+	  vope:="+"
+	  EXIT
+       ELSEIF tk=45
+	  vdado:=ALLTRIM(STR(IF(vnum#0,vnum-VAL(vdado),VAL(vdado))))
+	  vope:="-"
+	  EXIT
+       ELSEIF tk=42
+	  vdado:=ALLTRIM(STR(IF(vnum#0,vnum*VAL(vdado),VAL(vdado))))
+	  vope:="*"
+	  EXIT
+       ELSEIF tk=47
+	  vdado:=ALLTRIM(STR(IF(vnum#0 .AND. VAL(vdado)#0,vnum/VAL(vdado),VAL(vdado))))
+	  vope:="/"
+	  EXIT
+       ELSEIF tk=114
+	  vdado:=ALLTRIM(STR(SQRT(VAL(vdado))))
+	  EXIT
+       ELSEIF tk=K_ENTER
+	  IF vope="+"
+	     vdado:=ALLTRIM(STR(vnum+VAL(vdado)))
+	  ELSEIF vope="-"
+	     vdado:=ALLTRIM(STR(vnum-VAL(vdado)))
+	  ELSEIF vope="*"
+	     vdado:=ALLTRIM(STR(vnum*VAL(vdado)))
+	  ELSEIF vope="/" .AND. VAL(vdado)#0
+	     vdado:=ALLTRIM(STR(vnum/VAL(vdado)))
+	  ENDIF
+	  EXIT
+       ELSEIF tk=K_RIGHT .OR. tk=K_LEFT .OR. tk=K_UP .OR. tk=K_DOWN
+	  RESTSCREEN(lin,col,lin+16,col+27,vtela)
+	  IF tk=K_RIGHT
+	     IF col<53
+		++col
+	     ENDIF
+	  ELSEIF tk=K_LEFT
+	     IF col>0
+		--col
+	     ENDIF
+	  ELSEIF tk=K_DOWN
+	     IF lin<9
+		++lin
+	     ENDIF
+	  ELSEIF tk=K_UP
+	     IF lin>1
+		--lin
+	     ENDIF
+	  ENDIF
+	  vtela:=SAVESCREEN(lin,col,lin+16,col+27)
+	  SETCOLOR(vcn)
+	  Caixa(lin,col,lin+15,col+25,frame[1])
+	  RESTSCREEN(lin,col,lin+15,col+25,tcalc)
+	  EXIT
+       ELSEIF tk=K_ESC
+	  SETCOLOR(vcor)
+	  SETCURSOR(vcur)
+	  RESTSCREEN(lin,col,lin+16,col+27,vtela)
+	  vclin:=lin;vccol:=col
+	  RETURN(VAL(vdado))
+       ENDIF
+   NEXT
+   SETCOLOR(vca)
+   @ lin+02,col+3 SAY VAL(vdado) PICTURE "@E 9,999,999,999,999.99"
+   vnum:=IF(VAL(vdado)#0,VAL(vdado),vnum)
+ENDDO
+*******************************************************************************
+FUNCTION Zeracod(cod)
+// Objetivo: coloca zeros a esquerda dos c¢digos.
+RETURN PADL(ALLTRIM(cod),LEN(cod),"0")
+*******************************************************************************
+FUNCTION Dpc(dd)
+/*
+ Sintaxe...: Dpc(expressao data)
+ Objetivo..: Extrai o mes e o ano de uma data em portugues.
+ Parƒmetros: dd: a data sobre a qual se deseja extrair o mˆs e o ano.
+ Fornece...: O mˆs e o ano da data no tipo caractere "MMM/AA"
+*/
+*******************************************************************************
+ LOCAL aux
+ aux= 3 * MONTH(dd) - 2
+ dc=SUBSTR("JANFEVMARABRMAIJUNJULAGOSETOUTNOVDEZ",aux,3) + SUBSTR(DTOC(dd),6,8)
+ RETURN(dc)
+********************************************************************************
+FUNCTION Dolar(vdata,vvalor)
+// Objetivo: converte um valor para d¢lar na cota‡„o da data fornecida.
+********************************************************************************
+LOCAL vcotacao
+varq:=SELECT()
+USE SAOUS INDEX SAOUS1 ALIAS Us NEW
+SET SOFTSEEK ON
+SEEK vdata
+SET SOFTSEEK OFF
+IF EOF()
+   GO BOTTOM
+ENDIF
+vcotacao:=IF(Us->valor#0,Us->valor,1.00)
+SELECT Us
+CLOSE
+SELECT (varq)
+RETURN (vvalor/vcotacao)
+*******************************************************************************
+FUNCTION Dds(dd)
+/*
+ Sintaxe...: Dds(expressao data)
+ Objetivo..: Extrai o dia da semana de uma data.
+ Parametros: dd: a data sobre a qual se deseja extrair o dia da semana.
+ Fornece...: O nome do dia da semana em portugues.
+*/
+*******************************************************************************
+LOCAL vsem
+IF DOW(dd)=1;    vsem:="Domingo   "
+ELSEIF DOW(dd)=2;vsem:="Segunda   "
+ELSEIF DOW(dd)=3;vsem:="Terca     "
+ELSEIF DOW(dd)=4;vsem:="Quarta    "
+ELSEIF DOW(dd)=5;vsem:="Quinta    "
+ELSEIF DOW(dd)=6;vsem:="Sexta     "
+ELSEIF DOW(dd)=7;vsem:="Sabado    "
+ELSE;            vsem:="Indefinido"
+ENDIF
+RETURN(vsem)
+*******************************************************************************
+FUNCTION Ultimo(chave)
+/*
+ Sintaxe...: Ultimo(expressao caractere)
+ Objetivo..: Acha a £ltima ocorrˆncia de uma chave num arquivo indexado.
+ Parƒmetros: chave: a chave que deve ser pesquisada.
+ Fornece...: Verdadeiro (.T.) se bem-sucedido ou falso (.F.) caso contr rio.
+*/
+*******************************************************************************
+LOCAL proxima
+IF VALTYPE(chave)=="C"
+   proxima:=LEFT(chave,LEN(chave)-1)+CHR(ASC(RIGHT(chave,1))+1)
+ELSE
+   proxima:=chave+1
+ENDIF
+SET SOFTSEEK ON
+SEEK proxima          // Posicionou-se no proximo registro logico
+SET SOFTSEEK OFF
+SKIP -1               // Posiciona-se no anterior
+RETURN(&(INDEXKEY(INDEXORD()))=chave)
+*******************************************************************************
+FUNCTION Acha()
+PARAMETERS vcd, arq, ord1, ord2, chav, sign, pic1, pic2, lse, cse, lid, cid, tit1, tit2
+/*
+ Objetivo..: apresenta uma tabela para consulta de uma chave ou codigo a ser
+	     digitado pelo usu rio.
+ Parƒmetros:
+   vcd : caractere, chave a ser pesquisada
+   arq : caractere, alias do arquivo a ser utilizado
+   ord1: num‚rico, ordem do ¡ndice da c¢digo
+   ord2: num‚rico, ordem do ¡ndice do nome
+   chav: caractere, campo que possue o c¢digo-chave para pesquisa (codigo)
+   sign: caractere, campo que explica o c¢digo-chave da pesquisa  (nome)
+   pic1, pic2: caractere, respectivamente as mascaras do c¢digo e do nome
+   lse, cse, lid, cid: num‚ricas, coordenadas da janela a ser apresentada
+   tit1: t¡tulo para o c¢digo de pesquisa
+   tit2: t¡tulo para o nome de pesquisa
+ Fornece...: O c¢digo da chave pesquisada ou branco se nao encontrada.
+*/
+*******************************************************************************
+LOCAL varea:=SELECT(),vord
+SELECT (arq)
+// Armazena a ordem original de acesso na vari vel vord.
+vord:=INDEXORD()
+SET ORDER TO ord1
+SET SOFTSEEK ON
+SEEK vcd
+SET SOFTSEEK OFF
+IF !FOUND()
+   vtela:=SAVESCREEN(02,00,24,79)   // Salva a regiao da tela
+   PRIVATE v1[2], v2[2], v3[2]      // Declara os vetores
+   v1[1]:=chav
+   v1[2]:=sign
+   v2[1]:=pic1
+   v2[2]:=pic2
+   IF tit1#NIL
+      v3[1]:=tit1
+   ELSE
+      v3[1]:="C¢digo"
+   ENDIF
+   IF tit2#NIL
+      v3[2]:=tit2
+   ELSE
+      v3[2]:=" D e n o m i n a ‡ „ o"
+   ENDIF
+   SETCOLOR(vca)
+   Caixa(lse-1, cse, lid-1, cid, frame[6])  // Apresenta a moldura
+   // Constr¢i a linha de fun‡oes.
+   SETCOLOR(vcr)
+   @ lse-1, cse+(cid-cse)/2-10 SAY " Tabela de Consulta "
+   @ lid-1,cse+2 SAY PADC("F5 C¢digo  F6 Nome  [PgUp]  [PgDn]  [Enter]  [Esc]", cid-cse-3)
+   SETCOLOR(vcf)
+   // Executa a fun‡ao DBEDIT() com a funcao Fxa() para apresenta‡ao da tabela.
+   DBEDIT(lse,cse+1,lid-2,cid-1,v1,"Fxa",v2,v3,"Í"," ³ ")
+   SETCOLOR(vcn)
+   RESTSCREEN(02,00,24,79,vtela)   // Restaura a regiao da tela
+   // Restaura a ordem de acesso original.
+   DBSETORDER(vord)
+ENDIF
+SETCOLOR(vcn)
+@ 24,00 CLEAR
+// Seleciona a  rea de trabalho original.
+SELECT(varea)
+RETURN(vcd)
+*******************************************************************************
+FUNCTION Fxa(mod)
+/*
+ Sintaxe...: Fxa(expressao numerica)
+ Objetivo..: Controla o funcionamento da fun‡ao DBEDIT() da fun‡ao Acha()
+ Parƒmetros: mod: estado da fun‡ao DBEDIT()
+ Fornece...: a‡ao a ser executada pela fun‡ao DBEDIT()
+*/
+*******************************************************************************
+LOCAL vrec
+IF mod=4
+   IF LASTKEY()=(K_RETURN)
+      // Pressionada a tecla <Enter> - realiza a escolha.
+      vcd:=&chav
+      RETURN(0)
+   ELSEIF LASTKEY()=(K_ESC)
+      // Pressionada a tecla <Esc> - cancela a escolha.
+      vcd:=SPACE(LEN(&chav))
+      RETURN(0)
+   ELSEIF LASTKEY()=(K_F5)
+      // Pressionada a tecla <F5> - pesquisa pelo c¢digo.
+      SETCOLOR(vcn)
+      vrec:=RECNO()
+      DBSETORDER(ord1)
+      @ 24,00 CLEAR
+      vcd:=SPACE(LEN(&chav))
+      @ 24,30 SAY "C¢digo Desejado: " GET vcd PICTURE pic1
+      Le()
+      IF EMPTY(vcd)
+	 SETCOLOR(vcf)
+	 RETURN(1)
+      ENDIF
+      IF pic1=REPLICATE("9",LEN(pic1))
+	 vcd:=Zeracod(vcd)
+      ENDIF
+      SET SOFTSEEK ON
+      SEEK vcd
+      SET SOFTSEEK OFF
+      IF EOF()
+	 Mensagem("Desculpe, C¢digo n„o Encontrado !",8,1)
+	 GO vrec
+	 SETCOLOR(vcf)
+	 RETURN(1)
+      ENDIF
+      SETCOLOR(vcf)
+      RETURN(2)
+   ELSEIF LASTKEY()=(K_F6)
+      // Pressionada a tecla <F6> - pesquisa pelo nome.
+      SETCOLOR(vcn)
+      vrec:=RECNO()
+      DBSETORDER(ord2)
+      @ 24,00 CLEAR
+      vnom:=SPACE(LEN(&sign))
+      @ 24,05 SAY "Nome Desejado: " GET vnom PICTURE pic2
+      Le()
+      IF EMPTY(vnom)
+	 SETCOLOR(vcf)
+	 RETURN(1)
+      ENDIF
+      SET SOFTSEEK ON
+      SEEK vnom
+      SET SOFTSEEK OFF
+      IF EOF()
+	 Mensagem("Desculpe, Nome N„o Encontrado !",8,1)
+	 GO vrec
+	 SETCOLOR(vcf)
+	 RETURN(1)
+       ENDIF
+       SETCOLOR(vcf)
+       RETURN(2)
+   ELSE
+       DBSETORDER(ord1)
+       SETCOLOR(vcf)
+       RETURN(1)
+   ENDIF
+   SETCOLOR(vcf)
+   RETURN(1)
+ELSEIF mod=1
+   Mensagem("In¡cio da Consulta !",8)
+   SETCOLOR(vcf)
+   RETURN(1)
+ELSEIF mod=2
+   Mensagem("Fim da Consulta !",8)
+   SETCOLOR(vcf)
+   RETURN(1)
+ELSEIF mod=3
+    Mensagem("N„o H  Dados Cadastrados para Consulta !",8,1)
+    SETCOLOR(vcf)
+    RETURN(0)
+ENDIF
+SETCOLOR(vcf)
+RETURN(1)
+*******************************************************************************
+FUNCTION Senha(vns)
+/*
+ Sintaxe...: Senha(expressao caractere)
+ Objetivo..: Solicita a senha de acesso para o m¢dulo em questao
+ Parƒmetros: vns: n£mero da senha de acesso, dentro do vetor de senhas vsen
+ Fornece...: Verdadeiro (.T.) se a senha estiver correta e falso (.F.) se
+	     a senha estiver incorreta.
+*/
+*******************************************************************************
+LOCAL vtela, vsenha
+Beep(2)                              // Emite um beep
+vtela:=SAVESCREEN(11,26,15,55)       // Salva a regiao da tela
+Caixa(11,26,13,53,frame[6])          // Constroi uma moldura
+SETCOLOR(vcp)
+@ 12,28 SAY "Digite a Senha de Acesso"
+SETCOLOR(vcn)
+vsenha:=SPACE(3)
+// Solicita a senha em cor invis¡vel.
+SETCOLOR("N/N,N/N")
+@ 24,00 GET vsenha PICTURE "@!"
+READ
+SETCOLOR(vcn)
+RESTSCREEN(11,26,15,55,vtela)
+IF ALLTRIM(vsenha)#vsen[vns]
+   Mensagem("Desculpe, Senha Incorreta, Acesso Negado !",10,1)
+   RETURN(.F.)  // Retorna falso.
+ELSE
+   RETURN(.T.)  // Retorna verdadeiro.
+ENDIF
+********************************************************************************
+FUNCTION Editatexto(texto, titulo, acao)
+/*
+ Objetivo..: Edita textos ou campos memo atrav‚s da fun‡ao MEMOEDIT().
+ Parƒmetros: texto:   texto ou campo memo a ser editado
+	     titulo:  titulo a ser apresentado na janela de edicao
+	     acao:    1->Edicao, 2->Exclusao, 3-> Apresentacao
+ Fornece...: o texto editado.
+*/
+********************************************************************************
+LOCAL vtela
+vtela:=SAVESCREEN(01,00,24,79)      // Salva a tela para a edicao do texto
+Sinal("EDI€ŽO","TEXTO")             // Atualizacao da linha de status
+Abrejan(2)                          // Abre a janela de dados
+SETCOLOR(vcr)
+Aviso(03," "+ALLTRIM(titulo)+" ")   // Mostra o titulo
+SETCOLOR(vcn)
+@ 04,01 SAY REPLICATE("Ä",78)
+IF acao=1
+   // Alteracao do texto
+   @ 04, 01 SAY "ÄÄÄÄÄÄÄÄÄÄÄ10ÄÄÄÄÄÄÄÄ20ÄÄÄÄÄÄÄÄ30ÄÄÄÄÄÄÄÄ40ÄÄÄÄÄÄÄÄ50ÄÄÄÄÄÄÄÄ60ÄÄÄÄÄÄÄÄ70ÄÄÄÄÄ"
+   Aviso(24,"Edite o Texto e Finalize com [Ctrl-W]")
+   SETCURSOR(2)
+   texto := MEMOEDIT(texto,05,2,22,77,.T.,"Memofunc")
+   SETCURSOR(0)
+   @ 24,00 CLEAR
+ELSEIF acao=2
+   // Exclusao do texto
+   texto := MEMOEDIT(texto,05,2,22,77,.F.)
+   IF Exclui()
+      texto := ""
+   ENDIF
+   @ 24,00 CLEAR
+ELSEIF acao=3
+   // Consulta ao texto
+   @ 24,00 CLEAR
+   Aviso(24,"Utilize as setas para deslocar o texto; <Esc> Finaliza")
+   texto := MEMOEDIT(texto,05,2,22,77,.F.)
+   @ 24,00 CLEAR
+ENDIF
+RESTSCREEN(01,00,24,79,vtela)
+RETURN (texto)
+********************************************************************************
+FUNCTION Memofunc(modo,lin,col)
+/*
+  Sintaxe...: Memofunc(modo, lin, col)
+  Objetivo..: Auxiliar a edicao de campos memo, mostrando a linha e a coluna
+	      onde esta posicionado o cursor na funcao MEMOEDIT().
+  Parƒmetros: modo: o modo de operacao da funcao MEMOEDIT()
+	      lin : a linha onde esta posicionado o cursor
+	      col : a coluna onde esta posicionado o cursor
+*/
+********************************************************************************
+LOCAL vcor
+IF modo = 0
+   vcor:=SETCOLOR(vcr)
+   Aviso(23," Linha: "+STR(lin,2)+"  Coluna: "+STR(col,2)+" ")
+   SETCOLOR(vcor)
+ENDIF
+RETURN NIL
+*******************************************************************************
+PROCEDURE Le()
+/*
+ Sintaxe...: Le()
+ Objetivo..: Ligar o cursor e ler dados de objetos GET pendentes
+ Parametros: Nenhum
+*/
+*******************************************************************************
+LOCAL vcursor
+vcursor:=SETCURSOR(2)  // Liga o cursor
+READ
+SETCURSOR(vcursor)     // Volta o cursor ao formato anterior
+@ 24,00 CLEAR
+RETURN
+*******************************************************************************
+PROCEDURE Beep(som)
+/*
+ Sintaxe...: Beep()
+ Objetivo..: Soa um sinal para chamar a atencao do usuario
+ Parametros: 1 ou 2, indicando o tipo de som a ser emitido
+ Fornece...: O som
+*/
+*******************************************************************************
+SET CONSOLE ON
+IF som=1
+   // Som para operacao malsucedida
+   TONE(87.3,2)
+   TONE(40,7)
+ELSEIF som=2
+   // Som para operacao bem-sucedida
+   TONE(261.7,2)
+   TONE(392,7)
+ELSEIF som=3
+   // Som para finalizacao
+   TONE(300,4)
+   TONE(300,4)
+   TONE(300,4)
+   TONE(300,7)
+ENDIF
+SET CONSOLE OFF
+RETURN
+*******************************************************************************
+PROCEDURE Sinal(s1,s2)
+/*
+ Sintaxe...: Sinal(exp.caractere 1, exp.caractere 2)
+ Objetivo..: Apresenta sinais nos quadrinhos de orientacao … direita no
+	     topo da tela, indicando para o usuario o modulo  do  sistema
+	     que esta sendo utilizado.
+ Parametros: s1: primeiro sinal e s2: segundo sinal
+*/
+*******************************************************************************
+// Centralizar o sinal dentro dos 12 espacos disponiveis no quadrinho
+SETCOLOR(vci)
+@ 01,00 SAY PADC(s1,12)    // Sinal 1
+@ 01,13 SAY PADC(s2,12)    // Sinal 2
+@ 01,56 SAY Dpc(saomes)    // Mes em processamento.
+SETCOLOR(vcn)
+RETURN
+*******************************************************************************
+PROCEDURE Abrejan(l)
+/*
+ Sintaxe.:   Abrejan(expressao numerica)
+ Objetivo:   Abre uma na janela da tela, formada pelo retangulo com as
+	     seguintes coordenadas: canto superior esquerdo linha 6 coluna
+	     0 e canto inferior direito linha 23 coluna 79
+ Parƒmetros: expressao numerica indicando o numero da moldura a ser utilizada
+	     de acordo com o vetor frame[]
+*/
+*******************************************************************************
+LOCAL i:=j:=k:=w:=x:=0
+SETCOLOR(vcn)
+i:=13;j:=40;k:=11;w:=39
+DO WHILE i>=2
+   x+=3
+   INKEY(.01)
+   IF i=2
+     @ 02,00,23,79 BOX frame[l]
+     EXIT
+   ELSE
+     @ --i,j-x,++k,w+x BOX frame[l]
+   ENDIF
+ENDDO
+SETCOLOR(vcr)
+@ 23,2  SAY " F1 Help "
+@ 23,34 SAY " Jair "
+@ 23,61 SAY " F10 Calculadora "
+SETCOLOR(vcn)
+RETURN
+*******************************************************************************
+PROCEDURE Caixa(ls,cs,li,ci,moldura)
+/*
+ Objetivo..: Desenha uma caixa com sombra nas coordenadas e com a
+	     moldura especificada
+ Parƒmetros:
+   ls, cs  -> coordenadas do cando superior direito
+   li, ci  -> coordenadas do canto inferior esquerdo
+   moldura -> cadeia de caracteres a ser utilizada pelo comando BOX para desenhar
+	      uma moldura na caixa
+*/
+*******************************************************************************
+LOCAL vtela
+vtela:=SAVESCREEN(ls+1,cs+2,li+1,ci+2)
+IF LEN(vtela)>2048
+   vtela:=TRANSFORM(SUBSTR(vtela,1,2048),REPLICATE("X"+CHR(8),1000))+;
+	  TRANSFORM(SUBSTR(vtela,2049),REPLICATE("X"+CHR(8),1000))
+ELSE       // O caractere CHR(8) e o responsavel pela sombra
+   vtela:=TRANSFORM(vtela,REPLICATE("X"+CHR(8),LEN(vtela)/2))
+ENDIF
+RESTSCREEN(ls+1,cs+2,li+1,ci+2,vtela)
+@ ls,cs,li,ci BOX moldura
+RETURN
+*******************************************************************************
+PROCEDURE Mensagem(texto,tempo,som)
+/*
+ Objetivo..: Apresenta, por um determinado tempo, uma mensagem de alerta
+	     (piscante e em video reverso) na linha 24 da tela.
+ Parametros: O texto da mensagem, o tempo que a mesma devera' ser apresen-
+	     tada na tela e o sinal sonoro a emitir.
+*/
+*******************************************************************************
+LOCAL vcor:=SETCOLOR()
+IF VALTYPE(som)#"N"
+   som:=2
+ENDIF
+SETCOLOR(vcn)
+@ 24,00 CLEAR
+Beep(som)             // Emite um determinado som
+// Apresenta a mensagem
+SETCOLOR("W+*/R")
+@ 24,00 SAY PADC(TRIM(texto),80)
+SETCOLOR(vcor)
+// Aguarda um tempo.
+INKEY(tempo)
+@ 24,00 CLEAR
+RETURN
+*******************************************************************************
+PROCEDURE Aviso(linha,texto)
+/*
+ Objetivo..: Apresenta um aviso centralizado em uma linha da tela.
+ Parametros: O texto do aviso e a linha onde dever  ser apresentado.
+*/
+*******************************************************************************
+LOCAL coluna:=INT((78-LEN(texto))/2)
+// Centraliza o texto do aviso na tela.
+@ linha,coluna SAY texto
+RETURN
+*******************************************************************************
+FUNCTION Confirme()
+// Objetivo: Solicitar confirmacao do usuario.
+*******************************************************************************
+LOCAL vcor:=SETCOLOR(), vconf:=SPACE(1)
+@ 24,60 CLEAR
+SETCOLOR("W+*/R")
+@ 24,62 SAY " Confirme (S/N) ?"
+SETCOLOR("N/N,N/N")
+TONE(1100,3)   // Emite um beep
+@ 24,79 GET vconf PICTURE "!" VALID(vconf$"SN")
+READ
+IF vconf="S"
+   SETCOLOR("W+*/G")
+   @ 24,62 SAY "   Confirmado !   "
+   INKEY(1)
+   SETCOLOR(vcor)
+   @ 24,00 CLEAR
+   RETURN(.T.)
+ELSE
+   SETCOLOR("W+*/R")
+   @ 24,62 SAY " N„o Confirmado ! "
+   INKEY(1)
+   SETCOLOR(vcor)
+   @ 24,00 CLEAR
+   RETURN(.F.)
+ENDIF
+*******************************************************************************
+FUNCTION Exclui()
+/* Objetivo: Solicitar confirmacao para a exclusao de registros no canto
+	     inferior direito da tela.
+*/
+*******************************************************************************
+LOCAL vcor:=SETCOLOR(), ex:=SPACE(1)
+@ 24,60 CLEAR
+SETCOLOR("W+*/R")
+@ 24,62 SAY "  Exclui (S/N) ?  "
+SETCOLOR("N/N,N/N")
+TONE(1100,3)  // Emite um beep
+@ 24,79 GET ex PICTURE "!" VALID(ex$"SN")
+READ
+IF ex="S"
+   SETCOLOR("W+*/R")
+   @ 24,62 SAY "   Exclu¡do   !   "
+   INKEY(1)
+   SETCOLOR(vcor)
+   @ 24,00 CLEAR
+   RETURN(.T.)
+ELSE
+   SETCOLOR("W+*/G")
+   @ 24,62 SAY "    Mantido   !   "
+   INKEY(1)
+   SETCOLOR(vcor)
+   @ 24,62 CLEAR
+   RETURN(.F.)
+ENDIF
+*******************************************************************************
+PROCEDURE Cabe(emp,sist,tit1,tit2,ncol,cimp)
+/*
+ Objetivo: Formata o cabecalho padronizado dos relatorios do sistema.
+ Parametros: emp:  nome da empresa
+	     sist: nome do sistema
+	     tit1: titulo do relatorio
+	     tit2: sub-titulo do relatorio
+*/
+*******************************************************************************
+SET CONSOLE OFF
+// Centraliza os titulos no formulario
+emp  := PADC(emp,ncol*66/80)
+sist := PADC(sist,ncol*66/80)
+tit1 := PADC(TRIM(tit1),ncol*66/80)
+tit2 := PADC(TRIM(tit2),ncol*66/80)
+// Retorna a impressao ao padrao do relatorio
+SET PRINT ON
+?? vcia10
+SET PRINT OFF
+@ 01, 03 SAY "Emissao:"
+@ 01, 11 SAY DATE()
+@ 01,(ncol-14) SAY "Pagina No."+STR(++pg,3)
+// pg, variavel que armazena o numero das paginas do relatorio
+IF vcabpg .OR. pg=1
+   @ PROW()+1, 00  SAY REPLICATE("=",ncol)
+   // vcia05 - variavel que ativa a impressao a 5 cpp
+   // vcia20 - variavel que ativa a impressao a 20 cpp
+   IF vcia05=CHR(27)+"[9w"
+      @ PROW()+1, 01 SAY vcia05 + emp
+      @ PROW()+1, 01 SAY vcia05 + sist
+      @ PROW()+1, 01 SAY vcia05 + tit1
+      @ PROW()+1, 01 SAY vcia05 + tit2+vcia10
+   ELSE
+      @ PROW()+1, 01 SAY vcia20+vcia05 + emp
+      @ PROW()+1, 01 SAY vcia05 + sist
+      @ PROW()+1, 01 SAY vcia05 + tit1
+      @ PROW()+1, 01 SAY vcia05 + tit2+vcia10
+   ENDIF
+ENDIF
+@ PROW()+1, 00 SAY REPLICATE("=",ncol)
+// Retorna a impressao ao padrao do relatorio
+SET PRINT ON
+?? cimp
+SET PRINT OFF
+RETURN
+*******************************************************************************
+FUNCTION Imprime(tit)
+/*
+ Objetivo..: Apresenta mensagens padronizadas para iniciar a impressao dos
+	     relatorios, verificando se a impressora esta em linha.
+ Parametros: O titulo do relatorio a ser impresso.
+ Fornece...: Verdadeiro (.T.) se a impressao foi confirmada
+	     Falso (.F.) se a impressao foi cancelada
+*/
+*******************************************************************************
+LOCAL vcbpg:="S"
+Abrejan(2)
+Aviso(8,"Relat¢rio do Sistema SAO")
+Aviso(10,tit)
+// Solicita o n£mero de c¢pias a serem impressas.
+@ 12,18 SAY "Informe o N£mero de C¢pias Desejadas________:" GET vcop  PICTURE "99" RANGE 0,99
+@ 14,18 SAY "Imprimir Cabe‡alho em Todas as P ginas (S/n):" GET vcbpg PICTURE "!" VALID vcbpg$"SN"
+Le()
+vcabpg:=IF(vcbpg="S",.T.,.F.)
+Aviso(16,"Ajuste a Impressora e Tecle [Enter] quando PRONTO ou [Esc] para CANCELAR !")
+DO WHILE .T.
+   IF INKEY(0)#(K_RETURN)
+      Mensagem("Impress„o Cancelada !",6)
+      RETURN(.F.)
+   ENDIF
+   IF !ISPRINTER()
+      /* Teste para verificar se a impressora esta em linha e pronta para
+      imprimir. */
+      Mensagem("A Impressora N„o Est  Ativa, Verifique por favor !",6,1)
+      LOOP
+   ENDIF
+   EXIT
+ENDDO
+@ 16,01 SAY SPACE(78)
+SETCOLOR(vcp)
+Aviso(16,"A g u a r d e  ...")
+SETCOLOR(vcn)
+Aviso(18,"Tecle [ESC] durante a impress„o caso queira interrompe-la")
+RETURN(.T.)
+*******************************************************************************
+FUNCTION Escprint(ncol)
+/* 
+Objetivo.: Permite interromper a impressao dos relatorios atraves da te-
+	   cla [Esc].
+Parƒmetro: Numero de colunas do relatorio.
+Fornece..: Verdadeiro (.T.) se a impressao foi cancelada.
+	   Falso (.F.) em caso contrario.
+*/
+*******************************************************************************
+LOCAL tk:=1
+DO WHILE tk#0 .AND. tk#27
+   // Executa um "loop" para limpar o buffer do teclado.
+   tk:=INKEY()
+ENDDO
+IF tk=27
+   SET DEVICE TO SCREEN
+   Beep(2)
+   SETCOLOR(vca)
+   Aviso(24,"Deseja Interromper a Impress„o ?")
+   SETCOLOR(vcn)
+   /* Apresenta a mensagem solicitando confirmacao para a interrupcao da
+      impressao.*/
+   IF !Confirme()
+      /* Se a interrup‡ao nao for confirmada, retorna para a impressao do
+	 relatorio */
+      SET DEVICE TO PRINTER
+      RETURN(.F.)
+   ENDIF
+   @ 24,00 CLEAR
+   SET DEVICE TO PRINTER
+   // Se foi confirmada a interrup‡„o, retorna a impressora ao normal
+   SET PRINT ON
+   ?? vcia10
+   SET PRINT OFF
+   /* Imprime uma mensagem no relatorio, indicando a interrup‡„o da
+      impress„o, de acordo com o numero de colunas do formulario. */
+   @ PROW()+2,00 SAY REPLICATE("-",ncol)
+   IF ncol >= 132
+      @ PROW()+2,25 SAY vcia05 + "* * * IMPRESSAO INTERROMPIDA * * *"
+   ELSE
+      @ PROW()+2,04 SAY vcia05 + "* * * IMPRESSAO INTERROMPIDA * * *"
+   ENDIF
+   @ PROW()+2,00 SAY REPLICATE("-",ncol)
+   EJECT
+   @ PROW(),PCOL() SAY CHR(27)+"@"
+   // Retorna a impressora ao seu padrao normal de impressao
+   SET DEVICE TO SCREEN
+   Mensagem("Impress„o Interrompida !",3,2)
+   // Apresenta na tela a mensagem de interrupcao
+   RETURN(.T.)
+ENDIF
+RETURN(.F.)
+*******************************************************************************
+FUNCTION Esceti()
+// Objetivo..: Permite interromper a impressao de etiquetas atraves da tecla <Esc>.
+// 
+IF INKEY()=27
+   Aviso(24,"Deseja Interromper a Impress„o ?")
+   IF Confirme()
+      @ 24,00 CLEAR
+      Mensagem("Impress„o das Etiquetas Interrompida !",3,2)
+      RETURN(.F.)
+   ELSE
+      @ 24,00 CLEAR
+      SET CONSOLE OFF
+      RETURN(.T.)
+   ENDIF
+ELSE
+   SET CONSOLE OFF
+   RETURN(.T.)
+ENDIF
+*******************************************************************************
+PROCEDURE Pesqint(comp,mask,tit)
+/*
+ Objetivo..: Pesquisa uma faixa de dados para selecao de registros
+	     a serem processados.
+ Parametros: comprimento, m scara de edi‡ao e t¡tulo a ser apresentado.
+*/
+*******************************************************************************
+Abrejan(2)  // Abre a janela de dados
+// Reinicializa as variaveis privadas de pesquisa.
+vcodi:=SPACE(comp)
+vcodf:=SPACE(comp)
+Aviso(08,"Digite o Intervalo de "+tit+" Desejado")
+@ 11,35-comp/2 SAY "Primeiro:"
+@ 13,35-comp/2 SAY "Ultimo__:"
+@ 11,45-comp/2 GET vcodi PICTURE mask VALID !EMPTY(vcodi)
+Le()
+SETCOLOR(vca)
+@ 11,45-comp/2 SAY vcodi PICTURE mask 
+SETCOLOR(vcn)
+vcodf:=vcodi
+@ 13,45-comp/2 GET vcodf PICTURE mask VALID vcodf>=vcodi
+Le()
+SETCOLOR(vca)
+@ 13,45-comp/2 SAY vcodf PICTURE mask 
+SETCOLOR(vcn)
+SET SOFTSEEK ON
+SEEK vcodi
+SET SOFTSEEK OFF
+INKEY(1)
+RETURN
+*******************************************************************************
+PROCEDURE Pesqdat()
+/*
+ Objetivo..: Pesquisa uma faixa de datas para sele‡„o de registros
+	     a serem processados.
+*/
+*******************************************************************************
+Abrejan(2)  // Abre a janela de dados
+// Reinicializa as variaveis privadas de pesquisa.
+vdati:=CTOD(SPACE(8))
+vdatf:=CTOD(SPACE(8))
+Aviso(08,"Digite o Intervalo de Datas Desejado")
+@ 11,29 SAY "Data Inicial:"
+@ 13,29 SAY "Data Final__:"
+@ 11,43 GET vdati VALID !EMPTY(vdati)
+Le()
+SETCOLOR(vca)
+@ 11,43 SAY vdati 
+SETCOLOR(vcn)
+vdatf:=vdati
+@ 13,43 GET vdatf VALID vdatf>=vdati
+Le()
+SETCOLOR(vca)
+@ 13,43 SAY vdatf
+SETCOLOR(vcn)
+INKEY(1)
+RETURN
+*******************************************************************************
+PROCEDURE Help(prog,lin,var)
+/*
+ Objetivo: Apresenta um  Help  generico ao usuario indicando as teclas
+	   de controle de edicao de dados utilizadas no sistema.
+ Parƒmetros: Recebe tres parametros: prog (nome do programa que chamou o
+	     HELP), lin (linha do programa que estava sendo executada) e
+	     var (variavel que estava sendo editada). Mesmo nao sendo
+	     utilizados, estes tres paramentros sao automaticamente pas-
+	     sados pelo Clipper e devem ser recebidos na rotina de HELP.
+ Fornece...: Uma tela de Help ao usuario.
+*/
+*******************************************************************************
+LOCAL vtela:=SAVESCREEN(01,00,24,79), varea, vcursor
+vcursor:=SETCURSOR(0)
+varea:=SELECT()
+IF prog="HELP"
+   // Evita que o Help() chame ele mesmo.
+   RETURN
+ENDIF
+IF prog="EDITATEXTO"
+    // Help para o caso de edicao de campos memo.
+    Abrejan(2)
+    SETCOLOR(vci)
+    Aviso(5," HELP - Auxilio ao Usu rio ")
+    SETCOLOR(vca)
+    Aviso(8,"Teclas para Controle da Edi‡„o de Textos")
+    SETCOLOR(vcn)
+    @ 10,2 SAY "[Enter]  -> Muda de par grafo          [Ctrl -->]  -> Palavra para a direita"
+    @ 11,2 SAY "[Setas]  -> Movimentam o cursor        [Ctrl <--]  -> Palavra para a esquerda"
+    @ 12,2 SAY "[Home]   -> Inicio da linha            [Ctrl-Home] -> In¡cio do Texto"
+    @ 13,2 SAY "[End]    -> Fim da linha               [Ctrl-End]  -> Fim do Texto"
+    @ 14,2 SAY "[<---]   -> Apaga … esquerda           [PgUp]      -> P gina para cima"
+    @ 15,2 SAY "[Ins]    -> Liga/Desliga Inser‡„o      [PgDn]      -> P gina para baixo"
+    @ 16,2 SAY "[Del]    -> Apaga letra sob o cursor   [Ctrl-PgUp] -> Inicio da p gina"
+    @ 17,2 SAY "[Ctrl-T] -> Apaga a palavra … direita  [Ctrl-PgDn] -> Fim da p gina"
+    @ 18,2 SAY "[Ctrl-Y] -> Elimina a linha do cursor  [Ctrl-B]    -> Reformata o texto"
+    @ 19,2 SAY "[Ctrl-W] -> Finaliza gravando o texto  [Esc]       -> Finaliza sem gravar"
+    @ 24,00 CLEAR
+    SETCOLOR(vca)
+    Aviso(24,"Pressione qualquer tecla para retornar")
+    SETCOLOR(vcn)
+    INKEY(0)
+ELSEIF prog="MANUTE"
+    // Help especifico para cada dado sendo editado pelo programa de manutencao.
+    /* Na variavel var ‚ armazenado o numero do campo do arquivo do usuario
+       que est  sendo editado.*/
+    SELECT Estrutura
+    SET SOFTSEEK ON
+    SEEK PADR(varq,12)+var
+    SET SOFTSEEK OFF
+    IF FOUND()
+       @ 23,00 SAY PADC("Utilize as setas para deslocar o texto; [Esc] Retorna")
+       // Limpa a regiao da tela.
+       @ 15,01 TO 22,78 
+       SETCOLOR(vcr)
+       Aviso(15," HELP - Auxilio ao Usu rio ")
+       SETCOLOR(vcn)
+       // Apresenta o texto do help.
+       MEMOEDIT(Estrutura->auxilio,16,02,21,77,.F.)
+    ENDIF
+ELSE
+    // Help para edicao normal de dados.
+    Abrejan(2)
+    SETCOLOR(vci)
+    Aviso(5," HELP - Auxilio ao Usu rio ")
+    SETCOLOR(vca)
+    Aviso(7,"Teclas de Controle de Edi‡„o")
+    Aviso(8,"Para Inclus„o ou Altera‡„o de Dados")
+    SETCOLOR(vcn)
+    @ 10,10 SAY "[Enter]  -> D  entrada nos dados ou efetua uma altera‡„o"
+    @ 11,10 SAY "[Setas]  -> Movimentam o cursor para a dire‡„o indicada"
+    @ 12,10 SAY "[Home]   -> Movimenta o cursor para o in¡cio do campo"
+    @ 13,10 SAY "[End]    -> Movimenta o cursor para o fim do campo"
+    @ 14,10 SAY "[<---]   -> Apaga o caractere … esquerda do cursor"
+    @ 15,10 SAY "[Ins]    -> Liga ou Desliga o modo de inser‡„o de caracteres"
+    @ 16,10 SAY "[Del]    -> Apaga o caractere sob o cursor"
+    @ 17,10 SAY "[Ctrl-T] -> Apaga a palavra a direita do cursor"
+    @ 18,10 SAY "[Ctr-Y]  -> Apaga todo o conte£do de um campo"
+    @ 19,10 SAY "[Ctrl-W] -> Finaliza gravando os dados digitados"
+    @ 20,10 SAY "[Esc]    -> Finaliza sem gravar os dados digitados"
+    @ 24,00 CLEAR
+    SETCOLOR(vca)
+    Aviso(24,"Pressione qualquer tecla para retornar")
+    SETCOLOR(vcn)
+    INKEY(0)
+ENDIF
+RESTSCREEN(01,00,24,79,vtela)
+SELECT (varea)
+SETCURSOR(vcursor)
+RETURN
+*******************************************************************************
+/*
+   Conjunto de Procedimentos e Funcoes para a Edicao e Visualizacao de Dados 
+   atraves de objetos Get, TBrowse e TBColumn.
+*/
+*******************************************************************************
+FUNCTION Visualiza(area, lse, cse, lid, cid, vdad, vpic, vcab, vedt, gelo,;
+		   chave1, chaord1, chapic1, chacom1, chatit1,;
+		   chave2, chaord2, chapic2, chacom2, chatit2) 
+/*
+Objetivo..: Visualizar e editar registros de arquivos de dados atrav‚s de um
+	    objeto TBrowse.
+Parƒmetros:
+   area    = area de trabalho na qual esta o arquivo de dados a ser visualizado.
+   lse,cse = coordenadas do canto superior esquerdo da janela de visualizacao.
+   lid,cid = coordenadas do canto inferior direito da janela de visualizacao.
+   vdad    = vetor que contem os campos a serem visualizados nas colunas.
+   vpic    = vetor que contem as mascaras (PICTURE's) de visualizacao.
+   vcab    = vetor que contem os cabecalhos das colunas a serem visualizadas.
+   gelo    = numero de colunas a serem congeladas `a esquerda.
+   chave1  = primeira chave de pesquisa.
+      chaord1 = ordem do indice de pesquisa.
+      chapic1 = mascara de pesquisa.
+      chacom1 = comprimento da chave de pesquisa.
+      chatit1 = titulo de pesquisa.
+   chave2  = segunda chave de pesquisa.
+      chaord2 = ordem do indice de pesquisa.
+      chapic2 = mascara de pesquisa.
+      chacom2 = comprimento da chave de pesquisa.
+      chatit2 = titulo de pesquisa.
+*/
+*******************************************************************************
+// Declaracao das variaveis locais.
+LOCAL b, coluna, tipo, n, cores, cursor, mais, tk
+// Declaracao das variaveis privadas.
+PRIVATE vcolu
+// Verifica se foi passada uma area de trabalho
+IF VALTYPE(area) # "U"
+   SELECT (area)
+ENDIF
+SETCOLOR(vcn)
+@ lse,cse CLEAR TO lid,cid
+// Linha de fun‡oes.
+SETCOLOR(vcr)
+@ 23,01 SAY PADC("[Enter] Edita  [F5] "+chatit1+"  [F6] "+chatit2+"  [Esc] Finaliza",78)
+SETCOLOR(vcn)
+// Verifica se foi passado uma ordem de acesso ao arquivo
+IF VALTYPE(chaord1) == "N"
+   SET ORDER TO chaord1
+ELSE
+   SET ORDER TO 0
+ENDIF
+// Cria um novo objeto TBrowse
+b := TBrowseDB(lse, cse, lid, cid)
+// Define os separadores horizontais e verticais padrao
+b:headSep := LI_SEPH
+b:colSep  := LI_SEPV
+// Define a tabela de cores a serem utilizadas
+b:colorSpec := "W/N, N/W, R/N, R/W, W+/N"
+/* Adiciona uma coluna para cada campo do arquivo de dados
+   da area de trabalho selecionada.*/
+FOR n = 1 TO LEN(vdad)
+    // Cria uma nova coluna.
+    IF vpic[n]#NIL
+       vcolu:="{ || TRANSFORM("+vdad[n]+",'"+vpic[n]+"') }"
+    ELSE
+      vcolu:="{ || "+vdad[n]+"}"
+    ENDIF
+    coluna := TBColumnNew( vcab[n], &vcolu )
+    // Avalia o bloco para obter o tipo de dado de cada campo
+    tipo := VALTYPE(vdad[n])
+    /* Se o dado for numerico, utiliza um bloco de cores para ressaltar
+       valores negativos */
+    IF ( tipo == "N" )
+       coluna:defColor   := {1, 2}
+       coluna:colorBlock := {|x| IF( x < 0, {3, 4}, {1, 2} )}
+    ELSE
+       IF n<=gelo
+	  coluna:defColor   := {5, 2}
+       ELSE
+	  coluna:defColor   := {1, 2}
+       ENDIF
+    ENDIF
+    // Adiciona a nova coluna no objeto TBrowse.
+    b:addColumn(coluna)
+NEXT
+// Congela as colunas mais a esquerda
+b:freeze := gelo
+// Desliga a apresentacao do cursor
+cursor := SETCURSOR(0)
+// Define os modos de rolamento
+DO WHILE .T.
+   /* Nao permite que o cursor seja posicionado nas colunas
+      congeladas */
+   IF ( b:colPos <= b:freeze )
+      b:colPos := b:freeze + 1
+   ENDIF
+   // Estabiliza a apresentacao dos dados
+   DO WHILE ( !b:stabilize() )
+      tk := INKEY()
+      IF ( tk # 0 )
+	 EXIT   // Cancela se uma tecla for digitada
+      ENDIF
+   ENDDO
+   IF ( b:stable )
+      // A janela de visualizacao esta estabilizada
+      IF ( b:hitTop .OR. b:hitBottom )
+	 // Verifica se foi atingido o in¡cio ou o fim do arquivo.
+	 TONE(125, 0)
+	 CLEAR TYPEAHEAD
+      ENDIF
+      // Aguarde que uma tecla seja pressionada
+      tk := INKEY(0)
+   ENDIF
+   // Processa a tecla pressionada
+   IF (tk == K_F5 )
+      // F5 - Primeira chave de pesquisa.
+      SET ORDER TO chaord1
+      @ 24,00 CLEAR
+      IF VALTYPE(&chave1)="N"
+	 vcod:=0
+      ELSEIF VALTYPE(&chave1)="C"
+	 vcod:=SPACE(chacom1)
+      ELSEIF VALTYPE(&chave1)="D"
+	 vcod:=DTOC(SPACE(8))
+      ENDIF
+      vrec:=RECNO()
+      SETCURSOR(2)
+      @ 24,(40-(LEN(chatit1)+chacom1)/2) SAY chatit1+":" GET vcod PICTURE chapic1
+      READ
+      @ 24,00 CLEAR
+      SETCURSOR(0)
+      IF chapic1=REPLICATE("9",LEN(chapic1))
+	 vcod:=Zeracod(vcod)
+      ENDIF
+      SET SOFTSEEK ON
+      SEEK vcod
+      SET SOFTSEEK OFF
+      IF EOF()
+	 GO vrec
+      ENDIF
+      // Estabiliza e atualiza a tela.
+      DO WHILE ( !b:stabilize() ) ; ENDDO
+      b:refreshAll()
+   ELSEIF (tk == K_F6 )
+      // F6 - Segunda chave de pesquisa.
+      SET ORDER TO chaord2
+      @ 24,00 CLEAR
+      IF VALTYPE(&chave2)="N"
+	 vcod:=0
+      ELSEIF VALTYPE(&chave2)="C"
+	 vcod:=SPACE(chacom2)
+      ELSEIF VALTYPE(&chave2)="D"
+	 vcod:=CTOD(SPACE(8))
+      ENDIF
+      vrec:=RECNO()
+      SETCURSOR(2)
+      @ 24,(40-(LEN(chatit2)+chacom2)/2) SAY chatit2+":" GET vcod PICTURE chapic2
+      READ
+      @ 24,00 CLEAR
+      SETCURSOR(0)
+      SET SOFTSEEK ON
+      SEEK vcod
+      SET SOFTSEEK OFF
+      IF EOF()
+	 GO vrec
+      ENDIF
+      // Estabiliza e atualiza a tela.
+      DO WHILE ( !b:stabilize() ) ; ENDDO
+      b:refreshAll()
+   ELSEIF ( tk == K_DOWN )
+      b:down()
+   ELSEIF ( tk == K_UP )
+      b:up()
+   ELSEIF ( tk == K_PGDN )
+      b:pageDown()
+   ELSEIF ( tk == K_PGUP )
+      b:pageUp()
+   ELSEIF ( tk == K_CTRL_PGUP )
+      b:goTop()
+   ELSEIF ( tk == K_CTRL_PGDN )
+      b:goBottom()
+   ELSEIF ( tk == K_RIGHT )
+      b:right()
+   ELSEIF ( tk == K_LEFT )
+      b:left()
+   ELSEIF ( tk == K_HOME )
+      b:home()
+   ELSEIF ( tk == K_END )
+      b:end()
+   ELSEIF ( tk == K_CTRL_LEFT )
+      b:panLeft()
+   ELSEIF ( tk == K_CTRL_RIGHT )
+      b:panRight()
+   ELSEIF ( tk == K_CTRL_HOME )
+      b:panHome()
+   ELSEIF ( tk == K_CTRL_END )
+      b:panEnd()
+   ELSEIF ( tk == K_ESC )
+      // Tecla <Esc> finaliza.
+      EXIT
+   ELSEIF ( tk == K_RETURN )
+      // Tecla <Enter> - edita.
+      IF vedt[b:colPos]
+	 Edita(b,vdad,vpic)
+      ENDIF
+   ELSE
+      // Outra tecla - edita.
+      KEYBOARD( CHR(tk) )
+      IF vedt[b:colPos]
+	 Edita(b,vdad,vpic)
+      ENDIF
+   ENDIF
+ENDDO
+// Restabelece a apresentacao do cursor
+SETCURSOR(cursor)
+SETCOLOR(vcn)
+RETURN
+*******************************************************************************
+FUNCTION Edita(b,vdad,vpic)
+/* 
+Sintaxe...: Edita( objeto )
+Objetivo..: Edita dados de um objeto TBrowse onde esta posicionado o cursor,
+	    atraves de um objeto GET.
+Parametros: b:    nome do objeto TBrowse.
+	    vdad: vetor dos dados apresentados.
+	    vpic: vetor das mascaras de apresentacao.
+*/
+*******************************************************************************
+LOCAL InsSalva, ScoreSalva, Exitsalva, vedita, vmasca, tk
+// Verifica se o objeto TBrowse esta estabilizado.
+DO WHILE ( !b:stabilize() ) ; ENDDO
+// Salva os estados originais
+ScoreSalva := SET(_SET_SCOREBOARD, .F.)
+ExitSalva  := SET(_SET_EXIT, .T.)
+InsSalva   := SETKEY(K_INS)
+/* Define a tecla [Ins] para ligar ou desligar o modo de
+   insercao e o cursor */
+SETKEY( K_INS, {|| SETCURSOR( IF(READINSERT(!READINSERT()), SC_NORMAL, SC_INSERT))} )
+// Definicoes iniciais do cursor
+SETCURSOR( IF(READINSERT(), SC_INSERT, SC_NORMAL) )
+// Edita o dado no qual est  posicionado o cursro de visualiza‡„o.
+vedita:=vdad[b:colPos]
+vmasca:=vpic[b:colPos]
+@ ROW(),COL() GET &vedita PICTURE vmasca
+READ
+// Recupera os estados iniciais.
+SETCURSOR(0)
+SET(_SET_SCOREBOARD, ScoreSalva)
+SET(_SET_EXIT, ExitSalva)
+SETKEY(K_INS, InsSalva)
+// Forca a reapresenta‡„o da linha editada pelo objeto TBrowse.
+b:refreshCurrent()
+// Verifica a tecla utilizada para finalizar o GET
+tk := LASTKEY()
+IF ( tk == K_UP .OR. tk == K_DOWN .OR. tk == K_PGUP .OR. tk == K_PGDN )
+   KEYBOARD( CHR(tk) )
+ENDIF
+RETURN (NIL)
+*******************************************************************************
+FUNCTION Vermatriz( matriz, lse, cse, lid, cid, vcab , edita )
+/* 
+Objetivo: Apresenta uma matriz de duas dimensoes usando um objeto TBrowse
+	  e fornece o valor do elemento sobre o qual estiver o cursor.
+Sintaxe: Vermatriz( <matriz>, <lse>, <cse>, <lid>, <cid>, <vcab> ) --> valor
+*/
+*******************************************************************************
+LOCAL n, vret, vcursor, vlinha 
+LOCAL o                        // Objeto TBrowse
+LOCAL tk := 0                  // Tecla pressionada
+// Desliga o cursor e preservando o seu modo anterior
+   vcursor := SETCURSOR( 0 )
+// Define a linha para 1
+   vlin := 1
+// Se as coordenadas nao forem definidas assume os padroes abaixo
+   lse := IF( lse == NIL, 0, lse )
+   cse := IF( cse == NIL, 0, cse )
+   lid := IF( lid == NIL, MAXROW(), lid )
+   cid := IF( cid == NIL, MAXCOL(), cid )
+// Limpa a area de apresentacao da matriz
+   @ lse,cse CLEAR TO lid,cid
+// Desenha uma moldura
+   @ lse,cse,lid,cid BOX frame[6]
+// Cria o Objeto TBrowse
+   o := TBROWSENEW( lse+1, cse+1, lid-1, cid-1 )
+// Define os separadores horizontais e verticais padrao
+   o:headSep := LI_SEPH
+   o:colSep  := LI_SEPV
+// Bloco de codigo para mudanca de linha da matriz
+   o:SkipBlock:={ |vpula| vpula:=Testapulo(matriz,vlin,vpula),vlin+=vpula,vpula }
+// Bloco para posicionar na primeira linha da matriz
+   o:GotopBlock:={ || vlin:=1 }
+// Bloco para posicionar na ultima linha da matriz
+   o:GobottomBlock:={ || vlin:=LEN(matriz) }
+// Definicao das colunas de consulta atraves de objetos TBColumn
+   FOR n=1 TO LEN(matriz[1])
+       o:ADDCOLUMN( TBCOLUMNNEW(vcab[n], blocovermat(matriz,n)) )
+   NEXT
+// Controle das teclas de navegacao
+   DO WHILE .T.
+      // Estabilizacao
+      tk:=0
+      DO WHILE .NOT. o:Stabilize()
+	 tk:=INKEY()
+	 IF tk#0
+	    EXIT
+	 ENDIF
+      ENDDO
+      IF .NOT. edita
+	 vret:=0
+	 EXIT
+      ENDIF
+      IF tk == 0
+	 tk:=INKEY(0)
+      ENDIF
+      // Verifica a tecla pressionada
+      IF o:Stable
+	 IF ( tk == K_DOWN )
+	    o:Down()
+	 ELSEIF ( tk == K_UP )
+	    o:Up()
+	 ELSEIF ( tk == K_RIGHT )
+	    o:Right()
+	 ELSEIF ( tk == K_LEFT )
+	    o:Left()
+	 ELSEIF ( tk == K_PGDN )
+	    o:Right()
+	    o:Down()
+	 ELSEIF ( tk == K_PGUP )
+	    o:Right()
+	    o:Up()
+	 ELSEIF ( tk == K_HOME )
+	    o:Left()
+	    o:Up()
+	 ELSEIF ( tk == K_END )
+	    o:Left()
+	    o:Down()
+	 ELSEIF ( tk == K_RETURN )
+	    vret:=vlin
+	    EXIT
+	 ELSEIF ( tk == K_DEL )
+	    vret:=vlin
+	    EXIT
+	 ELSEIF ( tk == K_ESC )  
+	    vret:=0
+	    EXIT
+	 ENDIF
+      ENDIF
+   ENDDO
+// Restabelece o cursor
+   SETCURSOR(vcursor)
+RETURN (vret)
+*******************************************************************************
+STATIC FUNCTION Blocovermat(vmat, x)
+/*
+Sintaxe :  blocovermat( <vmat>, <x> ) -> bloco
+Objetivo: Cria um bloco de codigo para visualizar cada coluna da matriz.
+*/
+*******************************************************************************
+RETURN ( {|p| IF(PCOUNT() == 0, vmat[vlin, x], vmat[vlin, x] := p)} )
+*******************************************************************************
+STATIC FUNCTION Testapulo(vmat, vatual, vpula)
+/* 
+Sintaxe:    Testapulo( <vmat>, <vatual>, <vpula> ) -> deslocamento
+Objetivo:   Determina se ‚ poss¡vel realizar o deslocamento (pulo) solicitado
+	    na matriz visualizada e fornece o numero de linhas que poderao ser
+	    puladas.
+Parƒmetros: vmat   -> nome da matriz
+	    vatual -> linha atual
+	    vpula  -> quantidade de linhas a serem puladas
+*/
+*******************************************************************************
+IF ( vatual + vpula < 1 )
+   // O deslocamento ultrapassa o inicio da matriz
+   RETURN ( -vatual + 1 )
+ELSEIF ( vatual + vpula > LEN(vmat) )
+  // O deslocamento ultrapassa o fim da matriz
+  RETURN ( LEN(vmat) - vatual )
+ENDIF
+// O deslocamento pode ser feito sem problemas
+RETURN (vpula)
+*******************************************************************************
+FUNCTION Dimensoes( vmat )
+/*
+Objetivo:  Fornece uma matriz de valores numericos contendo o numero de elementos
+	   das dimensoes da matriz multidimensional passada como argumento.
+Sintaxe:   Dimensoes( <matriz> ) --> matriz
+Parƒmetro: nome da matriz.
+*/
+*******************************************************************************
+LOCAL vdimensao := {}
+DO WHILE ( VALTYPE(vmat) == "A" )
+   AADD( vdimensao, LEN(vmat) )
+   vmat := vmat[1]
+ENDDO
+RETURN (vdimensao)
+*******************************************************************************
+//                                   F i m
+*******************************************************************************

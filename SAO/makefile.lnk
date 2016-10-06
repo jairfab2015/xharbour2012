@@ -1,0 +1,5 @@
+-Lc:\BCC7\lib\obj;c:\BCC7\lib;c:\xharbour\lib -Gn -M -m -s -Tpe -x -aa +
+c0w32.obj obj\SAO.obj obj\LFGT01.obj obj\SAOBIB.obj obj\SAOCLI.obj obj\SAOCOM.obj obj\SAOCP.obj obj\SAOCR.obj obj\SAOCTB.obj obj\SAOCTO.obj obj\SAOFCH.obj obj\SAOFLU.obj obj\SAOFOR.obj obj\SAOIND.obj obj\SAOMBA.obj obj\SAONF.obj obj\SAOOPE.obj obj\SAOPED.obj obj\SAOPRO.obj obj\SAOPXF.obj obj\SAOREP.obj obj\SAOTAB.obj obj\SAOTRA.obj obj\SAOUTI.obj obj\SAOVEN.obj, +
+sao.exe,, +
+lang.lib vm.lib rtl.lib rdd.lib macro.lib pp.lib dbfntx.lib dbfcdx.lib dbffpt.lib common.lib gtwvw.lib  codepage.lib ct.lib tip.lib pcrepos.lib hsx.lib hbsix.lib zlib.lib import32.lib cw32.lib, +
+, +

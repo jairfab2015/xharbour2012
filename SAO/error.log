@@ -1,0 +1,201 @@
+----------------------------- xHarbour Error Log ------------------------------
+
+Date...............: 19/08/2016
+Time...............: 15:47:28
+
+Application name...: C:\SAO\sao.exe
+Workstation name...: USER-PC
+Available memory...: 1774696
+Current disk.......: C
+Current directory..: SAO
+Free disk space....: 63592566784
+
+Operating system...: Windows 7 6.1.7601 Service Pack 1
+xHarbour version...: xHarbour 1.2.3 Intl. (SimpLex) (Build 20160703)
+xHarbour built on..: Jul  4 2016 14:00:03
+C/C++ compiler.....: Borland C++ 5.5.1 (32-bit)
+Multi Threading....: NO
+VM Optimization....: 2
+
+Current Area ......:7
+
+-------------------------- Environmental Information --------------------------
+
+SET ALTERNATE......: OFF
+SET ALTFILE........: 
+SET AUTOPEN........: ON
+SET AUTORDER.......: 0
+SET AUTOSHARE......: 0
+SET BACKGROUNDTASKS: OFF
+SET BACKGROUNDTICK.: 1000
+SET BELL...........: OFF
+SET BLINK..........: .T.
+SET CANCEL.........: ON
+SET CENTURY........: ON
+SET COLOR..........: W/N,N/W,N/N,N/N,W+/BG
+SET CONFIRM........: OFF
+SET CONSOLE........: OFF
+SET COUNT..........: 0
+SET CURSOR.........: 0
+SET DATE FORMAT....: DD/MM/YYYY
+SET DBFLOCKSCHEME..: 0
+SET DEBUG..........: OFF
+SET DECIMALS.......: 2
+SET DEFAULT........: 
+SET DEFEXTENSIONS..: ON
+SET DELETED........: ON
+SET DELIMCHARS.....: ::
+SET DELIMETERS.....: OFF
+SET DEVICE.........: SCREEN
+SET DIRCASE........: 0
+SET DIRSEPARATOR...: \
+SET EOL............: 13
+SET EPOCH..........: 1900
+SET ERRORLOG.......: ERROR.LOG,.F.
+SET ERRORLOOP......: 8
+SET ESCAPE.........: ON
+SET EVENTMASK......: 159
+SET EXACT..........: OFF
+SET EXCLUSIVE......: ON
+SET EXIT...........: OFF
+SET EXTRA..........: OFF
+SET EXTRAFILE......: 
+SET FILECASE.......: 0
+SET FIXED..........: OFF
+SET FORCEOPT.......: OFF
+SET HARDCOMMIT.....: ON
+SET IDLEREPEAT.....: ON
+SET INSERT.........: OFF
+SET INTENSITY......: ON
+SET LANGUAGE.......: EN
+SET MARGIN.........: 0
+SET MBLOCKSIZE.....: 0
+SET MCENTER........: ON
+SET MESSAGE........: 24
+SET MFILEEXT.......: 
+SET OPTIMIZE.......: ON
+SET OUTPUTSAFETY...: ON
+SET PATH...........: 
+SET PRINTER........: OFF
+SET PRINTERJOB.....: 
+SET PRINTFILE......: PRN
+SET SCOREBOARD.....: ON
+SET SCROLLBREAK....: ON
+SET SOFTSEEK.......: OFF
+SET STRICTREAD.....: OFF
+SET TRACE..........: ON
+SET TRACEFILE......: TRACE.LOG
+SET TRACESTACK.....: 2
+SET TRIMFILENAME...: .F.
+SET TYPEAHEAD......: 50
+SET UNIQUE.........: OFF
+SET VIDEOMODE......: 159
+SET WRAP...........: OFF
+
+-----------------------------Detailed Work Area Items------------------------------
+
+Work Area No ......: 1
+Alias .............: CR
+Current Recno .....: 2
+Current Filter ....: 
+Relation Exp. .....: 
+Index Order .......: 1
+Active Key ........: DOCTO
+
+Work Area No ......: 2
+Alias .............: VEN
+Current Recno .....: 1
+Current Filter ....: 
+Relation Exp. .....: 
+Index Order .......: 1
+Active Key ........: NUPD
+
+Work Area No ......: 3
+Alias .............: OPE
+Current Recno .....: 1
+Current Filter ....: 
+Relation Exp. .....: 
+Index Order .......: 1
+Active Key ........: CODI
+
+Work Area No ......: 4
+Alias .............: TBAN
+Current Recno .....: 2
+Current Filter ....: 
+Relation Exp. .....: 
+Index Order .......: 1
+Active Key ........: CODI
+
+Work Area No ......: 5
+Alias .............: MBA
+Current Recno .....: 1
+Current Filter ....: 
+Relation Exp. .....: 
+Index Order .......: 1
+Active Key ........: DOCTO
+
+Work Area No ......: 6
+Alias .............: TPG
+Current Recno .....: 2
+Current Filter ....: 
+Relation Exp. .....: 
+Index Order .......: 1
+Active Key ........: CODI
+
+Work Area No ......: 7
+Alias .............: CTB
+Current Recno .....: 2
+Current Filter ....: 
+Relation Exp. .....: 
+Index Order .......: 1
+Active Key ........: BANCO+AGENC+CONTA
+
+
+---------------------- Internal Error Handling Information  -----------------------
+
+Subsystem Call ....: BASE
+System Code .......: 1003
+Default Status ....: .F.
+Description .......: Variable does not exist
+Operation .........: MES00
+Arguments .........: 
+Involved File .....: 
+Dos Error Code ....: 0
+
+ Trace Through:
+----------------
+MATCR                 :     244 in Module: SAOCR.PRG
+MAIN                  :   1,169 in Module: SAO.PRG
+
+
+################################ Video Screen Dump ################################
+
++------------------------------------------------------------------------------------+
+|                                                                                   |
+|CTA RECEBER บ   BAIXA    บ  Administrao Opera”es   บ JAN/2016  บ 19/08/2016      |
+|ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป    |
+|บ         Documento: 0000000001   Tipo do Pagto: 002  Nง do Banco: 237         บ    |
+|บ                                                                              บ    |
+|บฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤบ    |
+|บ                                                                              บ    |
+|บ         Operao_: 1.00.000 VENDA A VISTA                                    บ    |
+|บ                                                                              บ    |
+|บ         Nome do Devedor___: JAIR                                             บ    |
+|บ                                                                              บ    |
+|บ         Data Vencimento: 01/01/2016alor:         123,00  Taxa:  2,00         บ    |
+|บ                                                                              บ    |
+|บ         Valor Lกquido:         120,54   Encargo_____:           2,46         บ    |
+|บ                                                                              บ    |
+|บฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤบ    |
+|บ         Data do Pagamento:   /  /    Valor Pago_____:           0,00         บ    |
+|บ                                                                              บ    |
+|บ         Valor Lกquido:           0,00   Encargo_____:           0,00         บ    |
+|บ                                                                              บ    |
+|บ         Banco: 237     Agncia: 1212      Conta Corrente: 12133              บ    |
+|บ                                                                              บ    |
+|บ         Observa”es_______: TESTE                                            บ    |
+|ศอ F1 Help อออออออออออออออออออออออ Jair อออออออออออออออออออออ F10 Calculadora อผ    |
+|                                                                                    |
++------------------------------------------------------------------------------------+
+
+
